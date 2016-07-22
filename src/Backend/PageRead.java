@@ -44,8 +44,7 @@ public class PageRead {
 
     public static void main(String arg[]){
         MainFrame newFrame = new MainFrame();
-        newFrame.setVisible(true);
-	System.out.println(readPage("http://www.google.com"));
+        newFrame.setVisible(true);        
     }
     
 }
