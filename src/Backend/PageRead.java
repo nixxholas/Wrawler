@@ -11,13 +11,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Nixholas
  */
 public class PageRead {
-
+    public static List<SearchEngine> searchEngines = new ArrayList<SearchEngine>();
+        
     public static StringBuilder readPage(String pageAddr) {
         try {
             URL url = new URL(pageAddr);
@@ -43,8 +46,11 @@ public class PageRead {
     }
 
     public static void main(String arg[]){
+        searchEngines.add(new SearchEngine("Google", "https://www.google.com/#q="));
+        
         MainFrame newFrame = new MainFrame();
-        newFrame.setVisible(true);        
+        newFrame.setVisible(true);    
+        
     }
     
 }
