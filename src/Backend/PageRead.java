@@ -76,8 +76,7 @@ public class PageRead {
         String searchResult = ""; // This will be the final output
         String trimmedSearchResults = ""; // This is after the initial RegEx
         String taggedSearchResults = ""; // After removing all the useless parts of the source
-        List<String> titleResults; // Stores all the Titles temporarily
-        List<String> urlResults; // Stores all the URLs temporarily
+        List<ResultObject> Results = new ArrayList(); // Stores all the SearchObjects Temporarily
         
         //We'll need to filter the result String
         String parsedResult = result.replaceAll(" ", "+");
@@ -130,20 +129,38 @@ public class PageRead {
         
         Pattern searchObjectPattern = Pattern.compile(searchObjectRegex + se.getregexForSearchObject());
         Matcher searchObjectMatcher = searchObjectPattern.matcher(taggedSearchResults);
+        
+        // Define a variable to store a link first
+        String urlForResultObject = "";
         while(!searchObjectMatcher.hitEnd()) {
-            if (searchObjectMatcher.find()) {
-                System.out.println(searchObjectMatcher.group().replaceAll("\\<.*?>",""));
+            // If urlForTitle is empty, it means that we have the current
+            // line is a URL.
+            if (searchObjectMatcher.find() && searchObjectMatcher.group().replaceAll("\\<.*?>","").startsWith("http")) {
+                urlForResultObject = searchObjectMatcher.group().replaceAll("\\<.*?>","");
+            } else if (searchObjectMatcher.find()) {
+                // Else, we create the object and reset that string
+                // and store the object into the list
+                Results.add(new ResultObject(searchObjectMatcher.group().replaceAll("\\<.*?>",""), urlForResultObject, ""));
+                
+                // Then we'll have to reset urlForTitle
+                urlForResultObject = "";
+            } else {
+                // Do nothing
             }
         }
         
+        for (ResultObject RO : Results) {
+            System.out.println(RO.getUrl());
+        }
+                
         return searchResult;
     }
 
     public static void main(String arg[]) {
         // Initialize Google's Search Information
-//        SearchEngine Google = new SearchEngine("https://www.google.com/search?q=", "(<h3 class=\"r\">)(.+?)(<\\/h3>)", "(?<=\">)(.+?)(?=</a>)", "(?<=\\)\">)(.+)(?=)");        
-//        Google.setName("Google");
-//        searchEngines.add(Google);
+        SearchEngine Google = new SearchEngine("https://www.google.com/search?q=", "(<h3 class=\"r\">)(.+?)(<\\/h3>)", "(?<=\">)(.+?)(?=</a>)", "(?<=\\)\\\">)(.+?)(?=<)");        
+        Google.setName("Google");
+        searchEngines.add(Google);
 
         // Initialize Bing's Search Information
         SearchEngine Bing = new SearchEngine("https://bing.com/search?q=", "(<li class=\"b_algo\">)(.+?)(<\\/li>)", "(?<=<h2>)(.+?)(?=<\\/h2>)", "(?<=<strong>)(.+?)(?=<\\/a>)");
