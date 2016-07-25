@@ -62,7 +62,23 @@ public class PageRead {
      *
      * Google Link Tag RegEx (<h3 class="r">)(.+?)(<\/h3>)
      */
-    public static String getUrlSource(SearchEngine se, String result) throws IOException {
+    public synchronized static String getUrlSource(SearchEngine se, String result) throws IOException {        
+        /**
+         * Note that this Regular Expression DOES take in the open AND closed 
+         * inverted commas that is beside the URL.
+         * 
+         * This pattern is universal. Thus, we DO NOT need to store this in each
+         * and every SearchEngine Object we have.
+         */
+        String urlRegex = "(http)(.+?)(?=\")"; //"(<a href=\"http)(.+?)(\")";
+ 
+        // Declaring Local Variables
+        String searchResult = ""; // This will be the final output
+        String trimmedSearchResults = ""; // This is after the initial RegEx
+        String taggedSearchResults = ""; // After removing all the useless parts of the source
+        List<String> titleResults; // Stores all the Titles temporarily
+        List<String> urlResults; // Stores all the URLs temporarily
+        
         //We'll need to filter the result String
         String parsedResult = result.replaceAll(" ", "+");
 
@@ -81,14 +97,10 @@ public class PageRead {
         // Toss the untrimmed HTML page into an attribute of the object
         se.setPureResult(sb.toString());
         
-        String searchResult = "";
-
         /**
          * We'll have to chop off all the sections of the HTML page which we
          * don't really need.
          */
-        // There is no need for an if statement anymore.
-        //if (se.getName().equals("Google")) {
         
         // Create a RegEx that removes the unrequired elements
         Pattern pattern = Pattern.compile(se.getRegexSearchPattern());
@@ -97,42 +109,44 @@ public class PageRead {
         // chunks
         while (!matcher.hitEnd()) {
             if (matcher.find()) {
-                searchResult += matcher.group();
+                trimmedSearchResults += matcher.group();
             }
         }
-        //} 
-
-        // By storing the RegEx Patterns in the SearchEngine Object,
-        // We remove the need for having multiple if statements to trim the
-        // result.
-//        else if (se.getName().equals("DuckDuckGo")) {
-//            
-//        } else if (se.getName().equals("Bing")) {
-//            Pattern pattern = Pattern.compile("(<li class=\"b_algo\">)(.+?)(<\\/li>)");
-//            Matcher matcher = pattern.matcher(sb);
-//            // Iterate through the result html page and remove the useless
-//            // chunks
-//            while(!matcher.hitEnd()) {
-//                if (matcher.find()) {
-//                    searchResult += matcher.group();
-//                }
-//            }
-//        }
+                
+        /**
+         * At the same time, we'll have to convert the result into an 
+         * Object-Oriented form for the whole program to read.
+         * 
+         * Each object will be stored in their own individual SearchEngine
+         * Objects
+         */
+        Pattern elementPattern = Pattern.compile(se.getRegexForName());
+        Matcher elementMatcher = elementPattern.matcher(trimmedSearchResults);
+        while(!elementMatcher.hitEnd()) {
+            if (elementMatcher.find()) {
+                taggedSearchResults += elementMatcher.group();
+            }
+        }
+               
+        Pattern urlPattern = Pattern.compile(urlRegex);
+        Matcher urlMatcher = urlPattern.matcher(taggedSearchResults);
+        
         return searchResult;
     }
 
     public static void main(String arg[]) {
         // Initialize Google's Search Information
-        SearchEngine Google = new SearchEngine("https://www.google.com/search?q=", "(<h3 class=\"r\">)(.+?)(<\\/h3>)");
+        SearchEngine Google = new SearchEngine("https://www.google.com/search?q=", "(<h3 class=\"r\">)(.+?)(<\\/h3>)", "(?<=\">)(.+?)(?=</a>)", "(?<=\\)\\\"\\>)(.+?)(?=<\\/h3>)");        
         Google.setName("Google");
         searchEngines.add(Google);
 
         // Initialize Bing's Search Information
-        SearchEngine Bing = new SearchEngine("https://bing.com/search?q=", "(<li class=\"b_algo\">)(.+?)(<\\/li>)");
+        SearchEngine Bing = new SearchEngine("https://bing.com/search?q=", "(<li class=\"b_algo\">)(.+?)(<\\/li>)", "(?<=<h2>)(.+?)(?=<\\/h2>)", "(<h2>)(.+?)(?=<\\/h2>)");
         Bing.setName("Bing");
         searchEngines.add(Bing);
 
         //searchEngines.add(new SearchEngine("DuckDuckGo", "https://duckduckgo.com/?q="));
+        
         MainFrame newFrame = new MainFrame();
         newFrame.setVisible(true);
 
