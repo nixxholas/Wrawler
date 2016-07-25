@@ -98,7 +98,14 @@ public class MainFrame extends javax.swing.JFrame {
         for (int i = 0; i < searchEngines.size(); i++) {
             try {
                 // System.out.println(readPage(searchEngines.get(i).getBaseUrl() + result));
-                System.out.println(getUrlSource(searchEngines.get(i), result));
+                
+                // Set the trimmedResult into the SearchEngine Objects
+                searchEngines.get(i).setTrimmedResult(getUrlSource(searchEngines.get(i), result));
+                
+                /**
+                 * 
+                 */
+                
             } catch (IOException ex) {
                 Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
