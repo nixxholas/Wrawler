@@ -57,13 +57,16 @@ public class PageRead {
 
     /**
      * Custom Page Reader
-     * 
+     *
      * @param arg
      *
      * Google Link Tag RegEx (<h3 class="r">)(.+?)(<\/h3>)
      */
     public static String getUrlSource(SearchEngine se, String result) throws IOException {
-        URL url = new URL(se.getBaseUrl() + result);
+        //We'll need to filter the result String
+        String parsedResult = result.replaceAll(" ", "+");
+
+        URL url = new URL(se.getBaseUrl() + parsedResult);
         URLConnection urlConn = url.openConnection();
         urlConn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.168");
         BufferedReader in = new BufferedReader(new InputStreamReader(
@@ -75,44 +78,61 @@ public class PageRead {
         }
         in.close();
 
+        // Toss the untrimmed HTML page into an attribute of the object
+        se.setPureResult(sb.toString());
+        
         String searchResult = "";
 
         /**
          * We'll have to chop off all the sections of the HTML page which we
          * don't really need.
          */
-        if (se.getName().equals("Google")) {
-            Pattern pattern = Pattern.compile("(<h3 class=\"r\">)(.+?)(<\\/h3>)");
-            Matcher matcher = pattern.matcher(sb);
-            // Iterate through the result html page and remove the useless
-            // chunks
-            while (!matcher.hitEnd()) {
-                if (matcher.find()) {
-                    searchResult += matcher.group();
-                }
-            }
-        } else if (se.getName().equals("DuckDuckGo")) {
-            
-        } else if (se.getName().equals("Bing")) {
-            Pattern pattern = Pattern.compile("(<li class=\"b_algo\">)(.+?)(<\\/li>)");
-            Matcher matcher = pattern.matcher(sb);
-            // Iterate through the result html page and remove the useless
-            // chunks
-            while(!matcher.hitEnd()) {
-                if (matcher.find()) {
-                    searchResult += matcher.group();
-                }
+        // There is no need for an if statement anymore.
+        //if (se.getName().equals("Google")) {
+        
+        // Create a RegEx that removes the unrequired elements
+        Pattern pattern = Pattern.compile(se.getRegexSearchPattern());
+        Matcher matcher = pattern.matcher(sb);
+        // Iterate through the result html page and remove the useless
+        // chunks
+        while (!matcher.hitEnd()) {
+            if (matcher.find()) {
+                searchResult += matcher.group();
             }
         }
+        //} 
 
+        // By storing the RegEx Patterns in the SearchEngine Object,
+        // We remove the need for having multiple if statements to trim the
+        // result.
+//        else if (se.getName().equals("DuckDuckGo")) {
+//            
+//        } else if (se.getName().equals("Bing")) {
+//            Pattern pattern = Pattern.compile("(<li class=\"b_algo\">)(.+?)(<\\/li>)");
+//            Matcher matcher = pattern.matcher(sb);
+//            // Iterate through the result html page and remove the useless
+//            // chunks
+//            while(!matcher.hitEnd()) {
+//                if (matcher.find()) {
+//                    searchResult += matcher.group();
+//                }
+//            }
+//        }
         return searchResult;
     }
 
     public static void main(String arg[]) {
-        searchEngines.add(new SearchEngine("Google", "https://www.google.com/search?q="));
-        searchEngines.add(new SearchEngine("Bing", "https://bing.com/search?q="));
-        //searchEngines.add(new SearchEngine("DuckDuckGo", "https://duckduckgo.com/?q="));
+        // Initialize Google's Search Information
+        SearchEngine Google = new SearchEngine("https://www.google.com/search?q=", "(<h3 class=\"r\">)(.+?)(<\\/h3>)");
+        Google.setName("Google");
+        searchEngines.add(Google);
 
+        // Initialize Bing's Search Information
+        SearchEngine Bing = new SearchEngine("https://bing.com/search?q=", "(<li class=\"b_algo\">)(.+?)(<\\/li>)");
+        Bing.setName("Bing");
+        searchEngines.add(Bing);
+
+        //searchEngines.add(new SearchEngine("DuckDuckGo", "https://duckduckgo.com/?q="));
         MainFrame newFrame = new MainFrame();
         newFrame.setVisible(true);
 
