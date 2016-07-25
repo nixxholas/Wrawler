@@ -5,8 +5,10 @@
  */
 package Interface;
 
-import static Backend.PageRead.readPage;
-import static Backend.PageRead.searchEngines;
+import static Backend.PageRead.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -94,7 +96,12 @@ public class MainFrame extends javax.swing.JFrame {
         String result = textBox.getText();
         
         for (int i = 0; i < searchEngines.size(); i++) {
-            System.out.println(readPage(searchEngines.get(i).getBaseUrl() + result));
+            try {
+                // System.out.println(readPage(searchEngines.get(i).getBaseUrl() + result));
+                System.out.println(getUrlSource(searchEngines.get(i), result));
+            } catch (IOException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_searchBtnActionPerformed
 
