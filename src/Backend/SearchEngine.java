@@ -16,7 +16,7 @@ public class SearchEngine extends Thread {
     private String regexSearchPattern;
     private String regexForName;
     // private String regexForURL; We do not need this attribute anymore.
-    private String regexForDescription;
+    private String regexForSearchObject;
     private String pureResult; // Stores the actual search result
     private String trimmedResult; // Stores the search result after RegEx trimming
     private List<ResultObject> results;
@@ -41,12 +41,12 @@ public class SearchEngine extends Thread {
 //        this.regexForURL = regexForURL;
 //    }
 
-    public String getRegexForDescription() {
-        return regexForDescription;
+    public String getregexForSearchObject() {
+        return regexForSearchObject;
     }
 
-    public void setRegexForDescription(String regexForDescription) {
-        this.regexForDescription = regexForDescription;
+    public void setregexForSearchObject(String regexForSearchObject) {
+        this.regexForSearchObject = regexForSearchObject;
     }
 
     public List<ResultObject> getResults() {
@@ -61,11 +61,11 @@ public class SearchEngine extends Thread {
             String baseUrl,
             String regexSearchPattern,
             String regexForName,
-            String regexForDescription) {
+            String regexForSearchObject) {
         this.baseUrl = baseUrl;
         this.regexSearchPattern = regexSearchPattern;
         this.regexForName = regexForName;
-        this.regexForDescription = regexForDescription;
+        this.regexForSearchObject = regexForSearchObject;
     }
 
     public String getPureResult() {

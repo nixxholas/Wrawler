@@ -70,7 +70,7 @@ public class PageRead {
          * This pattern is universal. Thus, we DO NOT need to store this in each
          * and every SearchEngine Object we have.
          */
-        String urlRegex = "(http)(.+?)(?=\")"; //"(<a href=\"http)(.+?)(\")";
+        String searchObjectRegex = "(http)(.+?)(?=\")|"; //"(<a href=\"http)(.+?)(\")";
  
         // Declaring Local Variables
         String searchResult = ""; // This will be the final output
@@ -127,21 +127,26 @@ public class PageRead {
                 taggedSearchResults += elementMatcher.group();
             }
         }
-               
-        Pattern urlPattern = Pattern.compile(urlRegex);
-        Matcher urlMatcher = urlPattern.matcher(taggedSearchResults);
+        
+        Pattern searchObjectPattern = Pattern.compile(searchObjectRegex + se.getregexForSearchObject());
+        Matcher searchObjectMatcher = searchObjectPattern.matcher(taggedSearchResults);
+        while(!searchObjectMatcher.hitEnd()) {
+            if (searchObjectMatcher.find()) {
+                System.out.println(searchObjectMatcher.group().replaceAll("\\<.*?>",""));
+            }
+        }
         
         return searchResult;
     }
 
     public static void main(String arg[]) {
         // Initialize Google's Search Information
-        SearchEngine Google = new SearchEngine("https://www.google.com/search?q=", "(<h3 class=\"r\">)(.+?)(<\\/h3>)", "(?<=\">)(.+?)(?=</a>)", "(?<=\\)\\\"\\>)(.+?)(?=<\\/h3>)");        
-        Google.setName("Google");
-        searchEngines.add(Google);
+//        SearchEngine Google = new SearchEngine("https://www.google.com/search?q=", "(<h3 class=\"r\">)(.+?)(<\\/h3>)", "(?<=\">)(.+?)(?=</a>)", "(?<=\\)\">)(.+)(?=)");        
+//        Google.setName("Google");
+//        searchEngines.add(Google);
 
         // Initialize Bing's Search Information
-        SearchEngine Bing = new SearchEngine("https://bing.com/search?q=", "(<li class=\"b_algo\">)(.+?)(<\\/li>)", "(?<=<h2>)(.+?)(?=<\\/h2>)", "(<h2>)(.+?)(?=<\\/h2>)");
+        SearchEngine Bing = new SearchEngine("https://bing.com/search?q=", "(<li class=\"b_algo\">)(.+?)(<\\/li>)", "(?<=<h2>)(.+?)(?=<\\/h2>)", "(?<=<strong>)(.+?)(?=<\\/a>)");
         Bing.setName("Bing");
         searchEngines.add(Bing);
 
