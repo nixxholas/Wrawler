@@ -60,12 +60,12 @@ public class SearchEngine extends Thread {
     public SearchEngine(
             String baseUrl,
             String regexSearchPattern,
-            String regexForName,
-            String regexForSearchObject) {
+            String regexForSearchObject,
+            String regexForName) {
         this.baseUrl = baseUrl;
         this.regexSearchPattern = regexSearchPattern;
-        this.regexForName = regexForName;
         this.regexForSearchObject = regexForSearchObject;
+        this.regexForName = regexForName;
     }
 
     public String getPureResult() {

@@ -6,9 +6,11 @@
 package Backend;
 
 import Interface.*;
+import static Interface.SearchResult.searchResultsField;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -23,6 +25,7 @@ import java.util.regex.Pattern;
  */
 public class PageRead {
 
+    // Every single SearchEngine we add will be stored and be available globally
     public static List<SearchEngine> searchEngines = new ArrayList<SearchEngine>();
 
     /**
@@ -31,9 +34,10 @@ public class PageRead {
      * @param pageAddr
      * @return
      */
-    public static StringBuilder readPage(String pageAddr) {
+    public static StringBuilder printPage(String pageAddr, String objectName) {
         try {
             URL url = new URL(pageAddr);
+            PrintWriter writer = new PrintWriter(objectName + ".txt", "UTF-8");
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
 
@@ -41,10 +45,11 @@ public class PageRead {
             StringBuilder sb = new StringBuilder();
             while ((line = reader.readLine()) != null) {
                 sb.append(line + "\n");
+                writer.println(line);
             }
 
             reader.close();
-
+            writer.close();
             return sb;
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -70,7 +75,8 @@ public class PageRead {
          * This pattern is universal. Thus, we DO NOT need to store this in each
          * and every SearchEngine Object we have.
          */
-        String searchObjectRegex = "(http)(.+?)(?=\")|"; //"(<a href=\"http)(.+?)(\")";
+        String urlObjectRegex = "(http)(.+?)(?=\")"; //"(<a href=\"http)(.+?)(\")";
+        String nameObjectRegex = se.getRegexForName();
  
         // Declaring Local Variables
         String searchResult = ""; // This will be the final output
@@ -119,38 +125,55 @@ public class PageRead {
          * Each object will be stored in their own individual SearchEngine
          * Objects
          */
-        Pattern elementPattern = Pattern.compile(se.getRegexForName());
+        Pattern elementPattern = Pattern.compile(se.getregexForSearchObject());
         Matcher elementMatcher = elementPattern.matcher(trimmedSearchResults);
         while(!elementMatcher.hitEnd()) {
             if (elementMatcher.find()) {
                 taggedSearchResults += elementMatcher.group();
             }
         }
-        
-        Pattern searchObjectPattern = Pattern.compile(searchObjectRegex + se.getregexForSearchObject());
+               
+        // Pattern for URLs
+        Pattern searchObjectPattern = Pattern.compile(urlObjectRegex);
         Matcher searchObjectMatcher = searchObjectPattern.matcher(taggedSearchResults);
-        
-        // Define a variable to store a link first
-        String urlForResultObject = "";
-        while(!searchObjectMatcher.hitEnd()) {
-            // If urlForTitle is empty, it means that we have the current
-            // line is a URL.
-            if (searchObjectMatcher.find() && searchObjectMatcher.group().replaceAll("\\<.*?>","").startsWith("http")) {
-                urlForResultObject = searchObjectMatcher.group().replaceAll("\\<.*?>","");
-            } else if (searchObjectMatcher.find()) {
-                // Else, we create the object and reset that string
-                // and store the object into the list
-                Results.add(new ResultObject(searchObjectMatcher.group().replaceAll("\\<.*?>",""), urlForResultObject, ""));
                 
-                // Then we'll have to reset urlForTitle
-                urlForResultObject = "";
-            } else {
-                // Do nothing
+        // Create a temporary storage variable for the URLs
+        List<String> urlForObjects = new ArrayList<String>();
+        
+        while(!searchObjectMatcher.hitEnd()) {
+            // If we find one URL
+            if (searchObjectMatcher.find()) {
+                // We'll add it into the List String
+                urlForObjects.add(searchObjectMatcher.group());
             }
         }
         
+        // We then start a RegEx for the title
+        Pattern nameObjectPattern = Pattern.compile(nameObjectRegex);
+        Matcher nameObjectMatcher = nameObjectPattern.matcher(taggedSearchResults);
+        
+        // Put a counter for the List String we have made above.
+        int counter = 0;
+        while(!nameObjectMatcher.hitEnd()) {
+            if (nameObjectMatcher.find()) {
+                // .replaceAll trims the remaining HTML tags if they exist.
+                Results.add(new ResultObject(nameObjectMatcher.group().replaceAll("\\<.*?>",""), urlForObjects.get(counter),""));
+                // Parse the data in order for returning
+                searchResult += nameObjectMatcher.group().replaceAll("\\<.*?>","") + "\t" + urlForObjects.get(counter) + "\n";
+                counter++;
+            }
+        }
+        
+        // We now need to download each HTML page from each of the RO Urls.
+        // Save them as well of course.
         for (ResultObject RO : Results) {
-            System.out.println(RO.getUrl());
+            // Save each of the URLs as files.
+            printPage(RO.getUrl(), RO.getName());
+            
+            // Setup the UI for the searchResults...            
+            String current = searchResultsField.getText();
+            searchResultsField.setText(current + RO.getName());
+            
         }
                 
         return searchResult;
@@ -158,12 +181,12 @@ public class PageRead {
 
     public static void main(String arg[]) {
         // Initialize Google's Search Information
-        SearchEngine Google = new SearchEngine("https://www.google.com/search?q=", "(<h3 class=\"r\">)(.+?)(<\\/h3>)", "(?<=\">)(.+?)(?=</a>)", "(?<=\\)\\\">)(.+?)(?=<)");        
+        SearchEngine Google = new SearchEngine("https://www.google.com/search?q=", "(<h3 class=\"r\">)(.+?)(<\\/h3>)", "(?<=\">)(.+?)(?=<a)", "(?<=\\)\\\">)(.+?)(?=<)");        
         Google.setName("Google");
         searchEngines.add(Google);
 
         // Initialize Bing's Search Information
-        SearchEngine Bing = new SearchEngine("https://bing.com/search?q=", "(<li class=\"b_algo\">)(.+?)(<\\/li>)", "(?<=<h2>)(.+?)(?=<\\/h2>)", "(?<=<strong>)(.+?)(?=<\\/a>)");
+        SearchEngine Bing = new SearchEngine("https://bing.com/search?q=", "(<li class=\"b_algo\">)(.+?)(<\\/li>)", "(?<=<h2>)(.+?)(?=<\\/h2>)", "(?<=\">)(.+?)(?=<\\/a>)");
         Bing.setName("Bing");
         searchEngines.add(Bing);
 
