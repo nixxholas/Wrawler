@@ -32,6 +32,14 @@ public class SearchResult extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        searchResultsField.setEditable(false);
+        searchResultsField.setName("searchResultsField"); // NOI18N
+        searchResultsField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchResultsFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -55,6 +63,10 @@ public class SearchResult extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void searchResultsFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchResultsFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchResultsFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,6 +105,6 @@ public class SearchResult extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane scrollView;
-    private javax.swing.JTextField searchResultsField;
+    public static javax.swing.JTextField searchResultsField;
     // End of variables declaration//GEN-END:variables
 }

@@ -102,14 +102,15 @@ public class MainFrame extends javax.swing.JFrame {
                 // Set the trimmedResult into the SearchEngine Objects
                 searchEngines.get(i).setTrimmedResult(getUrlSource(searchEngines.get(i), result));
                 
-                /**
-                 * 
-                 */
-                
             } catch (IOException ex) {
                 Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
+        // Once we're done with loading the searches, we'll show the frame.
+        // and hide the mainFrame (which is called newFrame)
+        frame.setVisible(true);
+        newFrame.setVisible(false);
     }//GEN-LAST:event_searchBtnActionPerformed
 
     /**
