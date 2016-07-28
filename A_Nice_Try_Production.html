@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,200,100' rel='stylesheet' type='text/css'>
+		<meta charset="utf-8" />
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"26ff201b8c","applicationID":"2709522","transactionName":"elkITUAOXlUHFhdkV0tCAFZeCF16DQpMRldVWgNLHQhcXQcc","queueTime":0,"applicationTime":660,"agent":""}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VgYHVVRACgQAXVRQBQ=="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(s){try{i("ierr",[s,(new Date).getTime(),!0])}catch(c){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=window.onerror,u=!1,d=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),u=!0)}s.on("fn-start",function(t,e,n){u&&(d+=1)}),s.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),s.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),s.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState";t("loader").features.stn=!0,t(6);var g=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof g&&(this.bstStart=Date.now())}),o.on(w,function(t,e){var n=t[0];n instanceof g&&i("bst",[n,e,this.bstStart,Date.now()])}),a.on(m,function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),a.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),this.bstType])}),s.on(m,function(){this.bstStart=Date.now()}),s.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=Date.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,!1),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(17)(a),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=c(n,"nr@wrapped",function(){return s(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&s.inPlace(n,["handleEvent"],"fn-")}}),a.on(d+"-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],6:[function(t,e,n){var r=t("ee").get("history"),o=t(17)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,e,n){var r=t("ee").get("raf"),o=t(17)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(17)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",s)}function i(t){v.push(t),h&&(g=-g,b.data=g)}function a(){for(var t=0;t<v.length;t++)r([],v[t]);v.length&&(v=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t(17)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],v=[];e.exports=u;var y=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,y),y.prototype=p.prototype,d.inPlace(y.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var g=1,b=document.createTextNode(g);new h(a).observe(b,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],10:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var a=0;a<d;a++)e.addEventListener(u[a],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],11:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],12:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(15),s=t(16),c=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var u=["setPageViewName","setCustomAttribute","finished","addToTrace","inlineHit"],d="api-",l=d+"ixn-";a(u,function(t,e){f[e]=o(d+e,!0,"api")}),f.addPageAction=o(d+"addPageAction",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var p=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{c.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){p[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],13:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],14:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],15:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],16:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],17:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],s])}f(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],s),l}finally{f(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!c){c=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}c=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),s=a.length,c=0;c<s;c++)a[c].apply(i,r);var u=f[w[n]];return u&&u.push([v,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){c(t,function(t,n){e=e||"feature",w[n]=e,e in f||(f[e]=[])})}var m={},w={},v={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return v}function i(){return new r}var a="nr@context",s=t("gos"),c=t(15),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!g++){var t=y.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(w,function(e,n){t[e]||(t[e]=n)});var n="https"===m.split(":")[0]||t.sslForHttp;y.proto=n?"https://":"http://",s("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=y.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){s("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var s=t("handle"),c=t(15),f=window,u=f.document,d="addEventListener",l="attachEvent",p=f.XMLHttpRequest,h=p&&p.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:p,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(12);var m=""+location,w={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-963.min.js"},v=p&&h&&h[d]&&!/CriOS/.test(navigator.userAgent),y=e.exports={offset:a(),origin:m,features:{},xhrWrappable:v};u[d]?(u[d]("DOMContentLoaded",i,!1),f[d]("load",r,!1)):(u[l]("onreadystatechange",o),f[l]("onload",r)),s("mark",["firstbyte",a()],null,"api");var g=0},{}]},{},["loader",2,10,4,3]);</script>
+		<title>A Nice Try Production </title>
+		
+		
+
+<meta name="keywords" content="fotografie, muziek, photography, music, concerts">
+
+
+<meta name="google-site-verification" content="KJfpvP4m8R1jYzY6CCn8alk0S3G5AAtvjAEXgqK5jJE" />
+
+
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+
+<!-- Logos and Icons -->
+
+
+
+
+
+
+
+
+<base href=""/>
+
+<!-- JS -->
+<script type="text/javascript">
+  var __CURRENT_PATH = "home";
+</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-136776-5', 'auto');
+
+  if (__CURRENT_PATH === 'home' || __CURRENT_PATH === 'contact' || __CURRENT_PATH === 'about' || __CURRENT_PATH === 'error') {
+    ga('send', 'pageview', '/' + __CURRENT_PATH);
+  }
+  else {
+    ga('send', 'pageview', '/collection/' + __CURRENT_PATH );
+  }
+
+  
+</script>
+<!-- End Google Analytics -->
+
+<!-- Load CSS file -->
+<link href="/liquid/portfolios-css-reset.css" media="screen" rel="stylesheet" type="text/css">
+<link href="/theme.css " media="screen" rel="stylesheet" type="text/css" id="theme_css">
+
+<!-- Load JS files -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!--[if lt IE 9]>
+  <script src="/liquid/html5shiv.js" type="text/javascript"></script>
+<![endif]-->
+<script src="/theme.js " type="text/javascript"></script>
+
+
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').on('click contextmenu', '*:not([data-px-cc])', function(e) {
+    if (e.button > 1 && ($(e.target).css('background-image') || /url/.test($(e.target).css('background')))) {
+      e.preventDefault();
+      return false;
+    } else {
+      return true;
+      }
+    });
+    $('body').on('click contextmenu', 'img[src*="pcdn"]:not([data-px-cc])', function(e) {
+    if (e.button > 1) {
+      e.preventDefault();
+      return false;
+    } else {
+      return true;
+      }
+    });
+    $('body').on('mousedown dragstart', 'img[src*="pcdn"]:not([data-px-cc])', function(e) {
+      e.preventDefault();
+      return false
+    });
+  });
+</script>
+
+
+		<script src="https://pxportfolios.s3.amazonaws.com/themes/126/main/assets/51db079dc030b76a0200029d/swipe_js.js"></script>
+		<script src="https://pxportfolios.s3.amazonaws.com/themes/126/main/assets/51d5be9b85692512fc00002c/jquery.mousewheel.js"></script>
+		<script src="https://pxportfolios.s3.amazonaws.com/themes/126/main/assets/51d5e3358569253e3c000285/jquery.unveil.min.js"></script>
+		
+		<meta name="viewport" id="vp" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+		<meta name="viewport" id="vp" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	</head>
+	<body>
+		<!--header--><header>
+	<ul class="left">
+		<li id="headertitle">
+            <a href="/home " target="_self">
+				
+					A Nice Try
+				
+			</a>
+		</li>
+	    
+	        <li  class="selected"  class="headercollection">
+	            <a href="latest_try" target="_self">Latest Try</a>
+	        </li>
+	    
+	        <li  class="headercollection">
+	            <a href="holland-international-blues-festival-2016" target="_self">New: Holland International Blues Festival 2016</a>
+	        </li>
+	    
+	        <li  class="headercollection">
+	            <a href="ribs-n-blues-2016" target="_self">New:Ribs 'n Blues 2016</a>
+	        </li>
+	    
+	        <li  class="headercollection">
+	            <a href="zwarte-cross-2015" target="_self">Zwarte Cross 2015</a>
+	        </li>
+	    
+	        <li  class="headercollection">
+	            <a href="dancers__the_zwarte_cross" target="_self">Dancers @ the Zwarte Cross</a>
+	        </li>
+	    
+	        <li  class="headercollection">
+	            <a href="a-nice-interview" target="_self">A Nice Interview</a>
+	        </li>
+	    
+	        <li  class="headercollection">
+	            <a href="a_nice_shoot" target="_self">A Nice Shoot</a>
+	        </li>
+	    
+	        <li  class="headercollection">
+	            <a href="yet_another_try" target="_self">Yet Another Try</a>
+	        </li>
+	    
+	        <li  class="headercollection">
+	            <a href="stages_2015" target="_self">Stages 2015</a>
+	        </li>
+	    
+	        <li  class="headercollection">
+	            <a href="stages_2014" target="_self">Stages 2014</a>
+	        </li>
+	    
+	        <li  class="headercollection">
+	            <a href="archive" target="_self">Archive</a>
+	        </li>
+	    
+	</ul>
+	<ul class="right">
+		
+			<li><a href="/about ">About</a></li>
+		
+		
+			<li><a href="/contact ">Contact</a></li>
+		
+	</ul>
+</header>
+<!--/header-->
+		<main>
+			<!--home--><div id="titlecard">
+	
+	
+	<h1 class="offscreen">
+		
+			A Nice Try
+		
+	</h1>
+	
+		<h2 class="offscreen">Photography by A Nice Try Production </h2>
+	
+</div>
+
+<div id="collections" class="hidden hscroll">
+	
+			<div class="collection offscreen">
+				<a href="latest_try">
+					
+						<img src="https://drscdn.500px.org/photo/131856845/w%3D440_h%3D440/fa1eb54e0f00a45bd046ff1d9cb9553f?v=3"></img>
+					
+				</a>
+				<p class="collectionname">Latest Try</p>
+			</div>
+	
+			<div class="collection offscreen">
+				<a href="holland-international-blues-festival-2016">
+					
+						<img src="https://drscdn.500px.org/photo/157981559/w%3D440_h%3D440/3ac96e5fdcb85b7190c47b92b2aca7cd?v=3"></img>
+					
+				</a>
+				<p class="collectionname">New: Holland International Blues Festival 2016</p>
+			</div>
+	
+			<div class="collection offscreen">
+				<a href="ribs-n-blues-2016">
+					
+						<img src="https://drscdn.500px.org/photo/157589307/w%3D440_h%3D440/00fca39d58ff762f8c6622feea4ca60b?v=3"></img>
+					
+				</a>
+				<p class="collectionname">New:Ribs 'n Blues 2016</p>
+			</div>
+	
+			<div class="collection offscreen">
+				<a href="zwarte-cross-2015">
+					
+						<img src="https://drscdn.500px.org/photo/157963829/w%3D440_h%3D440/e63d674eca2d0c77fec80d00e46591bf?v=3"></img>
+					
+				</a>
+				<p class="collectionname">Zwarte Cross 2015</p>
+			</div>
+	
+			<div class="collection offscreen">
+				<a href="dancers__the_zwarte_cross">
+					
+						<img src="https://drscdn.500px.org/photo/131850281/w%3D440_h%3D440/c4738f4d0b787e171a9afe0ac8e19fe2?v=3"></img>
+					
+				</a>
+				<p class="collectionname">Dancers @ the Zwarte Cross</p>
+			</div>
+	
+			<div class="collection offscreen">
+				<a href="a-nice-interview">
+					
+						<img src="https://drscdn.500px.org/photo/158103507/w%3D440_h%3D440/50b55965f2571d6576ac1661e16c9b9c?v=3"></img>
+					
+				</a>
+				<p class="collectionname">A Nice Interview</p>
+			</div>
+	
+			<div class="collection offscreen">
+				<a href="a_nice_shoot">
+					
+						<img src="https://drscdn.500px.org/photo/142095395/w%3D440_h%3D440/318718d906c161dc3046b8100319989c?v=3"></img>
+					
+				</a>
+				<p class="collectionname">A Nice Shoot</p>
+			</div>
+	
+			<div class="collection offscreen">
+				<a href="yet_another_try">
+					
+						<img src="https://drscdn.500px.org/photo/77309823/w%3D440_h%3D440/3db63d7ce7bf1d26bb60cd2b404c0a16?v=0"></img>
+					
+				</a>
+				<p class="collectionname">Yet Another Try</p>
+			</div>
+	
+			<div class="collection offscreen">
+				<a href="stages_2015">
+					
+						<img src="https://drscdn.500px.org/photo/137554199/w%3D440_h%3D440/8afc3e40b2a6e1b5053b5cb7f0f25c9a?v=3"></img>
+					
+				</a>
+				<p class="collectionname">Stages 2015</p>
+			</div>
+	
+			<div class="collection offscreen">
+				<a href="stages_2014">
+					
+						<img src="https://drscdn.500px.org/photo/93438235/w%3D440_h%3D440/82166abf5c1c99cc4bd6dc611be84137?v=10"></img>
+					
+				</a>
+				<p class="collectionname">Stages 2014</p>
+			</div>
+	
+			<div class="collection offscreen">
+				<a href="archive">
+					
+						<img src="https://drscdn.500px.org/photo/131966977/w%3D440_h%3D440/5a6b6681690fc3e5b1bcdb7fbc925514?v=3"></img>
+					
+				</a>
+				<p class="collectionname">Archive</p>
+			</div>
+	
+</div>
+
+<div id="background" class="homebg rotatingbg"></div>
+<div id="tempbackground" class="homebg rotatingbg hidden"></div>
+<div id="bgimages">
+	
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131856845/m%3D2048/cdcb43b137f58b8d9dd757fcc7aa81d3"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/162688681/m%3D2048/07aeb56e1ad8e8f57bbe3c1346ded0ef"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/162688605/m%3D2048/e8f9d641baaf3ec587d6fb91a6c22804"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/162688721/m%3D2048/85b64525556145b565feb1fb8ed11b2c"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/162688695/m%3D2048/42557671a3e0571347dd33fb172e22c5"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157981667/m%3D2048/7584b145bfb996b2e5fea1511bc58254"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/158103507/m%3D2048/a9a53e06b0d88a349060a6f3e482a961"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/158096587/m%3D2048/c294d4b98f66c92b83101820a239616b"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157595555/m%3D2048/732b8eb82a19c09513ab200ffefac128"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157982783/m%3D2048/b5f57be22b3ec4290eda2bd7b1c2b1c1"></div>
+			
+		
+	
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157981559/m%3D2048/f9ba0653dfc00aa5affba438bbeb2ef4"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157979745/m%3D2048/19d1fef4e294f366734d78538f87df40"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157982351/m%3D2048/767e21050aa6dbbe5d874326eb6bdcf7"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157981667/m%3D2048/7584b145bfb996b2e5fea1511bc58254"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157981477/m%3D2048/4c17e70b49eac99abb6d9c6373e1277b"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157979931/m%3D2048/1ad176ca43f230a13950e33c549f4de8"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157982783/m%3D2048/b5f57be22b3ec4290eda2bd7b1c2b1c1"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157982713/m%3D2048/c109f9fecc53057a4c7b397010aa9e04"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157982237/m%3D2048/ecd8a4b8243ab9f7c8384606d4177573"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157982243/m%3D2048/74412b8016eec444b7334da33cd0c9b5"></div>
+			
+		
+	
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157589307/m%3D2048/a9e52cdec7ce8bafef197b99d2f44b5b"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157589033/m%3D2048/722270d88136748bd1da9ec0e05d408c"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157589291/m%3D2048/ac405145456d4f1a8280068175dc7008"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157589533/m%3D2048/eb339d6968c22ea104e3c1f98788095c"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157589031/m%3D2048/d1e0a76f040d236b6f39e005b191f453"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157589017/m%3D2048/850fd0dd2764fcd2ffc8fa587d9a42d7"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157588957/m%3D2048/6e7aba4cd96a7a02348f68a1bbc8d37d"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157588923/m%3D2048/9cc551c399240f36ed8eb71da2761eb5"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157589053/m%3D2048/a32c13e3da7498cdcd2122a842af0f8a"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157588803/m%3D2048/106654e1cddb23bba46f05916ef9def0"></div>
+			
+		
+	
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/157963829/m%3D2048/5f39d05e7ca12e37f431b9b34f35126c"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131857357/m%3D2048/fa5a2b0a1c827046d7d051aa618daf7e"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131857345/m%3D2048/acd547b168689d958d87473371192ee4"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131856845/m%3D2048/cdcb43b137f58b8d9dd757fcc7aa81d3"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131857327/m%3D2048/aada98e46f72b7d4b0dc79edc94c6545"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131857463/m%3D2048/3192fab8333d39b42954ee33e045962f"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131857303/m%3D2048/83df7607cc956669262e150def04871e"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131857505/m%3D2048/e332d091c9009a0e471dd5b1e0e2624e"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131857399/m%3D2048/95f52e9924983f67e0ac12c1bdf1a7a8"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131857105/m%3D2048/d020117fb34c10a17b5a420d7e3087c9"></div>
+			
+		
+	
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131850281/m%3D2048/dfe54bdb51d1ca4748a1463d00af0c71"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/78029771/m%3D2048/65ee73637889a0d9064d6e1a627b970a"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/78029779/m%3D2048/3c99c075480509263a0887ddefb10bce"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131850569/m%3D2048/f91da2b879b1bd9433012254f676afd5"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131850393/m%3D2048/8ec69cb59d2281fbfe308320cee22512"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131850499/m%3D2048/90b0edcdc231781a9f12e5bb4315c99c"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/78029767/m%3D2048/f4e81674663508008c8ca50624afdae8"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/78029775/m%3D2048/6486c87e5e38ed4875e9b9d36bd5e1cf"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131850519/m%3D2048/eafcba72669b07e389e0c82216fa956e"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/78029761/m%3D2048/e26eb5d16d6b7e124e1838d91dc3b2fc"></div>
+			
+		
+	
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/158103507/m%3D2048/a9a53e06b0d88a349060a6f3e482a961"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/158106307/m%3D2048/53889acf235e36e7981901cc5181fd00"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/119889393/m%3D2048/7ec99387f802aba75e434efe86f2c933"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/137552147/m%3D2048/fd79357c9f910f8d8aa581894f4d3e42"></div>
+			
+		
+	
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/142095395/m%3D2048/cfd961214c8874f5657547bccb9c7761"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/96179545/m%3D2048/794059def46f3cac92150c5396b3cfb6"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131846113/m%3D2048/c43f29f47eced28ac68e529fa1dae0bf"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/137580209/m%3D2048/c5fe3ba6192b5f0cb562013cdbcea533"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/113915381/m%3D2048/2eda59cea4dbb60aa062c4eca4000f7a"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/137871321/m%3D2048/a54f09350e31e21322a385b66ff59203"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/76444433/m%3D2048/700785e7def08003bf6786b4a00ba399"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/101593875/m%3D2048/99d59ad3c964d222ac2dfdad1f23c555"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/63266367/m%3D2048/f56196ff6869f8a7bf6196a7f100569e"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/92073487/m%3D2048/054ac6cdf0926ff3725dadf5f8657d88"></div>
+			
+		
+	
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/77309823/m%3D2048/0736632d2a1c4b8068e929d455d59d0e"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/137560921/m%3D2048/9a91c197f9f4c0abaa28c38d3360fef3"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/137838591/m%3D2048/648903a1616c74af8b0465f59342edf0"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/107721991/m%3D2048/f88f1b2071385add186363536afbb48f"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/76443875/m%3D2048/0b1b131fab99e0ed83d732a2f8b729b7"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/101584267/m%3D2048/b54340707a667f5ff9cee031262a9342"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/137561011/m%3D2048/61aeb449f872efcbc16013c3f444b8d7"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/48111670/m%3D2048/47b79211893ed93a9c0a3047590b13d0"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/101643771/m%3D2048/a0750d013b9afe8e5ddeb08dc5d53f2f"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/137838667/m%3D2048/09c2926bbc1a47b8483d380a235cb1d3"></div>
+			
+		
+	
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/137554199/m%3D2048/47cfd5f530c9bb8b40f217d4d452be1c"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/137559201/m%3D2048/4ba28dcbebcd60d9c90a2a4ca2d70e61"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131967955/m%3D2048/1371df6a3b52ebb7f6ed3c0be3edebc1"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/137555905/m%3D2048/71bd42dcfc9c9bd36badcf37d052ae0b"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/137556425/m%3D2048/2f54cc7987ca713c97ddad70d0ae2864"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/113914875/m%3D2048/6e72cd0df7e9be827b2397fea8f35933"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/137555283/m%3D2048/b73f594d780853676ee87a2b29298fd9"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/113914247/m%3D2048/8fa4fa1ac8356bca799e1736958107d8"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/115482503/m%3D2048/b2cfd7fd1158a94de1ba708572619531"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/113914927/m%3D2048/f808ae9bf0e7c5feb2bc70922444ecdd"></div>
+			
+		
+	
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/93438235/m%3D2048/20152ccf6cf94660e4a0f338caddaeb5"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/78031587/m%3D2048/388bab0d3a0b3308bb8c865db42aca28"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/92092539/m%3D2048/24751564406d37059de0d88a85b5d483"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/92092541/m%3D2048/357e7dc9967a0ef2d4606b705d7d963b"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/92092543/m%3D2048/014879811788dd1de4eaf65e80aa73af"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/78031547/m%3D2048/d4a754c7dd31f6ed61bdeec996ab94e4"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/92090783/m%3D2048/422eff22ce7efff52807398624cafd32"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/92091015/m%3D2048/77c6ee9669e401aa756710f8fe1eead1"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/78031569/m%3D2048/6418a74f17383262098535d684e7de47"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/92090789/m%3D2048/891370e203f19eb5419f8c7668844cc0"></div>
+			
+		
+	
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/131966977/m%3D2048/5f30908afc3fb1322b5eeae00373cd94"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/141260843/m%3D2048/d0d55e112135ebbbfb6977f8169cd367"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/137569317/m%3D2048/321e602a6b434a5c17bdf427b88da227"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/115482503/m%3D2048/b2cfd7fd1158a94de1ba708572619531"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/137559201/m%3D2048/4ba28dcbebcd60d9c90a2a4ca2d70e61"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/111685769/m%3D2048/9d10c9f85c08d6ab9b21b9e60ad90680"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/107721961/m%3D2048/45ea7abe6e3a88054d135d43f9fad62e"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/101580075/m%3D2048/06a9d0c7a10d3eec3a4a06322891ea89"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/93439401/m%3D2048/ea3126ef8ba82aaa78fc731f3189a26f"></div>
+			
+		
+			
+				<div class="bgimg" data-image="https://drscdn.500px.org/photo/78031587/m%3D2048/388bab0d3a0b3308bb8c865db42aca28"></div>
+			
+		
+	
+</div><!--/home-->
+		</main>
+		<!--footer--><!--/footer-->
+	</body>
+</html>

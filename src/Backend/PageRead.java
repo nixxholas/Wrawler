@@ -198,7 +198,7 @@ public class PageRead {
             // Save each of the URLs as files.
             printPage(RO.getUrl(), RO.getName());
 
-            JButton button = new JButton();
+            JButton button = new JButton(RO.getName());
 
             /**
              * Action Listener adapted from:
@@ -207,7 +207,11 @@ public class PageRead {
              */
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    // display/center the jdialog when the button is pressed
+                    /**
+                     * Webpage Viewer within the Java Project
+                     * 
+                     * http://stackoverflow.com/questions/10601676/display-a-webpage-inside-a-swing-application
+                     */
                     JEditorPane jep = new JEditorPane();
                     jep.setEditable(false);
 
@@ -222,6 +226,8 @@ public class PageRead {
                     panel.add(scrollPane);
                 }
             });
+            
+            panel.add(button);
         }
         return searchResult;
     }
