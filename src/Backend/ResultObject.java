@@ -5,11 +5,16 @@
  */
 package Backend;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.URL;
+
 /**
  *
  * @author Nixholas
  */
-public class ResultObject {
+public class ResultObject implements Runnable {
     private String name;
     private String url;
     private String Description;
@@ -52,6 +57,31 @@ public class ResultObject {
 
     public void setDescription(String Description) {
         this.Description = Description;
+    }
+
+    @Override
+    public void run() {
+        
+        try {
+            URL url = new URL(this.getUrl());
+            PrintWriter writer = new PrintWriter(this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+
+            String line, finalResult = "";
+            StringBuilder sb = new StringBuilder();
+            while ((line = reader.readLine()) != null) {
+                finalResult += line + "\n";
+                sb.append(line + "\n");
+                writer.println(line);
+            }
+
+            this.setResultPage(finalResult);
+            reader.close();
+            writer.close();
+        } catch (Exception ex) {
+            
+        }
     }
     
     

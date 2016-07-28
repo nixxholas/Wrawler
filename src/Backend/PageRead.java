@@ -24,6 +24,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -222,9 +223,12 @@ public class PageRead {
                 );
         
         
-        for (ResultObject RO : Results) {
+        for (ResultObject RO : Results) {            
+            
+            threadPoolExecutor.execute(RO);
+            
             // Save each of the URLs as files.
-            printPage(RO);
+            //printPage(RO);
 
             JButton button = new JButton(RO.getName());
 
@@ -258,6 +262,10 @@ public class PageRead {
             
             rightPanel.add(button);
         }
+        
+        // Awaits for all threads to complete before wrappin' up
+        threadPoolExecutor.shutdown();
+        
         return searchResult;
     }
 

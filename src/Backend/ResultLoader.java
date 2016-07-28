@@ -5,14 +5,22 @@
  */
 package Backend;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.URL;
+
 /**
  * Concurrent Downloading Object for Search Results
  * 
  * @author Nixholas
  */
-public class ResultLoader implements Runnable {
+public class ResultLoader extends ResultObject implements Runnable {
     // Name is not neeeded.
-    
+
+    public ResultLoader(String name, String url, String Description) {
+        super(name, url, Description);
+    }    
     
     /**
      * Upon execution of run(), this loader will in turn run the necessary 
@@ -20,7 +28,26 @@ public class ResultLoader implements Runnable {
      */
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            URL url = new URL(this.getUrl());
+            PrintWriter writer = new PrintWriter(this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+
+            String line, finalResult = "";
+            StringBuilder sb = new StringBuilder();
+            while ((line = reader.readLine()) != null) {
+                finalResult += line + "\n";
+                sb.append(line + "\n");
+                writer.println(line);
+            }
+
+            this.setResultPage(finalResult);
+            reader.close();
+            writer.close();
+        } catch (Exception ex) {
+            
+        }
     }
     
 }
