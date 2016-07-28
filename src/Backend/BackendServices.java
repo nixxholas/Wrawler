@@ -5,7 +5,7 @@
  */
 package Backend;
 
-import static Backend.PageRead.panel;
+import static Backend.PageRead.rightPanel;
 import static Interface.MainFrame.textBox;
 
 /**
@@ -27,6 +27,6 @@ public class BackendServices {
     }
     
     public static void clearSecondaryFrame() {
-        panel.removeAll();
+        rightPanel.removeAll();
     }
 }

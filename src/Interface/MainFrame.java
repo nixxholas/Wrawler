@@ -109,8 +109,8 @@ public class MainFrame extends javax.swing.JFrame {
         
         // Once we're done with loading the searches, we'll show the frame.
         // and hide the mainFrame (which is called newFrame)
-        frame.setVisible(true);
-        newFrame.setVisible(false);
+        resultFrame.setVisible(true);
+        mainFrame.setVisible(false);
     }//GEN-LAST:event_searchBtnActionPerformed
 
     /**

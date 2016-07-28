@@ -24,6 +24,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JButton;
@@ -43,14 +47,15 @@ public class PageRead {
     public static List<SearchEngine> searchEngines = new ArrayList<SearchEngine>();
 
     // Default JFrame of the Program
-    public static MainFrame newFrame = new MainFrame();
+    public static MainFrame mainFrame = new MainFrame();
 
     /**
      * Search Result JFrame
      */
     // Create a new JFrame and set it up properly for use
-    public static JFrame frame = new JFrame();
-    public static JPanel panel = new JPanel();
+    public static JFrame resultFrame = new JFrame();
+    public static JPanel leftPanel = new JPanel();
+    public static JPanel rightPanel = new JPanel();
     public static JEditorPane jep = new JEditorPane();
     public static JScrollPane scrollPane = new JScrollPane(jep);
     
@@ -111,7 +116,7 @@ public class PageRead {
         String trimmedSearchResults = ""; // This is after the initial RegEx
         String taggedSearchResults = ""; // After removing all the useless parts of the source
         List<ResultObject> Results = new ArrayList(); // Stores all the SearchObjects Temporarily
-
+        
         //We'll need to filter the result String
         String parsedResult = result.replaceAll(" ", "+");
 
@@ -200,6 +205,19 @@ public class PageRead {
          * target link as an individual HTML Page by itself so that our can
          * utilize it if needed.
          */
+        
+        // Multi THREADING COMEFORTH
+        
+        ExecutorService threadPoolExecutor =
+        new ThreadPoolExecutor(
+                Results.size(),
+                Results.size(),
+                600000,
+                TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<Runnable>()
+                );
+        
+        
         for (ResultObject RO : Results) {
             // Save each of the URLs as files.
             printPage(RO);
@@ -226,7 +244,7 @@ public class PageRead {
                         //jep.setText("<html>" + RO.getResultPage() + "<html>");
                         
                         jep.setPage(RO.getUrl());
-                        frame.pack();
+                        mainFrame.pack();
                     } catch (Exception ex) {
                         jep.setContentType("text/html");
                         jep.setText("<html>Could not load the page.</html>");
@@ -234,28 +252,30 @@ public class PageRead {
                 }
             });
             
-            panel.add(button);
+            rightPanel.add(button);
         }
         return searchResult;
     }
 
     public static void main(String arg[]) {
         // Configure the Panel and Frame properly before use
-        panel.setLayout(new GridLayout(0, 2, 0, 1));
+        leftPanel.setLayout(new GridLayout());
+        rightPanel.setLayout(new GridLayout());
 
         // We then add the panel into the frame
-        frame.add(panel);
+        resultFrame.add(leftPanel);
+        resultFrame.add(rightPanel);
 
         // Setup the frame as well
-        frame.setSize(1200, 900);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        resultFrame.setSize(1200, 900);
+        resultFrame.setLocationRelativeTo(null);
+        resultFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Setup the browser view
         jep.setEditable(false);
         jep.setSize(0, 1200);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        panel.add(scrollPane);
+        leftPanel.add(scrollPane);
         
         // Initialize Google's Search Information
         SearchEngine Google = new SearchEngine("https://www.google.com/search?q=", "(<h3 class=\"r\">)(.+?)(<\\/h3>)", "(?<=\">)(.+?)(?=<a)", "(?<=\\)\\\">)(.+?)(?=<)");
@@ -268,7 +288,7 @@ public class PageRead {
         searchEngines.add(Bing);
 
         //searchEngines.add(new SearchEngine("DuckDuckGo", "https://duckduckgo.com/?q="));
-        newFrame.setVisible(true);
+        mainFrame.setVisible(true);
     }
 
 }
