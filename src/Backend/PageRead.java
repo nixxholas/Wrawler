@@ -7,7 +7,10 @@ package Backend;
 
 import Interface.*;
 import static Interface.SearchResult.searchResultsField;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
@@ -21,9 +24,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JButton;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -194,7 +200,31 @@ public class PageRead {
 
             // Create a label with the name of the ResultObject Object.
             JLabel label = new JLabel(RO.getName());
-            
+
+            JButton button = new JButton();
+
+            button.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    // display/center the jdialog when the button is pressed
+                    JEditorPane jep = new JEditorPane();
+                    jep.setEditable(false);
+
+                    try {
+                        jep.setPage("http://www.yoursite.com");
+                    } catch (IOException ex) {
+                        jep.setContentType("text/html");
+                        jep.setText("<html>Could not load the page.</html>");
+                    }
+
+                    JScrollPane scrollPane = new JScrollPane(jep);
+                    JFrame f = new JFrame("Test HTML");
+                    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    f.getContentPane().add(scrollPane);
+                    f.setPreferredSize(new Dimension(800, 600));
+                    f.setVisible(true);
+                }
+            });
+
             // Create an onclick function for the label to load the HTML
             // page that we have downloaded and saved.
             label.addMouseListener(new MouseAdapter() {
