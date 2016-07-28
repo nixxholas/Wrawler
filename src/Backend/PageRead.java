@@ -198,11 +198,13 @@ public class PageRead {
             // Save each of the URLs as files.
             printPage(RO.getUrl(), RO.getName());
 
-            // Create a label with the name of the ResultObject Object.
-            JLabel label = new JLabel(RO.getName());
-
             JButton button = new JButton();
 
+            /**
+             * Action Listener adapted from:
+             * 
+             * http://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
+             */
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     // display/center the jdialog when the button is pressed
@@ -217,25 +219,9 @@ public class PageRead {
                     }
 
                     JScrollPane scrollPane = new JScrollPane(jep);
-                    JFrame f = new JFrame("Test HTML");
-                    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    f.getContentPane().add(scrollPane);
-                    f.setPreferredSize(new Dimension(800, 600));
-                    f.setVisible(true);
+                    panel.add(scrollPane);
                 }
             });
-
-            // Create an onclick function for the label to load the HTML
-            // page that we have downloaded and saved.
-            label.addMouseListener(new MouseAdapter() {
-                public void mouseClick(MouseEvent e) {
-                    // We'll have to preload the page into the panel :))
-                    // Write that code here
-                }
-            });
-
-            // Add the label into the panel
-            panel.add(label);
         }
         return searchResult;
     }
