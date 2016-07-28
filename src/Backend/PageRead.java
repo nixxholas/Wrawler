@@ -59,7 +59,7 @@ public class PageRead {
     public static StringBuilder printPage(String pageAddr, String objectName) {
         try {
             URL url = new URL(pageAddr);
-            PrintWriter writer = new PrintWriter(objectName + ".txt", "UTF-8");
+            PrintWriter writer = new PrintWriter(objectName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
 
@@ -212,7 +212,7 @@ public class PageRead {
                     jep.setEditable(false);
 
                     try {
-                        jep.setPage("http://www.yoursite.com");
+                        jep.setPage("http://www.google.com");
                     } catch (IOException ex) {
                         jep.setContentType("text/html");
                         jep.setText("<html>Could not load the page.</html>");
