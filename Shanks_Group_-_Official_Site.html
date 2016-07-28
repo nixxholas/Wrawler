@@ -1,0 +1,850 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><title>
+	Shanks
+</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=480, maximum-scale=1.0, user-scalable=0" />
+    <!--<meta name="viewport" content="width=480, maximum-scale=1" />-->
+    <link rel="stylesheet" href="/css/stylesheet.css" type="text/css" charset="utf-8" /><link href="/css/style.css" type="text/css" rel="stylesheet" /><link id="s_brand" href="/css/blue.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="/scripts/carousel.min.js"></script>
+    <script type="text/javascript" src="/scripts/jquery-cycle2.min.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.cycle2.carousel.min.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.textfill.min.js" ></script>
+    
+<script type="text/javascript">(function (i, s, o, g, r, a, m) {
+                                        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                                            (i[r].q = i[r].q || []).push(arguments)
+                                        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                                        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+                                    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+                                    ga('create', 'UA-64825994-1', 'auto');
+                                    ga('send', 'pageview');</script><meta name="keywords" /><meta name="description" content="Shanks’ Municipal Division is the most focussed provider of Local Authority recycling and recovery waste management solutions." /></head>
+<body>
+
+    <div class="page">
+        <div id="header">
+            <div class="header-padder">
+                <div class="container">
+                    <div class="wrapper">
+
+                        <div id="logo" class="fl">
+                            <a id="main_logo_link" href="/" style="display:block;">
+                                <img src="/img/header/shanks_municipal_logo.png" id="logo_img" class="normlogo mt20" alt="Shanks Logo" />
+                            </a>
+                        </div>
+
+                        <div class="mt20 collapsable fr">
+                            <div id="search_box" class="search-field">
+                                <a id="search_icon" class="search-img" href="#" onclick="return false;"></a>
+                                <form id="search_frm" action="/forms/search.ashx" method="post">
+                                    <input name="ctl00$txt_main_search" type="text" id="txt_main_search" />
+                                </form>
+                                <a id="search_arr" class="search-arrow" href="#" onclick="document.getElementById('search_frm').submit();"></a>
+                            </div>
+                        </div>
+
+                
+                        <a id="burger_btn" href="#" class="xsmalldv mt20 fr" onclick="toggleMenu();return false;">
+                            <img alt="menu" src="/img/header/menu_button.jpg" />
+                        </a>
+
+                        <ul id="s_menu" class="top-right-header mt20 fr">
+                            <li>
+                                <select name="ctl00$ddl_service" id="ddl_service" class="tabdv cust" onchange="goToBrand(this)">
+	<option value="">Our business sectors</option>
+	<option value="http://www.shanksmunicipal.com">Municipal Solutions</option>
+	<option value="http://www.shanksorganics.com">Food waste Solutions</option>
+	<option value="http://www.shanksenergy.com">Energy Solutions</option>
+</select>
+                            </li>
+                            <li>
+                                <select name="ctl00$ddl_client" id="ddl_client" class="tabdv cust" onchange="changeBannerTo(this)">
+	<option value="">Our customers</option>
+	<option value="2,28">Buckinghamshire County Council</option>
+	<option value="3,2">Argyll &amp; Bute Council</option>
+	<option value="4,3">Barnsley, Doncaster &amp; Rotherham</option>
+	<option value="5,4">Bedford Borough Council</option>
+	<option value="6,5">Central Bedfordshire Council</option>
+	<option value="7,25">City of Surrey</option>
+	<option value="8,6">Cumbria County Council</option>
+	<option value="9,7">Derby City &amp; Derbyshire Council</option>
+	<option value="10,8">Dumfries &amp; Galloway Council</option>
+	<option value="11,9">East London Waste Authority</option>
+	<option value="12,22">Ottawa City Council</option>
+	<option value="13,23">Regional Municipality of York</option>
+	<option value="14,24">City of Toronto</option>
+	<option value="15,10">Wakefield Council</option>
+</select>
+                            </li>
+                        </ul>
+
+                
+                        <!--<div style="clear:right;"></div>-->
+
+                        <div class="nav mt10 mb10 fr">
+                            <ul id="nav_container" class="nav-container">
+                                <li class="nav_item">
+                                    <a href="/" id="link_home" class="current">Home</a>
+                                </li>
+                                <li class="divider">|</li>
+                                <li class="nav_item">
+                                    <a href="about-shanks-p2.aspx" id="link_about">About</a>
+                                </li>
+                                <li class="divider">|</li>
+                                    <li class="nav_item">
+                                    <a href="latest-news-from-shanks-p3.aspx" id="link_news">News</a>
+                                </li>
+                                <li class="divider">|</li>
+                                    <li class="nav_item">
+                                    <a href="shanks-locations-p4.aspx" id="link_locations">Locations</a>
+                                </li>
+                                <li class="divider">|</li>
+                                    <li class="nav_item">
+                                    <a href="/careers" id="link_careers">Careers</a>
+                                </li>
+                                <li class="divider">|</li>
+                                    <li class="nav_item">
+                                    <a href="http://www.shanksplc.com" id="link_investors" target="_blank">Investors</a>
+                                </li>
+                                <li class="divider">|</li>
+                                <li class="nav_item">
+                                    <a href="contact-us-p7.aspx" id="link_contact">Contact Us</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="cb"></div>
+            
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+
+        <div class="cb"></div>
+
+        <div id="banner" class="banner">
+            <div class="container">
+                <div class="wrapper">
+
+                    <div class="main-clients">
+                        <ul id="client_list" class="collapsable"><li class="current" style="border-top-left-radius:20px; -webkit-border-top-left-radius: 20px;" ><a class="main-clients-title" id="client_1" href="#" onclick="gotoSlide(1,1); return false;" data-img="/topimg/photos/1_What we do2.jpg" title="" data-desc="" data-name="What we do." ><span>What we do.</span></a></li><li class="" style="" ><a id="client_2" href="#" onclick="gotoSlide(2,28); return false;" data-img="/topimg/photos/28_Buckinghamshire 1.jpg" title="Guaranteed 95% recycling" data-desc="Westcott Park Anaerobic Digestion (AD) facility" data-name="Buckinghamshire County Council" ><span>Buckinghamshire County Council</span></a></li><li class="" style="" ><a id="client_3" href="#" onclick="gotoSlide(3,2); return false;" data-img="/topimg/photos/2_argyl_bute2.jpg" title="Keeping Argyll Bute-iful since 2001" data-desc="Scotland's first waste Public-Private Partnership, and the UK's first MBT facility" data-name="Argyll & Bute Council" ><span>Argyll & Bute Council</span></a></li><li class="" style="" ><a id="client_4" href="#" onclick="gotoSlide(4,3); return false;" data-img="/topimg/photos/3_barns_don_roth.jpg" title="Opened Summer 2015" data-desc="Manvers Resource Park" data-name="Barnsley, Doncaster & Rotherham Partnership" ><span>Barnsley, Doncaster & Rotherham Partnership</span></a></li><li class="" style="" ><a id="client_5" href="#" onclick="gotoSlide(5,4); return false;" data-img="/topimg/photos/4_BedfordNew1.jpg" title="Diverting 70% of all Bedford waste we receive" data-desc="Since 2013, Shanks has been treating Bedford Borough waste at our East London MBT plants" data-name="Bedford Borough Council" ><span>Bedford Borough Council</span></a></li><li class="" style="" ><a id="client_6" href="#" onclick="gotoSlide(6,5); return false;" data-img="/topimg/photos/5_central_beds.jpg" title="Diverting 70% of all Central Bedfordshire waste" data-desc="Since 2013, Shanks has been treating Central Bedfordshire waste at our East London MBT plants" data-name="Central Bedfordshire Council" ><span>Central Bedfordshire Council</span></a></li><li class="" style="" ><a id="client_7" href="#" onclick="gotoSlide(7,25); return false;" data-img="/topimg/photos/25_Surrey.jpg" title="Opening 2017" data-desc="Transforms organic waste to renewable road fuel" data-name="City of Surrey" ><span>City of Surrey</span></a></li><li class="" style="" ><a id="client_8" href="#" onclick="gotoSlide(8,6); return false;" data-img="/topimg/photos/5_cumbria.jpg" title="80% landfill diversion capability" data-desc="Northern & Southern Resource Parks - MBT facilities" data-name="Cumbria County Council" ><span>Cumbria County Council</span></a></li><li class="" style="" ><a id="client_9" href="#" onclick="gotoSlide(9,7); return false;" data-img="/topimg/photos/6_derby.jpg" title="Opening 2017" data-desc="Derby & Derbyshire Waste Treatment Centre" data-name="Derby City & Derbyshire  County Council" ><span>Derby City & Derbyshire  County Council</span></a></li><li class="" style="" ><a id="client_10" href="#" onclick="gotoSlide(10,8); return false;" data-img="/topimg/photos/7_dumfries_gal.jpg" title="From 5% to 66% diversion in only 10 years" data-desc="Shanks Lochar Moss MBT facility" data-name="Dumfries and Galloway Council" ><span>Dumfries and Galloway Council</span></a></li><li class="" style="" ><a id="client_11" href="#" onclick="gotoSlide(11,9); return false;" data-img="/topimg/photos/8_east_london.jpg" title="Now diverting 74% of waste from landfill" data-desc="Frog Island MBT and MRF facility" data-name="East London Waste Authority" ><span>East London Waste Authority</span></a></li><li class="" style="" ><a id="client_12" href="#" onclick="gotoSlide(12,22); return false;" data-img="/topimg/photos/22_Ottawa.jpg" title="Transforming Ottawa’s food & garden waste" data-desc="Capable of 100,000 tonnes per year with world-class odour management" data-name="City of Ottawa" ><span>City of Ottawa</span></a></li><li class="" style="" ><a id="client_13" href="#" onclick="gotoSlide(13,23); return false;" data-img="/topimg/photos/23_Regional Municipality of York.jpg" title="State-of-the-art odour abatement" data-desc="Licensed to process up to 150,000 tonnes of source separated organics per year" data-name="Regional Municipality of York" ><span>Regional Municipality of York</span></a></li><li class="" style="" ><a id="client_14" href="#" onclick="gotoSlide(14,24); return false;" data-img="/topimg/photos/24_Toronto.jpg.jpg" title="Handling the widest range of organic waste" data-desc="Compost that meets the most stringent quality standards set by the Provincial authorities" data-name="City of Toronto" ><span>City of Toronto</span></a></li><li class="" style="" ><a id="client_15" href="#" onclick="gotoSlide(15,10); return false;" data-img="/topimg/photos/10_Still 7c.jpg" title="Driving landfill diversion towards 90%" data-desc="Shanks' South Kirkby Autoclave and MBT-AD facility" data-name="Wakefield Council" ><span>Wakefield Council</span></a></li></ul>
+                    </div>
+
+                    <div class="banner-content">
+
+                        
+                        <div id="banner_img_container" class="banner-img-container" style="background-image:url(/topimg/photos/1_What%20we%20do2.jpg);"><a id="banner_img" ><img id="b_image" class="banner-image" src="/topimg/photos/1_What we do2.jpg" /></a></div>
+                        
+                        
+                
+                        <div id="banner_name" class="banner-name" style="background-color:rgba(240, 241, 243, 0);"></div>
+
+                        <div id="banner_title" class="banner-title" style="display:none;"></div>
+
+                        <div id="banner_text" class="banner-text" style="display:none;"></div>
+
+                    
+                        <div class="banner-service collapsable">
+                            <ul>
+                                <li id="banner_brand_1" class="current"><a href="#" id="site_link_1">Municipal Solutions</a></li>
+                                <li id="banner_brand_2"><a href="http://www.shanksorganics.com" id="site_link_2">Food Waste Solutions</a></li>
+                                <li id="banner_brand_3"><a href="http://www.shanksenergy.com" id="site_link_3">Energy Solutions</a></li>
+                            </ul>
+                            
+                        </div>
+
+                        <div id="scroll" >&nbsp;</div>
+                    
+                    
+
+                    </div>
+
+                    <div class="cb"></div>
+
+                    <input name="ctl00$init_banner" type="hidden" id="init_banner" value="1" />
+
+                    <script type="text/javascript">
+
+                        var isPaused = false;
+                        var totalImgs = 0;
+                        var currentIdx = 1;
+                        var refreshIntervalId = 0;
+
+                        var normalImgHeight;
+
+                        var imagesLoaded = new Number(0);
+                        document.addEventListener("DOMContentLoaded", initImgs, false);
+
+                        
+
+                        function initImgs() {
+                            var images = new Array();
+
+                            var imgListEle = document.getElementById('client_list');
+
+                            totalImgs = imgListEle.children.length;
+
+                            for (i = 1; i < (totalImgs + 1) ; i++) {
+                                var imgSrc = $("#client_" + i.toString()).data("img");
+                                if (imgSrc) {
+                                    images[i] = loadImage(imgSrc);
+                                }
+                            }
+                        }
+
+                        function loadImage(url) {
+                            var image = new Image();
+                            image.addEventListener("load", imageLoaded, false);
+                            image.src = url;
+                            return image;
+                        }
+
+                        function imageLoaded() {
+                            imagesLoaded++;
+                        }
+
+                        function pauseSlide() {
+                            isPaused = true;
+                        }
+
+                        function gotoSlide(idx, ref) {
+
+                            pauseSlide();
+                            clearInterval(refreshIntervalId);
+                            activateSlide(currentIdx, idx);
+                            getCustPageText(ref);
+
+                        }
+
+                        function clearInactive(_cur) {
+                            for (var i = 1; i < (totalImgs + 1) ; i++) {
+
+                                var cliEle = document.getElementById("client_" + i.toString());
+
+                                if (cliEle) {
+                            
+
+                                    cliEle.parentElement = cliEle.parentElement.className.replace("no-fx", "fx");
+
+                                    cliEle.parentElement = cliEle.parentElement.className.replace("current", "fx");
+
+                                }
+                        
+                            }
+                        }
+
+                        function startSlide() {
+
+                            if (isPaused == false) {
+                                var next = 0;
+
+                                if (currentIdx > (totalImgs - 1)) { //was 9
+                                    next = 1;
+                                }
+                                else {
+                                    next = currentIdx + 1;
+                                }
+                                activateSlide(currentIdx, next);
+                            }
+                        }
+
+                        function activateSlide(_cur, _nxt) {
+
+                            var _id = "client_" + _nxt.toString();
+
+
+                            var nextStrapSlide = document.getElementById(_id);
+                            if (nextStrapSlide) {
+
+                                var imgSrc = $(nextStrapSlide).data("img");
+                                var imgTitle = $(nextStrapSlide).prop("title");
+                                var imgDesc = $(nextStrapSlide).data("desc");
+                                var imgName = $(nextStrapSlide).data("name");
+
+                                var lastStrapSlide = document.getElementById("client_" + currentIdx.toString());
+
+                                setTimeout(function () {
+
+                                    if (lastStrapSlide) {
+                                        lastStrapSlide.parentElement.className = lastStrapSlide.parentElement.className.replace("current", "fx");
+                                    }
+                                    clearInactive(_nxt);
+
+                                    console.log(nextStrapSlide.id, " setting animation"); //DEBUG
+
+
+                                    nextStrapSlide.parentElement.className = "current";
+
+                                    if (imgSrc) {
+
+                                        var lastBG = $("#b_image").prop("src");
+                                        
+                                        var lastImgH = document.getElementById("banner_img").clientHeight;
+
+                                        if (lastImgH > 485) {
+                                            lastImgH = 485;
+                                        }
+
+                                        if (lastBG) {
+                                            if (lastBG.length > 0 && lastBG != "none") {
+                                                $("#banner_img_container").css("background-image", "URL('" + lastBG +"')");
+
+
+
+                                                $("#banner_img_container").css("min-height", lastImgH);
+                                                
+                                                //console.log(lastImgH, " last height"); //DEBUG
+                                                //console.log(lastBG, " last BG image"); //DEBUG
+                                            }
+                                        }
+
+
+
+                                        
+                                        if ((imgName.length > 0) && (imgTitle.length > 0)) {
+                                            $("#banner_name").css("background-color", "rgba(240, 241, 243, 1)");
+                                            $("#banner_name").html(imgName);
+                                        }
+                                        else
+                                        {
+                                            $("#banner_name").css("background-color", "rgba(240, 241, 243, 0)");
+                                            $("#banner_name").html("");
+                                        }
+
+
+                                        $("#banner_title").fadeOut(500, function () {
+                                            if (imgTitle) {
+                                                $("#banner_title").html(imgTitle).fadeIn(1000);
+                                            }
+                                            else {
+                                                $("#banner_title").hide();
+                                            }
+                                        });
+
+                                        $("#banner_text").fadeOut(500, function () {
+                                            if (imgDesc) {
+                                                $("#banner_text").html(imgDesc + ". ").fadeIn(1000);
+
+                                                $("#banner_text").append($('<a>', {
+                                                    'id': 'read_more_btn',
+                                                    'href': '#scroll',
+                                                    'onclick': $("#" + _id).attr("onclick").replace("return false;", ""),
+                                                    'html': 'Read More',
+                                                    'class': 'read-more'
+                                                })).fadeIn(200);
+
+                                            }
+                                            else {
+                                                $("#banner_text").hide();
+                                            }
+                                        });
+
+                                        $("#banner_img").fadeOut(500, function () {
+                                    
+
+                                            $("#banner_img").attr("onclick", $("#" + _id).attr("onclick").replace("return false;", "return true;"));
+                                            $("#banner_img").attr("href", "#scroll");
+                                            $("#banner_img").html("<img id=\"b_image\" class=\"banner-image\" src=\"" + imgSrc + "\" />").fadeIn(1000, function () {
+                                                $("#banner_img_container").css('background-image', '');
+                                            });
+
+                                        });
+                                    }
+
+
+                                }, 700);
+
+
+                                currentIdx = _nxt;
+                            }
+                        }
+
+                        function getCustPageText(_id) {
+                            $.get("/action.ashx?a=customer&id=" + _id, function (data) {
+                                var pageTextArea = document.getElementById('main_content');
+
+                                if (data) {
+                                    pageTextArea.innerHTML = data;
+                                }
+                                else {
+                                    pageTextArea.innerHTML = "";
+                                }
+
+                                $('#latest_news').hide();
+                            });
+                        }
+
+
+                        equalheight = function (container) {
+
+                            var currentTallest = 0,
+                                currentRowStart = 0,
+                                rowDivs = new Array(),
+                                $el,
+                                topPosition = 0;
+
+                            $(container).each(function () {
+
+                                $el = $(this);
+                                $($el).height('auto');
+                                topPostion = $el.position().top;
+
+                                if (currentRowStart != topPostion) {
+                                    for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+                                        rowDivs[currentDiv].height(currentTallest);
+                                    }
+                                    rowDivs.length = 0; // empty the array
+                                    currentRowStart = topPostion;
+                                    currentTallest = $el.height();
+                                    rowDivs.push($el);
+                                } else {
+                                    rowDivs.push($el);
+                                    currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+                                }
+                                for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
+                                    rowDivs[currentDiv].height(currentTallest);
+                                    //rowDivs[currentDiv].css("line-height", currentTallest);
+                                }
+                            });
+                        };
+
+                        equalListheight = function (container) {
+
+                            var currentTallest = 0,
+                                currentRowStart = 0,
+                                rowDivs = new Array(),
+                                $el,
+                                $par,
+                                topPosition = 0;
+
+                            var minTitleHeight = 44;
+
+                            $(container).each(function () {
+
+                                $el = $(this);
+                                $par = $($el).parents("ul");
+                                var curHeight = $($par).height();
+                                var curCssHeight = $($par).css('height');
+                                var nwHeight = curHeight / $($par).children().length;
+                                if (nwHeight < minTitleHeight) {
+                                    var extraCut = minTitleHeight - nwHeight;
+                                    nwHeight = nwHeight - (extraCut / $($par).children().length);
+                                    var className = $($el).attr('class');
+                                    if (className == "main-clients-title") {
+
+                                        $($el).height('44px');
+                                        $($el).css('line-height', '44px');
+                                    }
+                                    else {
+                                        $($el).height(nwHeight + 'px');
+                                        $($el).css('line-height', nwHeight + 'px');
+                                    }
+                                }
+                                else {
+                                    $($el).height(nwHeight + 'px');
+                                    $($el).css('line-height', nwHeight + 'px');
+                                }
+
+                            });
+                        };
+
+
+                        (function ($) {
+                            $.fn.textfill = function (maxFontSize) {
+                                maxFontSize = parseInt(maxFontSize, 10);
+                                return this.each(function () {
+                                    var ourText = $("span", this),
+                                        parent = ourText.parent(),
+                                        maxHeight = parent.height(),
+                                        maxWidth = parent.width(),
+                                        fontSize = parseInt(ourText.css("fontSize"), 10),
+                                        multiplier = maxWidth / ourText.width(),
+                                        newSize = (fontSize * (multiplier - 0.1));
+                                    ourText.css(
+                                        "fontSize",
+                                        (maxFontSize > 0 && newSize > maxFontSize) ?
+                                        maxFontSize : (newSize - 2)
+                                    );
+                                });
+                            };
+                        })(jQuery);
+
+                        $(document).ready(function () {
+
+                            var initBannerEle = document.getElementById("init_banner");
+                            currentIdx = parseInt(initBannerEle.value);
+
+                            normalImgHeight = document.getElementById("banner_img").clientHeight;
+
+                            if (currentIdx > 1) {
+
+                                isPaused = true;
+
+                                $("#banner_title").show();
+                                $("#banner_text").show();
+                            }
+
+                            if (isPaused == false) {
+                                refreshIntervalId = setInterval(function () { startSlide(); }, 6000);
+                            }
+
+                            equalListheight('.main-clients ul li a');
+
+                            $('.main-clients ul li a').textfill({ maxFontPixels: 20 });
+
+                        });
+
+                        
+
+                        /*$(window).resize(function () {
+                            equalListheight('.main-clients ul li a');
+                            $('.main-clients ul li a').textfill({ maxFontPixels: 18 });
+                        });*/
+
+                        
+
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    
+        <div class="cb"></div>
+    
+        <div id="main" class="mt20">
+            <div class="container">
+                <div class="wrapper">
+                    <div id="breadcrumb" class="breadcrumb mt10"></div>
+
+                    <div id="message" class="message"></div>
+
+                    <div id="main_content" class="main-content">
+
+                        <h1 id="page_header">Latest Shanks Municipal News</h1>
+
+                        <div id="page_text"><h3><a href="/news/114/Shanks-wins-food-waste-contract-with-Buckinghamshire-County-Council" >Shanks wins food waste contract with Buckinghamshire County Council</a></h3><div style="float:left;" class="news-img"><img src="/news/photos/114_WP.jpg" style="width:150px; height:150px;" /></div><div class="news-text-snippet" ><p>International waste-to-product business, Shanks Group plc (LSE:SKS), is pleased to announce that it has won a food waste contract with Buckinghamshire County Council. The contract will begin on 1 February 2016 and will run for the next two years, with scope for three additional one year extensions.</p>
+<p>Under the contract, Shanks will manage the treatment of approximately 7,000 tonnes of food waste in the north... <a href="news-story-p9.aspx?id=114" class="b" >Read Full Story</a></div></div>
+                
+                        <div id="inner_content">
+                            
+
+
+    
+
+
+                        </div>
+                
+                        
+
+	                    
+                    
+                    </div>
+
+                    <div class="cb"></div>
+
+
+                    <div id="latest_news" class="latest-news">
+                        <ul id="news_list" class="news-list"><li><div class="news-preview"><h3><a href="/news/113/Shanks-reaches-full-service-on-Wakefield-PFI-Contract" >Shanks reaches full service on Wakefield PFI Contract</a></h3><div> International waste-to-product business, Shanks Group plc (LSE:SKS) today announces that it has reached full service on its &pound;750 million contract with Wakefield Council, following a short d... <a href="/news/113/Shanks-reaches-full-service-on-Wakefield-PFI-Contract" class="b" >Read Full Story</a></div></div></li><li><div class="news-preview"><h3><a href="/news/112/Shanks-Frog-Island-MBT-Facility-third-line-operational" >Shanks’ Frog Island MBT Facility third line operational</a></h3><div> International waste-to-product business, Shanks Group plc announces that the line which was damaged in a fire last summer at its Frog Island Mechanical Biological Treatment (&ldquo;MBT&rdquo;... <a href="/news/112/Shanks-Frog-Island-MBT-Facility-third-line-operational" class="b" >Read Full Story</a></div></div></li></ul>
+                        <div class="cb"></div>
+                    </div>
+            
+                
+                    <div id="ds_right" class="ds-right">
+                        <a href="/safety-initiatives-at-shanks-p20.aspx" id="ds_img_link" class="ds-image">
+                            <img src="/ds/photos/14_safety_initiatives_sml.jpg" id="ds_img" />
+                        </a>
+                        <div class="ds-inner">
+                            <div id="ds_title" class="ds-title"><a href="/safety-initiatives-at-shanks-p20.aspx" target="_blank">Safety Initiatives at Shanks</a></div>
+                            <div id="ds_subtitle" class="ds-subtitile"><a href="/safety-initiatives-at-shanks-p20.aspx" target="_blank">See what we are doing to improve safety.</a></div>
+                            <div id="ds_text" class="ds-text"></div>
+                        </div>
+                        <div class="ds-more"><a href="/safety-initiatives-at-shanks-p20.aspx" id="ds_more" target="_blank">Find out more</a></div>
+                    </div>
+
+                    <div class="cb"></div>
+
+                </div>
+            </div>
+        </div>
+    
+        <div class="cb"></div>
+
+        <div class="footer">
+            <div class="container">
+                <div class="wrapper">
+
+                    <div class="footer-title">
+                        <span id="footer_title" class="collapsable">Shanks Municipal works in partnership with</span>
+                    </div>
+
+                    <div id="brands_scroll">
+                        <div id="logos" class="jcarousel">
+                            <ul id="logo_list" class="logo_list"><li class="logo"><a href="http://www.argyll-bute.gov.uk/" target="_blank" ><img src="/partnerships/photos/7_A&B.jpg" /></a></li><li class="logo"><a href="http://www.bdronline.co.uk/" target="_blank" ><img src="/partnerships/photos/8_Barnsley.jpg" /></a></li><li class="logo"><a href="http://www.bdronline.co.uk/" target="_blank" ><img src="/partnerships/photos/9_BDR.jpg" /></a></li><li class="logo"><a href="http://www.centralbedfordshire.gov.uk/" target="_blank" ><img src="/partnerships/photos/11_Central Bedfordshire.jpg" /></a></li><li class="logo"><a href="http://www.cumbria.gov.uk/" target="_blank" ><img src="/partnerships/photos/12_Cumbria County Council12-032613.jpg" /></a></li><li class="logo"><a href="http://www.derby.gov.uk/" target="_blank" ><img src="/partnerships/photos/13_Derby.jpg" /></a></li><li class="logo"><a href="https://www.derbyshire.gov.uk/" target="_blank" ><img src="/partnerships/photos/14_derbyshire-county-council.jpg" /></a></li><li class="logo"><a href="http://www.bedford.gov.uk/" target="_blank" ><img src="/partnerships/photos/15_Bedford_Borough_Council.jpg" /></a></li><li class="logo"><a href="http://www.bdronline.co.uk/" target="_blank" ><img src="/partnerships/photos/16_Doncaster.jpg" /></a></li><li class="logo"><a href="http://www.dumgal.gov.uk/" target="_blank" ><img src="/partnerships/photos/17_Dumfries-and-Galloway.jpg" /></a></li><li class="logo"><a href="http://www.recycleforyourcommunity.com/" target="_blank" ><img src="/partnerships/photos/18_East London Waste Authority copy.jpg" /></a></li><li class="logo"><a href="http://www.bdronline.co.uk/" target="_blank" ><img src="/partnerships/photos/19_rotherham-council-logo.jpg" /></a></li><li class="logo"><a href="http://www.shanks-wakefield.co.uk/" target="_blank" ><img src="/partnerships/photos/20_Wakefield.jpg" /></a></li><li class="logo"><a href="http://www.sse.co.uk/" target="_blank" ><img src="/partnerships/photos/21_sse-logo.jpg" /></a></li><li class="logo"><a href="#" target="_blank" ><img src="/partnerships/photos/35_Bucks cc.jpg" /></a></li></ul>
+                        </div>
+
+                        <div class="scroll_left">
+                            <a href="#" class="jcarousel-prev" style="display:block; height:100%;" onclick="return false;"></a>
+                        </div>
+                        <div class="scroll_right" >
+                            <a href="#" class="jcarousel-next" style="display:block; height:100%;" onclick="return false;"></a>
+                        </div>
+       
+                        <div class="cb"></div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col">
+                            <h4>Get in touch</h4>
+                            <ul>
+                                <li>
+                                    <span class="b blue">Telephone:</span> +44 (0)1908 650650
+                                </li>
+                                <li>
+                                    <span class="b blue">Fax:</span> +44 (0)1908 650699
+                                </li>
+                                <li>
+                                    <span class="b blue">Email:</span> <a href="mailto:info@shanks.co.uk">info@shanks.co.uk</a>
+                                </li>
+                                <li>
+                                    <br />
+                                
+                                    <span class="b blue">Address:</span><br />
+                                
+                                    Shanks Waste Management<br />
+                                    Dunedin House, Auckland Park<br />
+                                    Mount Farm, Milton Keynes<br />
+                                    Buckinghamshire MK1 1BU
+
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col">
+                            <h4 id="footer_partneship_title">Our Contracts</h4>
+                            <div id="brand_links"><ul><li><a href="#" onclick="gotoSlide(2,28); ">Buckinghamshire County Council</a></li><li><a href="#" onclick="gotoSlide(3,2); ">Argyll & Bute Council</a></li><li><a href="#" onclick="gotoSlide(4,3); ">Barnsley, Doncaster & Rotherham</a></li><li><a href="#" onclick="gotoSlide(5,4); ">Bedford Borough Council</a></li><li><a href="#" onclick="gotoSlide(6,5); ">Central Bedfordshire Council</a></li><li><a href="#" onclick="gotoSlide(7,25); ">City of Surrey</a></li><li><a href="#" onclick="gotoSlide(8,6); ">Cumbria County Council</a></li><li><a href="#" onclick="gotoSlide(9,7); ">Derby City & Derbyshire Council</a></li><li><a href="#" onclick="gotoSlide(10,8); ">Dumfries & Galloway Council</a></li><li><a href="#" onclick="gotoSlide(11,9); ">East London Waste Authority</a></li><li><a href="#" onclick="gotoSlide(12,22); ">Ottawa City Council</a></li><li><a href="#" onclick="gotoSlide(13,23); ">Regional Municipality of York</a></li><li><a href="#" onclick="gotoSlide(14,24); ">City of Toronto</a></li><li><a href="#" onclick="gotoSlide(15,10); ">Wakefield Council</a></li></ul></div>
+                        </div>
+
+                        <div class="col collapsable">
+                            <h4>Our Brands</h4>
+                            <ul>
+                                <li><a href="http://www.shanksmunicipal.com" >Shanks Municipal Solutions</a></li>
+                                <li><a href="http://www.shanksorganics.com" >Shanks Food Waste Solutions</a></li>
+                                <li><a href="http://www.shanksenergy.com" >Shanks Energy Solutions</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col">
+                            <h4>Social Media</h4>
+
+                            <div class="social-media">
+                                <div class="fl mr10">
+                                    <a href="https://en-gb.facebook.com/ShanksGroupPlc" target="_blank" class="facebook">
+                                    </a>
+                                </div>
+
+                                <div class="fl mr10">
+                                    <a href="http://uk.linkedin.com/company/shanks-waste-management" target="_blank" class="linkedin">
+                                    </a>
+                                </div>
+
+                                <div class="fl mr10">
+                                    <a href="https://twitter.com/shanks_waste" target="_blank" class="twitter">
+                                    </a>
+                                </div>
+
+                                <div class="cb"></div>
+                            </div>
+
+                    
+
+                            <div class="cb"></div>
+
+                        </div>
+
+                    </div>
+                
+                    <div class="cb"></div>
+
+                    <div class="mt10">
+                        <div class="footer-copy">
+                            <div class="footer-logo">
+                                <img src="img/footer/footer_logo.png" alt="shanks logo"/>
+                            </div>
+                            <div>
+                                <br />
+                                <div class="fl collapsable">
+                                    <div id="seo_links" class="footer-links-seo"><a href="latest-shanks-municipal-news-p1.aspx">Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="about-shanks-p2.aspx">About</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="shanks-locations-p4.aspx">Locations</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="careers-at-shanks-p5.aspx">Careers</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="legals-p21.aspx">Legals</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="cookie-policy-p22.aspx">Cookies</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="links-p23.aspx">Links</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="sitemap-p24.aspx">Sitemap</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="safety-initiatives-at-shanks-p20.aspx">Safety Initiatives at Shanks</a></div>
+                                </div>
+                                &copy; 2015 Shanks Waste Management Limited &nbsp;&nbsp;|&nbsp;&nbsp; <a href="http://www.4fxwebsites.co.uk" target="_blank" >Website Design Milton Keynes: 4fx</a>.
+                            </div>
+                        </div>
+                
+                    
+                        <div class="cb"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        var screenWidth;
+        
+        var defaultMenu = true;
+
+        $(document).ready(function () {
+
+
+            screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            
+            $("#s_menu").addClass("hide-desk");
+
+            $(function () {
+                var car1 = $('.jcarousel').jcarousel({});
+                $('.jcarousel-prev').jcarouselControl({ target: '-=1', carousel: car1 });
+                $('.jcarousel-next').jcarouselControl({ target: '+=1', carousel: car1 });
+            });
+
+            var container = $('#header');
+            var btn = $('#burger_btn');
+
+
+
+            $(window).scroll(function () {
+
+                //console.log($(window).scrollTop(), " - scrollTop"); //DEBUG
+                
+                if($(window).scrollTop() > 20){
+                //if ($(window).scrollTop() < $('#main_logo_link').offset().top * 2 - 150) {
+
+
+                    $("#header").addClass("scroller");
+                    $("#banner").addClass("scroller");
+                    $("#logo_img").removeClass("normlogo");
+                    $("#logo_img").addClass("smlogo");
+
+                    shrinkSearch();
+
+                }
+                else {
+                //else if ($(window).scrollTop() > $('#main_logo_link').offset().top * 2 - 150) {
+
+                    $("#header").removeClass("scroller");
+                    $("#banner").removeClass("scroller");
+                    $("#logo_img").addClass("normlogo");
+                    $("#logo_img").removeClass("smlogo");
+
+                    expandSearch();
+
+                    $("#search_icon").prop("onclick", "return false;");
+                }
+
+
+            });
+
+        });
+
+
+        function changeBannerTo(ele) {
+
+            document.location.href = "#";
+
+            var bannerVal = $(ele).val();
+
+            var idsStr = bannerVal.split(',', 2);
+            if (idsStr.length == 2) {
+                var idx = parseFloat(idsStr[0]);
+                var bannerID = parseFloat(idsStr[1]);
+
+
+                gotoSlide(idx, bannerID);
+            }
+        }
+
+        function goBackToBanner(ele) {
+
+            document.location.href = $(ele).val();
+
+        }
+
+        function goToBrand(ele) {
+
+            document.location.href = $(ele).val();
+
+        }
+
+
+        function shrinkSearch() {
+            $("#txt_main_search").hide();
+            $("#search_arr").hide();
+            $("#search_icon").attr("onclick", "expandSearch(); return false;");
+            $("#search_box").css("width", "30px");
+
+            $("#s_menu").removeClass("hide-desk");
+
+        }
+
+
+        function expandSearch() {
+
+            $("#s_menu").addClass("hide-desk");
+
+
+            $("#txt_main_search").show();
+            $("#search_arr").show();
+            $("#search_icon").attr("onclick", "shrinkSearch(); return false;");
+            $("#search_box").css("width", "310px");
+
+        }
+
+
+        function toggleMenu() {
+
+            screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+            console.log(screenWidth, " screen width");
+
+            var menuEle = document.getElementById('nav_container');
+            if (menuEle) {
+                if (menuEle.style.display == "none" || defaultMenu == true) {
+                    expandMenu();
+                }
+                else {
+                    shrinkMenu();
+                }
+            }
+
+            defaultMenu = false;
+
+        }
+
+        function shrinkMenu() {
+
+            $("#nav_container").hide();
+
+        }
+
+        function expandMenu() {
+
+            $("#nav_container").show();
+
+        }
+
+
+
+    </script>
+
+    
+
+</body>
+</html>
+

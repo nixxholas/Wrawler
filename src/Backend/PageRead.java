@@ -9,11 +9,13 @@ import Interface.*;
 import static Interface.SearchResult.searchResultsField;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -49,27 +51,31 @@ public class PageRead {
     // Create a new JFrame and set it up properly for use
     public static JFrame frame = new JFrame();
     public static JPanel panel = new JPanel();
-
+    public static JEditorPane jep = new JEditorPane();
+    public static JScrollPane scrollPane = new JScrollPane(jep);
+    
     /**
      * Page Reader method adapted from SP Blackboard
      *
      * @param pageAddr
      * @return
      */
-    public static StringBuilder printPage(String pageAddr, String objectName) {
+    public static StringBuilder printPage(ResultObject inRO) {
         try {
-            URL url = new URL(pageAddr);
-            PrintWriter writer = new PrintWriter(objectName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
+            URL url = new URL(inRO.getUrl());
+            PrintWriter writer = new PrintWriter(inRO.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
 
-            String line;
+            String line, finalResult = "";
             StringBuilder sb = new StringBuilder();
             while ((line = reader.readLine()) != null) {
+                finalResult += line + "\n";
                 sb.append(line + "\n");
                 writer.println(line);
             }
 
+            inRO.setResultPage(finalResult);
             reader.close();
             writer.close();
             return sb;
@@ -196,7 +202,7 @@ public class PageRead {
          */
         for (ResultObject RO : Results) {
             // Save each of the URLs as files.
-            printPage(RO.getUrl(), RO.getName());
+            printPage(RO);
 
             JButton button = new JButton(RO.getName());
 
@@ -212,18 +218,19 @@ public class PageRead {
                      * 
                      * http://stackoverflow.com/questions/10601676/display-a-webpage-inside-a-swing-application
                      */
-                    JEditorPane jep = new JEditorPane();
-                    jep.setEditable(false);
 
                     try {
-                        jep.setPage("http://www.google.com");
-                    } catch (IOException ex) {
+                        // Required for us to load from the file we have created.
+                        URL url = getClass().getResource(RO.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
+                                                
+                        //jep.setText("<html>" + RO.getResultPage() + "<html>");
+                        
+                        jep.setPage(RO.getUrl());
+                        frame.pack();
+                    } catch (Exception ex) {
                         jep.setContentType("text/html");
                         jep.setText("<html>Could not load the page.</html>");
                     }
-
-                    JScrollPane scrollPane = new JScrollPane(jep);
-                    panel.add(scrollPane);
                 }
             });
             
@@ -234,16 +241,22 @@ public class PageRead {
 
     public static void main(String arg[]) {
         // Configure the Panel and Frame properly before use
-        panel.setLayout(new FlowLayout());
+        panel.setLayout(new GridLayout(0, 2, 0, 1));
 
         // We then add the panel into the frame
         frame.add(panel);
 
         // Setup the frame as well
-        frame.setSize(300, 300);
+        frame.setSize(1200, 900);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Setup the browser view
+        jep.setEditable(false);
+        jep.setSize(0, 1200);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        panel.add(scrollPane);
+        
         // Initialize Google's Search Information
         SearchEngine Google = new SearchEngine("https://www.google.com/search?q=", "(<h3 class=\"r\">)(.+?)(<\\/h3>)", "(?<=\">)(.+?)(?=<a)", "(?<=\\)\\\">)(.+?)(?=<)");
         Google.setName("Google");

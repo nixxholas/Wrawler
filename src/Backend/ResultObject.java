@@ -13,11 +13,21 @@ public class ResultObject {
     private String name;
     private String url;
     private String Description;
-
+    private String resultPage = "";
+    
     public ResultObject(String name, String url, String Description) {
         this.name = name;
         this.url = url;
         this.Description = Description;
+        this.resultPage = "";
+    }
+
+    public String getResultPage() {
+        return resultPage;
+    }
+
+    public void setResultPage(String resultPage) {
+        this.resultPage = resultPage;
     }
         
     public String getName() {

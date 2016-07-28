@@ -1,0 +1,841 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQ4BVFVXGwIIUFNVBwQ="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,-1!==o.indexOf("dev")&&(s.dev=!0),-1!==o.indexOf("nr_dev")&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(s){try{i("ierr",[s,(new Date).getTime(),!0])}catch(c){}}return"function"==typeof f?f.apply(this,a(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=window.onerror,u=!1,d=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),u=!0)}s.on("fn-start",function(t,e,n){u&&(d+=1)}),s.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),s.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),s.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState";t("loader").features.stn=!0,t(6);var g=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof g&&(this.bstStart=Date.now())}),o.on(w,function(t,e){var n=t[0];n instanceof g&&i("bst",[n,e,this.bstStart,Date.now()])}),a.on(m,function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),a.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),this.bstType])}),s.on(m,function(){this.bstStart=Date.now()}),s.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=Date.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,!1),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(17)(a),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=c(n,"nr@wrapped",function(){return s(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&s.inPlace(n,["handleEvent"],"fn-")}}),a.on(d+"-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],6:[function(t,e,n){var r=t("ee").get("history"),o=t(17)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,e,n){var r=t("ee").get("raf"),o=t(17)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(17)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",s)}function i(t){v.push(t),h&&(g=-g,b.data=g)}function a(){for(var t=0;t<v.length;t++)r([],v[t]);v.length&&(v=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t(17)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],v=[];e.exports=u;var y=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,y),y.prototype=p.prototype,d.inPlace(y.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var g=1,b=document.createTextNode(g);new h(a).observe(b,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],10:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;d>r;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||10>p)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var a=0;d>a;a++)e.addEventListener(u[a],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],11:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],12:[function(t,e,n){function r(t,e){return function(){o(t,[(new Date).getTime()].concat(a(arguments)),null,e)}}var o=t("handle"),i=t(15),a=t(16);"undefined"==typeof window.newrelic&&(newrelic=NREUM);var s=["setPageViewName","setCustomAttribute","finished","addToTrace","inlineHit"],c=["addPageAction"],f="api-";i(s,function(t,e){newrelic[e]=r(f+e,"api")}),i(c,function(t,e){newrelic[e]=r(f+e)}),e.exports=newrelic,newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),o("err",[t,(new Date).getTime()])}},{}],13:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],14:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],15:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],16:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],17:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],s])}f(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],s),l}finally{f(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!c){c=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}c=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),s=a.length,c=0;s>c;c++)a[c].apply(i,r);var u=f[w[n]];return u&&u.push([v,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){c(t,function(t,n){e=e||"feature",w[n]=e,e in f||(f[e]=[])})}var m={},w={},v={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return v}function i(){return new r}var a="nr@context",s=t("gos"),c=t(15),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!g++){var t=y.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(w,function(e,n){t[e]||(t[e]=n)});var n="https"===m.split(":")[0]||t.sslForHttp;y.proto=n?"https://":"http://",s("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=y.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){s("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var s=t("handle"),c=t(15),f=window,u=f.document,d="addEventListener",l="attachEvent",p=f.XMLHttpRequest,h=p&&p.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:p,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(12);var m=""+location,w={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-952.min.js"},v=p&&h&&h[d]&&!/CriOS/.test(navigator.userAgent),y=e.exports={offset:a(),origin:m,features:{},xhrWrappable:v};u[d]?(u[d]("DOMContentLoaded",i,!1),f[d]("load",r,!1)):(u[l]("onreadystatechange",o),f[l]("onload",r)),s("mark",["firstbyte",a()],null,"api");var g=0},{}]},{},["loader",2,10,4,3]);</script>
+  <meta name="apple-itunes-app" content="app-id=821068605">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="dns-prefetch" href="//img.gtvcdn.com" />
+<link rel="shortcut icon" href="http://img.gtvcdn.com/cdn/farfuture/DXBWxwGg78rC6YKUeqMiYOgSL5qSYjcYC7txV0ES-gc/md5%3A4c9625c84023764bdeada7381a0010a3/sites/all/themes/gaiatv/favicon.ico" type="image/x-icon" />
+<link rel="canonical" href="http://www.gaia.com/easy-signup" />
+<meta name="revisit-after" content="1 day" />
+<meta property="fb:app_id" content="142923865786607"/>
+<meta property="og:title" content="Sign Up for Gaiam TV | Gaia"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Gaia" />
+<meta property="og:url" content="http://www.gaia.com/easy-signup"/>
+<meta name="apple-mobile-web-app-title" content="Gaia: Watch Yoga, Meditation, Spirituality, Seeking Truth">
+<link rel="apple-touch-icon-precomposed" href="/sites/all/themes/gaiatv/images/apple-touch-icons/apple-touch-icon-152x152-precomposed.png" sizes="152x152">
+<link rel="apple-touch-icon-precomposed" href="/sites/all/themes/gaiatv/images/apple-touch-icons/apple-touch-icon-120x120-precomposed.png" sizes="120x120">
+<link rel="apple-touch-icon-precomposed" href="/sites/all/themes/gaiatv/images/apple-touch-icons/apple-touch-icon-76x76-precomposed.png" sizes="76x76">
+<link rel="apple-touch-icon-precomposed" href="/sites/all/themes/gaiatv/images/apple-touch-icons/apple-touch-icon-precomposed.png">
+<meta name="google" content="nositelinkssearchbox">
+  <title>Sign Up for Gaiam TV | Gaia</title>
+  <link type="text/css" rel="stylesheet" media="all" href="http://img.gtvcdn.com/cdn/farfuture/a8x-CTNmTxxL2qQ8V2HtmElA6DOEI488CxJlbYxDj84/md5%3Abca1116c8b71ee37f51bf57eaf05e8ae/sites/default/files/advagg_css/css_d3a1befe7754702a58156dc76b2dc746_5.css" />
+<link type="text/css" rel="stylesheet" media="all" href="http://img.gtvcdn.com/cdn/farfuture/qaUr1pxGyB0SbnOq2aoEODQZwW1Mn1WJ7FUkmACKkXA/md5%3A8e9fd497a668ed464ab0bff185a8d0bc/sites/default/files/advagg_css/css_ef56b72ce05038101b33b0a10ea96a3e_2.css" />
+<link type="text/css" rel="stylesheet" media="all" href="http://img.gtvcdn.com/cdn/farfuture/XZtFesKza1NiOhUKpdZzUrlF9CtNyocX5tAkhH90Djk/md5%3A120e43934fd3933b390177eb04baf5dc/sites/default/files/advagg_css/css_dd4336236741ff353d7d946fa554149a_8.css" />
+<link type="text/css" rel="stylesheet" media="all" href="http://img.gtvcdn.com/cdn/farfuture/rLvVna3F5smS7W7_VJrS6XLZTconr1tnZYdjUXgRi_s/md5%3Ae233a0c18e72a7e177b6dca03bd9dfa2/sites/default/files/advagg_css/css_184774f8c69a1a1b2ea1cbd1950ac49c_37.css" />
+<link type="text/css" rel="stylesheet" media="print" href="http://img.gtvcdn.com/cdn/farfuture/HQRRHgJV_kySlSMoyc49PIOBwY32J5P5kuDW07RNIbY/md5%3Aacee06ae0d2a17acbaad7d016c5a6de0/sites/default/files/advagg_css/css_48af2a2a03c5ab5871b6807b1b7d3c55_1.css" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/sites/all/themes/gaiatv/ie.css?R" />
+<![endif]-->
+  <!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/sites/all/themes/gaiatv/ie.css?R" />
+<![endif]-->
+  <script type="text/javascript" src="http://img.gtvcdn.com/cdn/farfuture/OFHQ10mmMuJ4xi0IyvJLi-3mtmKnJt6dlu7rv6M1A00/md5%3Aa8d86424372197b77fee585e14eabc1e/sites/default/files/advagg_js/js_e4da53f1291247f78e046d8909f83136_1.js"></script>
+<script type="text/javascript" src="http://img.gtvcdn.com/cdn/farfuture/g1eFBicAqv8bed5gRhZ0nYI2TI7yXmNrci6q4ecCZkA/md5%3A67057405020434f1c4fcd9203a3dc188/sites/default/files/advagg_js/js_c248c93d1b7f394233815754f34f968e_1.js"></script>
+<script type="text/javascript" src="http://img.gtvcdn.com/cdn/farfuture/oqudaJYw2wcj3o7MsaWDxjXLB3cuqDaVk0UnW9pqBNw/md5%3Acd533a7a50dbc3d7bb4fc2dee98f5af2/sites/default/files/advagg_js/js_87432b62d84d6f9d031064293d93f4a4_6.js"></script>
+<script type="text/javascript" src="http://img.gtvcdn.com/cdn/farfuture/CBZRRn_LWp5vuSrqFgrjFg2fNJ9CmBQmb1BPowFuCwE/md5%3A7b590cf006ee890d28ecdac9d729e4e7/sites/default/files/advagg_js/js_71534c84c3310de386419f8e65a1fecd_3.js"></script>
+<script type="text/javascript" src="http://img.gtvcdn.com/cdn/farfuture/KE4zVQ4QnIdEtqhcRkY8gVWq9zpMIA2Y2UR5i1Dkw_Q/md5%3Ab271c7a7b6ce31e7400870c1e8373571/sites/default/files/advagg_js/js_ee95008fa5b519c41a203a6dd1b2bb8b_24.js"></script>
+<script type="text/javascript" src="http://img.gtvcdn.com/cdn/farfuture/cdhx1CZ4W7bN-tPIxVTXG1_YO_H3PCw1zKSv62bL2Q4/md5%3Ab79f5b6d076c95eaf4695e6c47ad2165/sites/default/files/advagg_js/js_9431274173dbabfb8bc5d8704317a5ab_0.js"></script>
+<script type="text/javascript" src="http://img.gtvcdn.com/cdn/farfuture/z9B5yRIGEc45pfNmNaup_FJm_lwzlbkiLiO9c-vwYWo/md5%3Afd665ee59db2a6c44db399c49fe4e7a9/sites/default/files/advagg_js/js_4de2aceeaaa1fc3e83940a2e3cbb8575_2.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","fivestar":{"titleUser":"Your rating: ","titleAverage":"Average: ","feedbackSavingVote":"Saving your vote...","feedbackVoteSaved":"Your vote has been saved.","feedbackDeletingVote":"Deleting your vote...","feedbackVoteDeleted":"Your vote has been deleted."},"thickbox":{"close":"Close","next":"Next \u003E","prev":"\u003C Prev","esc_key":"or Esc Key","next_close":"Next \/ Close on last","image_count":"Image !current of !total"},"CToolsUrlIsAjaxTrusted":{"\/easy-signup":true,"https:\/\/www.gaia.com\/easy-signup":true},"smfplayer":{"xapPath":"sites\/all\/modules\/smfplayer\/player\/SmoothStreamingPlayer.xap?r483","affiliate":"Gaia","viewerId":0},"baseUrl":"http:\/\/www.gaia.com","cookieDomain":".gaia.com","baseUrlSecure":"https:\/\/www.gaia.com","gaiamtvSite":{"subscriptionStatus":{"NONE":10,"PENDING":11,"TRIAL":12,"ACTIVE":20,"USER_HOLD":31,"PAYMENT_HOLD":32,"CANCELLED":40},"playerPrefType":{"RECOMMEND":1,"SMF":2,"BC":3,"VJS":4},"newPlayerUserSeg":0.121789,"newPlayerDefaultPercent":"1.00","ccUserSeg":0.109357,"ccDefaultPercent":1,"ccIncludeUids":["2720721","8","16","660","441","35912","2631781","2737356","2746516","647","2673346","2737361","82696","33724","436"],"momentsApiHostname":"coreapi.gaia.com","sbUserSeg":0.300399,"sbDefaultPercent":"","sbIncludeUids":[],"youboraEnable":1,"youboraAccountCode":"gaiam","paypalActive":true,"omnitureReportSuite":"gaiamtvprod","omnitureCoreJsUrl":"http:\/\/img.gtvcdn.com\/cdn\/farfuture\/PaxtSa9zEC9232UEHVDJRNASVvqBHNfFgXdu1FxJops\/md5%3A57f09fa135276a1f94a403d8f30a646a\/sites\/all\/themes\/gaiatv\/js\/omniture.core.min.js?r8577"}});
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+videojs.options.flash.swf="/sites/all/libraries/flashls/video-js.swf";
+//--><!]]>
+</script>
+    
+<script src="//cdn.optimizely.com/js/401751626.js"></script>  <script src="http://smartplugin.youbora.com/1.4/js/libs/youbora-data-1.4.1.js"></script><script src="http://smartplugin.youbora.com/1.4/js/libs/youbora-api-1.4.3.js"></script><script src="http://smartplugin.youbora.com/1.4/js/videojs/3.4.3/sp.js"></script><script>dataLayer = [];</script></head>
+<body class="not-front not-logged-in node-type-panel no-sidebars page-easy-signup section-easy-signup gaiatv channel-none">
+
+  <div id="page" class="clearfix"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+          
+                                    <div id="site-name"><strong>
+                <a href="/" title="Streaming Inspirational Movies Documentaries & Fitness Videos" rel="home">
+                Gaia                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+              <div id="header-blocks" class="region region-header">
+          <div id="block-block-login--offer" class="block block-block region-odd even region-count-1 count-2"><div class="block-inner">
+
+  
+  <div class="content clearfix">
+    <div class="offer">
+  <a class="cart-add-link" href="/easy-signup">Sign Up</a>
+  <a class="cart-checkout-link" href="/easy-signup">Sign Up</a>
+</div>
+
+<div class="login-link">
+  <a href="/user">Login</a>
+</div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-gaiamtv_site-network_menu" class="block block-gaiamtv_site region-even odd region-count-2 count-3"><div class="block-inner">
+
+  
+  <div class="content clearfix">
+    <div class="item-list"><ul class="network-menu"><li class="first"><a href="/popular" class="network-menu-most-popular">Most Popular</a></li>
+<li><a href="/recently-added" class="network-menu-recently-added">Recently Added</a></li>
+<li class="last"><a href="/original-programs" class="network-menu-original-programs">Original Programs</a></li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div> <!-- /#header-blocks -->
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+          <div id="main-nav">
+        <div id="block-gaiamtv_site-channel_nav_menu" class="block block-gaiamtv_site region-odd even region-count-1 count-4"><div class="block-inner">
+
+  
+  <div class="content clearfix">
+    <div id="channel-nav-menu"><div class="nav-menu-inner"><ul class="menu"><li class="collapsed first my-yoga-channel-menu"><a href="/my-yoga" id="my-yoga-nav" class="my-yoga-channel-menu">My Yoga</a></li>
+<li class="collapsed health-longevity-channel-menu"><a href="/health-longevity" id="health-longevity-nav" class="health-longevity-channel-menu">Health &amp; Longevity</a></li>
+<li class="collapsed seeking-truth-channel-menu"><a href="/seeking-truth" id="seeking-truth-nav" class="seeking-truth-channel-menu">Seeking Truth</a></li>
+<li class="collapsed spiritual-growth-channel-menu"><a href="/spiritual-growth" id="spiritual-growth-nav" class="spiritual-growth-channel-menu">Spiritual Growth</a></li>
+<li class="collapsed last films-series-channel-menu"><a href="/films-series" id="films-series-nav" class="films-series-channel-menu">Films &amp; Series</a></li>
+</ul></div></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-gaiamtv_sp-search" class="block block-gaiamtv_sp region-even odd region-count-2 count-5"><div class="block-inner">
+
+  
+  <div class="content clearfix">
+    <form action="/easy-signup"  accept-charset="UTF-8" method="post" id="gaiamtv-sp-search-block">
+<div><div class="form-item" id="search-block-wrapper">
+ <input type="text" maxlength="128" name="search" id="search-block" size="40" value="" title="Enter the terms you wish to search for." class="form-text" />
+</div>
+<div id="autocomplete-0"></div><input type="submit" name="op" id="edit-submit" value="Search"  class="form-submit" />
+<input type="hidden" name="form_build_id" id="form-tyA2z8GU9eu-EB7S_G2v8RcGtofj4saQNadYTYxszDM" value="form-tyA2z8GU9eu-EB7S_G2v8RcGtofj4saQNadYTYxszDM"  />
+<input type="hidden" name="form_id" id="edit-gaiamtv-sp-search-block" value="gaiamtv_sp_search_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+      </div>
+    
+    
+    <div id="main"><div id="main-inner" class="clear-block">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+        
+        <div id="content-body"><div id="content-body-inner">
+
+          
+          
+          <div id="content-area">
+            <div id="node-34931" class="node node-type-panel"><div class="node-inner clearfix">
+
+  
+  
+  
+  
+        
+  <div class="content clearfix">
+    <div class="panel-2col-stacked clear-block panel-display" >
+  
+  <div class="center-wrapper">
+    <div class="panel-col-first panel-panel">
+      <div class="inside"><div class="panel-pane pane-custom pane-4" >
+  
+  
+  
+  <div class="pane-content">
+    <img style="height:250px;" src="http://img.gtvcdn.com/cdn/farfuture/0KyvmhWLQme47ZarIH7Qa95ucLdsXEnvfsW2AQrBcUU/md5%3A5955b1d514462357553e5c993d88936f/sites/all/themes/gaiatv/images/deviceFamily_small.jpg" alt="Conscious Cleanse Gaiam TV Devices" />  </div>
+
+  
+  </div>
+</div>
+    </div>
+    <div class="panel-col-last panel-panel">
+      <div class="inside"><div class="panel-pane pane-custom pane-5" >
+  
+  
+  
+  <div class="pane-content">
+    <h1>Welcome to Gaia</h1>
+<p><span class="emphasis">INSPIRATION. MOTIVATION. REJUVENATION.</span></p>
+<ul>
+<li>Yoga Challenges and Guides All Year</li>
+<li>Award-Winning Films and Documentaries</li>
+<li>Groundbreaking Original Programming</li>
+<li>New Yoga Practices Added Weekly</li>
+<li>Unlimited, On-Demand Access</li>
+</ul>  </div>
+
+  
+  </div>
+</div>
+    </div>
+  </div>
+
+      <div class="panel-col-bottom panel-panel">
+      <div class="inside"><div class="panel-pane pane-custom pane-1" >
+  
+  
+  
+  <div class="pane-content">
+    <div class="jumbotron-wrapper" style="background-image:url(https://www.gaia.com/sites/default/files/mountains-bg.jpg);display:none;">
+    <div>
+        <h1>Welcome to Gaia</h1>
+        <span class="sub-title">Inpiration. Motivation. Rejuvination.</span>
+        <br>
+        <div class="col-4">
+            <img src="https://www.gaia.com/sites/default/files/geo-1.png">
+            <p>
+                Yoga Challenges and<br>Guides All Year
+            </p>
+        </div>
+        <div class="col-4">
+            <img src="https://www.gaia.com/sites/default/files/geo-2.png">
+            <p>
+                Award-Winning Films and<br>Documentaries
+            </p>
+        </div>
+        <div class="col-4">
+            <img src="https://www.gaia.com/sites/default/files/geo-3.png">
+            <p>
+                Groundbreaking Original<br>Programming
+            </p>
+        </div>
+        <div class="col-4">
+            <img src="https://www.gaia.com/sites/default/files/geo-4.png">
+            <p>
+                New Yoga Practices<br>Added Weekly
+            </p>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</div>
+<br>  </div>
+
+  
+  </div>
+<div class="panel-region-separator"></div><div class="panel-pane pane-custom pane-2" >
+  
+  
+  
+  <div class="pane-content">
+    <div class="plan-options">
+    <!-- Original -->
+    <div class="content-wrapper">
+        <h2>Three great offers. One amazing experience.</h2>
+        <div class="plan-option" id="limited">
+            <div class="plan-callout">
+                <div class="plan-callout-line"></div>
+                <div class="plan-callout-text">Introductory Offer</div>
+            </div>
+            <h4>3-Month Plan</h4>
+            <h5>$20<br /><span>For 3 Months</span></h5>
+            <p>One-Time Payment of $20 <br />Monthly Payment of $9.95 thereafter </p>
+            <a href="/cart/add/3m20nyp2016?destination=cart/checkout" class="btn btn--primary-cta">Checkout</a>
+        </div>
+        <div class="plan-option">
+            <div class="plan-callout-spacer"></div>
+            <h4>Monthly Plan</h4>
+            <h5>99¢<br /><span>First Month</span></h5>
+            <p>Monthly Payment of<br />$9.95 thereafter</p>
+            <a href="/cart/add/fm99ro?destination=cart/checkout" class="btn btn--secondary-cta">Checkout</a>
+        </div>
+        <div class="plan-option" id="annual-plan">
+            <div class="plan-callout">
+                <div class="plan-callout-line"></div>
+                <div class="plan-callout-text">Best Offer</div>
+            </div>
+            <h4>Annual Plan</h4>
+            <h5>$7.95<br /><span>Per Month</span></h5>
+            <p>Save 20%<br />Annual Payment of $95.40</p>
+            <a href="/cart/add/12m9540nt?destination=cart/checkout" class="btn btn--primary-cta">Checkout</a>
+        </div>
+    </div>
+
+    <!-- Variation 1 -->
+    <div class="content-wrapper" style="display:none;">
+        <h2>Two great offers. One amazing experience.</h2>
+        <div class="plan-option">
+            <div class="plan-callout-spacer"></div>
+            <h4>Monthly Plan</h4>
+            <h5>99¢<br /><span>First Month</span></h5>
+            <p>Monthly Payment of<br />$9.95 thereafter</p>
+            <a href="/cart/add/fm99ro?destination=cart/checkout" class="btn btn--secondary-cta">Checkout</a>
+        </div>
+        <div class="plan-option" id="annual-plan">
+            <div class="plan-callout">
+                <div class="plan-callout-line"></div>
+                <div class="plan-callout-text">Best Offer</div>
+            </div>
+            <h4>Annual Plan</h4>
+            <h5>$7.95<br /><span>Per Month</span></h5>
+            <p>Save 20%<br />Annual Payment of $95.40</p>
+            <a href="/cart/add/12m9540nt?destination=cart/checkout" class="btn btn--primary-cta">Checkout</a>
+        </div>
+    </div>
+
+    <!-- Variation 2 -->
+    <div class="content-wrapper" style="display:none;">
+        <h2>Two great offers. One amazing experience.</h2>
+        <div class="plan-option" id="annual-plan">
+            <div class="plan-callout">
+                <div class="plan-callout-line"></div>
+                <div class="plan-callout-text">Best Offer</div>
+            </div>
+            <h4>Annual Plan</h4>
+            <h5>$7.95<br /><span>Per Month</span></h5>
+            <p>Save 20%<br />Annual Payment of $95.40</p>
+            <a href="/cart/add/12m9540nt?destination=cart/checkout" class="btn btn--primary-cta">Checkout</a>
+        </div>
+        <div class="plan-option" id="limited">
+            <div class="plan-callout">
+                <div class="plan-callout-line"></div>
+                <div class="plan-callout-text">Introductory Offer</div>
+            </div>
+            <h4>3-Month Plan</h4>
+            <h5>$20<br /><span>For 3 Months</span></h5>
+            <p>One-Time Payment of $20 <br />Monthly Payment of $9.95 thereafter </p>
+            <a href="/cart/add/3m20nyp2016?destination=cart/checkout" class="btn btn--primary-cta">Checkout</a>
+        </div>
+    </div>
+
+    <!-- Variation 3 -->
+    <div class="content-wrapper" style="display:none;">
+        <h2>Three great offers. One amazing experience.</h2>
+        <div class="plan-option">
+            <div class="plan-callout-spacer"></div>
+            <h4>Monthly Plan</h4>
+            <h5>$9.95<br /><span>Per Month</span></h5>
+            <p><br><br></p>
+            <a href="/cart/add/fm99ro?destination=cart/checkout" class="btn btn--secondary-cta">Checkout</a>
+        </div>
+        <div class="plan-option" id="annual-plan">
+            <div class="plan-callout">
+                <div class="plan-callout-line"></div>
+                <div class="plan-callout-text">Best Offer</div>
+            </div>
+            <h4>Annual Plan</h4>
+            <h5>$7.95<br /><span>Per Month</span></h5>
+            <p>Save 20%<br />Annual Payment of $95.40</p>
+            <a href="/cart/add/12m9540nt?destination=cart/checkout" class="btn btn--primary-cta">Checkout</a>
+        </div>
+        <div class="plan-option" id="limited">
+            <div class="plan-callout">
+                <div class="plan-callout-line"></div>
+                <div class="plan-callout-text">Introductory Offer</div>
+            </div>
+            <h4>3-Month Plan</h4>
+            <h5>$20<br /><span>For 3 Months</span></h5>
+            <p>One-Time Payment of $20 <br />Monthly Payment of $9.95 thereafter </p>
+            <a href="/cart/add/3m20nyp2016?destination=cart/checkout" class="btn btn--primary-cta">Checkout</a>
+        </div>
+    </div>
+</div>  </div>
+
+  
+  </div>
+<div class="panel-region-separator"></div><div class="panel-pane pane-custom pane-3" >
+  
+  
+  
+  <div class="pane-content">
+    <style>
+#header{background: #F4F5F6;}
+#header #header-blocks .block { display:none; }
+#header #header-blocks #block-block-login--offer, 
+#header #header-blocks #block-menu-secondary-links 
+  { display:block; }
+#header #header-blocks #block-block-login--offer .offer { display:none; }
+#main-nav, 
+#closure-blocks 
+  { display:none; }
+
+h1 {color: #27C0C0;}
+
+#main-inner { width:100%; padding:0; }
+.node { font-size:15px; }
+.node .bold { font-family: Avenir, "Trebuchet MS", Helvetica, Arial; }
+.node .center-wrapper { width: 977px; margin: 0px auto; padding:60px 0 0; }
+
+/* CLEARFIX for .node .center-wrapper */
+.node .center-wrapper:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.node .center-wrapper { display: inline-block; }
+html[xmlns] .node .center-wrapper { display: block; }
+* html .node .center-wrapper { height: 1%; }
+
+.node .panel-2col-stacked .panel-col-first { width: 436px; padding-left: 25px; }
+.node .panel-2col-stacked .panel-col-last { float: left; width: 450px; margin-left: 50px; }
+.image-side { margin-top: -20px; }
+
+.node .panel-col-last ul { margin:15px 0 25px; padding:0 0 0 45px; }
+.node .panel-col-last ul li { margin:15px 0; }
+.node .panel-col-last .btn-checkout-now { display:block; width:248px; height:47px; text-indent:-9999px; overflow:hidden; background:url('/sites/default/files/btn-checkout-now.gif') 0px 0px no-repeat; }
+.panel-col-last p { font-size: 18px; line-height: 22px; }
+.emphasis { text-transform: uppercase; font-size: 16px; }
+
+.panel-col-bottom { padding-bottom: 40px; }
+.node .panel-col-bottom .links { padding:40px 0; text-align:center; background-color:#fff; 
+  -moz-box-shadow: inset 1px 7px 9px -6px #ccc; 
+  -webkit-box-shadow: inset 1px 7px 9px -6px #ccc; 
+  box-shadow: inset 1px 7px 9px -6px #ccc;
+}
+.node .panel-col-bottom .links a { color: #7f4765; }
+
+.plan-cta { width: 977px; margin: 0px auto; }
+.plan-cta h2 { text-align: center; }
+h2.choose { margin-bottom: 40px; margin-top:20px;  text-align: center;}
+.plans { width: 750px; margin: 0px auto; padding-left: 10px; }
+.plans.wide { width: 932px; margin: 0px auto; padding-top: 45px; }
+
+.plan { width: 340px; float: left; margin-right: 60px; background-color: #e5e5e5; font-family: Avenir, "Trebuchet MS", Helvetica, Arial; text-align: center; position: relative; z-index: 1; }
+.plan.narrow { width: 300px; margin-right: 0px; }
+.plan.last { margin-right: 0px; }
+.plan-message.best-offer {font-size:20px;}
+.plan-message { height: 45px; width: 250px; margin: 0px auto; line-height: 42px; text-transform: uppercase; font-size: 30px; position: relative; }
+.plan-message .msg { position: relative; z-index: 2; background-color: #e5e5e5; padding: 0px 7px; color: #5C738A; }
+.orange .plan-message .msg { color: #00C9C9; }
+.lt-purple .plan-message .msg { color: #7f4866; }
+.plan-message .line { display: block; width: 250px; height: 2px; background-color: #5C738A; position: absolute; top: 19px; left: 0px; }
+.orange .plan-message .line { background-color: #00C9C9; }
+.lt-purple .plan-message .line { background-color: #7f4866; }
+.plan-banner { width: 360px; height: 60px; background-color: #5C738A; color: #fff; margin-left: -10px; text-align: center; font-size: 30px; line-height: 60px; text-transform: uppercase; }
+.plan.narrow .plan-banner { width: 320px; }
+.orange .plan-banner { background-color: #00C9C9; }
+.lt-purple .plan-banner { background-color: #5C738A; }
+.plan-price { font-size: 30px; color: #5C738A; margin: 20px 0px; }
+.orange .plan-price { color: #00C9C9; }
+.lt-purple .plan-price { color: #7f4866; }
+.plan ul { text-align: left; margin: 25px 0px 20px 65px; }
+.plan ul li { margin-bottom: 7px; line-height: 22px; }
+.plan.narrow ul { margin: 25px 0px 20px 45px; }
+.plan .btn { width: 203px; margin: 0px auto 25px auto; }
+.plan .btn.btn--primary-cta { background-color: #27C0C0; }
+
+#limited .btn {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#651f93+0,f3584a+32,f3584a+70,651f93+100 */
+	background: rgb(101,31,147); /* Old browsers */
+	background: -moz-linear-gradient(left, rgba(0, 204, 204, 1) 3%,rgba(124, 68, 144,1) 31%,rgba(124, 68, 144,1) 71%,rgba(0, 204, 204, 1) 97%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, rgba(0, 204, 204, 1) 3%,rgba(124, 68, 144,1) 31%,rgba(124, 68, 144,1) 71%,rgba(0, 204, 204, 1) 97%);/* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, rgba(0, 204, 204, 1) 3%,rgba(124, 68, 144,1) 31%,rgba(124, 68, 144,1) 71%,rgba(0, 204, 204, 1) 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#651f93', endColorstr='#651f93',GradientType=1 ); /* IE6-9 */
+	background-size:200%;
+	background-position:-100%;
+        color: #ffffff !important;
+        transition: background-position ease .25s;
+}
+
+#limited .btn:hover{
+	background-position:-200%;
+	background-color:#F1584D \0/IE9;
+}
+
+.disclaimer { margin-bottom: 20px; font-size: 11px; }
+
+.plans.wide .lt-purple { margin-top: 20px; }
+.plans.wide .lt-purple .plan-message { height: 20px; }
+.plans.wide .lt-purple .btn { margin-bottom: 15px; }
+
+.featured { z-index: 2; margin-top: -25px; width: 330px; margin-right: 0px; }
+.featured .plan-banner { width: 350px; }
+.featured { background-color: #efefef; }
+.featured .plan-message .msg { background-color: #efefef; }
+.featured ul { margin-bottom: 40px; }
+sup { font-size: 10px; }
+.plan-price sup { font-size: 18px; }
+
+/*  ---- 99 cent special
+.purple .plan-price {margin-top:27px;}
+.purple.plan ul {height:56px;}
+---- */
+
+/*---- Gaia Plan Styles ----*/
+.content-wrapper {
+    margin: 0 auto;
+    max-width: 977px;
+    min-width: 977px;
+    position: relative;
+}
+
+.plan-options {
+  padding-top: 0px;
+  padding-bottom: 25px;
+  text-align: center;
+}
+
+.plan-options h2 {
+  margin-bottom:30px;
+  font-size:25px;
+  font-family:'Avenir LT W01_65 Medium1475532', 'Avenir', sans-serif;
+  width:80%;
+  margin-left:auto;
+  margin-right:auto;
+  color: #5c738a;
+}
+
+.plan-option {
+  border-top:solid #5c738a 20px;
+  background-color: #f4f5f6;
+  display: inline-block;
+  font-family: 'Avenir LT W01_65 Medium1475532', 'Avenir', sans-serif;
+  height: 450px;
+  margin-right: 1.5%;
+  vertical-align: top;
+  width: 31.5%;
+}
+
+div#limited.plan-option {
+border-top-style: solid; 
+border-top-color: transparent; 
+border-top-width: 20px; 
+border-image-source: linear-gradient(to left, rgb(124, 68, 144) 0%, rgb(0, 201, 201) 100%); border-image-slice: 1;
+}
+
+#annual-plan {
+  border-top:solid #ff5548 20px;
+}
+
+#annual-plan-lby {
+  border-top:solid #ED861D 20px;
+}
+
+#annual-plan-summerpromo {
+  border-top:solid #28a3d5 20px;
+}
+
+.plan-callout {
+  margin: 30px auto 0px auto;
+  width: 84%;
+  height: 36px;
+}
+
+.plan-callout-spacer {
+  height: 66px;
+  width: 100%;
+}
+
+.plan-callout-line {
+  background-color: #5c738a;
+  height: 2px;
+}
+
+#annual-plan .plan-callout-line {
+  background-color: #ff5548;
+}
+
+.plan-callout-text {
+  margin: -9px auto 0px auto;
+  display: block;
+  width: 90px;
+  color: #5c738a;
+  background-color: #f4f5f6;
+  padding: 0px 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#annual-plan .plan-callout-text {
+  color: #ff5548;
+}
+
+#limited div.plan-callout-text {
+  width: 138px;
+}
+
+.plan-option:last-of-type{
+  margin-right:0;
+}
+
+.plan-option .btn {
+  margin-top:45px;
+}
+.plan-option h4 {
+  color: #5c738a;
+  font-size: 24px;
+  font-weight: normal;
+  margin-bottom: 40px;
+  font-family:'Avenir LT W01_65 Medium1475532', 'Avenir', sans-serif;
+}
+
+.plan-option h4 + span {
+  color: #858484;
+  display: block;
+  font-size: 14px;
+  margin-bottom: 24px;
+  margin-top: -40px;
+}
+.plan-option h5 {
+  color: #5c738a;
+  font-family: 'Avenir LT W01_85 Heavy1475544', 'Avenir', sans-serif;
+  font-size: 38px;
+  font-weight: normal;
+  margin: 60px 0 40px;
+}
+.plan-option h5 span {
+  color: #8d8d8d;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 40px;
+}
+.plan-option p {
+  color: #5c738a;
+  font-size: 16px;
+  margin-bottom: 30px;
+  margin-top: 43px;
+}
+</style>
+<style>
+    .jumbotron-wrapper {
+        background-repeat:no-repeat;
+        background-size:cover;
+        text-align:center;
+        color:#fff;
+        font-size:16px;
+        margin-bottom:15px;
+    }
+    .jumbotron-wrapper h1 {
+        color:#fff;
+        margin:0 0 5px !important;
+        font-size:40px !important;
+    }
+    .jumbotron-wrapper .sub-title {
+        display:block;
+        text-transform:uppercase;
+        font-family: "Avenir","Trebuchet MS",Helvetica,Arial;
+    }
+    .jumbotron-wrapper p {
+        margin:0;
+        font-size:16px;
+    }
+    .jumbotron-wrapper img {
+        margin:0 0 5px;
+    }
+    .jumbotron-wrapper > div {
+        width:977px;
+        margin:0 auto;
+        padding:30px 0;
+    }
+    .jumbotron-wrapper .col-4 {
+        width:25%;
+        padding:0 15px;
+        float:left;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .jumbotron-wrapper .col-4:before, .jumbotron-wrapper .col-4:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+</style>  </div>
+
+  
+  </div>
+</div>
+    </div>    
+  </div>
+  </div> <!-- /content -->
+
+  
+  
+</div></div> <!-- /node-inner, /node -->
+          </div>
+
+          
+        </div></div> <!-- /#content-body-inner, /#content-body -->
+
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-block-devices-stripe" class="block block-block region-odd even region-count-1 count-6"><div class="block-inner">
+
+  
+  <div class="content clearfix">
+     <a href="/devices">Access Gaiam TV On these devices: Roku, PS3, GoogleTV, Sony Blu-ray</a>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+      <div id="closure-blocks"><div id="closure-blocks-inner" class="region region-closure-inner clearfix">
+      <div id="block-menu-menu-bottommenu" class="block block-menu region-odd odd region-count-1 count-7"><div class="block-inner">
+
+      <h2 class="title">Navigation</h2>
+  
+  <div class="content clearfix">
+    <ul class="menu"><li class="leaf first"><a href="/">Home</a></li>
+<li class="leaf"><a href="/popular">Most Popular</a></li>
+<li class="leaf"><a href="/recently-added">Recently Added</a></li>
+<li class="leaf"><a href="/about">About Us</a></li>
+<li class="leaf"><a href="/careers" title="Careers at Gaiam TV">Careers</a></li>
+<li class="leaf"><a href="/write-for-gaia">Write For Gaia</a></li>
+<li class="leaf"><a href="/company-blog">Company Blog</a></li>
+<li class="leaf"><a href="/devices">Devices</a></li>
+<li class="leaf"><a href="/lp-refer_a_friend">Refer a Friend</a></li>
+<li class="leaf last"><a href="/sitemap">Site Map</a></li>
+</ul>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-menu-menu-categories" class="block block-menu region-even even region-count-2 count-8"><div class="block-inner">
+
+      <h2 class="title">Channels</h2>
+  
+  <div class="content clearfix">
+    <ul class="menu"><li class="leaf first"><a href="/my-yoga">My Yoga</a></li>
+<li class="leaf"><a href="/health-longevity">Health &amp; Longevity</a></li>
+<li class="leaf"><a href="/seeking-truth">Seeking Truth</a></li>
+<li class="leaf"><a href="/spiritual-growth">Spiritual Growth</a></li>
+<li class="leaf"><a href="/films-series">Films &amp; Series</a></li>
+<li class="leaf last"><a href="/original-programs" class="submenu-left original-programs">Original Programs</a></li>
+</ul>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-menu-menu-membership" class="block block-menu region-odd odd region-count-3 count-9"><div class="block-inner">
+
+      <h2 class="title">Membership</h2>
+  
+  <div class="content clearfix">
+    <ul class="menu"><li class="leaf first"><a href="/user">My Account</a></li>
+<li class="leaf"><a href="/contact">Support</a></li>
+<li class="leaf"><a href="/gift">Give Gaia</a></li>
+<li class="leaf"><a href="http://www.gaia.com/terms-privacy#communityGuide">Community Guidelines</a></li>
+<li class="leaf"><a href="/terms-privacy" target="_blank">Terms of Use</a></li>
+<li class="leaf"><a href="/terms-privacy" target="_blank">Privacy Policy</a></li>
+<li class="leaf last"><a href="/terms-privacy#anti-spam">Spam Policy</a></li>
+</ul>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-menu-menu-more-from-gaiam" class="block block-menu region-even even region-count-4 count-10"><div class="block-inner">
+
+      <h2 class="title">More From Gaia</h2>
+  
+  <div class="content clearfix">
+    <ul class="menu"><li class="leaf first last"><a href="http://www.spiritualcinemacircle.com/">Spiritual Cinema Circle</a></li>
+</ul>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-block-social-follow-links" class="block block-block region-odd odd region-count-5 count-11"><div class="block-inner">
+
+  
+  <div class="content clearfix">
+    <h5 class="follow-us">Follow us</h5>
+<a href="https://www.facebook.com/Gaia" class="social-follow-link fb-link" target="_blank">Facebook</a>
+<a href="http://twitter.com/joingaia" class="social-follow-link tw-link" target="_blank">Twitter</a>
+<!-- <a href="http://www.youtube.com/user/gaiamtv" class="social-follow-link youtube-link" target="_blank">Youtube</a> -->  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-6 count-12"><div class="block-inner">
+
+  
+  <div class="content clearfix">
+    <form action="https://www.gaia.com/easy-signup"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username or e-mail: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  autocomplete="off" class="form-text required" />
+ <div class="description">Password is case sensitive.</div>
+</div>
+<input type="submit" name="op" id="edit-submit-1" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li><a href="/user/password">Forgot Password?</a></li></ul></div><input type="hidden" name="form_build_id" id="form-Fv1CxRx5N49JN_mw_Ke2Oaizs4xJ6fHsrxpQr2KfWiU" value="form-Fv1CxRx5N49JN_mw_Ke2Oaizs4xJ6fHsrxpQr2KfWiU"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-gaiamtv_site-gtv_site_info_block" class="block block-gaiamtv_site region-odd odd region-count-7 count-13"><div class="block-inner">
+
+  
+  <div class="content clearfix">
+    <div class="gtv_site_info" title="Wed Jul 27 20:00:35 UTC 2016">tags/GaiamTV-4.0.1.4</div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div class="view view-hellobar view-id-hellobar view-display-id-panel_pane_3 header-hellobar view-dom-id-1">
+    
+  
+  
+  
+  
+  
+  
+  
+  
+</div>     </div></div>
+  
+      <div id="closure2">
+      <div id="block-gaiamtv_site-ga_datalayer_block" class="block block-gaiamtv_site region-odd even region-count-1 count-14"><div class="block-inner">
+
+  
+  <div class="content clearfix">
+    <script>
+dataLayer.push({"event":"customerData","loggedInStatus":"Not Logged In","userId":""});
+</script>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-block-gtv-gaia-gtm-07-27-2016" class="block block-block region-even odd region-count-2 count-15"><div class="block-inner">
+
+  
+  <div class="content clearfix">
+    <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PLS5D2"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PLS5D2');</script>
+<!-- End Google Tag Manager -->
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<script type="text/javascript" src="//tags.mediaforge.com/js/3529/?catID=channel-none"></script>    </div>
+  
+  
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"c055f5d1fe","applicationID":"1842705,1833702","transactionName":"NFEEZERQVkpWVhJeVg0bJ1NCWFdXGEUHUFw8WQdeV1ZdS2hbCVNcPEIPVUE=","queueTime":0,"applicationTime":499,"atts":"GBYHEgxKRUQ=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
