@@ -59,6 +59,10 @@ public class PageRead {
     public static JEditorPane jep = new JEditorPane();
     public static JScrollPane scrollPane = new JScrollPane(jep);
     
+    // Create a mainPanel for uniform layout
+    public static JPanel mainPanel = new JPanel();    
+    
+    
     /**
      * Page Reader method adapted from SP Blackboard
      *
@@ -257,14 +261,16 @@ public class PageRead {
         return searchResult;
     }
 
-    public static void main(String arg[]) {
+    public static void main(String arg[]) {        
         // Configure the Panel and Frame properly before use
-        leftPanel.setLayout(new GridLayout());
-        rightPanel.setLayout(new GridLayout());
+        mainPanel.setLayout(new GridLayout(0, 2));
+        leftPanel.setLayout(new GridLayout(0, 1));
+        rightPanel.setLayout(new GridLayout(0, 1));
 
         // We then add the panel into the frame
-        resultFrame.add(leftPanel);
-        resultFrame.add(rightPanel);
+        mainPanel.add(leftPanel);
+        mainPanel.add(rightPanel);
+        resultFrame.add(mainPanel);
 
         // Setup the frame as well
         resultFrame.setSize(1200, 900);
