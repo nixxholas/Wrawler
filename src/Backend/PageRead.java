@@ -6,16 +6,10 @@
 package Backend;
 
 import Interface.*;
-import static Interface.SearchResult.searchResultsField;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -24,7 +18,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -34,7 +27,6 @@ import java.util.regex.Pattern;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -211,13 +203,12 @@ public class PageRead {
          * utilize it if needed.
          */
         
-        // Multi THREADING COMEFORTH
-        
+        // Multi-Threading system for the pulling of views online        
         ExecutorService threadPoolExecutor =
         new ThreadPoolExecutor(
                 Results.size(),
                 Results.size(),
-                600000,
+                600000, // Give the program a decent amount of time
                 TimeUnit.MILLISECONDS,
                 new LinkedBlockingQueue<Runnable>()
                 );
@@ -251,6 +242,7 @@ public class PageRead {
                                                 
                         //jep.setText("<html>" + RO.getResultPage() + "<html>");
                         
+                        // We have yet to load the file directly
                         jep.setPage(RO.getUrl());
                         mainFrame.pack();
                     } catch (Exception ex) {

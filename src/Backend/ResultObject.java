@@ -6,6 +6,7 @@
 package Backend;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
@@ -84,5 +85,15 @@ public class ResultObject implements Runnable {
         }
     }
     
-    
+    // Create a folder specially for storing the HTML files.
+    public void initializeRO() {
+        File file = new File("/WebPages");
+        if (!file.exists()) {
+            if (file.mkdir()) {
+                System.out.println("The WebPages directory is created!");
+            } else {
+                System.out.println("Failed to create directory!");
+            }
+        }
+    }
 }

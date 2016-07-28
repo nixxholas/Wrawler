@@ -5,37 +5,34 @@
  */
 package Backend;
 
+import java.io.File;
 import java.io.Serializable;
 
 /**
  * This class is created in order to cache Search Results
  * 
+ * We can also tell whether if we're using a "present" or "past" object
+ * just by seeing if the object is a Cacher Object or a ResultObject Object.
+ * 
  * @author Nixholas
  */
-public class Cacher implements Serializable {
-    private String name; // Must be the same as the proceeding object.
-    private String cachedWebPageData; // Stores the Webpage data here to cache it
-                                      // in later.
-    
-    public Cacher() {
-        
-    }
+public class Cacher extends ResultObject implements Serializable {
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCachedWebPageData() {
-        return cachedWebPageData;
-    }
-
-    public void setCachedWebPageData(String cachedWebPageData) {
-        this.cachedWebPageData = cachedWebPageData;
+    public Cacher(String name, String url, String Description) {
+        super(name, url, Description);
     }
     
+    // writeObject & readObject are default..
     
+    // Create a folder specially for the serialized objects.
+    public void initializeCache() {
+        File file = new File("/Caches");
+        if (!file.exists()) {
+            if (file.mkdir()) {
+                System.out.println("The cache directory is created!");
+            } else {
+                System.out.println("Failed to create directory!");
+            }
+        }
+    }
 }
