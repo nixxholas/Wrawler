@@ -5,17 +5,12 @@
  */
 package Backend;
 
-import static Backend.Cacher.initializeCache;
-import static Backend.ResultObject.initializeRO;
 import Interface.*;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -37,8 +32,8 @@ import javax.swing.JScrollPane;
  * @author Nixholas
  */
 public class PageRead {
-
     // Every single SearchEngine we add will be stored and be available globally
+    public static List<ResultObject> cachedResults = new ArrayList<ResultObject>();
     public static List<SearchEngine> searchEngines = new ArrayList<SearchEngine>();
 
     // Default JFrame of the Program
@@ -56,44 +51,7 @@ public class PageRead {
     
     // Create a mainPanel for uniform layout
     public static JPanel mainPanel = new JPanel();    
-    
-    
-    /**
-     * Page Reader method adapted from SP Blackboard
-     *
-     * Deprecated.
-     * 
-     * @param pageAddr
-     * @return
-     */
-//    public static StringBuilder printPage(ResultObject inRO) {
-//        try {
-//            URL url = new URL(inRO.getUrl());
-//            PrintWriter writer = new PrintWriter(inRO.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
-//
-//            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-//
-//            String line, finalResult = "";
-//            StringBuilder sb = new StringBuilder();
-//            while ((line = reader.readLine()) != null) {
-//                finalResult += line + "\n";
-//                sb.append(line + "\n");
-//                writer.println(line);
-//            }
-//
-//            inRO.setResultPage(finalResult);
-//            reader.close();
-//            writer.close();
-//            return sb;
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//            return new StringBuilder("");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return new StringBuilder("");
-//        }
-//    }
-
+        
     /**
      * Custom Page Reader
      *
@@ -243,6 +201,7 @@ public class PageRead {
              * http://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
              */
             button.addActionListener(new ActionListener() {
+                @Override
                 public void actionPerformed(ActionEvent e) {
                     /**
                      * Webpage Viewer within the Java Project

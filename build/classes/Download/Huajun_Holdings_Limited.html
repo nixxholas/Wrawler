@@ -1,0 +1,391 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js lt-ie10" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+
+<!-- Set the viewport width to device width for mobile -->
+<meta name="viewport" content="width=device-width" />
+
+<title>Huajun Holdings Limited</title>
+  	<br>
+	<br>
+<!-- Included CSS Files -->
+<link rel="stylesheet" href="css/foundation.css">
+<link rel="stylesheet" href="css/app.css">
+<script type="text/javascript" src="../chlang.js"></script>
+<!-- IE Fix for HTML5 Tags -->
+<!--[if lt IE 9]>
+<script src="../../html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+
+<div class="container"  style="z-index:999;position:relative">
+	<header>
+		<script src="../include/jquery-1.4.3.min.js" type="text/javascript" ></script>
+
+<script type="text/javascript" src="../include/jquery_cycle/jquery.cycle.all.min.js"></script>
+
+<script>
+
+
+
+$(document).ready(function()
+
+{	
+
+	$.ajax({
+
+		data: {
+
+			stock_code: "377"
+
+		},
+
+		type: "POST",
+
+		url: "ajax_get_stock.php",
+
+		success: function(msg)
+
+		{
+
+			//alert(msg);
+
+			msg = $.parseJSON(msg);
+
+			$("#stock_price_loader").fadeOut("normal", function()
+
+			{
+
+				$("#stock_price").fadeIn("normal", function()
+
+				{
+
+					$(this).html(msg["value"]);
+
+				});
+
+			});
+
+		},
+
+		error: function(msg)
+
+		{
+
+			//$("#preloader").hide();
+
+		}
+
+	});
+
+});
+
+
+
+</script><div class="row_logo">
+            <div id="logo">
+                <a href="index.php"><h1>HUAJUN HOLDINGS LIMITED</h1></a>
+  	      </div>
+          <div id="phone">
+          <div style="float:left; background:#2c2a69; padding:5px 15px 0 7px; color:#fff; height:40px; font-weight:bold; font-family:Arial; line-height:16px;">华君控股(0377.HK)股价:<br>(十五分钟延迟)</div>
+          <div style="float:left; background:#a7a5d6; padding:10px 8px 0 7px; color:#fff; height:35px; font-weight:bold; font-family:Arial;">HK$ <span id="stock_price"></span><span id="stock_price_loader"><img src="images/preloader.gif" /></span></div>
+          <div style="clear:both;"></div>
+          </div>
+          
+          
+          <div class="little_menu">
+          <ul style="float:left;">
+          <li class="top_icon_home"><a href="index.php">主页</a></li>
+          <li class="top_icon_contact"><a href="contact.php">联络我们</a></li>
+          </ul>
+          <ul id="social-networks" style="float:left; margin-top:-10px;">
+                <li><a href="javascript:chlang('zh')" class="zh">zh</a></li>
+                <li><a href="#" class="cn">cn</a></li>
+                <li><a href="javascript:chlang('en')" class="en">en</a></li>
+            </ul>
+            <div style="clear:both;"></div>
+          </div>
+          <div style="clear:both;"></div>
+       </div> 
+       
+       <div class="row"> 
+            <nav>
+			<ul id="primary-nav" class="sf-menu left">
+				<li><a href="index.php" class="active">主页</a></li>
+				<li><a href="about.php">关于华君</a>
+				<ul>
+					<li><a href="about.php">公司简介</a></li>
+					<li><a href="history.php">华君历史</a></li>
+					<li><a href="directors.php">董事会成员履历</a></li>
+                    <li><a href="corporate_culture.php">企业文化</a></li>
+                    <li><a href="prospect.php">华君理念</a></li>
+                    <li><a href="corporate_govern.php">企业管治</a></li>
+                    <li><a href="chairman.php">总裁致辞</a></li>
+				</ul>
+				</li>
+                <!--li><a href="prospect.php">华君理念</a></li-->
+                <li><a href="finance.php">华君投资</a>
+                <ul display:inline>
+					<li><a href="finance.php">金融投资</a></li>
+					<li><a href="business.php">实业投资</a></li>
+					<li><a href="household.php">地产投资</a></li>
+                    <li><a href="medical.php">医疗投资</a></li>
+					<li><a href="asset.php">证劵投资</a></li>
+					<li><a href="trading.php">贸易与物流</a></li>
+                <li onmousedown= 'this.style.backgroundColor= "#FF0000 "; '><a href="energy.php">能源与电力</a></li>
+				</ul>                
+                </li>
+				<li><a href="report.php">投资者关系</a>
+				<ul>
+					<li><a href="report.php">公告发布</a></li>
+					<li><a href="investor_service.php">股东服务</a></li>
+					<li><a href="corporate_report.php">公司年報</a></li>
+                    <li><a href="corporate_promote.php">公司推介</a></li>
+					<li><a href="stock_info.php">股票信息</a></li>
+					<li><a href="contactus.php">联络方式</a></li>
+				</ul>
+				</li>
+				<li><a href="newsa.php">新闻中心</a>
+				<ul>
+					<li><a href="newsa.php">公司股评</a></li>
+					<li><a href="newsb.php">新闻稿</a></li>
+					<!--li><a href="newsc.php">公司新闻</a></li-->
+                    <li><a href="newsd.php">媒体联络方式</a></li>
+				</ul>
+				</li>
+				<li><a href="career.php">加入我们</a><!--career.php-->
+                <ul>
+					<li><a href="career.php">职位空缺</a></li>
+                    <li><a href="recruitment_process.php">应聘流程</a></li>
+                    <li><a href="now_apply.php">现在申请</a></li>
+                    <li><a href="career1.php">员工福利</a></li>
+				</ul>
+                </li>
+			</ul>
+			<!-- END .sf-menu navigation -->
+			</nav>
+            
+            <div class="top_slogan left" style="margin-left:960px;"></div>
+			<!-- END nav -->
+            <div class="clearfix"></div>
+		</div>
+		<!-- END .row -->
+	</header>
+    </div>
+    
+	<!-- END header -->
+    <div style="clear:both;"></div>
+    <div class="container"  style="z-index:0;position:relative">
+    
+    <div id="heading-wrapper" class="heading-slider">
+        <div class="hs-loading"><span>Loading...</span></div>
+        <div class="hs-container">
+            <div class="hs-content">
+            	<!--<span class="big bgc"><strong>We're Klassio</strong>, a sweetly creative web design group.</span><br/>
+            	<span class="text bgc">This is the place that'll be used for a kick-ass introduction.</span>-->
+            </div>
+            <img src="images/slides/banner_02.jpg" alt="" class="bg"/>
+            <div class="hs-content">
+            	<!--<span class="big bgc">華君控股有限公司</span>-->
+            </div>
+            <img src="images/slides/banner_03.jpg" alt="" class="bg"/>
+            <div class="hs-content">
+            	<!--<span class="text bgc">We're a small team of web artists with experience over 4 years of experience.</span>
+            	<span class="big bgc">And would surely love to work with you.</span><br/>-->
+            </div>
+            <img src="images/slides/banner_04.jpg" alt="" class="bg"/>
+             <div class="hs-content">
+            	<!--span class="text bgc">So, let's get down to business now.</span>
+            	<span class="big bgc">How can we help you?</span><br/-->
+            </div>
+            
+            <img src="images/slides/banner_05.jpg" alt="" class="bg"/>
+            <img src="images/slides/banner_01.jpg" alt="" class="bg"/>
+        </div>
+        
+        <div class="hs-nav">
+            <a href="#" class="prev">&lsaquo;</a>
+            <a href="#" class="next">&rsaquo;</a>
+        </div>        
+        
+        <div class="hs-bullets"></div>        
+        <div style="position:absolute;width:480px;height:70px;background:url(images/slides/text.png) top left scroll;bottom:10px;left:280px;z-index:900" class="positioning"></div>
+    </div>    
+    
+	<!-- END #heading-wrapper -->
+    
+	<div id="content-wrapper" class="row">
+		<div class="row"> 
+			<div class="one columns">
+				<div class="icon-hover">
+					<a href="finance.php" title=""><img src="images/index/index_content_01.jpg" alt="" class="transparency"></a>
+					<div class="underlay">
+						项目详情
+					</div>
+				</div>
+				<!-- END .icon-hover -->
+				<div class="entry-detail">
+					<h5><a href="finance.php">金融投资</a></h5>
+					金融投资业务主要是通过控股公司旗下子公司为客户提供各项金融服务，目前主要包括融资租赁、物流金融、及按揭贷款等业务。<br>
+					<br><br>
+				</div>
+			</div>
+			<!-- END .one columns -->
+			<div class="one columns">
+				<div class="icon-hover">
+					<a href="business.php" title=""><img src="images/index/index_content_02.jpg" alt="" class="transparency"></a>
+					<div class="underlay">
+						项目详情
+					</div>
+				</div>
+				<!-- END .icon-hover -->
+				<div class="entry-detail">
+					<h5><a href="business.php">实业投资</a></h5>
+					实业投资是控股公司一直坚持打造的核心业务。立足于拥有五十年历史传统的新洲印刷业务品牌，华君将主要以投资控股的方式，拓展其投资领域至中国及海外地区领先的优秀企业。
+					<br>
+				</div>
+			</div>
+			<!-- END .one columns -->
+			<div class="one columns">
+				<div class="icon-hover">
+					<a href="household.php" title=""><img src="images/index/index_content_03.jpg" alt="" class="transparency"></a>
+					<div class="underlay">
+						项目详情
+					</div>
+				</div>
+				<!-- END .icon-hover -->
+				<div class="entry-detail">
+					<h5><a href="household.php">地产投资</a></h5>
+					地产投资板块包括土地整理和开发,房地产开发与销售,物业管理,物业投资等。<br>
+					<br><br><br><br>
+				</div>
+			</div>
+			<!-- END .one columns -->
+			<div class="one columns">
+				<div class="icon-hover">
+					<a href="medical.php" title=""><img src="images/index/index_content_04.jpg" alt="" class="transparency"></a>
+					<div class="underlay">
+						项目详情
+					</div>
+				</div>
+				<!-- END .icon-hover -->
+				<div class="entry-detail">
+					<h5><a href="medical.php">医疗投资</a></h5>
+					 响应卫生部关于中国医院改革的号召，大力发展医疗卫生事业，控股公司致力于以直接控股或签订管理协议的模式将完成股份制改造的及区域领先的医疗机构纳入控股公司的主营业务板块。
+				</div>
+			</div>
+			<!-- END .one columns -->
+            <div class="one columns" style="float:left !important;">
+				<div class="icon-hover">
+					<a href="trading.php" title=""><img src="images/index/index_content_05.jpg" alt="" class="transparency"></a>
+					<div class="underlay">
+						项目详情
+					</div>
+				</div>
+				<!-- END .icon-hover -->
+				<div class="entry-detail">
+					<h5><a href="trading.php">贸易与物流</a></h5>
+					 物流金融以两大原则为前提：以物流业为契机，创金融供应链平台；以金融实体的纽带，创银企联动的平台.<br>
+					 <br><br>
+				</div>
+			</div>
+			<!-- END .one columns -->
+            <div class="one columns" style="float:left !important;">
+				<div class="icon-hover">
+					<a href="energy.php" title=""><img src="images/index/index_content_06.jpg" alt="" class="transparency"></a>
+					<div class="underlay">
+						项目详情
+					</div>
+				</div>
+				<!-- END .icon-hover -->
+				<div class="entry-detail">
+					<h5><a href="energy.php">能源与电力</a></h5>
+					 本公司进军光伏产业，选址江苏——这片被誉为中国光伏产业产业链最完整、硅片和光伏组件出货量最大的地区，作为投资目的地。<br>
+					 <br><br>
+			</div>
+			</div>
+			<!-- END .three columns -->
+            
+		</div>
+		<div class="clearfix">
+		</div>
+		
+		
+		
+		</div>
+	<!-- END #content-wrapper -->
+	<footer>
+	
+	<div class="row">
+		<div class="copyright twelve columns">
+		Copyright &copy; 2015.Huajun Holdings Limited. All rights reserved. Powered by <a href="http://www.smartinfo.com.hk" target="_blank">Smart-Info: Web Design</a>
+		</div>
+	</div>	<!-- END .row -->
+	</footer>
+</div>
+<!-- END #container -->
+
+	<!-- Included JS Files -->
+	<script src="javascripts/jquery.min.js"></script>
+	<script src="javascripts/modernizr.foundation.js"></script>
+	<script src="javascripts/bgslider.jquery.js"></script>
+    <script>
+		$().BGSlider(".heading-slider");
+	</script>
+	<script src="javascripts/foundation.js"></script>
+	<script src="javascripts/plugins.js"></script>
+	<script src="javascripts/app.js"></script>
+
+</body>
+</html>
+></a>
+					<div class="underlay">
+						项目详情
+					</div>
+				</div>
+				<!-- END .icon-hover -->
+				<div class="entry-detail">
+					<h5><a href="energy.php">Energy and Power</a></h5>
+					 The company enter the photovoltaic industry, location, Jiangsu - this is known as China's most complete industrial chain of the photovoltaic industry, silicon and PV module shipments largest region as an investment destination. <br>
+					 <br><br>
+			</div>
+			</div>
+
+		</div>
+		<div class="clearfix">
+		</div>
+		
+		
+		
+	</div>
+	<!-- END #content-wrapper -->
+	<footer>
+	
+	<div class="row">
+		<div class="copyright twelve columns">
+		Copyright &copy; 2015.Huajun Holdings Limited. All rights reserved. Powered by <a href="http://www.smartinfo.com.hk" target="_blank">Smart-Info: Web Design</a>
+		</div>
+	</div>	<!-- END .row -->
+	</footer>
+</div>
+<!-- END #container -->
+
+	<!-- Included JS Files -->
+	<script src="javascripts/jquery.min.js"></script>
+	<script src="javascripts/modernizr.foundation.js"></script>
+	<script src="javascripts/bgslider.jquery.js"></script>
+    <script>
+		$().BGSlider(".heading-slider");
+	</script>
+	<script src="javascripts/foundation.js"></script>
+	<script src="javascripts/plugins.js"></script>
+	<script src="javascripts/app.js"></script>
+
+</body>
+</html>
