@@ -52,6 +52,7 @@ public class BackendServices {
                     ResultObject ro = (ResultObject) ois.readObject();
                     ois.close();
                     
+                    // Add the object into the cachedResults ArrayDeque
                     cachedResults.add(ro);
                 } catch (Exception ex) {
                     // Something must've went wrong

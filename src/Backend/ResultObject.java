@@ -5,6 +5,8 @@
  */
 package Backend;
 
+import static Backend.Constants.cachedResults;
+import static Backend.Constants.searchQueue;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,6 +17,8 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -23,13 +27,13 @@ import java.net.URL;
 public class ResultObject implements Serializable, Runnable {
     private String name;
     private String url;
-    private String Description;
+    private String userQuery;
     private String resultPage = "";
     
-    public ResultObject(String name, String url, String Description) {
+    public ResultObject(String name, String url, String userQuery) {
         this.name = name;
         this.url = url;
-        this.Description = Description;
+        this.userQuery = userQuery;
         this.resultPage = "";
     }
 
@@ -57,12 +61,68 @@ public class ResultObject implements Serializable, Runnable {
         this.url = url;
     }
 
-    public String getDescription() {
-        return Description;
+    public String getUserQuery() {
+        return userQuery;
     }
 
-    public void setDescription(String Description) {
-        this.Description = Description;
+    public void setUserQuery(String userQuery) {
+        this.userQuery = userQuery;
+    }
+    
+    /**
+     * Find Results that have been found from previous few searches
+     * 
+     * @param result
+     * @return 
+     */
+    public static List<ResultObject> findResults(String result) {
+        List<ResultObject> foundResults = new ArrayList();
+        
+        for (ResultObject RO : cachedResults) {
+            if (RO.userQuery.equals(result)) {
+                foundResults.add(RO);
+            }
+        }
+        
+        return foundResults;
+    }
+    
+    public static boolean urlExists(String inURL) {
+        
+        for (ResultObject RO : cachedResults) {
+            if (RO.url.equals(inURL)) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    public static ResultObject getResultObject(String inURL) {
+        
+        for (ResultObject RO : cachedResults) {
+            if (RO.url.equals(inURL)) {
+                return RO;
+            }
+        }
+        
+        // Definitely won't get here
+        return new ResultObject("", "", "");
+    }
+    
+    // Checks the current ResultObject with the cachedResults
+    public synchronized boolean checkDupes() {
+        for (ResultObject ro : cachedResults) {
+            if (ro.name == this.name) {
+                // Since this exists, we'll remove it from the searchQueue
+                // and we'll use the old one instead
+                searchQueue.remove(this);
+                searchQueue.add(this);
+                
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -150,7 +210,13 @@ public class ResultObject implements Serializable, Runnable {
             // Create a serialized form of the object
             FileOutputStream fos = new FileOutputStream("src/Caches/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".ser");
             ObjectOutputStream os = new ObjectOutputStream(fos);
+            
+            // Caches the object
             os.writeObject(this);
+            
+            // We'll have to add it to the cachedResults as well
+            // incase the user tries to searcha again
+            cachedResults.add(this);
             
             reader.close();
             writer.close();

@@ -5,10 +5,17 @@
  */
 package Backend;
 
-import Interface.*;
+import static Backend.Constants.jep;
+import static Backend.Constants.mainFrame;
+import static Backend.Constants.rightPanel;
+import static Backend.Constants.searchQueue;
+import static Backend.ResultObject.findResults;
+import static Backend.ResultObject.getResultObject;
+import static Backend.ResultObject.urlExists;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -22,31 +29,28 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JButton;
-import javax.swing.JEditorPane;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 /**
  *
  * @author Nixholas
  */
 public class PageRead {
+
     /**
      * Custom Page Reader
      *
      * @param se
-     * 
+     *
      * SearchEngine Object that is going to be used to search.
-     * 
+     *
      * @param result
-     * 
+     *
      * The input that the user wants to search up on.
-     * 
-     * @return 
-     * 
+     *
+     * @return
+     *
      * Returns a result to inform the Frame class if the search was successful
-     * 
+     *
      * @throws java.io.IOException
      */
     public static String getUrlSource(SearchEngine se, String result) throws IOException {
@@ -64,8 +68,8 @@ public class PageRead {
         String searchResult = ""; // This will be the final output
         String trimmedSearchResults = ""; // This is after the initial RegEx
         String taggedSearchResults = ""; // After removing all the useless parts of the source
-        List<ResultObject> Results = new ArrayList(); // Stores all the SearchObjects Temporarily
-        
+        List<ResultObject> matchedHistory = findResults(result);
+
         //We'll need to filter the result String
         String parsedResult = result.replaceAll(" ", "+");
 
@@ -137,10 +141,20 @@ public class PageRead {
         int counter = 0;
         while (!nameObjectMatcher.hitEnd()) {
             if (nameObjectMatcher.find()) {
-                // .replaceAll trims the remaining HTML tags if they exist.
-                Results.add(new ResultObject(nameObjectMatcher.group().replaceAll("\\<.*?>", ""), urlForObjects.get(counter), ""));
-                // Parse the data in order for returning
-                searchResult += nameObjectMatcher.group().replaceAll("\\<.*?>", "") + "\t" + urlForObjects.get(counter) + "\n";
+                // If the URL result does not exist, we'll add it in
+                if (!urlExists(urlForObjects.get(counter))) {
+                    // .replaceAll trims the remaining HTML tags if they exist.
+                    searchQueue.add(new ResultObject(nameObjectMatcher.group().replaceAll("\\<.*?>", ""), urlForObjects.get(counter), result));
+                    // Parse the data in order for returning
+                    searchResult += nameObjectMatcher.group().replaceAll("\\<.*?>", "") + "\t" + urlForObjects.get(counter) + "\n";
+                } else {
+                    ResultObject ro = getResultObject(urlForObjects.get(counter));
+                    // Else we'll add the object from the cachedResult instead
+                    searchQueue.add(ro);
+
+                    // Then parse the data in order for returning
+                    searchResult += ro.getName() + ro.getUrl() + "\n";
+                }
                 counter++;
             }
         }
@@ -154,28 +168,27 @@ public class PageRead {
          * target link as an individual HTML Page by itself so that our can
          * utilize it if needed.
          */
-        
         // Multi-Threading system for the pulling of views online        
-        ExecutorService threadPoolExecutor =
-        new ThreadPoolExecutor(
-                Results.size(),
-                Results.size(),
-                600000, // Give the program a decent amount of time
-                TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<Runnable>()
+        ExecutorService threadPoolExecutor
+                = new ThreadPoolExecutor(
+                        searchQueue.size(),
+                        searchQueue.size(),
+                        600000, // Give the program a decent amount of time
+                        TimeUnit.MILLISECONDS,
+                        new LinkedBlockingQueue<Runnable>()
                 );
-        
-        
-        for (ResultObject RO : Results) {            
-            
+
+        for (ResultObject RO : searchQueue) {
+
             // Call a thread to run()
+            // This method saves the link as HTML and a Cached file
             threadPoolExecutor.execute(RO);
-            
+
             JButton button = new JButton(RO.getName());
 
             /**
              * Action Listener adapted from:
-             * 
+             *
              * http://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
              */
             button.addActionListener(new ActionListener() {
@@ -183,33 +196,31 @@ public class PageRead {
                 public void actionPerformed(ActionEvent e) {
                     /**
                      * Webpage Viewer within the Java Project
-                     * 
+                     *
                      * http://stackoverflow.com/questions/10601676/display-a-webpage-inside-a-swing-application
                      */
 
                     try {
-                        // Required for us to load from the file we have created.
-                        URL url = getClass().getResource(RO.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
-                                                
-                        //jep.setText("<html>" + RO.getResultPage() + "<html>");
+                        // Pulls the file path
+                        File file = new File("src/Download/" + RO.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
                         
-                        // We have yet to load the file directly
-                        jep.setPage(RO.getUrl());
+                        jep.setPage(file.toURI().toURL());
                         mainFrame.pack();
                     } catch (Exception ex) {
+                        System.out.println(ex);
                         jep.setContentType("text/html");
                         jep.setText("<html>Could not load the page.</html>");
                     }
                 }
             });
-            
+
             rightPanel.add(button);
         }
-        
+
         // Awaits for all threads to complete before wrappin' up
         threadPoolExecutor.shutdown();
-        
+
         return searchResult;
-    }   
+    }
 
 }

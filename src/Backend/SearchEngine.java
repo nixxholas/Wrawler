@@ -51,11 +51,11 @@ public class SearchEngine extends Thread {
         this.regexForSearchObject = regexForSearchObject;
     }
 
-    public List<ResultObject> getResults() {
+    public Queue<ResultObject> getResults() {
         return results;
     }
 
-    public void setResults(List<ResultObject> results) {
+    public void setResults(Queue<ResultObject> results) {
         this.results = results;
     }
     
@@ -89,23 +89,7 @@ public class SearchEngine extends Thread {
     public String getRegexSearchPattern() {
         return regexSearchPattern;
     }
-//
-//    public List<String> getResultUrl() {
-//        return resultUrl;
-//    }
-//
-//    public void setResultUrl(List<String> resultUrl) {
-//        this.resultUrl = resultUrl;
-//    }
-//
-//    public List<String> getResultDescription() {
-//        return resultDescription;
-//    }
-//
-//    public void setResultDescription(List<String> resultDescription) {
-//        this.resultDescription = resultDescription;
-//    }
-
+    
     public void setRegexSearchPattern(String regexSearchPattern) {
         this.regexSearchPattern = regexSearchPattern;
     }

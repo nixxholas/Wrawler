@@ -35,7 +35,7 @@ public class main {
         // Configure the Panel and Frame properly before use
         mainPanel.setLayout(new GridLayout(0, 2));
         leftPanel.setLayout(new GridLayout(0, 1));
-        rightPanel.setLayout(new GridLayout(0, 1));
+        rightPanel.setLayout(new GridLayout(0, 2));
 
         // We then add the panel into the frame
         mainPanel.add(leftPanel);

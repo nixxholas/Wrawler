@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en_US">
+<head>
+<title>JDK Installation for Microsoft Windows</title>
+
+<script language="javascript1.2" type="text/javascript" src="../../../../../webdesign/pubs/js/popUp.js"></script>
+<script language="javascript1.2" type="text/javascript" src="../../../../../webdesign/pubs/js/sniff.js"></script>
+<script language="javascript1.2" type="text/javascript" src="../../../../../webdesign/pubs/js/menucontent.js"></script>
+<script language="javascript1.2" type="text/javascript" src="../../../../../webdesign/pubs/js/menucode.js"></script>
+<script language="javascript1.2" type="text/javascript" src="../../../../../webdesign/pubs/js/developer.js"></script>
+<script language="javascript1.2" type="text/javascript" src="../../../../../webdesign/other/js/search.js"></script>
+<link rel="stylesheet" href="../../../../../webdesign/pubs/css/default_developer.css" />
+<meta name="collection" content="reference"/> 
+</head>
+<body>
+<noscript>JavaScript is not supported by your browser. JavaScript
+support is required for full functionality of this page.</noscript>
+<div class="a0 a0v1" id="a0v1"><!-- BEGIN A1 COMPONENT V.0 -->
+<div class="a1 a1r2">
+<div class="a1v0"><a href="#skip2content" class="skiplink">Skip to
+Content</a></div>
+</div>
+<!-- END A1 COMPONENT V.0 -->
+<!-- BEGIN A2 COMPONENT V.1 -->
+<div class="a2w0">
+<div class="a2" id="a2v1">
+<div class="a2w1">
+<div class="a2w2">
+<div class="a2w3">
+<div class="a2w4">
+<div class="a2topiclinks"><a href="http://www.oracle.com" title=
+"Oracle Home Page" id="sunlogo" name="sunlogo"><img src=
+"../../../../../webdesign/pubs/im/a.gif" alt="Home Page" width="98" height="58"
+border="0" /></a>
+<ul id="mtopics">
+<li id="mtopic1"><a id="glink1" class="tpclink a2menu" title=
+"See Oracle Technology Network" href="http://oracle.com/technology"
+name="glink1">Oracle Technology Network</a></li>
+<li id="mtopic2"><a id="glink2" class="tpclink a2menu" title=
+"Software Downloads" href=
+"http://www.oracle.com/technology/software/index.html" name=
+"glink2">Software Downloads</a></li>
+<li id="mtopic3"><a id="glink3" class="tpclink a2menu" title=
+"See Java SE Documentation" href=
+"http://download.oracle.com/javase/index.html" name=
+"glink3">Documentation</a></li>
+</ul>
+<div class="a2search"><a href="../../../../../search.html" target=
+"_blank">Search</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- END A2 COMPONENT V.1 -->
+<!-- BEGIN SEPARATOR -->
+<div class="hr">
+<hr /></div>
+<!-- END SEPARATOR -->
+<!-- ============ -->
+<!-- MAIN CONTENT -->
+<!-- ============ -->
+<a name="skip2content" id="skip2content"></a>
+
+
+<div class="smallpagetitle"><h1>JDK Installation for Microsoft Windows</h1></div>
+<p>See <a href="../index.html">JDK 7 and JRE 7 Installation Guide</a> for general information about installing JDK 7 and JRE 7.</p>
+
+<!-- ********************************************** -->
+
+<p>The following topics are covered:</p>
+
+<ul>
+  <li><a href="#requirements">System Requirements</a></li>
+  <li><a href="#notation">Installation Instructions Notation</a></li>
+  <li><a href="#install">Installation Instructions</a>
+
+<ul>
+  <li><a href="#Check">Downloading the Installer</a></li>
+  <li><a href="#Run">Running the JDK Installer</a>
+  <li><a href="#start-menu">Java Start Menu</a></li>
+    <ul>
+      <li><a href="#jdk-silent-installation">Installing the JDK Silently</a></li>
+    </ul>
+  </li>
+  <li><a href="#path">Updating the PATH Environment Variable (Optional)</a></li>
+  <li><a href="#Running">Starting to Use the JDK</a></li>
+</ul>
+
+  </li>
+  <li><a href="#uninstall">Uninstalling the JDK</a></li>
+  <li><a href="#installed-directory-tree">Installed Directory Tree</a></li>
+  <li><a href="#troubleshooting">Installation Troubleshooting</a>
+
+<ul>
+  <li><a href="#error-message-config-nt">System File Not Suitable for Running MS-DOS and Microsoft Windows Applications</a></li>
+  <li><a href="#error-message-corrupt-cabinet">Corrupt Cabinet file</a></li>
+  <li><a href="#error-message-compression">System Error During Decompression</a></li>
+  <li><a href="#error-message-dos-mode">Program Cannot Be Run in DOS Mode</a></li>
+  <li><a href="#private">Private Versus Public JRE</a></li>
+  <li><a href="#notepad">Creating Source Files in Notepad</a></li>
+  <li><a href="#locales">Characters That Are Not Part of the System Code Page</a></li>
+</ul>
+
+</li>
+</ul>
+
+<h2><a name="requirements" id="requirements">System Requirements</a></h2>
+
+<p>See <a href="http://www.oracle.com/technetwork/java/javase/config-417990.html">Oracle JRE 7 and JDK 7 Certified System Configurations</a> for information about supported platforms, operating systems, and browsers.</p>
+
+<p>See <a href="windows-system-requirements.html">Windows System Requirements for JDK and JRE</a> for minimum processor, disk space, and memory requirements.</p>
+
+<p><strong>Note</strong>:</p>
+
+<ul>
+  <li>The JDK and JRE have a version string that enables you to determine the version number. See <a href="http://www.oracle.com/technetwork/java/javase/jdk7-naming-418744.html">Java Platform Standard Edition 7, Names and Versions
+Version Number</a> for information about Java SE 7 version numbers.</li>
+
+  <li>The JDK has the option of installing the public JRE. For more information about JRE installation, see <a href="jre-installation-windows.html">JRE Installation for Microsoft Windows</a>.</li>
+
+  <li>If you have any difficulties, see the <a href="#troubleshooting">Troubleshooting</a> section at the end of this document or <a href="http://java.sun.com/webapps/bugreport">submit a bug report</a> for your installation problem.</li>
+
+</ul>
+
+
+<h2><a name="notation">Installation Instructions Notation</a></h2>
+
+<p>For any text in this document that contains the following notation, you must substitute the appropriate update version number:</p>
+
+<pre>&lt;version&gt;</pre>
+
+<p>For example, if you were downloading the JDK installer for 32-bit systems for update 1.7.0_01, the file name: <code>jdk-7&lt;version&gt;-windows-i586.exe</code> would become <code>jdk-7u1-windows-i586.exe</code>.</p>
+
+<p>Similarly, if you were downloading the JDK installer for 64-bit systems for update 1.7.0_01, the file name <code>jdk-7&lt;version&gt;-windows-x64.exe</code> would become <code>jdk-7u1-windows-x64.exe</code>.</p>
+
+<!-- ********************************************** -->
+
+<h2><a name="install" id="install">Installation Instructions</a></h2>
+
+<p>In this procedure, you will run the self-installing executable file to unpack and install the JDK. As part of the JDK, this installation includes an option to include the public Java Runtime Environment. (The JDK also contains a private JRE for use only by its tools; see <a href="#private">Private Versus Public JRE</a> for more information.)</p>
+
+<p>Install the JDK by doing the following:</p>
+
+<ul>
+  <li><a href="#Check">Downloading the Installer</a></li>
+  <li><a href="#Run">Running the JDK Installer</a>
+    <ul>
+      <li><a href="#jdk-silent-installation">Installing the JDK Silently</a></li>
+    </ul>
+  </li>
+  <li><a href="#path">Updating the PATH Variable (Optional)</a></li>
+  <li><a href="#Running">Starting to Use the JDK</a></li>
+</ul>
+
+
+<h3><a name="Check" id="Check">Downloading the Installer</a></h3>
+
+<p>If you save the self-installing executable file to disk without running it from the download page at the web site, note that its byte size provided on the download page. After the download has completed, verify that you have downloaded the full, uncorrupted software file.</p>
+
+<!-- ********************************************** -->
+
+<h3><a name="Run" id="Run">Running the JDK Installer</a></h3>
+
+<p>You must have administrative permissions in order to install the JDK on Microsoft Windows.</p>
+
+<p>The file <tt>jdk-7&lt;version&gt;-windows-i586-i.exe</tt> is the JDK installer for 32-bit systems. The file <tt>jdk-7&lt;version&gt;-windows-x64.exe</tt> is the JDK installer for 64-bit systems. If you downloaded either file instead of running it directly from the web site, double-click the installer's icon. Then, follow the instructions the installer provides. The installer may ask you to reboot your computer. When finished with the installation, you can delete the downloaded file to recover disk space.</p>
+
+<p><strong>Note</strong>: Installers for JDK 7u6 and later install the JavaFX SDK and integrate it into the JDK installation directory. Installers for JDK 7u2 to 7u5 install the JDK first, then start the JavaFX SDK installer, which installs JavaFX SDK in the default directory <code>C:\Program Files\Oracle\JavaFX 2.0 SDK</code> or <code>C:\Program Files (x86)\Oracle\JavaFX 2.0 SDK</code> on 64-bit operating systems. If you want to install the JavaFX SDK (version 2.0.2) with JDK 7u1 or earlier, see <a href="http://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm">Installing JavaFX</a> for more information.</p>
+
+<!-- ********************************************** -->
+
+<h3><a id="start-menu" name="start-menu">Java Start Menu</a></h3>
+<p>Starting with JDK 7u40 release, Java menu items are added to the Windows Start Menu to provide easy access to Java resources.</p>
+<p>During JDK install, a <code>Java Development Kit</code> folder is created in the Windows Start Menu, which contains the following items:</p>
+<ul>
+    <li>Reference Documentation: opens the Online API documentation web page.</li>
+    <li>Java Mission Control: opens the <code>Java Mission Control</code> profiling and diagnostics tools suite.</li>
+</ul>
+<p>During JDK install and uninstall processes, the appropriate start menu items are updated to be associated with the latest JDK version on the system.</p>
+<p><strong>Note:</strong> Java Mission Control is a commercial feature available to users with a Java SE Advanced license.</p>
+
+
+<!-- ********************************************** -->
+
+<h4><a name="jdk-silent-installation">Installing the JDK Silently</a></h4>
+
+<p>You can perform a silent, non-interactive, JDK installation by using the command-line arguments. The following table lists example installation scenarios and the commands required to perform them:</p>
+
+<table cellspacing="0" cellpadding="3" border="1" summary="Silent, non-interactive JDK installation scenarios">
+
+  <tr>
+    <th>Installation Scenario</th>
+    <th>Command</th>
+  </tr>
+  <tr>
+    <td>Install the public JRE in silent mode</td>
+    <td><pre>jdk.exe /s</pre></td>
+  </tr>
+  <tr>
+    <td>Install development tools and source code in silent mode but not the public JRE</td>
+    <td><pre>jdk.exe /s ADDLOCAL="ToolsFeature,SourceFeature"</pre></td>
+  </tr>
+  <tr>
+    <td>Install development tools, source code, and the public JRE in silent mode</td>
+    <td><pre>jdk.exe /s ADDLOCAL="ToolsFeature,SourceFeature,PublicjreFeature"</pre></td>
+  </tr>
+  <tr>
+    <td>Install the public JRE in the specified directory <code>C:\test\</code> in silent mode</td>
+    <td><pre>jdk.exe /s /INSTALLDIRPUBJRE=C:\test\</pre></td>
+  </tr>
+
+</table>
+
+<!-- ********************************************** -->
+
+<a name="Environment" id="Environment"></a>
+<h3><a name="path" id="path">Updating the PATH Environment Variable (Optional)</a></h3>
+
+<p>You can run the JDK without setting the <code>PATH</code> environment variable, or you can optionally set it so that you can conveniently run the JDK executable files (<code>javac.exe</code>, <code>java.exe</code>, <code>javadoc.exe</code>, and so forth) from any directory without having to type the full path of the command. If you do not set the <code>PATH</code> variable, you need to specify the full path to the executable file every time you run it, such as:</p>
+
+<pre>C:\&gt; <b>"C:\Program Files\Java\jdk1.7.0\bin\javac" MyClass.java</b></pre>
+
+<p>It is useful to set the <code>PATH</code> variable permanently so it will persist after rebooting.</p>
+
+<p>To set the <code>PATH</code> variable permanently, add the full path of the <code>jdk1.7.0\bin</code> directory to the <code>PATH</code> variable. Typically, this full path looks something like <code>C:\Program Files\Java\jdk1.7.0\bin</code>. Set the <code>PATH</code> variable as follows on Microsoft Windows:</p>
+
+<ol>
+  <li><p>Click <strong>Start</strong>, then <strong>Control Panel</strong>, then <strong>System</strong>.</p></li>
+  <li><p>Click <strong>Advanced</strong>, then <strong>Environment Variables</strong>.</p></li>
+  <li><p>Add the location of the <code>bin</code> folder of the JDK installation for the <code>PATH</code> variable in <strong>System Variables</strong>. The following is a typical value for the <code>PATH</code> variable:</p>
+  <pre>C:\WINDOWS\system32;C:\WINDOWS;<strong>C:\Program Files\Java\jdk1.7.0\bin</strong></pre>
+
+  </li>
+</ol>
+
+<p><strong>Note</strong>:</p>
+<ul>
+<li>The <strong>PATH</strong> environment variable is a series of directories separated by semicolons (<code>;</code>) and is not case-sensitive. Microsoft Windows looks for programs in the <code>PATH</code> directories in order, from left to right.</li>
+<li>You should only have one <strong>bin</strong> directory for a JDK in the path at a time. Those following the first instance are ignored.</li>
+<li>If you are not sure where to add the path, add it to the right of the value of the <code>PATH</code> variable.</li>
+<li>The new path takes effect in each new command window you open after setting the <code>PATH</code> variable.</li>
+</ul>
+
+<!-- ********************************************** -->
+
+
+<h3><a name="Running" id="Running">Starting to Use the JDK</a></h3>
+
+<p>If you are new to developing and running programs in the Java programming language, see <a href="http://download.oracle.com/javase/tutorial/">The Java Tutorial</a> online for some guidance. Note especially the tutorial trails under the heading <em>Trails Covering the Basics</em>.</p>
+
+<p>You can also download the JDK documentation from the <a href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">Java SE Downloads</a> page.</p>
+
+<!-- ********************************************** -->
+
+
+<h2><a name="uninstall" id="uninstall">Uninstalling the JDK</a></h2>
+
+<p>If you should ever want to uninstall the JDK, use the "Add/Remove Programs" utility in the Microsoft Windows Control Panel.</p>
+
+<!-- ********************************************** -->
+
+<h2><a name="installed-directory-tree">Installed Directory Tree</a></h2>
+
+<p>See <a href="http://download.oracle.com/javase/7/docs/technotes/tools/windows/jdkfiles.html">JDK and JRE File Structure</a> for a description of the directory structure of the JDK. (Note that the file structure of the JRE is identical to that of the JDK's <code>jre</code> directory.)</p>
+
+
+<!-- ********************************************** -->
+
+<h2><a name="troubleshooting" id="troubleshooting">Installation Troubleshooting</a></h2>
+
+<p>Below are some tips for working around problems that are sometimes seen during or following an installation. For more troubleshooting information, see <a href="../../tsg/">Troubleshooting Java SE</a>:</p>
+
+<ul>
+  <li><a href="#error-message-corrupt-cabinet">Corrupt Cabinet file</a></li>
+  <li><a href="#error-message-compression">System Error During Decompression</a></li>
+  <li><a href="#error-message-dos-mode">Program Cannot Be Run in DOS Mode</a></li>
+  <li><a href="#private">Private Versus Public JRE</a></li>
+  <li><a href="#notepad">Creating Source Files in Notepad</a></li>
+  <li><a href="#locales">Characters That Are Not Part of the System Code Page</a></li>
+</ul>
+
+<h3><a name="error-message-corrupt-cabinet">Corrupt Cabinet File</a></h3>
+
+<p>If you see the error message "corrupt cabinet file," then the file you have downloaded is corrupted. Check the file size against the expected file size listed in these instructions. If sizes do not match, try downloading the bundle again. (A cabinet file contains compressed application, data, resource, and DLL files.)</p>
+
+<h3><a name="error-message-compression">System Error During Decompression</a></h3>
+
+<p>If you see the error message "system error during decompression," then you might not have enough space on the disk that contains your <code>TEMP</code> directory.</p>
+
+<h3><a name="error-message-dos-mode">Program Cannot Be Run in DOS Mode</a></h3>
+
+<p>If you see the error message "This program cannot be run in DOS mode," then do the following:</p>
+
+  <ol>
+    <li>Open the MS-DOS shell or Command Prompt window.</li>
+    <li>Right-click the title bar.</li>
+    <li>Select <strong>Properties</strong>.</li>
+    <li>Choose the <strong>Program</strong> tab.</li>
+    <li>Click the <strong>Advanced</strong> button.</li>
+    <li>Ensure that the item "Prevent MS-DOS-based programs from detecting Windows" is not selected.</li>
+    <li>Select <strong>OK</strong>.</li>
+    <li>Select <strong>OK</strong> again.</li>
+    <li>Exit the MS-DOS shell.</li>
+    <li>Restart your computer.</li>
+  </ol>
+
+
+<h3><a name="private" id="private">Private Versus Public JRE</a></h3>
+
+<p>Installing the JDK also installs a private JRE and optionally a public copy. The private JRE is required to run the tools included with the JDK. It has no registry settings and is contained entirely in a <code>jre</code> directory (typically at <code>C:\Program Files\jdk1.7.0\jre</code>) whose location is known only to the JDK.
+
+On the other hand, the public JRE can be used by other Java applications,
+is contained outside the JDK (typically at <code>C:\Program Files\Java\jre1.7.0</code>),
+is registered with the Windows registry (at <code>HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft</code>),
+can be removed using Add/Remove Programs,
+might be registered with browsers,
+and might have the <code>java.exe</code> file copied to the Windows system directory (which would make it the default system Java platform).</p>
+
+
+<h3><a name="notepad" id="notepad">Source Files in Notepad</a></h3>
+
+<p>In Microsoft Windows, when you create a new file in Microsoft Notepad and then save it for the first time, Notepad usually adds the <code>.txt</code> extension to the file name. Therefore, a file you name <code>Test.java</code> is saved as <code>Test.java.txt</code>. It is important to note that you cannot see the <code>.txt</code> extension unless you turn on the viewing of file extensions (in Microsoft Windows Explorer, unselect "Hide file extensions for known file types" under Folder Options). To prevent the <code>.txt</code> extension, enclose the file name in quotation marks, such as <code>"Test.java"</code>, when typing it into the Save As dialog box.</p>
+
+<p>On the other hand, Microsoft WordPad does not add the <code>.txt</code> extension if you specify another extension. However, you must save the file as "Text Document".</p>
+
+<!-- 
+(removed due to Microsoft's discontinued support of Win XP from April 8, 2014 - Devika G )
+
+<h3><a name="locales" id="locales">Characters That Are Not Part of the System Code Page</a></h3>
+
+<p>On Windows XP, it is possible to name directories using characters that are not part of the system locale's code page. If such a directory is part of the installation path, then generic error 1722 occurs, and installation is not completed. Error 1722 is a Windows Installer error code. It indicates that the installation process has failed. The exact reason for this error is not known at this time.</p>
+
+<p>To prevent this problem, ensure that the user and system locales are identical, and that the installation path contains only characters that are part of the system locale's code page. User and system locales can be set in the Regional Options or Regional Settings control panel.</p>
+
+<p>The associated bug number is <a href="http://developer.java.sun.com/developer/bugParade/bugs/4895647.html">4895647</a>.</p>
+-->
+
+<div id="javasefooter">
+<div class="hr">
+<hr /></div>
+<div id="javasecopyright">
+<a href="../../../legal/cpyr.html">Copyright &#169;</a> 1993, 2014, Oracle
+and/or its affiliates. All rights reserved.
+</div>
+
+<div id="javasecontactus">
+<a href="http://docs.oracle.com/javase/feedback.html">Contact Us</a>
+</div>
+</div>
+</div>
+
+<!-- Start SiteCatalyst code   -->
+<script language="JavaScript" type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+<script language="JavaScript" type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+ 
+<!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+<!--  Below code will send the info to Omniture server -->
+<script language="javascript" type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+ 
+<!-- End SiteCatalyst code -->
+
+</body>
+</html>

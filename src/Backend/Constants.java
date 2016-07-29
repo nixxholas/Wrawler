@@ -23,7 +23,7 @@ import javax.swing.JScrollPane;
 public class Constants {
     
     // Every single SearchEngine we add will be stored and be available globally
-    public static List<ResultObject> cachedResults = new ArrayList<ResultObject>();
+    public static Queue<ResultObject> cachedResults = new ArrayDeque<ResultObject>();
     public static List<SearchEngine> searchEngines = new ArrayList<SearchEngine>();
     
     /**
