@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import static Backend.BackendServices.clearDirectory;
 import static Backend.Constants.mainFrame;
 import static Backend.Constants.progBar;
 import static Backend.Constants.progBarProgress;
@@ -40,6 +41,7 @@ public class MainFrame extends javax.swing.JFrame {
         textBox = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
         mainLabel = new javax.swing.JLabel();
+        clearCacheBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -63,18 +65,31 @@ public class MainFrame extends javax.swing.JFrame {
         mainLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mainLabel.setText("Wrawler");
 
+        clearCacheBtn.setText("Clear Cache");
+        clearCacheBtn.setName(""); // NOI18N
+        clearCacheBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearCacheBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(textBox, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(86, 86, 86)
+                                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textBox, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(clearCacheBtn)))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -86,7 +101,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(textBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addGap(3, 3, 3)
+                .addComponent(clearCacheBtn)
+                .addContainerGap())
         );
 
         pack();
@@ -124,6 +141,12 @@ public class MainFrame extends javax.swing.JFrame {
         mainFrame.setVisible(false);
     }//GEN-LAST:event_searchBtnActionPerformed
 
+    private void clearCacheBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearCacheBtnActionPerformed
+        // TODO add your handling code here:
+        clearDirectory("src/Download");
+        clearDirectory("src/Caches");
+    }//GEN-LAST:event_clearCacheBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -160,6 +183,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton clearCacheBtn;
     private javax.swing.JLabel mainLabel;
     private static javax.swing.JButton searchBtn;
     public static javax.swing.JTextField textBox;

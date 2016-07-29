@@ -11,8 +11,6 @@ import static Interface.MainFrame.textBox;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 
 /**
  * Universal Class Servicing Class
@@ -37,6 +35,22 @@ public class BackendServices {
         rightPanel.removeAll();
     }
 
+    public static void clearDirectory(String path) {
+        File directory = new File(path);
+
+        // Get all files in directory
+        File[] files = directory.listFiles();
+        for (File file : files) {
+            // Delete each file
+
+            if (!file.delete()) {
+                // Failed to delete file
+
+                System.out.println("Failed to delete " + file);
+            }
+        }
+    }
+
     public static void loadCache() {
         /**
          * Directory Files Loader
@@ -53,7 +67,7 @@ public class BackendServices {
                     ObjectInputStream ois = new ObjectInputStream(fis);
                     ResultObject ro = (ResultObject) ois.readObject();
                     ois.close();
-
+                    
                     // Add the object into the cachedResults ArrayDeque
                     cachedResults.add(ro);
                 } catch (Exception ex) {
