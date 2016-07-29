@@ -32,26 +32,6 @@ import javax.swing.JScrollPane;
  * @author Nixholas
  */
 public class PageRead {
-    // Every single SearchEngine we add will be stored and be available globally
-    public static List<ResultObject> cachedResults = new ArrayList<ResultObject>();
-    public static List<SearchEngine> searchEngines = new ArrayList<SearchEngine>();
-
-    // Default JFrame of the Program
-    public static MainFrame mainFrame = new MainFrame();
-
-    /**
-     * Search Result JFrame
-     */
-    // Create a new JFrame and set it up properly for use
-    public static JFrame resultFrame = new JFrame();
-    public static JPanel leftPanel = new JPanel();
-    public static JPanel rightPanel = new JPanel();
-    public static JEditorPane jep = new JEditorPane();
-    public static JScrollPane scrollPane = new JScrollPane(jep);
-    
-    // Create a mainPanel for uniform layout
-    public static JPanel mainPanel = new JPanel();    
-        
     /**
      * Custom Page Reader
      *
@@ -188,11 +168,9 @@ public class PageRead {
         
         for (ResultObject RO : Results) {            
             
+            // Call a thread to run()
             threadPoolExecutor.execute(RO);
             
-            // Save each of the URLs as files.
-            //printPage(RO);
-
             JButton button = new JButton(RO.getName());
 
             /**

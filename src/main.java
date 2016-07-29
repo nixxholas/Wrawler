@@ -1,15 +1,13 @@
 
 import static Backend.BackendServices.loadCache;
-import static Backend.PageRead.cachedResults;
-import static Backend.PageRead.jep;
-import static Backend.PageRead.leftPanel;
-import static Backend.PageRead.mainFrame;
-import static Backend.PageRead.mainPanel;
-import static Backend.PageRead.resultFrame;
-import static Backend.PageRead.rightPanel;
-import static Backend.PageRead.scrollPane;
-import static Backend.PageRead.searchEngines;
-import Backend.ResultObject;
+import static Backend.Constants.jep;
+import static Backend.Constants.leftPanel;
+import static Backend.Constants.mainFrame;
+import static Backend.Constants.mainPanel;
+import static Backend.Constants.resultFrame;
+import static Backend.Constants.rightPanel;
+import static Backend.Constants.scrollPane;
+import static Backend.Constants.searchEngines;
 import static Backend.ResultObject.initializeRO;
 import Backend.SearchEngine;
 import java.awt.GridLayout;
@@ -33,10 +31,6 @@ public class main {
         
         // Load the Cache into memory
         loadCache();
-        
-        for (ResultObject ro : cachedResults) {
-            System.out.println(ro.getName());
-        }
         
         // Configure the Panel and Frame properly before use
         mainPanel.setLayout(new GridLayout(0, 2));

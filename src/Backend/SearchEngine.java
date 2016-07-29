@@ -5,7 +5,9 @@
  */
 package Backend;
 
+import java.util.ArrayDeque;
 import java.util.List;
+import java.util.Queue;
 
 /**
  *
@@ -19,7 +21,7 @@ public class SearchEngine extends Thread {
     private String regexForSearchObject;
     private String pureResult; // Stores the actual search result
     private String trimmedResult; // Stores the search result after RegEx trimming
-    private List<ResultObject> results;
+    private Queue<ResultObject> results = new ArrayDeque<>();
     //private List<String> resultTitle; // Stores all the titles of the result
     //private List<String> resultUrl; // Stores all the URLs of the result
     //private List<String> resultDescription; // Stores all the descriptions of the result

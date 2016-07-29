@@ -95,6 +95,9 @@ public class ResultObject implements Serializable, Runnable {
 
         // Finally, we can re-create our collar object
         //this.collar = new Collar(colour, size);
+        
+        in.defaultReadObject();
+        
     } 
     
     /**

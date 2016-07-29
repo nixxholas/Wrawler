@@ -5,8 +5,8 @@
  */
 package Backend;
 
-import static Backend.PageRead.cachedResults;
-import static Backend.PageRead.rightPanel;
+import static Backend.Constants.cachedResults;
+import static Backend.Constants.rightPanel;
 import static Interface.MainFrame.textBox;
 import java.io.File;
 import java.io.FileInputStream;

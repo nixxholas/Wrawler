@@ -5,6 +5,9 @@
  */
 package Interface;
 
+import static Backend.Constants.mainFrame;
+import static Backend.Constants.resultFrame;
+import static Backend.Constants.searchEngines;
 import static Backend.PageRead.*;
 import java.io.IOException;
 import java.util.logging.Level;
