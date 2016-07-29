@@ -5,6 +5,8 @@
  */
 package Backend;
 
+import static Backend.Cacher.initializeCache;
+import static Backend.ResultObject.initializeRO;
 import Interface.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -59,45 +61,57 @@ public class PageRead {
     /**
      * Page Reader method adapted from SP Blackboard
      *
+     * Deprecated.
+     * 
      * @param pageAddr
      * @return
      */
-    public static StringBuilder printPage(ResultObject inRO) {
-        try {
-            URL url = new URL(inRO.getUrl());
-            PrintWriter writer = new PrintWriter(inRO.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-
-            String line, finalResult = "";
-            StringBuilder sb = new StringBuilder();
-            while ((line = reader.readLine()) != null) {
-                finalResult += line + "\n";
-                sb.append(line + "\n");
-                writer.println(line);
-            }
-
-            inRO.setResultPage(finalResult);
-            reader.close();
-            writer.close();
-            return sb;
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return new StringBuilder("");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new StringBuilder("");
-        }
-    }
+//    public static StringBuilder printPage(ResultObject inRO) {
+//        try {
+//            URL url = new URL(inRO.getUrl());
+//            PrintWriter writer = new PrintWriter(inRO.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
+//
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+//
+//            String line, finalResult = "";
+//            StringBuilder sb = new StringBuilder();
+//            while ((line = reader.readLine()) != null) {
+//                finalResult += line + "\n";
+//                sb.append(line + "\n");
+//                writer.println(line);
+//            }
+//
+//            inRO.setResultPage(finalResult);
+//            reader.close();
+//            writer.close();
+//            return sb;
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//            return new StringBuilder("");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return new StringBuilder("");
+//        }
+//    }
 
     /**
      * Custom Page Reader
      *
-     * @param arg
-     *
-     * Google Link Tag RegEx (<h3 class="r">)(.+?)(<\/h3>)
+     * @param se
+     * 
+     * SearchEngine Object that is going to be used to search.
+     * 
+     * @param result
+     * 
+     * The input that the user wants to search up on.
+     * 
+     * @return 
+     * 
+     * Returns a result to inform the Frame class if the search was successful
+     * 
+     * @throws java.io.IOException
      */
-    public synchronized static String getUrlSource(SearchEngine se, String result) throws IOException {
+    public static String getUrlSource(SearchEngine se, String result) throws IOException {
         /**
          * Note that this Regular Expression DOES take in the open AND closed
          * inverted commas that is beside the URL.
@@ -259,42 +273,6 @@ public class PageRead {
         threadPoolExecutor.shutdown();
         
         return searchResult;
-    }
-
-    public static void main(String arg[]) {        
-        // Configure the Panel and Frame properly before use
-        mainPanel.setLayout(new GridLayout(0, 2));
-        leftPanel.setLayout(new GridLayout(0, 1));
-        rightPanel.setLayout(new GridLayout(0, 1));
-
-        // We then add the panel into the frame
-        mainPanel.add(leftPanel);
-        mainPanel.add(rightPanel);
-        resultFrame.add(mainPanel);
-
-        // Setup the frame as well
-        resultFrame.setSize(1200, 900);
-        resultFrame.setLocationRelativeTo(null);
-        resultFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Setup the browser view
-        jep.setEditable(false);
-        jep.setSize(0, 1200);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        leftPanel.add(scrollPane);
-        
-        // Initialize Google's Search Information
-        SearchEngine Google = new SearchEngine("https://www.google.com/search?q=", "(<h3 class=\"r\">)(.+?)(<\\/h3>)", "(?<=\">)(.+?)(?=<a)", "(?<=\\)\\\">)(.+?)(?=<)");
-        Google.setName("Google");
-        searchEngines.add(Google);
-
-        // Initialize Bing's Search Information
-        SearchEngine Bing = new SearchEngine("https://bing.com/search?q=", "(<li class=\"b_algo\">)(.+?)(<\\/li>)", "(?<=<h2>)(.+?)(?=<\\/h2>)", "(?<=\">)(.+?)(?=<\\/a>)");
-        Bing.setName("Bing");
-        searchEngines.add(Bing);
-
-        //searchEngines.add(new SearchEngine("DuckDuckGo", "https://duckduckgo.com/?q="));
-        mainFrame.setVisible(true);
-    }
+    }   
 
 }

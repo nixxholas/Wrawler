@@ -78,6 +78,12 @@ public class ResultObject implements Runnable {
             }
 
             this.setResultPage(finalResult);
+            
+            // After the object has been completely initialized, we'll
+            // serialize it to keep it for future use.
+            Cacher cache = new Cacher(this.name, this.getUrl(), this.getResultPage());
+            
+            
             reader.close();
             writer.close();
         } catch (Exception ex) {
@@ -86,7 +92,7 @@ public class ResultObject implements Runnable {
     }
     
     // Create a folder specially for storing the HTML files.
-    public void initializeRO() {
+    public static void initializeRO() {
         File file = new File("/WebPages");
         if (!file.exists()) {
             if (file.mkdir()) {
