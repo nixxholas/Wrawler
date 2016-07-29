@@ -34,6 +34,7 @@ public class ResultObject implements Serializable, Runnable {
     private String url;
     private String userQuery;
     private String resultPage = "";
+    public SearchEngine queryingEngine;
 
     public ResultObject(String name, String url, String userQuery) {
         this.name = name;
@@ -82,13 +83,13 @@ public class ResultObject implements Serializable, Runnable {
      */
     private boolean findResults() {
         // Check with the current queue
-        if (searchQueue.size() > 0) {
-            for (ResultObject RO : searchQueue) {
-                if (RO.url.equals(this.url)) {
-                    return true;
-                }
-            }
-        }
+//        if (searchQueue.size() > 0) {
+//            for (ResultObject RO : searchQueue) {
+//                if (RO.url.equals(this.url)) {
+//                    return true;
+//                }
+//            }
+//        }
         
         // Check against the history of results
         for (ResultObject RO : cachedResults) {
@@ -96,6 +97,7 @@ public class ResultObject implements Serializable, Runnable {
                 return true;
             }
         }
+        
         return false;
     }
     
@@ -189,11 +191,13 @@ public class ResultObject implements Serializable, Runnable {
         try {
             // Don't download if we can find it
             if (this.findResults()) {
+                    System.out.println("hami");
                 // And then we'll set all of it's data from the original
                 this.setFromCache();
             } else {
                 // Since we can't find it, we download it
 
+                    System.out.println("Tryingg");
                 URL url = new URL(this.getUrl());
                 PrintWriter writer = new PrintWriter("src/Download/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
 
@@ -244,7 +248,7 @@ public class ResultObject implements Serializable, Runnable {
                      *
                      * http://stackoverflow.com/questions/10601676/display-a-webpage-inside-a-swing-application
                      */
-
+                    
                     try {
                         // Pulls the file path
                         File file = new File("src/Download/" + resultName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
