@@ -6,6 +6,8 @@
 package Interface;
 
 import static Backend.Constants.mainFrame;
+import static Backend.Constants.progBar;
+import static Backend.Constants.progBarProgress;
 import static Backend.Constants.resultFrame;
 import static Backend.Constants.searchEngines;
 import static Backend.PageRead.*;
@@ -95,7 +97,9 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_textBoxActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        // TODO add your handling code here:
+        // Initialize a progress bar for the user       
+        progBar.setValue(progBarProgress);
+        
         String result = textBox.getText();
         
         for (int i = 0; i < searchEngines.size(); i++) {
@@ -104,11 +108,15 @@ public class MainFrame extends javax.swing.JFrame {
                 
                 // Set the trimmedResult into the SearchEngine Objects
                 searchEngines.get(i).setTrimmedResult(getUrlSource(searchEngines.get(i), result));
+                progBarProgress += 100/searchEngines.size();
                 
             } catch (IOException ex) {
                 Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
+        progBarProgress = 100;
+        progBar.setValue(progBarProgress);
         
         // Once we're done with loading the searches, we'll show the frame.
         // and hide the mainFrame (which is called newFrame)
@@ -150,10 +158,10 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel mainLabel;
-    private javax.swing.JButton searchBtn;
+    private static javax.swing.JButton searchBtn;
     public static javax.swing.JTextField textBox;
     // End of variables declaration//GEN-END:variables
 }

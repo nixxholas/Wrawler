@@ -6,7 +6,12 @@
 package Backend;
 
 import static Backend.Constants.cachedResults;
+import static Backend.Constants.jep;
+import static Backend.Constants.mainFrame;
+import static Backend.Constants.rightPanel;
 import static Backend.Constants.searchQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -17,19 +22,19 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.JButton;
 
 /**
  *
  * @author Nixholas
  */
 public class ResultObject implements Serializable, Runnable {
+
     private String name;
     private String url;
     private String userQuery;
     private String resultPage = "";
-    
+
     public ResultObject(String name, String url, String userQuery) {
         this.name = name;
         this.url = url;
@@ -44,7 +49,7 @@ public class ResultObject implements Serializable, Runnable {
     public void setResultPage(String resultPage) {
         this.resultPage = resultPage;
     }
-        
+
     public String getName() {
         return name;
     }
@@ -68,76 +73,68 @@ public class ResultObject implements Serializable, Runnable {
     public void setUserQuery(String userQuery) {
         this.userQuery = userQuery;
     }
-    
+
     /**
      * Find Results that have been found from previous few searches
-     * 
+     *
      * @param result
-     * @return 
+     * @return
      */
-    public static List<ResultObject> findResults(String result) {
-        List<ResultObject> foundResults = new ArrayList();
-        
-        for (ResultObject RO : cachedResults) {
-            if (RO.userQuery.equals(result)) {
-                foundResults.add(RO);
+    private boolean findResults() {
+        // Check with the current queue
+        if (searchQueue.size() > 0) {
+            for (ResultObject RO : searchQueue) {
+                if (RO.url.equals(this.url)) {
+                    return true;
+                }
             }
         }
         
-        return foundResults;
-    }
-    
-    public static boolean urlExists(String inURL) {
-        
+        // Check against the history of results
         for (ResultObject RO : cachedResults) {
-            if (RO.url.equals(inURL)) {
+            if (RO.url.equals(this.url)) {
                 return true;
             }
         }
-        
         return false;
     }
     
+    private void setFromCache() {
+        for (ResultObject RO : cachedResults) {
+            if (RO.url.equals(this.url)) {
+                this.name = RO.name;
+                this.resultPage = RO.resultPage;
+                this.url = RO.url;
+                // UserQuery is as defined by the user
+            }
+        }
+    }
+
     public static ResultObject getResultObject(String inURL) {
-        
+
         for (ResultObject RO : cachedResults) {
             if (RO.url.equals(inURL)) {
                 return RO;
             }
         }
-        
+
         // Definitely won't get here
         return new ResultObject("", "", "");
-    }
-    
-    // Checks the current ResultObject with the cachedResults
-    public synchronized boolean checkDupes() {
-        for (ResultObject ro : cachedResults) {
-            if (ro.name == this.name) {
-                // Since this exists, we'll remove it from the searchQueue
-                // and we'll use the old one instead
-                searchQueue.remove(this);
-                searchQueue.add(this);
-                
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
      * Write and Read Object adapted from Practical 7
-     * 
+     *
      * @param out
-     * 
+     *
      * The incoming object that will be serialized
-     * 
+     *
      * @throws IOException
-     * 
+     *
      * The exception speaks for itself
-     * 
-     * @throws ClassNotFoundException 
-     * 
+     *
+     * @throws ClassNotFoundException
+     *
      * The exception speaks for itself
      */
     private void writeObject(ObjectOutputStream out) throws IOException, ClassNotFoundException {
@@ -152,26 +149,24 @@ public class ResultObject implements Serializable, Runnable {
         // Because the data that is read in is an Object,
         // we need to typecast it.
         //String colour = (String)in.readObject();
-
         // Finally, we can re-create our collar object
         //this.collar = new Collar(colour, size);
-        
         in.defaultReadObject();
-        
-    } 
-    
+
+    }
+
     /**
      * Directory Setup Method
-     * 
+     *
      * Adapted from:
-     * 
+     *
      * https://www.mkyong.com/java/how-to-create-directory-in-java/
      */
     // Create a folder specially for storing the HTML files.
     public static void initializeRO() {
         File file = new File("src/Download");
         File file2 = new File("src/Caches");
-        
+
         if (!file.exists()) {
             if (file.mkdir()) {
                 System.out.println("The download directory is created!");
@@ -179,7 +174,7 @@ public class ResultObject implements Serializable, Runnable {
                 System.out.println("Failed to create directory!");
             }
         }
-        
+
         if (!file2.exists()) {
             if (file2.mkdir()) {
                 System.out.println("The Cache directory is created!");
@@ -187,42 +182,87 @@ public class ResultObject implements Serializable, Runnable {
                 System.out.println("Failed to create directory!");
             }
         }
-    }  
-    
+    }
+
     @Override
-    public void run() {        
+    public void run() {
         try {
-            URL url = new URL(this.getUrl());
-            PrintWriter writer = new PrintWriter("src/Download/" +this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
+            // Don't download if we can find it
+            if (this.findResults()) {
+                // And then we'll set all of it's data from the original
+                this.setFromCache();
+            } else {
+                // Since we can't find it, we download it
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+                URL url = new URL(this.getUrl());
+                PrintWriter writer = new PrintWriter("src/Download/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
 
-            String line, finalResult = "";
-            StringBuilder sb = new StringBuilder();
-            while ((line = reader.readLine()) != null) {
-                finalResult += line + "\n";
-                sb.append(line + "\n");
-                writer.println(line);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+
+                String line, finalResult = "";
+                StringBuilder sb = new StringBuilder();
+                while ((line = reader.readLine()) != null) {
+                    finalResult += line + "\n";
+                    sb.append(line + "\n");
+                    writer.println(line);
+                }
+
+                this.setResultPage(finalResult);
+
+                // Create a serialized form of the object
+                FileOutputStream fos = new FileOutputStream("src/Caches/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".ser");
+                ObjectOutputStream os = new ObjectOutputStream(fos);
+
+                // Caches the object
+                os.writeObject(this);
+
+                // We'll have to add it to the cachedResults as well
+                // incase the user tries to searcha again
+                cachedResults.add(this);
+
+                reader.close();
+                writer.close();
             }
 
-            this.setResultPage(finalResult);
+            // Ultimately, we'll have to create the button
             
-            // Create a serialized form of the object
-            FileOutputStream fos = new FileOutputStream("src/Caches/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".ser");
-            ObjectOutputStream os = new ObjectOutputStream(fos);
+            JButton button = new JButton(this.getName());
             
-            // Caches the object
-            os.writeObject(this);
+            // For the action listener
+            String resultName = this.getName();
             
-            // We'll have to add it to the cachedResults as well
-            // incase the user tries to searcha again
-            cachedResults.add(this);
+            /**
+             * Action Listener adapted from:
+             *
+             * http://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
+             */
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    /**
+                     * Webpage Viewer within the Java Project
+                     *
+                     * http://stackoverflow.com/questions/10601676/display-a-webpage-inside-a-swing-application
+                     */
+
+                    try {
+                        // Pulls the file path
+                        File file = new File("src/Download/" + resultName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
+                        
+                        jep.setPage(file.toURI().toURL());
+                        mainFrame.pack();
+                    } catch (Exception ex) {
+                        jep.setContentType("text/html");
+                        jep.setText("<html>Could not load the page.</html>");
+                    }
+                }
+            });
+
+            rightPanel.add(button);
             
-            reader.close();
-            writer.close();
         } catch (Exception ex) {
-            
+
         }
     }
-    
+
 }

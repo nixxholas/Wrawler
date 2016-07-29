@@ -11,6 +11,8 @@ import static Interface.MainFrame.textBox;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 
 /**
  * Universal Class Servicing Class
@@ -51,7 +53,7 @@ public class BackendServices {
                     ObjectInputStream ois = new ObjectInputStream(fis);
                     ResultObject ro = (ResultObject) ois.readObject();
                     ois.close();
-                    
+
                     // Add the object into the cachedResults ArrayDeque
                     cachedResults.add(ro);
                 } catch (Exception ex) {
@@ -65,4 +67,5 @@ public class BackendServices {
             // directories.
         }
     }
+
 }

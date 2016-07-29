@@ -5,17 +5,8 @@
  */
 package Backend;
 
-import static Backend.Constants.jep;
-import static Backend.Constants.mainFrame;
-import static Backend.Constants.rightPanel;
 import static Backend.Constants.searchQueue;
-import static Backend.ResultObject.findResults;
-import static Backend.ResultObject.getResultObject;
-import static Backend.ResultObject.urlExists;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -28,7 +19,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JButton;
 
 /**
  *
@@ -68,7 +58,6 @@ public class PageRead {
         String searchResult = ""; // This will be the final output
         String trimmedSearchResults = ""; // This is after the initial RegEx
         String taggedSearchResults = ""; // After removing all the useless parts of the source
-        List<ResultObject> matchedHistory = findResults(result);
 
         //We'll need to filter the result String
         String parsedResult = result.replaceAll(" ", "+");
@@ -132,29 +121,28 @@ public class PageRead {
                 urlForObjects.add(searchObjectMatcher.group());
             }
         }
-
+        
         // We then start a RegEx for the title
         Pattern nameObjectPattern = Pattern.compile(nameObjectRegex);
         Matcher nameObjectMatcher = nameObjectPattern.matcher(taggedSearchResults);
 
-        // Put a counter for the List String we have made above.
-        int counter = 0;
+        int counter = 0;        
         while (!nameObjectMatcher.hitEnd()) {
             if (nameObjectMatcher.find()) {
                 // If the URL result does not exist, we'll add it in
-                if (!urlExists(urlForObjects.get(counter))) {
+                //if (!urlExists(urlForObjects.get(counter))) {
                     // .replaceAll trims the remaining HTML tags if they exist.
                     searchQueue.add(new ResultObject(nameObjectMatcher.group().replaceAll("\\<.*?>", ""), urlForObjects.get(counter), result));
                     // Parse the data in order for returning
                     searchResult += nameObjectMatcher.group().replaceAll("\\<.*?>", "") + "\t" + urlForObjects.get(counter) + "\n";
-                } else {
-                    ResultObject ro = getResultObject(urlForObjects.get(counter));
-                    // Else we'll add the object from the cachedResult instead
-                    searchQueue.add(ro);
-
-                    // Then parse the data in order for returning
-                    searchResult += ro.getName() + ro.getUrl() + "\n";
-                }
+//                } else {
+//                    ResultObject ro = getResultObject(urlForObjects.get(counter));
+//                    // Else we'll add the object from the cachedResult instead
+//                    searchQueue.add(ro);
+//
+//                    // Then parse the data in order for returning
+//                    searchResult += ro.getName() + ro.getUrl() + "\n";
+//                }
                 counter++;
             }
         }
@@ -168,7 +156,8 @@ public class PageRead {
          * target link as an individual HTML Page by itself so that our can
          * utilize it if needed.
          */
-        // Multi-Threading system for the pulling of views online        
+
+        // Multi-Threading system       
         ExecutorService threadPoolExecutor
                 = new ThreadPoolExecutor(
                         searchQueue.size(),
@@ -179,42 +168,9 @@ public class PageRead {
                 );
 
         for (ResultObject RO : searchQueue) {
-
             // Call a thread to run()
             // This method saves the link as HTML and a Cached file
             threadPoolExecutor.execute(RO);
-
-            JButton button = new JButton(RO.getName());
-
-            /**
-             * Action Listener adapted from:
-             *
-             * http://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
-             */
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    /**
-                     * Webpage Viewer within the Java Project
-                     *
-                     * http://stackoverflow.com/questions/10601676/display-a-webpage-inside-a-swing-application
-                     */
-
-                    try {
-                        // Pulls the file path
-                        File file = new File("src/Download/" + RO.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
-                        
-                        jep.setPage(file.toURI().toURL());
-                        mainFrame.pack();
-                    } catch (Exception ex) {
-                        System.out.println(ex);
-                        jep.setContentType("text/html");
-                        jep.setText("<html>Could not load the page.</html>");
-                    }
-                }
-            });
-
-            rightPanel.add(button);
         }
 
         // Awaits for all threads to complete before wrappin' up

@@ -13,6 +13,7 @@ import java.util.Queue;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 
 /**
@@ -52,5 +53,8 @@ public class Constants {
     
     // Create a mainPanel for uniform layout
     public static JPanel mainPanel = new JPanel();    
-        
+    
+    // Global Progress Bar for mainFrame    
+    public static int progBarProgress = 0;
+    public static JProgressBar progBar = new JProgressBar();
 }
