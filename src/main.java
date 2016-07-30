@@ -15,6 +15,10 @@ import Backend.SearchEngine;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
@@ -78,7 +82,7 @@ public class main {
                 rightPanel.removeAll();
                 rightPanel.revalidate();
                 rightPanel.repaint();
-                
+                                
                 // Remove the current search results
                 for (ResultObject ro : searchQueue) {
                     searchQueue.remove(ro);

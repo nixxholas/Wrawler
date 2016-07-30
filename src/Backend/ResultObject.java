@@ -86,7 +86,11 @@ public class ResultObject implements Serializable, Runnable {
         // Check with the current queue
 //        if (searchQueue.size() > 0) {
 //            for (ResultObject RO : searchQueue) {
-//                if (RO.url.equals(this.url)) {
+//                // If the URL is the same and if both search engines are not the same,
+//                // we'll remove it
+//                if (RO.url.equals(this.url) && !RO.queryingEngine.equals(this.queryingEngine)) {
+//                    searchQueue.remove(this);
+//                    // Then we let the program know something is found
 //                    return true;
 //                }
 //            }
@@ -102,7 +106,7 @@ public class ResultObject implements Serializable, Runnable {
         return false;
     }
     
-    private void setFromCache() {
+    private void setFromAdded() {
         for (ResultObject RO : cachedResults) {
             if (RO.url.equals(this.url)) {
                 searchQueue.add(RO);
@@ -113,12 +117,13 @@ public class ResultObject implements Serializable, Runnable {
 
     public static ResultObject getResultObject(String inURL) {
 
+        // Search from cache
         for (ResultObject RO : cachedResults) {
             if (RO.url.equals(inURL)) {
                 return RO;
             }
         }
-
+        
         // Definitely won't get here
         return new ResultObject("", "", "");
     }
@@ -192,7 +197,7 @@ public class ResultObject implements Serializable, Runnable {
             if (this.findResults()) {
                     System.out.println("hami");
                 // And then we'll set all of it's data from the original
-                this.setFromCache();
+                this.setFromAdded();
             } else {
                 // Since we can't find it, we download it
 
