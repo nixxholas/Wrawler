@@ -25,7 +25,9 @@ import javax.swing.JScrollPane;
  * @author Nixholas
  */
 public class main {
-    public static void main(String arg[]) {        
+    public static void main(String arg[]) {
+        // ----------------- START OF PROGRAM SETUP -------------------------- //
+        
         // Initialize the components of the program
         initializeRO();
         
@@ -49,9 +51,25 @@ public class main {
 
         // Setup the browser view
         jep.setEditable(false);
+        mainPanel.setLayout(new GridLayout(0, 2));
+        leftPanel.setLayout(new GridLayout(0, 1));
+        rightPanel.setLayout(new GridLayout(0, 5));
+
+        // We then add the panel into the frame
+        mainPanel.add(leftPanel);
+        mainPanel.add(rightPanel);
+        resultFrame.add(mainPanel);
+
+        // Setup the frame as well
+        resultFrame.setSize(1200, 900);
+        resultFrame.setLocationRelativeTo(null);
+        resultFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         jep.setSize(0, 1200);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         leftPanel.add(scrollPane);
+        
+        // -------------------- END OF PROGRAM SETUP --------------------- //
         
         // Initialize Google's Search Information
         SearchEngine Google = new SearchEngine("https://www.google.com/search?q=", "(<h3 class=\"r\">)(.+?)(<\\/h3>)", "(?<=\">)(.+?)(?=<a)", "(?<=\\)\\\">)(.+?)(?=<)");
@@ -64,6 +82,11 @@ public class main {
         searchEngines.add(Bing);
 
         //searchEngines.add(new SearchEngine("DuckDuckGo", "https://duckduckgo.com/?q="));
+
+        // Have yet to add Opera Search
+        
+        // Have yet to add Yahoo Search
+
         mainFrame.setVisible(true);
     }
 }

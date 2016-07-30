@@ -10,6 +10,7 @@ import static Backend.Constants.jep;
 import static Backend.Constants.mainFrame;
 import static Backend.Constants.rightPanel;
 import static Backend.Constants.searchQueue;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;

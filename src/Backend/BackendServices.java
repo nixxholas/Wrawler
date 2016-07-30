@@ -22,8 +22,7 @@ import java.io.ObjectInputStream;
  *
  * @author Nixholas
  */
-public class BackendServices {
-
+public class BackendServices {    
     /**
      * Method to reset the mainFrame
      */
