@@ -105,9 +105,7 @@ public class ResultObject implements Serializable, Runnable {
     private void setFromCache() {
         for (ResultObject RO : cachedResults) {
             if (RO.url.equals(this.url)) {
-                this.name = RO.name;
-                this.resultPage = RO.resultPage;
-                this.url = RO.url;
+                searchQueue.add(RO);
                 // UserQuery is as defined by the user
             }
         }

@@ -167,7 +167,6 @@ public class PageRead {
                         new LinkedBlockingQueue<Runnable>()
                 );
 
-                    System.out.println("Tryingg to multi thread");
         for (ResultObject RO : searchQueue) {
             // Call a thread to run()
             // This method saves the link as HTML and a Cached file

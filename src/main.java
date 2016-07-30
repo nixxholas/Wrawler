@@ -8,9 +8,13 @@ import static Backend.Constants.resultFrame;
 import static Backend.Constants.rightPanel;
 import static Backend.Constants.scrollPane;
 import static Backend.Constants.searchEngines;
+import static Backend.Constants.searchQueue;
+import Backend.ResultObject;
 import static Backend.ResultObject.initializeRO;
 import Backend.SearchEngine;
 import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
@@ -63,7 +67,24 @@ public class main {
         // Setup the frame as well
         resultFrame.setSize(1200, 900);
         resultFrame.setLocationRelativeTo(null);
-        resultFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        resultFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        resultFrame.addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                //resultFrame.setVisible(false);
+                mainFrame.setVisible(true);
+                rightPanel.removeAll();
+                rightPanel.revalidate();
+                rightPanel.repaint();
+                
+                // Remove the current search results
+                for (ResultObject ro : searchQueue) {
+                    searchQueue.remove(ro);
+                }
+            }
+        });
 
         jep.setSize(0, 1200);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);

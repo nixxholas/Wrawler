@@ -10,7 +10,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
-import javax.swing.JButton;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -36,8 +36,12 @@ public class Constants {
      * 3x Faster than LinkedList
      * http://microbenchmarks.appspot.com/run/limpbizkit@gmail.com/com.publicobject.blog.TreeListBenchmark
      * http://stackoverflow.com/questions/6129805/what-is-the-fastest-java-collection-with-the-basic-functionality-of-a-queue
+     * 
+     * Switched to ConcurrentLinkedQueue
+     * 
+     * http://stackoverflow.com/questions/616484/how-to-use-concurrentlinkedqueue
      */
-    public static Queue<ResultObject> searchQueue = new ArrayDeque<>();
+    public static Queue<ResultObject> searchQueue = new ConcurrentLinkedQueue<>();
 
     // Default JFrame of the Program
     public static MainFrame mainFrame = new MainFrame();
