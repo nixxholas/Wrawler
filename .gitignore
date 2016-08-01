@@ -3,6 +3,10 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# Wrawler based files
+.ser
+.html
+
 # Package Files #
 *.jar
 *.war
