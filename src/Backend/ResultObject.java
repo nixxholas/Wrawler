@@ -256,7 +256,7 @@ public class ResultObject implements Serializable, Runnable {
                     try {
                         // Pulls the file path
                         File file = new File("src/Download/" + resultName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
-                        
+                                                
                         jep.setPage(file.toURI().toURL());
                         mainFrame.pack();
                     } catch (Exception ex) {

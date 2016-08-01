@@ -37,16 +37,27 @@ public class BackendServices {
     public static void clearDirectory(String path) {
         File directory = new File(path);
 
+        /**
+         * Strong problem here,
+         * We'll have to find a way to identify the file deleting issue.
+         */
+        
         // Get all files in directory
         File[] files = directory.listFiles();
         for (File file : files) {
             // Delete each file
-
-            if (!file.delete()) {
-                // Failed to delete file
-
-                System.out.println("Failed to delete " + file);
+            try {
+                file.delete();
+            } catch (Exception ex) {
+                System.out.println(ex);
             }
+            
+//            
+//            if (!file.delete()) {
+//                // Failed to delete file
+//
+//                System.out.println("Failed to delete " + file);
+//            }
         }
     }
 
