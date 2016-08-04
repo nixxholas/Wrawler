@@ -5,15 +5,21 @@
  */
 package Backend;
 
-import java.util.ArrayDeque;
+import static Backend.Constants.searchQueue;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
  * @author nixho
  */
-public class SearchEngine extends Thread {
+public class SearchEngine extends Thread implements Runnable {
+
     private String baseUrl;
     private String regexSearchPattern;
     private String regexForName;
@@ -21,11 +27,10 @@ public class SearchEngine extends Thread {
     private String regexForSearchObject;
     private String pureResult; // Stores the actual search result
     private String trimmedResult; // Stores the search result after RegEx trimming
-    private Queue<ResultObject> results = new ArrayDeque<>();
+    private List<ResultObject> results = new ArrayList<>();
     //private List<String> resultTitle; // Stores all the titles of the result
     //private List<String> resultUrl; // Stores all the URLs of the result
     //private List<String> resultDescription; // Stores all the descriptions of the result
-
 
     public String getRegexForName() {
         return regexForName;
@@ -42,7 +47,6 @@ public class SearchEngine extends Thread {
 //    public void setRegexForURL(String regexForURL) {
 //        this.regexForURL = regexForURL;
 //    }
-
     public String getregexForSearchObject() {
         return regexForSearchObject;
     }
@@ -51,14 +55,18 @@ public class SearchEngine extends Thread {
         this.regexForSearchObject = regexForSearchObject;
     }
 
-    public Queue<ResultObject> getResults() {
+    public List<ResultObject> getResults() {
         return results;
     }
 
-    public void setResults(Queue<ResultObject> results) {
-        this.results = results;
+    public void addResult(ResultObject ro) {
+        this.results.add(ro);
     }
-    
+
+    public void removeResult(ResultObject ro) {
+        this.results.remove(ro);
+    }
+
     public SearchEngine(
             String baseUrl,
             String regexSearchPattern,
@@ -89,7 +97,7 @@ public class SearchEngine extends Thread {
     public String getRegexSearchPattern() {
         return regexSearchPattern;
     }
-    
+
     public void setRegexSearchPattern(String regexSearchPattern) {
         this.regexSearchPattern = regexSearchPattern;
     }
@@ -101,12 +109,44 @@ public class SearchEngine extends Thread {
 //    public void setResultTitle(List<String> resultTitle) {
 //        this.resultTitle = resultTitle;
 //    }
-
     public String getBaseUrl() {
         return baseUrl;
     }
 
     public void setBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
+    }
+
+    @Override
+    public void run() {
+
+        /**
+         * Devise a way to dynamically create a JFrame with it's panel and to
+         * preload data that we have parsed from the Search Engine
+         *
+         * And hyperlink each of the given link we have extracted from the HTML
+         * search result. Concurrently, we will also download and save the
+         * target link as an individual HTML Page by itself so that our can
+         * utilize it if needed.
+         */
+        // Multi-Threading system       
+        ExecutorService threadPoolExecutor
+                = new ThreadPoolExecutor(
+                        this.results.size(),
+                        this.results.size(),
+                        600000, // Give the program a decent amount of time
+                        TimeUnit.MILLISECONDS,
+                        new LinkedBlockingQueue<Runnable>()
+                );
+
+        for (ResultObject RO : this.results) {
+            // Call a thread to run()
+            // This method saves the link as HTML and a Cached file
+            threadPoolExecutor.execute(RO);
+        }
+
+        // Awaits for all threads to complete before wrappin' up
+        threadPoolExecutor.shutdown();
+
     }
 }

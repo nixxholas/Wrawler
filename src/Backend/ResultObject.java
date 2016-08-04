@@ -5,12 +5,14 @@
  */
 package Backend;
 
+import static Backend.Constants.btnCounter;
 import static Backend.Constants.cachedResults;
 import static Backend.Constants.jep;
 import static Backend.Constants.jepPure;
 import static Backend.Constants.mainFrame;
+import static Backend.Constants.numberOfResults;
 import static Backend.Constants.rightPanel;
-import static Backend.Constants.scrollPane;
+import static Backend.Constants.searchEngines;
 import static Backend.Constants.searchQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -84,66 +86,65 @@ public class ResultObject implements Serializable, Runnable {
      * @return
      */
     private boolean findResults() {
+        // Check against the history of results
+        for (ResultObject RO : cachedResults) {
+            if (RO.url.equals(this.url)) {
+                configureQueue(this, 2); // Remove the found Object
+                configureQueue(RO, 1); // Add the Cached Object
+                this.name = RO.name;
+                this.resultPage = RO.resultPage;
+                return true;
+            }
+        }
+
         // Check with the current queue
 //        if (searchQueue.size() > 0) {
 //            for (ResultObject RO : searchQueue) {
 //                // If the URL is the same and if both search engines are not the same,
 //                // we'll remove it
 //                if (RO.url.equals(this.url) && !RO.queryingEngine.equals(this.queryingEngine)) {
-//                    searchQueue.remove(this);
+//                    configureQueue(this, 2);
 //                    // Then we let the program know something is found
 //                    return true;
 //                }
 //            }
-//        }
+//            for (int i = 0; i < searchQueue.size(); i++) {                
+//              for (int j = 1; j < searchQueue.size(); j++) {
+//                  
+//              }
+//            }
 
-        // Check against the history of results
-        for (ResultObject RO : cachedResults) {
-            if (RO.url.equals(this.url)) {
-                return true;
-            }
+            return false;
         }
 
-        return false;
-    }
+        synchronized void  
+            configureQueue(ResultObject ro
+            , int i
+            
+                ) {
+        // i, 1 for adding, 2 for deleting
+        if (i == 1) {
+                    searchQueue.add(ro);
+                } else if (i == 2) {
+                    searchQueue.remove(ro);
+                }
 
-    private void setFromAdded() {
-        for (ResultObject RO : cachedResults) {
-            if (RO.url.equals(this.url)) {
-                searchQueue.add(RO);
-                // UserQuery is as defined by the user
             }
-        }
-    }
-
-    public static ResultObject getResultObject(String inURL) {
-
-        // Search from cache
-        for (ResultObject RO : cachedResults) {
-            if (RO.url.equals(inURL)) {
-                return RO;
-            }
-        }
-
-        // Definitely won't get here
-        return new ResultObject("", "", "");
-    }
-
-    /**
-     * Write and Read Object adapted from Practical 7
-     *
-     * @param out
-     *
-     * The incoming object that will be serialized
-     *
-     * @throws IOException
-     *
-     * The exception speaks for itself
-     *
-     * @throws ClassNotFoundException
-     *
-     * The exception speaks for itself
-     */
+            /**
+             * Write and Read Object adapted from Practical 7
+             *
+             * @param out
+             *
+             * The incoming object that will be serialized
+             *
+             * @throws IOException
+             *
+             * The exception speaks for itself
+             *
+             * @throws ClassNotFoundException
+             *
+             * The exception speaks for itself
+             */
     private void writeObject(ObjectOutputStream out) throws IOException, ClassNotFoundException {
         // This is the default behaviour if this method
         // is not implemented.
@@ -190,16 +191,48 @@ public class ResultObject implements Serializable, Runnable {
             }
         }
     }
-
+    
+    /**
+     * This runnable method executes the "downloading" of the 
+     * web page if the cache does not have it.
+     * 
+     * The SearchEngine Object's Run() method
+     * Multi-Threads this runnable method in order to maximize speed
+     * 
+     * So we'll have to run checks by doing running a code like this:
+     * 
+     * for (int i = 0; i < searchEngines.length; i++) {
+     *      for (ResultObject ro in searchEngines.get(i) {
+     *          for (ResultObject ro2 in searchEngines.get(i + 1) {
+     *          if (ro2.url.equals(ro.url)) {
+     *              searchEngines.get(i + 1).removeResult(ro2);
+     *          }
+     *      }
+     *  }
+     *
+     * In english that means
+     * 
+     * For each searchEngine in searchengines
+     *  for each ResultObject in searchEngine
+     *    for each ResultObject2 in secondSearchEngine
+     *      if ResultObject2's url equals to ResultObject's url,
+     *          Delete ResultObject2 from secondSearchEngine
+     *  
+     */
+    
     @Override
     public void run() {
+        for (SearchEngine se : searchEngines) {
+            
+        }
+        
         String loadedResult;
         try {
             // Don't download if we can find it
             if (this.findResults()) {
                 // And then we'll set all of it's data from the original
-                this.setFromAdded();
                 loadedResult = this.resultPage;
+                System.out.println(loadedResult);
             } else {
                 // Since we can't find it, we download it
                 URL url = new URL(this.getUrl());
@@ -217,6 +250,7 @@ public class ResultObject implements Serializable, Runnable {
 
                 this.setResultPage(finalResult);
                 loadedResult = finalResult;
+                System.out.println(loadedResult);
 
                 // Create a serialized form of the object
                 FileOutputStream fos = new FileOutputStream("src/Caches/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".ser");
@@ -239,39 +273,52 @@ public class ResultObject implements Serializable, Runnable {
             // For the action listener
             String resultName = this.getName();
 
-            /**
-             * Action Listener adapted from:
-             *
-             * http://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
-             */
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    /**
-                     * Webpage Viewer within the Java Project
-                     *
-                     * http://stackoverflow.com/questions/10601676/display-a-webpage-inside-a-swing-application
-                     */
-                    jep.removeAll();
-                    jepPure.removeAll();
+            if (btnCounter.getCount() < numberOfResults) {
+                btnCounter.incrementCount();
+                System.out.println(btnCounter.getCount());
+                /**
+                 * Action Listener adapted from:
+                 *
+                 * http://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
+                 */
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        /**
+                         * Webpage Viewer within the Java Project
+                         *
+                         * http://stackoverflow.com/questions/10601676/display-a-webpage-inside-a-swing-application
+                         */
+                        jep.removeAll();
+                        jepPure.removeAll();
 
-                    try {
-                        // Pulls the file path
-                        File file = new File("src/Download/" + resultName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
+                        try {
+                            // Pulls the file path
+                            File file = new File("src/Download/" + resultName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
+                            Thread t = new Thread() {
+                                public void run() {
+                                    try {
+                                        jep.setPage(file.toURI().toURL());
+                                    } catch (Exception ex) {
+                                        jep.setContentType("text/html");
+                                        jep.setText("<html>Could not load the page.</html>");
+                                    }
+                                }
+                            };
+                            t.start();
 
-                        jep.setPage(file.toURI().toURL());
-                        jepPure.setText(loadedResult);
+                            jepPure.setText(loadedResult);
 
-                        mainFrame.pack();
-                    } catch (Exception ex) {
-                        jep.setContentType("text/html");
-                        jep.setText("<html>Could not load the page.</html>");
+                            mainFrame.pack();
+                        } catch (Exception ex) {
+                            jep.setContentType("text/html");
+                            jep.setText("<html>Could not load the page.</html>");
+                        }
                     }
-                }
-            });
+                });
 
-            rightPanel.add(button);
-
+                rightPanel.add(button);
+            }
         } catch (Exception ex) {
 
         }

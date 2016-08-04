@@ -5,6 +5,8 @@
  */
 package Backend;
 
+import static Backend.Constants.numberOfResults;
+import static Backend.Constants.searchEngines;
 import static Backend.Constants.searchQueue;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,10 +15,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,6 +43,17 @@ public class PageRead {
      */
     public static String getUrlSource(SearchEngine se, String result) throws IOException {
         /**
+         * Fair SearchEngine System
+         *
+         * Allow fair workload on all searchEngine Threads
+         *
+         * Deactivated for the another method
+         *
+         */
+        int resultsCounter = 0;
+        int resultsToReturn = numberOfResults / searchEngines.size();
+
+        /**
          * Note that this Regular Expression DOES take in the open AND closed
          * inverted commas that is beside the URL.
          *
@@ -72,11 +81,11 @@ public class PageRead {
         while ((inputLine = in.readLine()) != null) {
             sb.append(inputLine);
         }
-        in.close();
 
         // Toss the untrimmed HTML page into an attribute of the object
         se.setPureResult(sb.toString());
 
+        in.close();
         /**
          * We'll have to chop off all the sections of the HTML page which we
          * don't really need.
@@ -121,60 +130,24 @@ public class PageRead {
                 urlForObjects.add(searchObjectMatcher.group());
             }
         }
-        
+
         // We then start a RegEx for the title
         Pattern nameObjectPattern = Pattern.compile(nameObjectRegex);
         Matcher nameObjectMatcher = nameObjectPattern.matcher(taggedSearchResults);
 
-        int counter = 0;        
+        int counter = 0;
         while (!nameObjectMatcher.hitEnd()) {
+            // If the URL result does not exist, we'll add it in
             if (nameObjectMatcher.find()) {
-                // If the URL result does not exist, we'll add it in
-                //if (!urlExists(urlForObjects.get(counter))) {
-                    // .replaceAll trims the remaining HTML tags if they exist.
-                    searchQueue.add(new ResultObject(nameObjectMatcher.group().replaceAll("\\<.*?>", ""), urlForObjects.get(counter), result));
-                    // Parse the data in order for returning
-                    searchResult += nameObjectMatcher.group().replaceAll("\\<.*?>", "") + "\t" + urlForObjects.get(counter) + "\n";
-//                } else {
-//                    ResultObject ro = getResultObject(urlForObjects.get(counter));
-//                    // Else we'll add the object from the cachedResult instead
-//                    searchQueue.add(ro);
-//
-//                    // Then parse the data in order for returning
-//                    searchResult += ro.getName() + ro.getUrl() + "\n";
-//                }
+                ++resultsCounter;
+                // .replaceAll trims the remaining HTML tags if they exist.
+                // Add the search result into the searchEngine object's own Queue
+                se.addResult(new ResultObject(nameObjectMatcher.group().replaceAll("\\<.*?>", ""), urlForObjects.get(counter), result));
+                // Parse the data in order for returning
+                searchResult += nameObjectMatcher.group().replaceAll("\\<.*?>", "") + "\t" + urlForObjects.get(counter) + "\n";
                 counter++;
             }
         }
-
-        /**
-         * Devise a way to dynamically create a JFrame with it's panel and to
-         * preload data that we have parsed from the Search Engine
-         *
-         * And hyperlink each of the given link we have extracted from the HTML
-         * search result. Concurrently, we will also download and save the
-         * target link as an individual HTML Page by itself so that our can
-         * utilize it if needed.
-         */
-
-        // Multi-Threading system       
-        ExecutorService threadPoolExecutor
-                = new ThreadPoolExecutor(
-                        searchQueue.size(),
-                        searchQueue.size(),
-                        600000, // Give the program a decent amount of time
-                        TimeUnit.MILLISECONDS,
-                        new LinkedBlockingQueue<Runnable>()
-                );
-
-        for (ResultObject RO : searchQueue) {
-            // Call a thread to run()
-            // This method saves the link as HTML and a Cached file
-            threadPoolExecutor.execute(RO);
-        }
-
-        // Awaits for all threads to complete before wrappin' up
-        threadPoolExecutor.shutdown();
 
         return searchResult;
     }

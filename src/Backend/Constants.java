@@ -6,13 +6,16 @@
 package Backend;
 
 import Interface.MainFrame;
+import Interface.Settings;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -46,6 +49,10 @@ public class Constants {
     // ------------------- JFrame Elements --------------------- //
     // Default JFrame of the Program
     public static MainFrame mainFrame = new MainFrame();
+    public static ConcurrentInt btnCounter = new ConcurrentInt();
+
+    // Settings JFrame
+    public static Settings settingsFrame = new Settings();
 
     /**
      * Search Result JFrame
@@ -66,4 +73,9 @@ public class Constants {
     public static int progressRate;
     public static int actualProgress = 0;
 
+    // Map Constants
+    public static Hashtable<Integer, JLabel> searchResultsSliderTable = new Hashtable<Integer, JLabel>(); // HashTable for ResultsSlider in Settings JFrame
+
+    // Global Variables for searchResultsSlider
+    public static int numberOfResults = 12; // 12 Shall be the default
 }
