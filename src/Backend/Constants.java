@@ -50,6 +50,7 @@ public class Constants {
     // Default JFrame of the Program
     public static MainFrame mainFrame = new MainFrame();
     public static ConcurrentInt btnCounter = new ConcurrentInt();
+    public static ToughBoolean toughBoolean = new ToughBoolean();
 
     // Settings JFrame
     public static Settings settingsFrame = new Settings();

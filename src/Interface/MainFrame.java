@@ -16,8 +16,10 @@ import static Backend.Constants.searchQueue;
 import static Backend.Constants.settingsFrame;
 import static Backend.PageRead.*;
 import Backend.ResultObject;
+import Backend.SearchEngine;
 import java.awt.EventQueue;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -150,7 +152,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         // Wipe the statics
         searchQueue.clear();
-        
+
         // Get the result string
         String result = textBox.getText();
 
@@ -185,6 +187,7 @@ public class MainFrame extends javax.swing.JFrame {
 
             // Setup the UI
             EventQueue.invokeLater(() -> {
+
                 // Once we're done with loading the searches, we'll show the frame.
                 // and hide the mainFrame (which is called newFrame)
                 resultFrame.setVisible(true);
@@ -194,7 +197,7 @@ public class MainFrame extends javax.swing.JFrame {
                 // Reset the progress bar
                 actualProgress = 0;
                 mainFrameProgressBar.setValue(actualProgress);
-                
+
                 // Reset the Counters
                 btnCounter.setCount(0);
             });

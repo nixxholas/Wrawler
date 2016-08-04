@@ -15,6 +15,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -50,8 +54,8 @@ public class PageRead {
          * Deactivated for the another method
          *
          */
-        int resultsCounter = 0;
-        int resultsToReturn = numberOfResults / searchEngines.size();
+//        int resultsCounter = 0;
+//        int resultsToReturn = numberOfResults / searchEngines.size();
 
         /**
          * Note that this Regular Expression DOES take in the open AND closed
@@ -139,7 +143,7 @@ public class PageRead {
         while (!nameObjectMatcher.hitEnd()) {
             // If the URL result does not exist, we'll add it in
             if (nameObjectMatcher.find()) {
-                ++resultsCounter;
+//                ++resultsCounter;
                 // .replaceAll trims the remaining HTML tags if they exist.
                 // Add the search result into the searchEngine object's own Queue
                 se.addResult(new ResultObject(nameObjectMatcher.group().replaceAll("\\<.*?>", ""), urlForObjects.get(counter), result));
@@ -149,6 +153,35 @@ public class PageRead {
             }
         }
 
+        /**
+         * Devise a way to dynamically create a JFrame with it's panel and to
+         * preload data that we have parsed from the Search Engine
+         *
+         * And hyperlink each of the given link we have extracted from the HTML
+         * search result. Concurrently, we will also download and save the
+         * target link as an individual HTML Page by itself so that our can
+         * utilize it if needed.
+         */
+
+        // Multi-Threading system       
+        ExecutorService threadPoolExecutor
+                = new ThreadPoolExecutor(
+                        se.getResults().size(),
+                        se.getResults().size(),
+                        600000, // Give the program a decent amount of time
+                        TimeUnit.MILLISECONDS,
+                        new LinkedBlockingQueue<Runnable>()
+                );
+
+        for (ResultObject RO : se.getResults()) {
+            // Call a thread to run()
+            // This method saves the link as HTML and a Cached file
+            threadPoolExecutor.execute(RO);
+        }
+
+        // Awaits for all threads to complete before wrappin' up
+        threadPoolExecutor.shutdown();
+                
         return searchResult;
     }
 

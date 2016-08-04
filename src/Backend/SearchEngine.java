@@ -5,6 +5,7 @@
  */
 package Backend;
 
+import static Backend.Constants.searchEngines;
 import static Backend.Constants.searchQueue;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author nixho
  */
-public class SearchEngine extends Thread implements Runnable {
+public class SearchEngine extends Thread {
 
     private String baseUrl;
     private String regexSearchPattern;
@@ -117,36 +118,29 @@ public class SearchEngine extends Thread implements Runnable {
         this.baseUrl = baseUrl;
     }
 
-    @Override
-    public void run() {
-
+    public synchronized void checkDuplicates() {
         /**
-         * Devise a way to dynamically create a JFrame with it's panel and to
-         * preload data that we have parsed from the Search Engine
-         *
-         * And hyperlink each of the given link we have extracted from the HTML
-         * search result. Concurrently, we will also download and save the
-         * target link as an individual HTML Page by itself so that our can
-         * utilize it if needed.
+         * SearchEngine Duplicate Entry Cross Checker
          */
-        // Multi-Threading system       
-        ExecutorService threadPoolExecutor
-                = new ThreadPoolExecutor(
-                        this.results.size(),
-                        this.results.size(),
-                        600000, // Give the program a decent amount of time
-                        TimeUnit.MILLISECONDS,
-                        new LinkedBlockingQueue<Runnable>()
-                );
-
-        for (ResultObject RO : this.results) {
-            // Call a thread to run()
-            // This method saves the link as HTML and a Cached file
-            threadPoolExecutor.execute(RO);
+        // Iterate through the searchEngines list
+        for (int i = 0; i < searchEngines.size(); i++) {
+            // Pull the current searchengine to work on
+            List<ResultObject> curResults = searchEngines.get(i).getResults();
+            // While there are two searchengines to compare,
+            while (searchEngines.get(i + 1) != null) {
+                List<ResultObject> nextResults = searchEngines.get(i + 1).getResults();
+                // For loop for current search engine
+                for (ResultObject ro : curResults) {
+                    // Iterate through each nextResult
+                    for (ResultObject nextRO : nextResults) {
+                        // If the result already exists
+                        if (nextRO.getUrl().equals(ro.getUrl())) {
+                            // remove it from the results of the next searchengine
+                            searchEngines.get(i + 1).removeResult(nextRO);
+                        }
+                    }
+                }
+            }
         }
-
-        // Awaits for all threads to complete before wrappin' up
-        threadPoolExecutor.shutdown();
-
     }
 }

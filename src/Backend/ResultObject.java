@@ -12,8 +12,8 @@ import static Backend.Constants.jepPure;
 import static Backend.Constants.mainFrame;
 import static Backend.Constants.numberOfResults;
 import static Backend.Constants.rightPanel;
-import static Backend.Constants.searchEngines;
 import static Backend.Constants.searchQueue;
+import static Backend.Constants.toughBoolean;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -113,38 +113,36 @@ public class ResultObject implements Serializable, Runnable {
 //                  
 //              }
 //            }
+        return false;
+    }
 
-            return false;
-        }
-
-        synchronized void  
-            configureQueue(ResultObject ro
-            , int i
-            
-                ) {
+    synchronized void
+            configureQueue(ResultObject ro, int i
+            ) {
         // i, 1 for adding, 2 for deleting
         if (i == 1) {
-                    searchQueue.add(ro);
-                } else if (i == 2) {
-                    searchQueue.remove(ro);
-                }
+            searchQueue.add(ro);
+        } else if (i == 2) {
+            searchQueue.remove(ro);
+        }
 
-            }
-            /**
-             * Write and Read Object adapted from Practical 7
-             *
-             * @param out
-             *
-             * The incoming object that will be serialized
-             *
-             * @throws IOException
-             *
-             * The exception speaks for itself
-             *
-             * @throws ClassNotFoundException
-             *
-             * The exception speaks for itself
-             */
+    }
+
+    /**
+     * Write and Read Object adapted from Practical 7
+     *
+     * @param out
+     *
+     * The incoming object that will be serialized
+     *
+     * @throws IOException
+     *
+     * The exception speaks for itself
+     *
+     * @throws ClassNotFoundException
+     *
+     * The exception speaks for itself
+     */
     private void writeObject(ObjectOutputStream out) throws IOException, ClassNotFoundException {
         // This is the default behaviour if this method
         // is not implemented.
@@ -191,48 +189,41 @@ public class ResultObject implements Serializable, Runnable {
             }
         }
     }
-    
+
     /**
-     * This runnable method executes the "downloading" of the 
-     * web page if the cache does not have it.
-     * 
-     * The SearchEngine Object's Run() method
-     * Multi-Threads this runnable method in order to maximize speed
-     * 
+     * This runnable method executes the "downloading" of the web page if the
+     * cache does not have it.
+     *
+     * The SearchEngine Object's Run() method Multi-Threads this runnable method
+     * in order to maximize speed
+     *
      * So we'll have to run checks by doing running a code like this:
-     * 
-     * for (int i = 0; i < searchEngines.length; i++) {
-     *      for (ResultObject ro in searchEngines.get(i) {
-     *          for (ResultObject ro2 in searchEngines.get(i + 1) {
-     *          if (ro2.url.equals(ro.url)) {
-     *              searchEngines.get(i + 1).removeResult(ro2);
-     *          }
-     *      }
-     *  }
+     *
+     * for (int i = 0; i < searchEngines.length; i++) { for (ResultObject ro in
+     * searchEngines.get(i) { for (ResultObject ro2 in searchEngines.get(i + 1)
+     * { if (ro2.url.equals(ro.url)) { searchEngines.get(i +
+     * 1).removeResult(ro2); } } }
      *
      * In english that means
-     * 
-     * For each searchEngine in searchengines
-     *  for each ResultObject in searchEngine
-     *    for each ResultObject2 in secondSearchEngine
-     *      if ResultObject2's url equals to ResultObject's url,
-     *          Delete ResultObject2 from secondSearchEngine
-     *  
+     *
+     * For each searchEngine in searchengines for each ResultObject in
+     * searchEngine for each ResultObject2 in secondSearchEngine if
+     * ResultObject2's url equals to ResultObject's url, Delete ResultObject2
+     * from secondSearchEngine
+     *
      */
-    
     @Override
     public void run() {
-        for (SearchEngine se : searchEngines) {
-            
-        }
+        toughBoolean.setValue(true);
         
+        // Temporary String datatype to store the loadedResult
         String loadedResult;
+        
         try {
             // Don't download if we can find it
             if (this.findResults()) {
                 // And then we'll set all of it's data from the original
                 loadedResult = this.resultPage;
-                System.out.println(loadedResult);
             } else {
                 // Since we can't find it, we download it
                 URL url = new URL(this.getUrl());
@@ -250,7 +241,6 @@ public class ResultObject implements Serializable, Runnable {
 
                 this.setResultPage(finalResult);
                 loadedResult = finalResult;
-                System.out.println(loadedResult);
 
                 // Create a serialized form of the object
                 FileOutputStream fos = new FileOutputStream("src/Caches/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".ser");

@@ -16,7 +16,7 @@ public class ConcurrentInt {
         Count++;
     }
 
-    public static int getCount() {
+    public synchronized static int getCount() {
         return Count;
     }
 
