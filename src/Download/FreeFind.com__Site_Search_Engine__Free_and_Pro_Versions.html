@@ -1,0 +1,871 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Site Search Engine, Free and Pro Versions - FreeFind.com</title>
+	<!-- FreeFind Begin no index -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" >
+    <meta name="description" content="Free site search engine.  Add a site search engine to your website today, for free, in less than ten minutes.  Choose from Free and Pro site search engines.">
+    <meta name="keywords" content="free search engine, site search, site search engine, website search engine, search engine, search engines, search, sitesearch">
+    <meta name="MSSmartTagsPreventParsing" content="TRUE"> 
+    <meta name="verify-v1" content="GGRu/tMsZ3d8ZMBugOaqjxg6RpDVKqsHE/MPVb93hA8=" >  
+	<link type="text/css" rel="stylesheet" href="/style.css">
+	<!-- override button width -->
+	<style type="text/css">
+	a.btn
+	{
+		width: 180px;
+
+	}
+	</style>
+	<script src="jssor.slider.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+		jssor_slider1_starter = function (containerId) {
+			var options = { $AutoPlay: true,
+							$AutoPlayInterval : 15000
+							};
+			var jssor_slider1 = new $JssorSlider$(containerId, options);
+			jssor_slider1.$On($JssorSlider$.$EVT_PARK,function(slideIndex,fromIndex){
+						if(slideIndex == 5)
+						{
+							jssor_slider1.$Pause();
+						}
+						
+						});
+		}
+
+		jssor_slider2_starter = function (containerId) {
+
+
+			//use following line instead if there is no caption plays random transition
+			var _CaptionTransitions = [];
+			
+			//define named transitions for caption that plays specified transition
+			_CaptionTransitions["transtion_name2"] = {$Duration:1300,$FlyDirection:1,$Easing:{$Left:$JssorEasing$.$EaseInOutSine},$ScaleHorizontal:1.0,$Opacity:2};
+
+
+			//Define an array of slideshow transition code
+			var _SlideshowTransitions = [
+			{$Duration:700,$Opacity:2,$Brother:{$Duration:1000,$Opacity:2}},
+			{$Duration:700,$Opacity:2,$Brother:{$Duration:1000,$Opacity:2}},
+			{$Duration:700,$Opacity:2,$Brother:{$Duration:1000,$Opacity:2}}
+			];
+
+			var options2 = {
+				$AutoPlay: true,
+				$AutoPlayInterval : 15000,
+				$SlideshowOptions: {
+						$Class: $JssorSlideshowRunner$,
+						$Transitions: _SlideshowTransitions,
+						$TransitionsOrder: 1,
+						$ShowLink: true
+					},
+
+				$CaptionSliderOptions: {
+					$Class: $JssorCaptionSlider$,
+					$CaptionTransitions: _CaptionTransitions,
+					$PlayInMode: 1,
+					$PlayOutMode: 3
+				}
+			};
+			
+
+		
+			jssor_slider2 = new $JssorSlider$(containerId, options2);
+			
+			jssor_slider2.$On($JssorSlider$.$EVT_PARK,function(slideIndex,fromIndex){
+						if(slideIndex == 2)
+						{
+							jssor_slider2.$Pause();
+						}
+						
+						});
+
+		};
+	</script>
+    <!-- FreeFind End no index -->
+
+	
+
+	<style type="text/css">
+
+	.welcome
+	{
+		margin-bottom: 6pt;
+		color: #0195DB;
+		font-size: 12pt;
+		text-align: center;
+	}
+
+	.clickinfo
+	{
+		font-size: 9pt;
+	}
+
+	A.pslink {text-decoration:underline;}
+	A.pslink:link {color:#0195DB;}
+	A.pslink:visited {color:#0195DB;}
+	A.pslink:hover {color: blue; text-decoration:underline;}
+
+	.quotebox
+	{
+		background-color: white;
+		width: 600;
+	}
+	.quote
+	{
+		font-size: 24pt;
+		line-height: 24pt;
+
+
+	}
+	.quotation
+	{
+		font-size: 11pt;
+		line-height: 11pt;
+	}
+	.user
+	{
+		height: 8pt;
+		text-align:right;
+		font-size: 8pt;
+		background-color: white;
+		color: gray;
+	}
+	A.user {text-decoration:none;}
+	A.user:link {color: #99CCFF;}
+	A.user:visited {color: #99CCFF;}
+	A.user:hover {color: #99CCFF; text-decoration:underline;}
+
+	</style>
+
+
+	<script type="text/javascript">
+	function menu()
+	{
+		if(!document.getElementById) return;
+		var did = document.getElementById('topmenu');
+		if(did.style.display === 'block')
+		{
+			did.style.display = 'none';
+		}
+		else
+		{
+			did.style.display = 'block';
+		}
+	}
+	</script>
+
+<script  type="text/javascript"><!--
+
+function showcaps()
+{
+	if(!document.getElementById) return;
+	var cid1 = document.getElementById('cap1');
+	var cid2 = document.getElementById('cap2');
+	cid1.style.display = 'block';
+	cid2.style.display = 'block';
+
+}
+
+function show()
+{
+	if(!document.getElementById) return;
+	var did = document.getElementById('featurelist');
+
+	did.style.display = 'block';
+
+	var showm = document.getElementById('showmore');
+	showm.innerHTML = '<a class=ulink href="javascript:hide()">Show fewer features<\/a>';
+}
+
+
+function hide()
+{
+	if(!document.getElementById) return;
+	var did = document.getElementById('featurelist');
+
+	did.style.display = 'none';
+
+	var showm = document.getElementById('showmore');
+	showm.innerHTML = '<a class=ulink href="javascript:show()">Show more features<\/a>';
+
+}
+
+
+function submit()
+{
+	document.controlform.submit();
+}
+
+function hovering()
+{
+	var b = document.getElementById('ix2');
+	b.style.backgroundColor='#A6FFB8';
+	b = document.getElementById('ix2b');
+	b.style.backgroundColor='#A6FFB8';
+	b = document.getElementById('iy3');
+	b.style.borderColor='#A6FFB8';
+	b = document.getElementById('iy4');
+	b.style.borderColor='#D7FFDF';
+}
+
+function bluring()
+{
+	var b = document.getElementById('ix2');
+	b.style.backgroundColor='#c0c0c0';
+	b = document.getElementById('ix2b');
+	b.style.backgroundColor='#c0c0c0';
+	b = document.getElementById('iy3');
+	b.style.borderColor='#c0c0c0';
+	b = document.getElementById('iy4');
+	b.style.borderColor='#f4f4f4';
+}
+
+function clicking()
+{
+	var b = document.getElementById('ix2');
+	b.style.backgroundColor='#71FF8D';
+	b = document.getElementById('ix2b');
+	b.style.backgroundColor='#71FF8D';
+	b = document.getElementById('iy3');
+	b.style.borderColor='#71FF8D';
+	b = document.getElementById('iy4');
+	b.style.borderColor='#71FF8D';
+}
+
+//--></script>
+
+  </head>
+
+
+<body onload="showcaps();">
+  
+<center>
+
+<!-- M A S T H E A D table -->
+
+<TABLE id=masthead cellspacing=0 cellpadding=0>
+<tr> 
+	<td>
+		<table cellpadding=0 cellspacing=0>
+		<tr>
+			<td colspan=2>
+				<a href="/"><img src="/img/fflogo.250.png" alt="freefind" border=0 height=63 width=250></a>
+			</td>
+		</tr>
+		</table>
+	</td>
+	<td align=right valign=bottom>
+		<a href="javascript:menu()"><img src="/img/3bars.20.png" width=20 border=0 alt="menu"></a>&nbsp;&nbsp;&nbsp;<A class="llnk" href="/control.html">Login</a>
+
+	</td>
+</tr>
+<tr>
+	<td colspan=2>
+		<hr size=1 style="color: #d2d2d2;">
+	</td>
+</tr>
+
+</table>
+<div id=topmenu>
+
+<table id=topnav border=0 cellpadding=0 cellspacing=0>
+<tr>
+	<td align=center>
+		<A class=lmenu href="/details.html">features</A>
+	</td>
+	<td align=center>
+		<A class=lmenu href="/plans.html">pricing</A>
+	</td>
+	<td align=center>
+		<A class=lmenu href="//search.freefind.com/find.html?id=3225682">search</A>
+	</td>
+	<td align=center>
+		<!-- FreeFind nofollow --><A class=lmenu href="/library/ref/faq/">faq</A><!-- FreeFind end nofollow -->
+	</td>
+	<td align=center>
+		<A class=lmenu href="/library/">library</A>
+	</td>
+	<td align=center>
+		<A class=lmenu href="//search.freefind.com/find.html?id=3225682&amp;m=0&amp;p=0">site map</A>
+	</td>
+	<td align=center>
+		<A class=lmenu href="/policy.html">policies</A>  
+	</td>
+	<td align=center>
+		<A class=lmenu href="/contact.html">contact</A>
+	</td>
+</tr>
+</table>
+</div>
+<!-- M A S T H E A D table -->
+
+<!-- C O N T E N T table -->
+
+<TABLE id=content cellspacing=0 cellpadding=0>
+<tr> 
+	<td>
+
+
+
+
+<!-- ChangeDetection.com detection="on" -->
+
+
+
+
+
+<div id=picwrap>
+
+	<div id="slider2_container" style="position: relative; top: 0px; left: 0px; width: 600px; height: 220px;">
+		<!-- Slides Container -->
+		<div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 600px; height:220px;">
+			<div> 
+				<img alt="" src="img/is114-020.w.png" height=220 width=600>
+				<div u="caption" t="transtion_name2" d="1000" t2="NO" style="position: absolute; top: 16px; left: 16px; width: 350px;height: 50px;">
+					<span style="font-face: arial, sans-serif; font-size: 24px; font-weight: bold;">Add search to your website.</span>
+				</div>
+				<div u="caption" t="transtion_name2" d="600" t2="NO" style="position: absolute; top: 48px; left: 16px; width: 350px;height: 50px;">
+					<span style="font-face: arial, sans-serif; font-size: 24px; font-weight: bold; color:maroon;">Today.</span>
+				</div>
+				<div u="caption" t="transtion_name2" d="200" t2="NO" style="position: absolute; top: 48px; left: 100px; width: 350px;height: 50px;">
+					<span style="font-face: arial, sans-serif; font-size: 24px; font-weight: bold;">For free.</span>
+				</div>
+				<div u="caption" t="transtion_name2" d="200" t2="NO" style="position: absolute; top: 80px; left: 16px; width: 350px;height: 50px;">
+					<span style="font-face: arial, sans-serif; font-size: 24px; font-weight: bold; ">In minutes.</span>
+				</div>
+			</div>
+			<div> 
+				<img alt="" src="img/csp098_lo.w.png" height=220 width=600>
+				<div id=cap1 u="caption" t="transtion_name2" t2="NO" style="position: absolute; top: 16px; left: 16px; width: 440px height: 50px; display: none;" >
+					<span style="font-face: arial, sans-serif; font-size: 24px; color:white; font-weight: bold;">Let us take care of your search engine.</span>
+				</div>
+				<div id=cap2 u="caption" t="transtion_name2" t2="NO" style="position: absolute; top: 54px; left: 16px; width: 440px; height: 50px; display: none;" >
+					<span style="font-face: arial, sans-serif; font-size: 24px; color:white; font-weight: bold;">Spend your time on other things.</span>
+				</div>
+			</div>
+			<div> 
+				<img alt="" src="img/is114-020.w.png" height=220 width=600>
+				<div u="caption" t="NO" t2="NO" style="position: absolute; top: 16px; left: 16px; width: 350px;height: 50px;">
+					<span style="font-face: arial, sans-serif; font-size: 24px; font-weight: bold;">Add search to your website.</span>
+				</div>
+				<div u="caption" t="NO" t2="NO" style="position: absolute; top: 48px; left: 16px; width: 350px;height: 50px;">
+					<span style="font-face: arial, sans-serif; font-size: 24px; font-weight: bold; color:maroon;">Today.</span>
+				</div>
+				<div u="caption" t="NO" t2="NO" style="position: absolute; top: 48px; left: 100px; width: 350px;height: 50px;">
+					<span style="font-face: arial, sans-serif; font-size: 24px; font-weight: bold;">For free.</span>
+				</div>
+				<div u="caption" t="NO" t2="NO" style="position: absolute; top: 80px; left: 16px; width: 350px;height: 50px;">
+					<span style="font-face: arial, sans-serif; font-size: 24px; font-weight: bold; ">In minutes.</span>
+				</div>
+			</div>
+			
+			
+		</div>
+		<!-- Trigger -->
+		<script type="text/javascript">jssor_slider2_starter('slider2_container'); </script>
+	</div>
+
+</div>
+
+	
+<!--
+<center>
+	<table border=0 cellpadding=0 cellspacing=0 class=quotebox >
+	<tr>
+		<td align=center>
+			<table border=0 cellpadding=0 cellspacing=0>
+			<tr >
+				<td class=quote>
+					&#8220;
+				</td>
+				<td  class=quotation valign=middle>
+					<span id=quotetext></span>
+					<noscript>WOW Just a note to praise your wonderful search engine. What a difference!</noscript>
+				</td>
+				<td class=quote>
+				&#8221;
+				</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	<tr class=user >
+	<td>
+	<i>customer quote &nbsp;&nbsp;<a class=user href="/useremails.html">see more</a></i>
+	</td>
+	</tr>
+	</table>
+</center>
+-->
+<p>
+
+
+<div class=textblock>
+
+
+Since 1998 FreeFind has provided site search engines to over 200,000 websites.  Advanced site search can be added to your website in minutes. With nothing to download or install it's
+easy and it's free!
+<p>
+Join the thousands of websites using the FreeFind site search engine:
+
+</div>
+<p>
+
+<!-- Start of SIGN-UP FORM -->
+<FORM name=controlform ACTION="//www.freefind.com/servlet/interactive" METHOD="get">
+<table id=signup border=0 cellspacing=0 cellpadding=3>
+<tr>
+<td valign=middle width=20>
+<Input type="hidden" name="page" value="1">
+<Input type="hidden" name="Category" value="None">
+<div class=redwrap><div class=rednum>1</div></div>
+&nbsp;
+</td>
+<td valign=middle>
+&nbsp;<span class=prompt>Your website address</span><br>&nbsp;&nbsp;&nbsp;
+</td>
+<td valign=middle align=left>
+<INPUT class=textinput TYPE="TEXT" NAME="siteurl" SIZE="40"><br>
+<small class=example>&nbsp;(e.g. www.example.com)</small>
+
+</td>
+</tr>
+<tr>
+<td valign=middle width=20>
+<div class=redwrap><div class=rednum>2</div></div>
+&nbsp;
+</td>
+
+<td valign=middle>
+
+&nbsp;<span class=prompt>Your email address</span><br>
+<small class=private>&nbsp;(we keep it <a href=policy.html>private</a>)</small>
+</td>
+<td valign=middle align=left>
+<INPUT class=textinput TYPE="TEXT" NAME="email" SIZE="40"><br>
+&nbsp;
+</td>
+</tr>
+<tr>
+<td valign=middle width=20>
+<div class=redwrap><div class=rednum>3</div></div>
+</td>
+<td valign=middle>
+&nbsp;<span class=prompt>Click the button.</span>&nbsp;&nbsp;&nbsp;
+
+</td>
+<td style="line-height: normal;" valign=middle align=left>
+				<span  onmouseover="hovering();" onmouseout="bluring();" onmousedown="clicking();" class=btnwrap>
+				<a class=btn   href="javascript:submit();"><span class=x1></span><span id=ix2 class=x2></span><span class=x3><span id=iy3 class=y3><span id=iy4 class=y4><span class=btntitle>&nbsp;&nbsp;<span class=subutton>Get site search now!</span>&nbsp;&nbsp;</span></span></span></span><span id=ix2b class=x2></span><span class=x1></span></a>
+				</span>
+</td>
+</tr>
+</table>
+</FORM>
+<!-- end of SIGN-UP FORM -->
+
+<div class=smalltextblock>
+Your password and setup instructions will be e-mailed to you automatically.
+You'll get high speed, high availability, hosted site search engine technology from the company that pioneered the field.
+</div>
+
+
+<!-- START OF SEARCH FEATURES TABLE -->
+
+<TABLE class=feat BORDER="0" CELLPADDING="0" WIDTH="100%">
+<tr>
+<td valign="top" width="50%">
+<ul class=flist>
+<li> High search capacity
+<li> Full on-demand re-indexing
+<li> Scheduled re-indexing
+<li> On-page results<br>
+</ul>
+</td>
+<td valign="top" width="50%">
+<ul class=flist>
+<li> Detailed indexing log<br>
+<li> Complete customization<br>
+<li> <a class=nulink href="/plans.html">Professional version</a><br>
+<li id=showmore> <a class=ulink href="javascript:show()">Show more features</a></li>
+</ul>
+
+
+
+</td>
+</table>
+<!-- END OF SEARCH FEATURES TABLE -->
+
+
+<!-- START OF EXTENDED FEATURES TABLE -->
+<div id=featurelist style="display: none">
+
+
+<p>
+<table class=feat border="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="50%">
+<ul class=flist>
+<li> Proven technology -- used by over 100,000 websites<br>
+<li> Adjustable relevance scoring -- tune the results for your site<br>
+<li> Flexible searching -- use simple searching or advanced boolean expressions<br>
+<li> Stemming and stopwords -- in multiple languages<br>
+<li> Phrase matching -- choose from exact phrase, near phrase or far phrase<br>
+<li> Word index -- shows every word used on your site<br>
+<li> PDF indexing -- include your PDF files in your search results<br>
+<li> Additional formats -- Word, PowerPoint, OpenOffice, OpenDocument and more<br>
+<li> Automatic site map -- generate site maps in three customizable styles<br>
+<li> Language support -- works with many different languages and unicode<br>
+<li> Search subsections -- visitors can search all of your site or a subsection<br>
+<li> Frame support -- flexible handling of framed sites<br>
+<li> Free optional web search -- search your site, the web, or both<br>
+<li> Adjustable indexing speed -- select to match your server speed<br>
+<li> Complete indexing logs -- your current and prior logs are available online<br>
+<li> Password authentication -- index password protected areas of your site<br>
+<li> Fully hosted -- all website search engines run on our servers<br>
+<li> Data search -- database style searching without a database<br>
+<li> Full on-demand re-indexing -- your whole site, anytime you want it<br>
+<li> Scheduled re-indexing -- have your site re-indexed as often as daily<br>
+<li> Complete templating -- give the results the look and feel of your site<br>
+<li> <a class=ulink href="/plans.html">Professional version</a> -- with unconditional 30-day money-back guarantee<br>
+<li> No FreeFind branding -- no advertising or FreeFind logo in pro version<span class=astr>*</span><br>
+<li> Private domain labeling -- i.e. search.yourdomain.com in address bar <span class=astr>*</span><br>
+<li> Parallel indexing -- fast indexing using multiple simultaneous connections <span class=astr>*</span><br>
+&nbsp;&nbsp;<span class=astr>All features are available in the free version except those marked with "*"</span>
+</ul>
+</td>
+</tr>
+<TR>
+<td >
+</td>
+</tr>
+
+</table>
+<!-- END OF EXTENDED FEATURES TABLE -->
+</div>
+<p>&nbsp;<br>
+<div id=slidewrap>
+	<table id=slidetitle cellpadding=0 cellspacing=0 width=600 >
+	<tr>
+		<td bgcolor="#f8f8f8" align=left >
+		&nbsp;&nbsp;Customers include
+		</td>
+	</tr>
+	</table>
+
+	<div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 600px; height: 120px;">
+		<!-- Slides Container -->
+		<div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 600px; height: 120px;">
+			<div> 
+				<table class=ctable >
+				<tr>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=38 class=clogo src="cl/standardbank.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=60 class=clogo src="cl/cdwlogo.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=56 class=clogo src="cl/salliemae.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=26 class=clogo src="cl/scotiabank.ed.png">
+					</td>
+				</tr>
+				</table>
+			</div>
+			<div>
+				<table class=ctable >
+				<tr>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=65 class=clogo src="cl/kennedyspacecentercreditunion.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=36 class=clogo src="cl/mid.ms.gov.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=34 class=clogo src="cl/berkeleycollege.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=45 class=clogo src="cl/ricoh.co.in.ed.png">
+					</td>
+				</tr>
+				</table>
+			</div>
+			<div>
+				<table class=ctable >
+				<tr>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=64 class=clogo src="cl/firstcanadianplace.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=37 class=clogo src="cl/robinsfcu.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=41 class=clogo src="cl/armtec.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=54 class=clogo src="cl/altavistacu.ed.jpg">
+					</td>
+				</tr>
+				</table>
+			</div>
+			<div>
+				<table class=ctable >
+				<tr>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=35 class=clogo src="cl/guptatechnologies.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=30 class=clogo src="cl/candadianoperacompany2.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=50 class=clogo src="cl/satellitehealth.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=53 class=clogo src="cl/chapmans.ed.png">
+					</td>
+				</tr>
+				</table>
+			</div>
+			<div>
+				<table class=ctable >
+				<tr>
+					<td valign=middle align=center>
+						<img alt="" width=155 height=33 class=clogo src="cl/endicottcollege.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=155 height=35 class=clogo src="cl/portofhouston.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=155 height=33 class=clogo src="cl/ussfcu.ed.png">
+					</td>
+				</tr>
+				</table>
+			</div>
+			
+			
+			<div> 
+				<table class=ctable >
+				<tr>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=38 class=clogo src="cl/standardbank.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=60 class=clogo src="cl/cdwlogo.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=56 class=clogo src="cl/salliemae.ed.png">
+					</td>
+					<td valign=middle align=center>
+						<img alt="" width=120 height=26 class=clogo src="cl/scotiabank.ed.png">
+					</td>
+				</tr>
+				</table>
+			</div>
+
+		</div>
+		<!-- Trigger -->
+		<script type="text/javascript">jssor_slider1_starter('slider1_container');  </script>
+	</div>
+
+</div>
+	
+	
+	
+
+
+
+
+
+<!-- ChangeDetection.com detection="off" -->
+
+
+
+
+	</td>
+</tr>
+
+</table>
+
+
+<!-- end C O N T E N T table -->
+
+
+<table id=bottomnav border=0 cellpadding=0 cellspacing=0>
+<tr>
+	<td align=center>
+		<A class=lmenu href="/control.html"><b>login</b></A>
+	</td>
+	<td align=center>
+		<A class=lmenu href="/details.html">features</A>
+	</td>
+	<td align=center>
+		<A class=lmenu href="/plans.html">pricing</A>
+	</td>
+	<td align=center>
+		<A class=lmenu href="//search.freefind.com/find.html?id=3225682">search</A>
+	</td>
+	<td align=center>
+		<!-- FreeFind nofollow --><A class=lmenu href="/library/ref/faq/">faq</A><!-- FreeFind end nofollow -->
+	</td>
+	<td align=center>
+		<A class=lmenu href="/library/">library</A>
+	</td>
+	<td align=center>
+		<A class=lmenu href="//search.freefind.com/find.html?id=3225682&amp;m=0&amp;p=0">sitemap</A>
+	</td>
+	<td align=center>
+		<A class=lmenu href="/policy.html">policies</A>  
+	</td>
+	<td align=center>
+		<A class=lmenu href="/contact.html">contact</A>
+	</td>
+</tr>
+</table>
+<p>&nbsp;
+
+
+<div class=footnote>
+
+FreeFind partners include <a class=plink href="http://www.thefreesite.com/">The Free Site</a>, <a class=plink href="http://www.freewarefiles.com" rel=nofollow >Freeware Files</a> and <a class=plink href="http://www.searchengineguide.com" rel=nofollow >Search Engine Guide</a>
+<br>
+Other FreeFind sites <a class=plink href="http://www.findia.net">Findia Net Search</a> and <a class=plink href="http://www.changedetection.com">Change Detection</a> 
+<br>
+FreeFind and FreeFind.com are trademarks of <A class=plink href="/about.html">FreeFind.com</a>.<br>
+<a class=plink href="/policy.html#copyright">Copyright 1998 - 2016</a>
+</div>
+
+</center>
+
+
+
+<script type="text/javascript">
+
+var qlist = [ 
+"Thanksssssssssssssssss",
+"Wow! What a service!",
+"Thank-you very much, what an absolutely fantastic tool.",
+"All options are friendly, complete and easy to customize.",
+"It's very simple to install and very very useful to users.",
+"The administration that I am provided with is phenomenal. Thanks",
+"Thank You for this proper Service, it's a real Diamond for my Web page",
+"Just a very short mail to say your service on the net is the best !!!!",
+"What a wonderful addition its going to make to my web site. Thanks again.",
+"WOW Just a note to praise your wonderful search engine. What a difference!",
+"I just wanted to let you guys know that your freefind search is awesome!!!!",
+"Your search has made my site completely user friendly ...thank you thank you.",
+"Just wanted to say I appreciate the weekly reports They tell me a lot. Thanks!",
+"I just wanted to pass along my appreciation for the service your site provides.",
+"I have just added a freefind search engine to my site and can't believe its free.",
+"Thank you guys for making this incredible search engine free. Keep up the good work!",
+"I've opened a mini search engine with it. And let me tell you, it's great. Keep it up.",
+"I've got to say well done, that's the best interface I've come across in a few years now!",
+"This email is just for thanking you for the free service you provide to all Internet community."
+];
+
+
+var qidx = 0;
+var rotationTime = 3000;
+
+function qRotate(){
+
+	var qstring = qlist[qidx++];
+	if(qidx >= qlist.length) qidx = 0;
+	setq(qstring);
+	setTimeout("qRotate()",rotationTime);
+	rotationTime += 1000;
+};
+
+function setq(qstring)
+{
+
+	if(!document.getElementById) return;
+	var qtxt = document.getElementById('quotetext');
+	if(qtxt) {
+		qtxt.innerHTML = qstring;
+		startFade();
+	}
+}
+
+(function(){
+	setTimeout("qRotate()",10);
+})();
+
+var stepTime = 100;
+var steps = 20;
+
+var incR;
+var incG;
+var incB;
+
+
+var initR = 0xAA;
+var initG = 0xEE;
+var initB = 0xFF;
+
+var curR = initR;
+var curG = initG;
+var curB = initB;
+
+var targColor = 0;
+
+(function(){
+	incR = fadeInc(initR,targColor);
+	incG = fadeInc(initG,targColor);
+	incB = fadeInc(initB,targColor);
+	
+})();
+
+function fadeInc(initial,target)
+{
+	var stepSize = (target - initial) / steps;
+	if(stepSize > -1) stepSize = -1;
+	return stepSize;
+};
+
+
+function startFade()
+{
+	curR = initR;
+	curG = initG;
+	curB = initB;
+	fadeStep();
+};
+
+function fadeStep()
+{
+	var qColor = 'rgb(' + parseInt(curR) + ',' + parseInt(curG) + ',' + parseInt(curB) + ')';
+	setColor(qColor);
+	if(curR == targColor && curG == targColor && curB == targColor) return;
+	curR = incColor(curR,incR);
+	curG = incColor(curG, incG);
+	curB = incColor(curB, incB);
+	setTimeout("fadeStep()",stepTime);
+
+}
+
+function incColor(cur,inc)
+{
+	var newColor = cur + inc;
+	if(newColor < targColor) newColor = targColor;
+	return newColor;
+}
+
+function setColor(rgbString)
+{
+
+	if(!document.getElementById) return;
+	var qtxt = document.getElementById('quotetext');
+	if(qtxt) {
+		qtxt.style.color = rgbString;
+	}
+}
+
+</script>
+ </body>
+</html>

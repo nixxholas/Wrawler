@@ -1,0 +1,5722 @@
+<!doctype html>
+<html>
+<head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<link rel="shortcut icon" href='/images/couchbase_favicon_0.ico' type="image/x-icon" />
+	<link rel="icon" href='/images/couchbase_favicon_0.ico' type="image/vnd.microsoft.icon" />
+
+<!--    _____________________________
+_______/ Support for legacy browsers \_______________________________________-->
+
+	<!--[if lte IE 8]>
+	<script
+		type="text/javascript" charset="utf-8"
+		src="/js/polyfills/html5shiv.js" />
+	<script
+		type="text/javascript" charset="utf-8"
+		src="/js/polyfills/respond.js" />
+	<![endif]-->
+	<!--[if IE 9]>
+	<script
+		type="text/javascript" charset="utf-8"
+		src="/js/polyfills/classList.js" />
+	<![endif]-->
+<!--_________________________________________________________________________-->
+
+	<script type="text/javascript" charset="utf-8" src="/js/jquery.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/js/jquery-migrate.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/js/modules/slick.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/js/modules/isotope.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/js/modules/imagesloaded.min.js"></script>
+
+
+	<meta name="apple-mobile-web-app-title" content="Couchbase">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="google-site-verification" content="1gPO0RaMzKyZJFpS-iyIEnPsWDztwZH0R3vG1VpSwvM" />
+
+	<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
+
+	<!-- LOCAL CSS Libs -->
+	<link rel="stylesheet" href="/css/styles.css?ts=1234" />
+
+	<title>Using Couchbase in Your Ionic Framework Application Part 1</title>
+<link rel="canonical" href="http://blog.couchbase.com/using-couchbase-in-your-ionic-framework-application-part-1"/>
+<script src="/js/modules/jquery.tx3-tag-cloud.js"></script>
+<link rel="stylesheet" href="/binaries/content/assets/css/overrides.css?ts=1234"></link>
+</head>
+<body>
+
+
+<!-- Google Tag Manager -->
+<noscript>
+	<iframe src="//www.googletagmanager.com/ns.html?id=GTM-MVPNN2" height="0"
+		width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<script type="text/javascript">
+
+	window['jQuery'](document).ready(function() {
+
+		function initTagManager(w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				'gtm.start': new Date().getTime(), event: 'gtm.js'
+			});
+			var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+			j.async = true;
+			j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl;
+			f.parentNode.insertBefore(j, f);
+		}
+
+		initTagManager.apply(window, [window, document, 'script', 'dataLayer', 'GTM-MVPNN2']);
+
+	});
+
+</script>
+<!-- End Google Tag Manager -->
+
+<!--    ________________
+_______/ Body tag start \____________________________________________________-->
+
+	<!-- begin - hst:include ref=header -->
+	<nav class="aux">
+	<div>
+		<ul>
+				<li><a href="/sign-in">Sign In</a> or <a href="/register">Register</a> </li>
+			</ul>
+		</div>
+</nav>
+
+
+<!-- Beginning of site.../jsp/base/header.jsp -->
+<header role="banner" id="global-header" class="global-header">
+	<div class="layout-wrapper">
+		<div class="global-header__logo">
+			<a rel="home" href='/home'>Couchbase</a>
+		</div>
+
+        <a data-modules="navigation,globalheadersearch"></a>
+<nav role="navigation" id="primary-navigation" class="primary-navigation">
+    <button aria-controls="primary-navigation__wrapper"
+        aria-pressed="false"
+        class="primary-navigation__toggler"
+        type="button">
+
+        <span>Menu</span>
+    </button>
+    <div id="primary-navigation__wrapper"
+        class="primary-navigation__wrapper"
+        aria-expanded="false">
+
+        <ul class="primary-navigation__items">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+	
+	
+		
+	
+
+
+
+<li class="primary-navigation__item ">
+
+	<a href="http://www.couchbase.com/nosql-resources/what-is-no-sql">Why NoSQL?</a>
+
+	
+
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+	
+		
+	
+	
+
+
+
+<li class="primary-navigation__item has-secondary-navigation">
+
+	<a href="http://www.couchbase.com/nosql-databases/couchbase-server">Products</a>
+
+	
+		<div class="secondary-navigation">
+			<ul class="secondary-navigation__items">
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/nosql-databases/couchbase-server">Couchbase Server</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/nosql-databases/couchbase-mobile">Couchbase Mobile</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/new">What&#039;s New</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/n1ql">Learn About N1QL</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/bigdata">Big Data Integration</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/get-started-developing-nosql">Get Started</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/nosql-databases/downloads">Free Downloads</a>
+					</li>
+				
+			</ul>
+		</div>
+	
+
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+	
+		
+	
+	
+
+
+
+<li class="primary-navigation__item has-secondary-navigation">
+
+	<a href="http://www.couchbase.com/use-cases">Use Cases</a>
+
+	
+		<div class="secondary-navigation">
+			<ul class="secondary-navigation__items">
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/use-cases/real-time-big-data">Real-Time Big Data</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/use-cases/mobile-applications">Mobile Applications</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/use-cases/profile-management">Profile Management</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/use-cases/content-management">Content Management</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/use-cases/customer-360-view">Customer 360° View</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/use-cases/internet-of-everything">Internet of Everything</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/use-cases/fraud-detection">Fraud Detection</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/use-cases/catalogs">Catalogs</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/use-cases/personalization">Personalization</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/use-cases/digital-communication">Digital Communication</a>
+					</li>
+				
+			</ul>
+		</div>
+	
+
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+	
+	
+
+
+
+	
+		
+	
+	
+
+
+
+<li class="primary-navigation__item has-secondary-navigation">
+
+	<a href="">Services &amp; Training</a>
+
+	
+		<div class="secondary-navigation">
+			<ul class="secondary-navigation__items">
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://couchbase.com/couchbase-services">Services</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://training.couchbase.com/online">Free Online Training</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://training.couchbase.com/classes">Classroom Hands-On</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://training.couchbase.com/virtual">Virtual Hands-On</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://training.couchbase.com/onsite-delivery">On-Site Hands-On</a>
+					</li>
+				
+			</ul>
+		</div>
+	
+
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+	
+		
+	
+	
+
+
+
+<li class="primary-navigation__item has-secondary-navigation">
+
+	<a href="http://developer.couchbase.com">Developers</a>
+
+	
+		<div class="secondary-navigation">
+			<ul class="secondary-navigation__items">
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://developer.couchbase.com">Developer Portal</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://developer.couchbase.com/open-source-projects">Open Source Projects</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="https://forums.couchbase.com">Forums</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/code-of-conduct">Code of Conduct</a>
+					</li>
+				
+			</ul>
+		</div>
+	
+
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+	
+		
+	
+	
+
+
+
+<li class="primary-navigation__item has-secondary-navigation">
+
+	<a href="http://www.couchbase.com/nosql-resources">Resources</a>
+
+	
+		<div class="secondary-navigation">
+			<ul class="secondary-navigation__items">
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/nosql-resources/what-is-no-sql">Why NoSQL?</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/nosql-resources/webinar">Webinars</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/nosql-resources/presentations">Presentations</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/nosql-resources/nosql-whitepapers">Whitepapers</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://developer.couchbase.com/guides-and-references">Documentation</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://blog.couchbase.com/">Blog</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/nosql-resources/events">Events</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.cvent.com/events/couchbase-connect-15/event-summary-b7744ca960364b75aba41de42cbef19e.aspx?page=overview">Couchbase Connect</a>
+					</li>
+				
+					
+						
+						
+							
+						
+					
+					<li class="secondary-navigation__item">
+						<a href="http://www.couchbase.com/case-studies">Customers</a>
+					</li>
+				
+			</ul>
+		</div>
+	
+
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+	
+	
+		
+	
+
+
+
+<li class="primary-navigation__item ">
+
+	<a href="http://www.couchbase.com/subscriptions-and-support">Subscriptions</a>
+
+	
+
+</li>
+</ul>
+        <form id="global-header-search"
+	        autocomplete="off"
+            class="global-header-search global-header-search--js"
+            action="/search"
+            aria-expanded="false">
+	        <ul><!--
+            ---><li>
+                    <label for="global-header-search__query">
+                        Search query
+                    </label>
+                    <input
+                        type="search"
+                        placeholder="Search"
+                        name="q"
+	                    value=""
+                        id="global-header-search__query">
+                </li><!--
+                ---><li>
+                    <button type="submit">
+                        <span>Search</span>
+                    </button>
+                </li><!--
+        ---></ul>
+            <button aria-controls="global-header-search__items"
+                aria-pressed="false"
+                class="global-header-search__toggler"
+                type="button">
+                <span>Search</span>
+            </button><!--
+        --->
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="display: none" about="custom-search-fields">
+
+	<input type="hidden"
+		name="cx"
+		value="017928787631531434501:3e7lwhjxsom" />
+	<input type="hidden"
+		name="cof"
+		value="FORID:11" />
+	<input type="hidden"
+		name="safe"
+		value="off" />
+	<input type="hidden"
+		name="form_build_id"
+		value="form-RrbKDUhO3kB2MiqBdZHIQI9L4LFE7c3L_s87N2B9BZo" />
+	<input type="hidden"
+		name="form_id"
+		value="google_cse_results_searchbox_form" />
+	
+	<input type="hidden"
+		name="siteurl"
+		value='www.couchbase.com' />
+
+</div>
+</form>
+    </div>
+</nav>
+<a class="global-header__download-button" href="/downloads">
+			Download
+		</a>
+	</div>
+</header>
+<!-- End of site.../jsp/base/header.jsp -->
+<!-- end - hst:include ref=header -->
+
+	<main id="global-content" class="global-content" role="main">
+
+		<!-- begin - hst:include ref=main -->
+		<!-- Beginning of site.../jsp/base/main.jsp -->
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<a data-modules="content-block-item,related-content"></a>
+
+<div class="generic-header blogpost">
+	<div class="layout-wrapper">
+		<div class="generic-header__content">
+
+			<span class="generic-header__type"><a href="/">Back to Blogs</a></span>
+
+			<h1 class="generic-header__title" id="main_title">Using Couchbase in Your Ionic Framework Application Part 1</h1>
+
+			<p class="generic-header__detail">
+
+			<!-- Speakers -->
+				
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+			<span class="speaker">
+			
+				
+				
+					<strong class="name">
+						Nic Raboy
+					</strong>
+				
+		
+				
+				
+					<span class="org">
+						of						
+						Couchbase
+					</span>
+				
+				
+			</span>
+		
+		
+		
+	
+	
+
+
+
+<!-- Publish date -->
+				<span class="date"> Published
+					  <time datetime="Mon Jul 20 11:00:00 UTC 2015">
+					    July 20, 2015</time>
+					</span>
+				</p>
+    </div><!-- .generic-header__content -->
+  </div><!-- .layout-wrapper -->
+</div><!-- .generic-header -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="textblock summary summary--String">
+
+	
+
+	<div class="textblock__content">
+		
+			
+			
+			
+
+				
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		var failHtml = 'Something';
+		
+		if (console in window) {
+			console.group();
+			console.warn("Fail element found (missing content)");
+			console.info(failHtml);
+			console.info($('form.failInfo'));
+			console.groupEnd();
+		}
+		
+	})
+</script>
+
+<span class="fail"></span>
+
+
+
+
+			
+		
+	</div>
+
+</div><style type="text/css">
+
+  .generic-header.blogpost .speaker + span.bullet {
+    display: none;
+  }
+
+  .generic-header__detail > a {
+    display: none;
+  }
+
+  .generic-header.blogpost .generic-header__content {
+    padding: 2em 0;
+  }
+
+  .generic-header.blogpost .generic-header__title {
+    font-size: 3.667em;
+  }
+
+  .generic-header.blogpost .generic-header__avatar {
+     display: none;
+  }
+
+  .blog-content {
+    position: relative;
+    max-width: 1088px;
+    margin-top: -0.5em;
+  }
+
+  .blog-content .textblock {
+    margin: 0 auto 2em;
+  }
+
+	.about-the-author .profile .author-about p:last-child {
+		margin: 0;
+	}
+
+  .generic-header.blogpost .pic {
+    vertical-align: middle;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 20px 0 -20px;
+    border: 0.2em solid #777;
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+    width:75px;
+  }
+
+  .about-the-author .pic {
+    vertical-align: middle;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 8px;
+    border: 0.2em solid #777;
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+    max-width: 57%;
+  }
+
+  @media (max-width: 58em) {
+
+    .about-the-author .author-name,
+    .about-the-author .author-name * {
+      background-image: none;
+    }
+
+  }
+
+  @media (max-width: 42.5em) {
+
+    .about-the-author {
+      display: none;
+    }
+
+  }
+
+  .about-the-author .author-name {
+    /*background: url("/images/borders/bracket_green_left.png") no-repeat scroll left top transparent;*/
+    color: #787878;
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0 auto;
+    padding: .5rem 0 .2rem;
+    text-align: center;
+    text-rendering: optimizelegibility;
+  }
+
+  .about-the-author .author-name > span {
+    /*background: url("/images/borders/bracket_green_right.png") no-repeat scroll right top transparent;*/
+    display: block;
+  }
+
+  .about-the-author .profile .author-job {
+    font-size: .9em;
+    font-weight: 400;
+    color: #a9a9a9;
+  }
+
+  .about-the-author .profile .author-org {
+  	font-size: .9em;
+    margin-top: .15rem;
+    margin-bottom: 1.5em;
+    color: #858583;
+  }
+
+  .about-the-author .profile .author-about {
+  	font-size: .9em;
+    text-align: left;
+    color: #555555;
+    text-rendering: geometricprecision;
+  }
+
+  .about-the-author .profile .author-about p {
+    font-family: inherit;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1.4375em;
+    margin-bottom: 0.75em;
+    text-rendering: optimizelegibility;
+  }
+
+  .about-the-author .profile .author-about p.blurb {
+    font-size: 0.9em;
+    text-align: justify;
+  }
+
+  .find-me > span {
+    display: block;
+    line-height: 1.334em;
+    padding: 0.334em 0;
+    vertical-align: text-top;
+  }
+
+  .find-me > span + span {
+    border-top: 1px dashed #d3d3d3;
+  }
+
+	.about-the-author a{
+		color:#d7181b;
+	}
+
+  .about-the-author ul.author-links {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .about-the-author ul.author-links > li {
+    background: none repeat scroll 0 0 #f3f3f3;
+    font-size: 15px;
+    font-weight: 700;
+    list-style: outside none none;
+    padding: 13px 0 13px 10px;
+    text-align: left;
+  }
+
+  .about-the-author ul.author-links > li > a {
+    color: #000000;
+  }
+
+  .about-the-author ul.author-links > li > a > .arrow {
+    font-size: 15px;
+    font-weight: 400;
+    font-style: normal;
+    color: #ce1e26;
+    line-height: 16px;
+    text-align: center;
+    vertical-align: baseline;
+    width: 18px;
+    height: 16px;
+    margin-top: 0;
+    display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+    list-style: none outside none;
+  }
+
+   .tags-container {
+      margin: 0 auto 2.5em auto;
+      max-width: 52em;
+      position: relative;
+      text-align: left;
+    }
+
+    .tags {
+      background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+      display: block;
+      height: 2.25em;
+      list-style: outside none none;
+      margin: 0 0 0 3em;
+      overflow: visible;
+      padding: 0 0 0 1.5em;
+      position: relative;
+    }
+
+    .tag {
+      background-color: #7bbdcb;
+      border-radius: 0.334em;
+      color: #ffffff;
+      display: inline-block;
+      font-size: 0.85em;
+      height: 100%;
+      line-height: 2.75em;
+      margin-bottom: 0.334em;
+      margin-right: 0.25em;
+      padding: 0 0.667em;
+      text-transform: uppercase;
+      vertical-align: middle;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .tag:hover, .tag:focus {
+      background-color: #5BC1D7;
+      transition: background-color 0.1s ease-in-out;
+    }
+
+    .tags-container label {
+      display: block;
+      font-weight: bold;
+      left: 0;
+      line-height: 2.25em;
+      padding: 0 0 0 0.334em;
+      position: absolute;
+      top: 0;
+      width: 2.25em;
+    }
+</style>
+
+<div class="layout-wrapper blog-content">
+<div class="cols article-filters-and-results blog-details">
+<div class="row">
+<div class="col filters">
+
+<aside id="about-the-author" class="about-the-author">
+					<h3>About the Author</h3>
+					<img class="pic"
+								src="/binaries/content/gallery/website/speaker/nic_raboy_headshot.jpeg"
+								title="Nic Raboy's Picture"
+								alt="nic_raboy_headshot.jpeg" />
+					<h4 class="author-name">
+						<span><a href="/facet/Author/Nic+Raboy">Nic Raboy</a></span>
+					</h4>
+
+					<div class="profile">
+
+						<div class="author-job">Developer Advocate</div>
+						<div class="author-org">Couchbase</div>
+						<div class="author-about">
+
+							<p class="blurb">Nic is a Developer Advocate for Couchbase in the San Francisco Bay Area. He has released several native and hybrid mobile applications to iTunes and Google Play and writes about his development experiences related to making web and mobile app development easier to understand. He has experience in Unity3D, Apache Cordova, Java, NoSQL, SQL, PHP, and NodeJS.</p>
+							<p class="find-me">
+									<span>
+											Follow me on Twitter
+											<a href="https://twitter.com/nraboy"> @nraboy</a>
+										 </span>
+									<span>
+											Find me on
+											<a href="https://www.linkedin.com/in/nraboy">
+												LinkedIn
+											</a>
+										 </span>
+									<span>
+											Check out my
+											<a href="https://www.github.com/nraboy">
+												GitHub
+											</a>
+										</span>
+									<span>
+											Check out my
+											<a href="http://www.couchbase.com/restservices/blogfeed/author/nic-raboy">
+												RSS Feed
+											</a>
+										</span>
+
+
+								</p>
+
+							</div><!-- .author-about -->
+					</div><!-- .profile -->
+
+				</aside><!-- #about-the-author -->
+
+			  <div class="wrapper">
+				<h2>Filter blogs by:</h2>
+                       <ul class="filter-list">
+
+					<li class="filter">
+										<!-- facetvalue.name = Topic -->
+										<h3>
+											Topic</h3>
+										 
+										<ul>
+											<li>
+															<a href='/facet/Topic/.NET'>.NET&nbsp;<span class="count">(29)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Topic/Application+Design'>Application Design&nbsp;<span class="count">(17)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Topic/Best+Practices+and+Tutorials'>Best Practices and Tutorials&nbsp;<span class="count">(42)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Topic/Couchbase+Architecture'>Couchbase Architecture&nbsp;<span class="count">(9)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Topic/Couchbase+Mobile'>Couchbase Mobile&nbsp;<span class="count">(89)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Topic/Couchbase+Server'>Couchbase Server&nbsp;<span class="count">(131)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Topic/Data+Modeling'>Data Modeling&nbsp;<span class="count">(9)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Topic/GoLang'>GoLang&nbsp;<span class="count">(3)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Topic/Java'>Java&nbsp;<span class="count">(21)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Topic/N1QL+_x002f_+Query'>N1QL / Query&nbsp;<span class="count">(38)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Topic/Node.js'>Node.js&nbsp;<span class="count">(14)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Topic/Security'>Security&nbsp;<span class="count">(10)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Topic/Spring'>Spring&nbsp;<span class="count">(7)</span></a>
+				
+													</li>
+											</ul>
+										</li>
+									<li class="filter">
+										<!-- facetvalue.name = Year -->
+										<h3>
+											Date</h3>
+										 
+										<ul>
+											<li>
+															<a href='/facet/Year/2016'>2016&nbsp;<span class="count">(269)</span></a>
+				
+													<a class="toggle expand" href="#"><span class="reader">See months</span></a>
+													<a class="toggle contract hide" href="#"><span class="reader">Hide months</span></a>
+												
+													<ul>
+														</ul>
+													
+													<ul class="hide">
+													
+													<li>
+																				<a href='/facet/Year/2016/Month/0'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+		January
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(43)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2016/Month/1'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		February
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(42)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2016/Month/2'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+		March
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(34)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2016/Month/3'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+		April
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(27)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2016/Month/4'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+		May
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(45)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2016/Month/5'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+		June
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(34)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2016/Month/6'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+		July
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(42)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2016/Month/7'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+		August
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(2)</span></a>
+																			</li>
+						
+																		</ul>
+												</li>
+											<li>
+															<a href='/facet/Year/2015'>2015&nbsp;<span class="count">(240)</span></a>
+				
+													<a class="toggle expand" href="#"><span class="reader">See months</span></a>
+													<a class="toggle contract hide" href="#"><span class="reader">Hide months</span></a>
+												
+													<ul>
+														</ul>
+													
+													<ul class="hide">
+													
+													<li>
+																				<a href='/facet/Year/2015/Month/0'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+		January
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(21)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2015/Month/1'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		February
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(18)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2015/Month/2'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+		March
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(19)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2015/Month/3'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+		April
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(12)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2015/Month/4'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+		May
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(17)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2015/Month/5'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+		June
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(14)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2015/Month/6'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+		July
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(18)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2015/Month/7'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+		August
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(6)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2015/Month/8'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		September
+	
+	
+	
+	
+
+
+
+<span class="count">(11)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2015/Month/9'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		October
+	
+	
+	
+
+
+
+<span class="count">(40)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2015/Month/10'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		November
+	
+	
+
+
+
+<span class="count">(37)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2015/Month/11'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		December
+	
+
+
+
+<span class="count">(27)</span></a>
+																			</li>
+						
+																		</ul>
+												</li>
+											<li>
+															<a href='/facet/Year/2014'>2014&nbsp;<span class="count">(125)</span></a>
+				
+													<a class="toggle expand" href="#"><span class="reader">See months</span></a>
+													<a class="toggle contract hide" href="#"><span class="reader">Hide months</span></a>
+												
+													<ul>
+														</ul>
+													
+													<ul class="hide">
+													
+													<li>
+																				<a href='/facet/Year/2014/Month/0'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+		January
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(7)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2014/Month/1'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		February
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(9)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2014/Month/2'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+		March
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(13)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2014/Month/3'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+		April
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(14)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2014/Month/4'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+		May
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(10)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2014/Month/5'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+		June
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(14)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2014/Month/6'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+		July
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(8)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2014/Month/7'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+		August
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(6)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2014/Month/8'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		September
+	
+	
+	
+	
+
+
+
+<span class="count">(8)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2014/Month/9'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		October
+	
+	
+	
+
+
+
+<span class="count">(12)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2014/Month/10'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		November
+	
+	
+
+
+
+<span class="count">(14)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2014/Month/11'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		December
+	
+
+
+
+<span class="count">(10)</span></a>
+																			</li>
+						
+																		</ul>
+												</li>
+											<li>
+															<a href='/facet/Year/2013'>2013&nbsp;<span class="count">(90)</span></a>
+				
+													<a class="toggle expand" href="#"><span class="reader">See months</span></a>
+													<a class="toggle contract hide" href="#"><span class="reader">Hide months</span></a>
+												
+													<ul>
+														</ul>
+													
+													<ul class="hide">
+													
+													<li>
+																				<a href='/facet/Year/2013/Month/0'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+		January
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(9)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2013/Month/1'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		February
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(9)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2013/Month/2'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+		March
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(6)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2013/Month/3'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+		April
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(4)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2013/Month/4'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+		May
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(6)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2013/Month/5'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+		June
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(3)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2013/Month/6'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+		July
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(8)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2013/Month/7'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+		August
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(8)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2013/Month/8'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		September
+	
+	
+	
+	
+
+
+
+<span class="count">(10)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2013/Month/9'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		October
+	
+	
+	
+
+
+
+<span class="count">(16)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2013/Month/10'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		November
+	
+	
+
+
+
+<span class="count">(5)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2013/Month/11'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		December
+	
+
+
+
+<span class="count">(6)</span></a>
+																			</li>
+						
+																		</ul>
+												</li>
+											<li>
+															<a href='/facet/Year/2012'>2012&nbsp;<span class="count">(55)</span></a>
+				
+													<a class="toggle expand" href="#"><span class="reader">See months</span></a>
+													<a class="toggle contract hide" href="#"><span class="reader">Hide months</span></a>
+												
+													<ul>
+														</ul>
+													
+													<ul class="hide">
+													
+													<li>
+																				<a href='/facet/Year/2012/Month/0'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+		January
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(8)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2012/Month/1'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		February
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(3)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2012/Month/2'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+		March
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(5)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2012/Month/3'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+		April
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(4)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2012/Month/4'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+		May
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(2)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2012/Month/5'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+		June
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(3)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2012/Month/6'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+		July
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(6)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2012/Month/7'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+		August
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(6)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2012/Month/8'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		September
+	
+	
+	
+	
+
+
+
+<span class="count">(3)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2012/Month/9'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		October
+	
+	
+	
+
+
+
+<span class="count">(8)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2012/Month/10'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		November
+	
+	
+
+
+
+<span class="count">(3)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2012/Month/11'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		December
+	
+
+
+
+<span class="count">(4)</span></a>
+																			</li>
+						
+																		</ul>
+												</li>
+											<li>
+															<a href='/facet/Year/2011'>2011&nbsp;<span class="count">(27)</span></a>
+				
+													<a class="toggle expand" href="#"><span class="reader">See months</span></a>
+													<a class="toggle contract hide" href="#"><span class="reader">Hide months</span></a>
+												
+													<ul>
+														</ul>
+													
+													<ul class="hide">
+													
+													<li>
+																				<a href='/facet/Year/2011/Month/1'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		February
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(7)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2011/Month/2'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+		March
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(2)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2011/Month/3'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+		April
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(1)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2011/Month/4'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+		May
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(2)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2011/Month/5'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+		June
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(4)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2011/Month/6'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+		July
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(1)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2011/Month/7'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+		August
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(1)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2011/Month/9'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		October
+	
+	
+	
+
+
+
+<span class="count">(6)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2011/Month/10'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		November
+	
+	
+
+
+
+<span class="count">(1)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2011/Month/11'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		December
+	
+
+
+
+<span class="count">(2)</span></a>
+																			</li>
+						
+																		</ul>
+												</li>
+											<li>
+															<a href='/facet/Year/2010'>2010&nbsp;<span class="count">(50)</span></a>
+				
+													<a class="toggle expand" href="#"><span class="reader">See months</span></a>
+													<a class="toggle contract hide" href="#"><span class="reader">Hide months</span></a>
+												
+													<ul>
+														</ul>
+													
+													<ul class="hide">
+													
+													<li>
+																				<a href='/facet/Year/2010/Month/2'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+		March
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(8)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2010/Month/3'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+		April
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(6)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2010/Month/4'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+		May
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(2)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2010/Month/5'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+		June
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(2)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2010/Month/6'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+		July
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(4)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2010/Month/7'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+		August
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(5)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2010/Month/8'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		September
+	
+	
+	
+	
+
+
+
+<span class="count">(2)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2010/Month/9'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		October
+	
+	
+	
+
+
+
+<span class="count">(15)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2010/Month/10'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		November
+	
+	
+
+
+
+<span class="count">(4)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2010/Month/11'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		December
+	
+
+
+
+<span class="count">(2)</span></a>
+																			</li>
+						
+																		</ul>
+												</li>
+											<li>
+															<a href='/facet/Year/2009'>2009&nbsp;<span class="count">(17)</span></a>
+				
+													<a class="toggle expand" href="#"><span class="reader">See months</span></a>
+													<a class="toggle contract hide" href="#"><span class="reader">Hide months</span></a>
+												
+													<ul>
+														</ul>
+													
+													<ul class="hide">
+													
+													<li>
+																				<a href='/facet/Year/2009/Month/6'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+		July
+	
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(1)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2009/Month/7'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+		August
+	
+	
+	
+	
+	
+
+
+
+<span class="count">(2)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2009/Month/8'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		September
+	
+	
+	
+	
+
+
+
+<span class="count">(2)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2009/Month/9'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		October
+	
+	
+	
+
+
+
+<span class="count">(6)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2009/Month/10'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		November
+	
+	
+
+
+
+<span class="count">(4)</span></a>
+																			</li>
+						
+																		<li>
+																				<a href='/facet/Year/2009/Month/11'>
+																				
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		December
+	
+
+
+
+<span class="count">(2)</span></a>
+																			</li>
+						
+																		</ul>
+												</li>
+											</ul>
+										</li>
+									<li class="filter">
+										<!-- facetvalue.name = Author -->
+										<h3>
+											Author</h3>
+										 
+										<ul>
+											<li>
+															<a href='/facet/Author/Alex+Popov'>Alex Popov&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Alexis+Roos'>Alexis Roos&nbsp;<span class="count">(4)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Ali+LeClerc'>Ali LeClerc&nbsp;<span class="count">(28)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Anil+Kumar'>Anil Kumar&nbsp;<span class="count">(9)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Anne+Obendorf'>Anne Obendorf&nbsp;<span class="count">(6)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Arun+Gupta'>Arun Gupta&nbsp;<span class="count">(61)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Austin+Gonyou'>Austin Gonyou&nbsp;<span class="count">(3)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Benjamin+Young'>Benjamin Young&nbsp;<span class="count">(2)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Bob+Wiederhold'>Bob Wiederhold&nbsp;<span class="count">(23)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Brett+Lawson'>Brett Lawson&nbsp;<span class="count">(16)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Cecile+Le+Pape'>Cecile Le Pape&nbsp;<span class="count">(2)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Cihan+Biyikoglu'>Cihan Biyikoglu&nbsp;<span class="count">(36)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Damien+Katz'>Damien Katz&nbsp;<span class="count">(3)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/David+Maier'>David Maier&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/David+Maitland'>David Maitland&nbsp;<span class="count">(4)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/David+Ostrovsky'>David Ostrovsky&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/David+Segleau'>David Segleau&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Dipti+Borkar'>Dipti Borkar&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Don+Pinto'>Don Pinto&nbsp;<span class="count">(38)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Doug+Laird'>Doug Laird&nbsp;<span class="count">(4)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Dustin+Sallings'>Dustin Sallings&nbsp;<span class="count">(8)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Eric+Lambert'>Eric Lambert&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Gareth+Powell'>Gareth Powell&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Hod+Greeley'>Hod Greeley&nbsp;<span class="count">(7)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Ilam+Siva'>Ilam Siva&nbsp;<span class="count">(4)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/J.+Chris+Anderson'>J. Chris Anderson&nbsp;<span class="count">(12)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/James+Nocentini'>James Nocentini&nbsp;<span class="count">(19)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/James+Phillips'>James Phillips&nbsp;<span class="count">(14)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Jan+Lehnardt'>Jan Lehnardt&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Jeff+Morris'>Jeff Morris&nbsp;<span class="count">(41)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Jerod+Johnson'>Jerod Johnson&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/John+Zablocki'>John Zablocki&nbsp;<span class="count">(16)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Justin+Michaels'>Justin Michaels&nbsp;<span class="count">(2)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Keshav+Murthy'>Keshav Murthy&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Ketaki+Gangal'>Ketaki Gangal&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Kirk+Kirkconnell'>Kirk Kirkconnell&nbsp;<span class="count">(12)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Koji+Kawamura'>Koji Kawamura&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Laura+Czajkowski'>Laura Czajkowski&nbsp;<span class="count">(30)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Laurent+Doguin'>Laurent Doguin&nbsp;<span class="count">(31)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/MC+Brown'>MC Brown&nbsp;<span class="count">(4)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Manuel+Hurtado'>Manuel Hurtado&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Mark+Nunberg'>Mark Nunberg&nbsp;<span class="count">(10)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Martin+Esmann'>Martin Esmann&nbsp;<span class="count">(10)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Marty+Schoch'>Marty Schoch&nbsp;<span class="count">(4)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Matt+Ingenthron'>Matt Ingenthron&nbsp;<span class="count">(8)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Matthew+Groves'>Matthew Groves&nbsp;<span class="count">(20)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Matthew+Revell'>Matthew Revell&nbsp;<span class="count">(32)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Michael+Nitschinger'>Michael Nitschinger&nbsp;<span class="count">(14)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Nic+Raboy'>Nic Raboy&nbsp;<span class="count">(57)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Nowrin+Joyita'>Nowrin Joyita&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Pasin+Suriyentrakorn'>Pasin Suriyentrakorn&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Patrick+Galbraith'>Patrick Galbraith&nbsp;<span class="count">(5)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Perry+Krug'>Perry Krug&nbsp;<span class="count">(10)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Philipp+Fehre'>Philipp Fehre&nbsp;<span class="count">(2)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Pranav+Mayuram'>Pranav Mayuram&nbsp;<span class="count">(6)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Prasad+Varakur'>Prasad Varakur&nbsp;<span class="count">(2)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Qi+Zhu'>Qi Zhu&nbsp;<span class="count">(2)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Raghavan+Srinivas'>Raghavan Srinivas&nbsp;<span class="count">(7)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Roi+Katz'>Roi Katz&nbsp;<span class="count">(3)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Sandhya+Krishnamurthy'>Sandhya Krishnamurthy&nbsp;<span class="count">(4)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Sean+Lynch'>Sean Lynch&nbsp;<span class="count">(3)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Sergey+Avseyev'>Sergey Avseyev&nbsp;<span class="count">(10)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Shane+Johnson'>Shane Johnson&nbsp;<span class="count">(29)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Simon+Basl%C3%A9'>Simon Baslé&nbsp;<span class="count">(13)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Steve+Yen'>Steve Yen&nbsp;<span class="count">(2)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Tim+Wong'>Tim Wong&nbsp;<span class="count">(3)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Todd+Greenstein'>Todd Greenstein&nbsp;<span class="count">(12)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Tom+Rosenfeld'>Tom Rosenfeld&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Traun+Leyden'>Traun Leyden&nbsp;<span class="count">(1)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Trond+Norbye'>Trond Norbye&nbsp;<span class="count">(12)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Volker+Mische'>Volker Mische&nbsp;<span class="count">(3)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Wayne+Carter'>Wayne Carter&nbsp;<span class="count">(7)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/Will+Gardella'>Will Gardella&nbsp;<span class="count">(3)</span></a>
+				
+													</li>
+											<li>
+															<a href='/facet/Author/William+Hoang'>William Hoang&nbsp;<span class="count">(41)</span></a>
+				
+													</li>
+											<li class="toggle see-all"><a href="#">See all</a></li>
+												<li class="toggle see-fewer hide"><a href="#">See fewer</a></li>
+											</ul>
+										</li>
+									<li class="filter">
+										<h3>Tags</h3>
+										<ul id="tagcloud" style="width:200px;">
+											<li data-weight="35"><a href="/facet/Tags/.NET">.NET</a></li>
+														<li data-weight="31"><a href="/facet/Tags/N1QL">N1QL</a></li>
+														<li data-weight="31"><a href="/facet/Tags/Couchbase+Server">Couchbase Server</a></li>
+														<li data-weight="22"><a href="/facet/Tags/events">events</a></li>
+														<li data-weight="21"><a href="/facet/Tags/Coming+up">Coming up</a></li>
+														<li data-weight="20"><a href="/facet/Tags/nosql">nosql</a></li>
+														<li data-weight="18"><a href="/facet/Tags/dotnet">dotnet</a></li>
+														<li data-weight="17"><a href="/facet/Tags/SDK">SDK</a></li>
+														<li data-weight="16"><a href="/facet/Tags/java">java</a></li>
+														<li data-weight="16"><a href="/facet/Tags/couchbase">couchbase</a></li>
+														<li data-weight="15"><a href="/facet/Tags/docker">docker</a></li>
+														<li data-weight="12"><a href="/facet/Tags/webinars">webinars</a></li>
+														<li data-weight="11"><a href="/facet/Tags/C%23">C#</a></li>
+														<li data-weight="11"><a href="/facet/Tags/DOTNET">DOTNET</a></li>
+														<li data-weight="11"><a href="/facet/Tags/performance">performance</a></li>
+														<li data-weight="8"><a href="/facet/Tags/views">views</a></li>
+														<li data-weight="8"><a href="/facet/Tags/ASP.NET">ASP.NET</a></li>
+														<li data-weight="8"><a href="/facet/Tags/query">query</a></li>
+														<li data-weight="8"><a href="/facet/Tags/n1ql">n1ql</a></li>
+														<li data-weight="7"><a href="/facet/Tags/sdk">sdk</a></li>
+														<li data-weight="7"><a href="/facet/Tags/Couchbase+Mobile">Couchbase Mobile</a></li>
+														<li data-weight="7"><a href="/facet/Tags/ionic+framework">ionic framework</a></li>
+														<li data-weight="7"><a href="/facet/Tags/Big+Data">Big Data</a></li>
+														<li data-weight="7"><a href="/facet/Tags/security">security</a></li>
+														<li data-weight="6"><a href="/facet/Tags/.NET+SDK">.NET SDK</a></li>
+														</ul>
+									</li>
+								</ul>
+					<style>
+					ul.tx3-tag-cloud {
+					}
+					ul.tx3-tag-cloud li {
+						display: inline;
+						/*float: left;*/
+						list-style: none;
+						margin-right: 4px;
+					}
+					ul.tx3-tag-cloud li a {
+						display: inline;
+						text-decoration: none;
+						color: #78293;
+						padding: 3px 10px;
+					}
+					ul.tx3-tag-cloud li a:hover {
+						color: #d7181b;
+						-webkit-transition: color 250ms linear;
+						-moz-transition: color 250ms linear;
+						-o-transition: color 250ms linear;
+						-ms-transition: color 250ms linear;
+						transition: color 250ms linear;
+					}
+				</style>
+				
+					<script type="text/javascript">
+						// default multiplier is "1"
+						$(document).ready(function(){
+							$("#tagcloud").tx3TagCloud({
+								multiplier: 1
+							});
+						});
+				    </script>	
+			</div><!-- .wrapper -->
+
+
+
+
+	</div>
+	<div class="col results">
+
+	<!-- Blog post content -->
+		<div id="blog-post-content">
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+		<div class="textblock textblock--centered content-block-item" about="item.type=html">
+			<div class="textblock__content">
+				<p><a href="http://www.ionicframework.com">Ionic Framework</a> has recently become one of the hottest mobile frameworks around. It makes it incredibly easy to write great user interfaces for mobile applications. However, part of the challenge is also managing data, fetching from the back-end server and saving the data locally for when the device is offline.</p>
+
+<p>Couchbase Mobile handles this for you and with the Apache Cordova plugin, it&#39;s a breeze!</p>
+
+<p>In this tutorial, you will learn how to:</p>
+
+<ul>
+	<li>Include Couchbase Lite in your Ionic project.</li>
+	<li>Use the Ionic UI components to display the data onscreen.</li>
+	<li>Run the application on the iOS / Android simulator.</li>
+</ul>
+
+<h2>The Prerequisites</h2>
+
+<ul>
+	<li>Ionic Framework 1.0+</li>
+	<li>Apache Cordova 5.0+</li>
+	<li>The Android SDK if building for Android</li>
+	<li>A Mac with Xcode installed if building for iOS</li>
+</ul>
+
+<h2>Getting Started</h2>
+
+<p>Before we start coding it is important we create a new project and configure all necessary plugins and components. From the Command Prompt (Windows) or Terminal (Mac / Linux), run the following to create a new Ionic project:</p>
+
+<pre>
+<code class="language-bash">
+ionic start CouchbaseApp blank
+cd CouchbaseApp
+ionic platform add android
+ionic platform add ios
+</code>
+</pre>
+
+<p>Remember, if you&#39;re not using a Mac, you cannot add and build for the iOS platform.</p>
+
+<p>For this project to be successful, there are a few <a href="https://cordova.apache.org/">Apache Cordova</a> plugins that must be installed. With the Ionic project as your current working directory in the Command Prompt or Terminal, run the following commands:</p>
+
+<pre>
+<code class="language-bash">
+cordova plugin add cordova-plugin-whitelist
+cordova plugin add https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin.git
+</code>
+</pre>
+
+<p>This will install the Apache Cordova whitelist plugin that will allow us to communicate with external services and the Couchbase PhoneGap plugin that will allow for using Couchbase in our application.</p>
+
+<h2>Including the AngularJS RESTful Library</h2>
+
+<p>Using Couchbase Lite happens through RESTful APIs exposed through the Apache Cordova plugin. A full list of these API endpoints can be found in the <a href="http://developer.couchbase.com/mobile/develop/references/couchbase-lite/rest-api/index.html">official Couchbase documentation</a>. However, there is an <a href="https://angularjs.org/">AngularJS</a> wrapper library available to make calling these endpoints a lot easier.</p>
+
+<p>Download the latest <a href="https://github.com/couchbaselabs/ng-couchbase-lite">ng-couchbase-lite</a> release found on GitHub and include the <strong>ng-couchbase-lite.min.js</strong> file found in the <strong>dist</strong> directory into your project&#39;s <strong>www/js/</strong> folder.</p>
+
+<p>With the file included in your project, open the <strong>index.html</strong> file and include the JavaScript file like so:</p>
+
+<pre>
+<code class="language-html">
+&lt;script src="js/ng-couchbase-lite.min.js"&gt;&lt;/script&gt;
+&lt;script src="js/app.js"&gt;&lt;/script&gt;
+</code>
+</pre>
+
+<p>Notice that the script was included above the project&#39;s <strong>www/js/app.js</strong>.</p>
+
+<p>The final thing needing to be done before ng-couchbase-lite can be used is it needs to be injected into AngularJS. This can be done by opening the project&#39;s <strong>www/js/app.js</strong> file and changing the <strong>angular.module</strong> to look like the following:</p>
+
+<pre>
+<code class="language-javascript">
+var couchbaseApp = angular.module("starter", ["ionic", "ngCouchbaseLite"]);
+</code>
+</pre>
+
+<p>The AngularJS wrapper can now be used through the project.</p>
+
+<h2>Polishing the Index File</h2>
+
+<p>A few tweaks need to be made to the project&#39;s <strong>www/index.html</strong> to take full advantage of this tutorial. The first of which is adding some meta information to compliment the whitelisting plugin. It is more necessary for Android than iOS. Near the other <strong>meta</strong> tags, include the following:</p>
+
+<pre>
+<code class="language-html">
+&lt;meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"&gt;
+</code>
+</pre>
+
+<p>This just tells your project that you want to work with certain scripts.</p>
+
+<p>The other tweak you want to do is inside your <strong>body</strong> tags. Replace everything inside the body with the following:</p>
+
+<pre>
+<code class="language-html">
+&lt;ion-pane&gt;
+    &lt;ion-nav-bar class="bar-stable"&gt;&lt;/ion-nav-bar&gt;
+    &lt;ion-nav-view&gt;&lt;/ion-nav-view&gt;
+&lt;/ion-pane&gt;
+</code>
+</pre>
+
+<p>You should be good to go at this point</p>
+
+<h2>Using a Global Database Variable</h2>
+
+<p>To save us the trouble of having to open the database on every view, we&#39;re just going to create a variable global to the project. In the <strong>www/js/app.js</strong> file below <strong>angular.module</strong> include the following:</p>
+
+<pre>
+<code class="language-javascript">
+var todoDatabase = null;
+</code>
+</pre>
+
+<p>This will get set later when we initialize the database.</p>
+
+<h2>Configuring the UI Router</h2>
+
+<p>Ionic Framework uses the AngularJS UI-Router, so we&#39;re going to leverage it when handling our views and controllers. Inside the project&#39;s <strong>www/js/app.js</strong> file, add the following code:</p>
+
+<pre>
+<code class="language-javascript">
+couchbaseApp.config(function($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state("todoLists", {
+            url: "/todoLists",
+            templateUrl: "templates/todolists.html",
+            controller: "TodoListsController"
+        })
+        .state("tasks", {
+            url: "/tasks/:listId",
+            templateUrl: "templates/tasks.html",
+            controller: "TaskController"
+        });
+    $urlRouterProvider.otherwise("/todoLists");
+});
+</code>
+</pre>
+
+<p>We have two routes, one to our lists view and one to our tasks view. The tasks view however requires an extra parameter which we&#39;re identifying as <strong>listId</strong>. This is because when we navigate to the tasks view we want to provide the parent list item that the task belongs to. It will help us for querying our data. Ignore the controllers for now, because we&#39;re going to create them later.</p>
+
+<h2>Initializing the Database and Views</h2>
+
+<p>The first thing to do when using the Couchbase PhoneGap plugin is to create a database. Then, you can register views to query the documents that will reside in the database. Couchbase Views are map/reduce queries that build the index incrementally as new documents are saved to the database. They are completely different to user interface Views!</p>
+
+<p>Inside your project&#39;s <strong>www/js/app.js</strong> file, we&#39;re going to include a few things in the AngularJS <strong>run</strong> method:</p>
+
+<pre>
+<code class="language-javascript">
+couchbaseApp.run(function($ionicPlatform, $couchbase) {
+    $ionicPlatform.ready(function() {
+        // 1
+        if(!window.cblite) {
+            alert("Couchbase Lite is not installed!");
+        } else {
+            cblite.getURL(function(err, url) {
+                if(err) {
+                    alert("There was an error getting the database URL");
+                    return;
+                }
+                todoDatabase = new $couchbase(url, "todo");
+                // 2
+                todoDatabase.createDatabase().then(function(result) {
+                    var todoViews = {
+                        lists: {
+                            map: function(doc) {
+                                if(doc.type == "list" &amp;&amp; doc.title) {
+                                    emit(doc._id, {title: doc.title, rev: doc._rev})
+                                }
+                            }.toString()
+                        },
+                        tasks: {
+                            map: function(doc) {
+                                if(doc.type == "task" &amp;&amp; doc.title &amp;&amp; doc.list_id) {
+                                    emit(doc.list_id, {title: doc.title, list_id: doc.list_id, rev: doc._rev})
+                                }
+                            }.toString()
+                        }
+                    };
+                    todoDatabase.createDesignDocument("_design/todo", todoViews);
+                    todoDatabase.listen();
+                }, function(error) {
+                    // There was an error creating the database
+                });
+             });
+         }
+    });
+});
+</code>
+</pre>
+
+<p>Here&#39;s what&#39;s happening step by step:</p>
+
+<ol>
+	<li>You first check to make sure the plugin exists (installed and running). If it exists, then create a new database if the desired database does not already exist. If the database creation is successful, we&#39;re going to create two views, one for getting the todo lists, and one for getting the tasks. For this tutorial, the database we&#39;re creating is called <strong>todo</strong>.</li>
+	<li>We&#39;re creating a view called <strong>tasks</strong> and <strong>lists</strong>, both inside of the <strong>_design/todo</strong> design document. In regards to the Couchbase views. The <strong>lists</strong> view will return all documents that have a <strong>doc.type</strong> of <strong>list</strong> and that have a <strong>title</strong> property. However, only the title and document revision are returned with the document id. This is to keep things light-weight. The <strong>tasks</strong> view will return all documents that have a <strong>doc.type</strong> of <strong>task</strong> as well as some <strong>title</strong> property and parent <strong>list_id</strong> property. In this particular view, only the title, document revision, and list id are returned with the document id.</li>
+</ol>
+
+<h2>Creating the Controllers</h2>
+
+<h3>The Todo List Controller</h3>
+
+<p>Inside the <strong>www/js/app.js</strong> file of your project, go ahead and create the following controller:</p>
+
+<pre>
+<code class="language-javascript">
+couchbaseApp.controller("TodoListsController", function($scope, $state, $ionicPopup, $couchbase, $rootScope) {
+
+    $scope.lists = { };
+
+    $scope.insert = function() { };
+
+    $scope.delete = function(list) { };
+
+});
+</code>
+</pre>
+
+<p>A little explanation on our plans here. The <strong>$scope.lists</strong> object will hold all Couchbase documents that the particular view will have access to. <strong>$scope.insert</strong> of course will be responsible for inserting data into Couchbase Lite and <strong>$scope.delete</strong> will be responsible for deleting data.</p>
+
+<p>So starting with the <strong>$scope.insert</strong> function:</p>
+
+<pre>
+<code class="language-javascript">
+$scope.insert = function() {
+    $ionicPopup.prompt({
+        title: 'Enter a new TODO list',
+        inputType: 'text'
+    })
+    .then(function(result) {
+        var obj = {
+            title: result,
+            type: "list",
+        };
+        todoDatabase.createDocument(obj).then(function(result) {
+            // The document was saved
+        }, function(error) {
+            // There was an error saving the document
+        });
+    });
+};
+</code>
+</pre>
+
+<p>Instead of creating a separate view for inserting data we&#39;re just making use of an <strong>$ionicPopup</strong>. With the result we are adding it to an object and also adding a document type for future references. This object is then inserted into the database at which point you can choose to perform certain tasks depending on its success or failure.</p>
+
+<p>The next function to worry about is the <strong>$scope.delete</strong> function:</p>
+
+<pre>
+<code class="language-javascript">
+$scope.delete = function(list) {
+    var listId = list._id;
+    todoDatabase.deleteDocument(list._id, list._rev).then(function(result) {
+        todoDatabase.queryView("_design/todo", "tasks", {"start_key": listId}).then(function(result) {
+            for(var i = 0; i &lt; result.rows.length; i++) {
+                todoDatabase.deleteDocument(result.rows[i].id, result.rows[i].value.rev);
+            }
+        }, function(error) {
+            // There was an error querying the view
+        });
+    }, function(error) {
+        // There was an error deleting the list document
+    });
+};
+</code>
+</pre>
+
+<p>A few things are happening here. First we attempt to delete the list document via the particular id and revision. If that is successful we then query our task view for any tasks that had a parent of our recently created document. We narrow our search by making use of the <strong>start_key</strong> option. For every task document that does match, remove it at well so that way it is not orphaned by the delete of the parent.</p>
+
+<p>The parameter passed to the delete function is an object.</p>
+
+<p>Wait a second though! How do we search for documents to display in our list? There are two parts behind what we&#39;re about to do. The first involves quering the view that we created when making a fresh database. This can be done like the following:</p>
+
+<pre>
+<code class="language-javascript">
+todoDatabase.queryView("_design/todo", "lists").then(function(result) {
+    for(var i = 0; i &lt; result.rows.length; i++) {
+        $scope.lists[result.rows[i].id] = result.rows[i].value;
+    }
+}, function(error) {
+    // There was an error querying the view
+});
+</code>
+</pre>
+
+<p>That will query the view for todo lists when the view loads, but how do we constantly look for changes? Since we started listening for changes in the <strong>run</strong> method, we can choose to display what we&#39;ve heard:</p>
+
+<pre>
+<code class="language-javascript">
+$rootScope.$on("couchbase:change", function(event, args) {
+    for(var i = 0; i &lt; args.results.length; i++) {
+        if(args.results[i].hasOwnProperty("deleted") &amp;&amp; args.results[i].deleted === true) {
+            delete $scope.lists[args.results[i].id];
+        } else {
+            if(args.results[i].id.indexOf("_design") === -1) {
+                todoDatabase.getDocument(args.results[i].id).then(function(result) {
+                    if(result.type === "list") {
+                        $scope.lists[result._id] = result;
+                    }
+                });
+            }
+        }
+    }
+});
+</code>
+</pre>
+
+<p>The above code will listen for the <strong>couchbase:change</strong> event. If it is triggered, it will loop through all the changes and determine whether it will be deleting a document from the list or upserting a document to the list. I say upserting because it will insert it if it doesn&#39;t exist or update it if it does.</p>
+
+<h3>The Task List Controller</h3>
+
+<p>Inside the <strong>www/js/app.js</strong> file of your project, go ahead and create the following controller:</p>
+
+<pre>
+<code class="language-javascript">
+couchbaseApp.controller("TaskController", function($scope, $rootScope, $stateParams, $ionicPopup, $ionicHistory, $couchbase) {
+
+    $scope.todoList = $stateParams.listId;
+
+    $scope.tasks = { };
+
+    $scope.insert = function() { };
+
+    $scope.delete = function(task) { };
+
+    $scope.back = function() { };
+
+});
+</code>
+</pre>
+
+<p>A few things are happening here. The <strong>$scope.todoList</strong> variable holds the list id that was passed in from the previous todo list view. It is the id of the list that was selected. The <strong>$scope.tasks</strong> object is similar to what we saw in the <strong>TodoListsController</strong> with the <strong>$scope.lists</strong> object. This time it will just be storing task information. The <strong>$scope.insert</strong> and <strong>$scope.delete</strong> will also be very similar to what we saw in the <strong>TodoListsController</strong>. However, <strong>$scope.back</strong> is new and is responsible for taking us one level back in the history stack when tapping on the back arrow inside the application.</p>
+
+<p>So lets fill these functions with some code, starting with the <strong>$scope.insert</strong> function:</p>
+
+<pre>
+<code class="language-javascript">
+$scope.insert = function() {
+    $ionicPopup.prompt({
+        title: 'Enter a new TODO task',
+        inputType: 'text'
+    })
+    .then(function(result) {
+        var obj = {
+            title: result,
+            type: "task",
+            list_id: $stateParams.listId,
+        };
+        todoDatabase.createDocument(obj).then(function(result) {
+            // The task was created successfully
+        }, function(error) {
+            // There was an error creating the task
+        });
+    });
+};
+</code>
+</pre>
+
+<p>Like in the other controller, this will also be using the <strong>$ionicPopup</strong> for entering data. The result will be added to an object with a type and the id of the list that this child task belongs to. This object is then inserted into the database.</p>
+
+<p>Next up is the delete functionality for removing tasks from Couchbase Lite:</p>
+
+<pre>
+<code class="language-javascript">
+$scope.delete = function(task) {
+    todoDatabase.deleteDocument(task._id, task._rev);
+}
+</code>
+</pre>
+
+<p>Notice how much easier this delete function was in comparison to deleting lists. This is because we don&#39;t have to worry about orphaning data. Just pass in the particular task id and revision to delete and then it is done.</p>
+
+<p>Going back to the back function responsible for taking us back to the todo list:</p>
+
+<pre>
+<code class="language-javascript">
+$scope.back = function() {
+    $ionicHistory.goBack();
+}
+</code>
+</pre>
+
+<p>Nothing special here, but it is important because iOS devices don&#39;t have a hardware back button. Less important for Android, but still nice to have for consistency.</p>
+
+<p>Just like with our todo list controller, we have to worry about presenting the data to the screen. It will in fact be very similar to what we saw in the other controller. Starting with querying the view for tasks:</p>
+
+<pre>
+<code class="language-javascript">
+todoDatabase.queryView("_design/todo", "tasks", {"start_key": $stateParams.listId}).then(function(result) {
+    for(var i = 0; i &lt; result.rows.length; i++) {
+        $scope.tasks[result.rows[i].id] = {"_id": result.rows[i].id, "title": result.rows[i].value.title, "list_id": result.rows[i].value.list_id, "_rev": result.rows[i].value.rev};
+    }
+}, function(error) {
+    // There was an error querying the view
+});
+</code>
+</pre>
+
+<p>In the above code we are querying the view, but also checking to make sure that the document results share the same todo list parent, through the use of the <strong>start_key</strong>. If the results match, then add them to our tasks object.</p>
+
+<p>When it comes to our listener, again it will be very similar to what we&#39;ve already seen:</p>
+
+<pre>
+<code class="language-javascript">
+$rootScope.$on("couchbase:change", function(event, args) {
+    for(var i = 0; i &lt; args.results.length; i++) {
+        if(args.results[i].hasOwnProperty("deleted") &amp;&amp; args.results[i].deleted === true) {
+            delete $scope.tasks[args.results[i].id];
+        } else {
+            if(args.results[i].id.indexOf("_design") === -1) {
+                todoDatabase.getDocument(args.results[i].id).then(function(result) {
+                    if(result.type === "task") {
+                        $scope.tasks[result._id] = result;
+                    }
+                });
+            }
+        }
+    }
+});
+</code>
+</pre>
+
+<p>Instead of filtering for lists, we&#39;re instead filtering for tasks.</p>
+
+<h2>Creating the UI Views</h2>
+
+<p>There will be two views in this application:</p>
+
+<ul>
+	<li>A view for creating, viewing, and deleting lists</li>
+	<li>A view for creating, viewing, and deleting tasks</li>
+</ul>
+
+<p>The layout and functionality between the two will be near identical. If a <strong>www/templates</strong> directory doesn&#39;t already exist in your project, go ahead and create it.</p>
+
+<h3>The Todo List View</h3>
+
+<p>In your project&#39;s <strong>www/templates</strong>, create a new file called <strong>todolists.html</strong> and add the following code:</p>
+
+<pre>
+<code class="language-html">
+&lt;ion-view title="TodoLite"&gt;
+    &lt;ion-nav-buttons side="right"&gt;
+        &lt;button class="right button button-icon icon ion-plus" ng-click="insert()"&gt;&lt;/button&gt;
+    &lt;/ion-nav-buttons&gt;
+    &lt;ion-content&gt;
+        &lt;ion-list show-delete="false" can-swipe="true"&gt;
+            &lt;ion-item ng-repeat="(key, value) in lists" ui-sref="tasks({listId: key})"&gt;
+                {{value.title}}
+                &lt;ion-option-button class="button-assertive icon ion-trash-a" ng-click="delete(value)"&gt;&lt;/ion-option-button&gt;
+            &lt;/ion-item&gt;
+        &lt;/ion-list&gt;
+    &lt;/ion-content&gt;
+&lt;/ion-view&gt;
+</code>
+</pre>
+
+<p>There are a few things to note about what you see above. First off, there will be a navigation button with a plus icon which will be how users create new lists. When clicked, it will call the <strong>insert()</strong> method that we created in our controller. The next thing to notice is how we&#39;ve chosen to create our <strong>ion-list</strong>. We&#39;ve chosen to give it swipe features similar to common mail apps for iOS and Android. This comes in combination with the <strong>ion-option-button</strong> that we&#39;ll use for deleting lists.</p>
+
+<p>The final point in this view is the <strong>ng-repeat</strong> that we&#39;re using to loop through all lists. When we click on a list item, the list id will be passed via the <strong>ui-sref</strong> call.</p>
+
+<h3>The Task List View</h3>
+
+<p>In your project&#39;s <strong>www/templates</strong>, create a new file called <strong>tasks.html</strong> and add the following code:</p>
+
+<pre>
+<code class="language-html">
+&lt;ion-view title="TodoLite - Tasks"&gt;
+    &lt;ion-nav-buttons side="left"&gt;
+        &lt;button class="left button button-icon icon ion-arrow-left-c" ng-click="back()"&gt;&lt;/button&gt;
+    &lt;/ion-nav-buttons&gt;
+    &lt;ion-nav-buttons side="right"&gt;
+        &lt;button class="right button button-icon icon ion-plus" ng-click="insert()"&gt;&lt;/button&gt;
+    &lt;/ion-nav-buttons&gt;
+    &lt;ion-content&gt;
+        &lt;ion-list show-delete="false" can-swipe="true"&gt;
+            &lt;ion-item ng-repeat="(key, value) in tasks" ng-if="value.list_id == todoList"&gt;
+                {{value.title}}
+                &lt;ion-option-button class="button-assertive icon ion-trash-a" ng-click="delete(value)"&gt;&lt;/ion-option-button&gt;
+            &lt;/ion-item&gt;
+        &lt;/ion-list&gt;
+    &lt;/ion-content&gt;
+&lt;/ion-view&gt;
+</code>
+</pre>
+
+<p>Again, this is very similar to the todo list view. There are two major differences between the two, however. First, notice that this view has a left button with an arrow icon that calls our <strong>back()</strong> method. We now have two menu buttons on this screen. Second, notice the <strong>ng-if</strong> statement that exists in the repeating <strong>ion-item</strong> tag. We only want to show the task if it has a parent that matches the list that we&#39;ve chosen.</p>
+
+<h2>Testing Your Project</h2>
+
+<h3>Testing for Android</h3>
+
+<p>With a device connected or a simulator running, from the Command Prompt or Terminal, run the following two commands to build and install the APK file:</p>
+
+<pre>
+<code class="language-bash">
+ionic build android
+adb install -r platforms/android/build/outputs/apk/android-debug.apk
+</code>
+</pre>
+
+<h3>Testing for iOS</h3>
+
+<p>There are two good ways to do this. You can either build the project and open it with Xcode, or you can build and emulate the application without launching Xcode. The first can be done like so:</p>
+
+<pre>
+<code class="language-bash">
+ionic build ios
+</code>
+</pre>
+
+<p>Then open the project&#39;s <strong>platform/ios/</strong> directory and launch the Xcode project file.</p>
+
+<p>If you&#39;ve installed the Node Package Manager (NPM) package <strong>ios-sim</strong>, you can do the following:</p>
+
+<pre>
+<code class="language-bash">
+ionic build ios
+ionic emulate ios
+</code>
+</pre>
+
+<h3>Solving Any Gradle Dependency Problems</h3>
+
+<p>At compile time for Android, you may run into the following error message:</p>
+
+<pre>
+Error: duplicate files during packaging of APK</pre>
+
+<p>To resolve this, you must extend the Gradle build file for Android as outlined in the <a href="https://cordova.apache.org/docs/en/5.0.0/guide_platforms_android_tools.md.html">official Apache Cordova documentation</a>.</p>
+
+<p>Create <strong>platforms/android/build-extras.gradle</strong> in your project and add the following:</p>
+
+<pre>
+android {
+    packagingOptions {
+        exclude &#39;META-INF/ASL2.0&#39;
+        exclude &#39;META-INF/LICENSE&#39;
+        exclude &#39;META-INF/NOTICE&#39;
+    }
+}</pre>
+
+<h2>Conclusion</h2>
+
+<p>Using the Couchbase PhoneGap plugin, we&#39;ve created a mobile todo-list application that does all transactions locally. We used AngularJS to easily connect to the RESTful endpoints that Couchbase Lite exposes.</p>
+
+<p>The <a href="http://blog.couchbase.com/using-couchbase-in-your-ionic-framework-application-part-2">next Ionic Framework tutorial in this series</a> will go over how to replicate data between the local device and Couchbase Sync Gateway so data can be shared between devices and platforms.</p>
+
+<p>This series can be downloaded in full from the <a href="https://github.com/couchbaselabs/todolite-ionic">Couchbase Labs GitHub</a> page.</p>
+			</div>
+		</div>
+
+	
+	
+	
+
+
+
+
+<a data-modules="content-block-item"></a>
+
+
+</div>
+
+ 	<!-- Tags -->
+		<section class="tags-container" aria-labelledby="taglabel" aria-relevant="text">
+		      <label id="taglabel">Tags</label>
+		      <ul class="tags">
+		        <a class="tag" href="/?tag=ionic+framework">
+		            ionic framework</a>
+
+		        <a class="tag" href="/?tag=apache+cordova">
+		            apache cordova</a>
+
+		        <a class="tag" href="/?tag=android">
+		            android</a>
+
+		        <a class="tag" href="/?tag=ios">
+		            ios</a>
+
+		        <a class="tag" href="/?tag=couchbase+lite">
+		            couchbase lite</a>
+
+		        </ul>
+		    </section>
+
+		<a href="/"> <i class="arrow">&laquo; &nbsp;</i> Back to blogs</a>
+
+	</div><!-- .col -->
+</div>
+
+</div>
+
+  <!--  <script type="text/javascript">
+    /**
+     * Values from legacy blog post page
+     *
+     *
+     */
+    var legacyConf = {
+      "disqus": {
+        "url": "http:\/\/blog.couchbase.com\/",
+        "title": "Using Couchbase in Your Ionic Framework Application Part 1",
+        "identifier": "",
+        "shortname": ""
+      }
+    };
+
+    // Required - Replace example with your forum shortname
+    // "couchbaseblog"
+    var disqus_shortname = "";
+    // a unique identifier for each page where Disqus is present
+    var disqus_identifier = "";
+    // a unique title for each page where Disqus is present
+    var disqus_title = "Using Couchbase in Your Ionic Framework Application Part 1";
+    // a unique URL for each page where Disqus is present
+    var disqus_url = "http:\/\/blog.couchbase.com\/";
+  </script>-->
+
+
+	<div class="layout-wrapper">
+
+		<style type="text/css" scoped="">
+		#dsq-combo-widget a {
+			color: #007da4 !important;
+			font-style: normal !important;
+		}
+
+		#dsq-combo-widget #dsq-combo-tabs li {
+			background-color: #dcdcdc !important;
+		}
+
+		#dsq-combo-widget #dsq-combo-tabs li.dsq-active {
+			background-color: #f2f2f2 !important;
+		}
+
+		#dsq-combo-widget #dsq-combo-content div.dsq-combo-box {
+			background-color: #f1f1f1 !important;
+		}
+		#dsq-combo-widget.blue #dsq-combo-content .dsq-combo-box li {
+			border-color: #d0d0d0 !important;
+		}
+		</style>
+
+	<div id="disqus_thread" class="mar-bot-lg"></div>
+
+			<script type="text/javascript">
+				/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+				var disqus_shortname = 'couchbaseblog'; // required: replace example with your forum shortname
+				var disqus_identifier = 'using-couchbase-in-your-ionic-framework-application-part-1'; //a unique identifier for each page where Disqus is present
+				var disqus_title = 'Using Couchbase in Your Ionic Framework Application Part 1';
+				var disqus_url = "http://blog.couchbase.com/using-couchbase-in-your-ionic-framework-application-part-1";
+
+			</script>
+			<script type="text/javascript" async src="//couchbaseblog.disqus.com/embed.js"></script>
+
+  </div>
+
+  <script type="text/javascript">
+    (function($) {
+
+      // resize images if an image exceeds available content area
+      $(document).ready(function () {
+
+        var $contentArea = $('div.textblock__content');
+        var $images = $('div.textblock__content img');
+
+        $(window).on('resize', function (event) {
+
+          var winWidthPx = $contentArea.width();
+          $images.each(function () {
+            var img = this;
+            var $img = $(this);
+
+            var imgWidthPx = $img.width();
+            var imgHeightPx = $img.height();
+
+            if (imgWidthPx > winWidthPx) {
+
+              var frac = winWidthPx / imgWidthPx;
+              var newWidth = Math.floor(imgWidthPx * frac);
+              var newHeight = Math.floor(imgHeightPx * frac);
+              $img.css({
+                width: newWidth + 'px',
+                height: newHeight + 'px'
+              });
+              $img.attr('resized', '1');
+
+            } else if ($img.attr('resized')) {
+
+              /*var frac = winWidthPx / imgWidthPx;
+               var newWidth = Math.floor(imgWidthPx * frac);
+               var newHeight = Math.floor(imgHeightPx * frac);
+               $img.css({
+               width: newWidth + 'px',
+               height: newHeight + 'px'
+               });
+               $img.attr('resized', '1');*/
+            }
+
+          })
+        });
+      });
+
+    })(window['jQuery']);
+  </script>
+  </div>
+ <!-- End of site.../jsp/base/main.jsp -->
+<!-- end - hst:include ref=main -->
+
+	</main>
+
+	<!-- begin - hst:include ref=footer -->
+	<!-- Beginning of site.../jsp/base/footer.jsp -->
+<div id="global-footer" class="global-footer">
+	<div class="layout-wrapper">
+		<div class="global-footer__contact">
+			<a class="cta2 button global-footer__contact__button" href="http://www.couchbase.com/contact">Contact</a>
+
+			<ul class="global-footer__contact__social">
+				<li>
+					<a class="linkedin" href="http://www.linkedin.com/company/couchbase">LinkedIn</a>
+				</li>
+				<li>
+					<a class="twitter" href="https://twitter.com/couchbase">Twitter</a>
+				</li>
+				<li>
+					<a class="facebook" href="https://www.facebook.com/Couchbase">Facebook</a>
+				</li>
+				<li>
+					<a class="googleplus" href="https://plus.google.com/+CouchbaseServer">Google+</a>
+				</li>
+			</ul>
+		</div>
+
+        <nav role="navigation" class="footer-navigation">
+
+  <div class="footer-navigation__group">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<h3 class="footer-navigation__title">
+  <a href="http://www.couchbase.com/nosql-databases/couchbase-server">Products</a>
+</h3>
+
+
+  <ul class="footer-navigation__items">
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/nosql-resources/why-nosql">Why NoSQL?</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/nosql-databases/couchbase-server">Couchbase Server</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/nosql-databases/couchbase-mobile">Couchbase Mobile</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/nosql-databases/downloads">Download</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/request-pricing">Request Pricing</a>
+      </li>
+    
+  </ul>
+
+</div>
+    <div class="footer-navigation__group--even">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<h3 class="footer-navigation__title">
+  <a href="http://developer.couchbase.com">Developers</a>
+</h3>
+
+
+  <ul class="footer-navigation__items">
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://developer.couchbase.com">Developer Portal</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://developer.couchbase.com/open-source-projects">Open Source</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://forums.couchbase.com/">Forum</a>
+      </li>
+    
+  </ul>
+
+</div>
+    <div class="footer-navigation__group">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<h3 class="footer-navigation__title">
+  <a href="http://www.couchbase.com/nosql-resources">Learn</a>
+</h3>
+
+
+  <ul class="footer-navigation__items">
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/nosql-resources/webinar">Webinars</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/nosql-resources/nosql-whitepapers">Whitepapers</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://blog.couchbase.com/">Blog</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://training.couchbase.com/">Training</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/events">Events</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/nosql-resources/presentations">Presentations</a>
+      </li>
+    
+  </ul>
+
+</div>
+    <div class="footer-navigation__group--even">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<h3 class="footer-navigation__title">
+  <a href="http://www.couchbase.com/about">About</a>
+</h3>
+
+
+  <ul class="footer-navigation__items">
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/about">Company</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/news-and-press-releases">News</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/leadership">Leadership</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/careers">Careers</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/case-studies">Customers</a>
+      </li>
+    
+      
+        
+        
+          
+        
+      
+      <li class="footer-navigation__item">
+          <a href="http://www.couchbase.com/partners">Partners</a>
+      </li>
+    
+  </ul>
+
+</div>
+    </nav></div>
+</div>
+
+
+<div role="contentinfo" class="global-sub-footer">
+  <div class="layout-wrapper">
+
+    <p class="legal">
+  <span class="license">&copy; 2016<b class="company-name"> Couchbase</b> All rights reserved.
+  </span>
+
+  <a href="http://support.couchbase.com/home">Customer Login</a>
+
+    <a href="/terms-of-service">Terms of Service</a>
+
+    <a href="/privacy-policy">Privacy Policy</a>
+
+    <a href="http://www.couchbase.com/trademark-policy">Trademark Policy</a>
+
+    </p>
+<p class="languages">
+
+  <a href="http://www.couchbase.com/fr/get-started-developing-nosql">Francais</a>
+
+    <a href="http://www.couchbase.com/de/get-started-developing-nosql">Deutsch</a>
+
+    </p>
+</div>
+
+</div>
+
+<!-- End of site.../jsp/base/footer.jsp -->
+<!-- end - hst:include ref=footer -->
+
+
+<!--    _____________________________________
+_______/ Javascript includes below this line \_______________________________-->
+
+
+	<!-- Require_js bootstrap for app-specific JS module support -->
+	<script type="text/javascript" src="/js/vendor/require.js"></script>
+	<script type="text/javascript" src="/js/modules/prism.js"></script>
+	<!--<script type="text/javascript" src="/js/vendor/typed.min.js"></script>-->
+
+	<script rel="main" 
+		type="text/javascript"
+		src="/js/main.js?ts=123" ></script>
+
+
+	<div about="hst head contributions">
+		</div>
+
+	<!-- begin - hst:include ref=google-adwords -->
+	<!-- end - hst:include ref=google-adwords -->
+
+
+	<!-- Marketo -->
+	<script type="text/javascript" defer async>
+
+		$(document).ready(function() {
+			var scriptUrl = "//munchkin.marketo.net/munchkin.js";
+
+			$.getScript(scriptUrl, function onMarketoScriptLoaded() {
+				tryInitMunchkin();
+			})
+		});
+
+		function tryInitMunchkin() {
+			if (typeof window['Munchkin'] !== 'undefined') {
+				window['Munchkin'].init('302-GJY-034');
+			} else {
+				setTimeout(tryInitMunchkin, 250);
+			}
+		}
+
+	</script>
+
+</body>
+</html>

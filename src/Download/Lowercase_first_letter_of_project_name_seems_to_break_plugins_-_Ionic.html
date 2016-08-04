@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" class="desktop-view not-mobile-device  anon">
+  <head>
+    <meta charset="utf-8">
+    <title>Lowercase first letter of project name seems to break plugins - Ionic</title>
+    <meta name="description" content="Forum for the Ionic Framework. Ionic is an incredibly advanced HTML5 mobile app development framework. Ionic makes it incredibly easy to build performant, beautiful hybrid native apps using web technologies like HTML5, Javascript, CSS, and AngularJS.">
+    <meta name="author" content="">
+<meta name="generator" content="Discourse 1.6.0.beta12 - https://github.com/discourse/discourse version 1f12e41029f2531904d8600372625e360f87b8fa">
+<link rel="icon" type="image/png" href="//ionic-forum-static.s3.amazonaws.com/forum-icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/default-apple-touch-icon.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<link rel="canonical" href="http://forum.ionicframework.com/t/lowercase-first-letter-of-project-name-seems-to-break-plugins/7461?page=5000000" />
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","url":"http://forum.ionicframework.com","potentialAction":{"@type":"SearchAction","target":"http://forum.ionicframework.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<link rel="search" type="application/opensearchdescription+xml" href="http://forum.ionicframework.com/opensearch.xml">
+
+    
+
+<style>
+  @font-face {
+    font-family: 'FontAwesome';
+    src: url('https://cdn.discourse.org/ionicframework/assets/fontawesome-webfont-ff82aeed6b9bb6701696c84d1b223d2e682eb78c89117a438ce6cfea8c498995.woff2?https://forum.ionicframework.com&amp;2&v=4.5.0') format('woff2'),
+         url('https://cdn.discourse.org/ionicframework/assets/fontawesome-webfont-c812ddc9e475d3e65d68a6b3b589ce598a2a5babb7afc55477d59215c4a38a40.woff?https://forum.ionicframework.com&amp;2&v=4.5.0') format('woff');
+  }
+</style>
+
+      <link href="https://cdn.discourse.org/ionicframework/stylesheets/desktop_fc5c8b68a12de9fe9447a2a55a4130b2f840689e.css?__ws=forum.ionicframework.com" media="all" rel="stylesheet" />
+
+
+  <link class="custom-css" rel="stylesheet" href="https://cdn.discourse.org/ionicframework/site_customizations/7e202ef2-56d7-47d5-98d8-a9c8d15e57dd.css?target=desktop&v=6b9902713405d2e2b2dde7893b2bec78&__ws=forum.ionicframework.com" type="text/css" media="all">
+
+    
+
+      <meta name="fragment" content="!">
+
+
+    <script>
+      window.EmberENV = window.EmberENV || {};
+      window.EmberENV['FORCE_JQUERY'] = true;
+    </script>
+
+    <script src="https://cdn.discourse.org/ionicframework/assets/locales/en-6ac99a97b6c4a816fe2a2010e3c52d9ba247959b8c133c8e81fb4683527fd45c.js"></script>
+    <script src="https://cdn.discourse.org/ionicframework/assets/ember_jquery-c9524b48466ee05bcf3f9ddaf05405387eb17017e61e90e76628f989db37eb4e.js"></script>
+    <script src="https://cdn.discourse.org/ionicframework/assets/preload-store-9a5d6688476c54b0eb6e11cf444ab9dc19602f99f10114228f41fe605c31ac4d.js"></script>
+    <script src="https://cdn.discourse.org/ionicframework/assets/vendor-a93744409a58d62786bcae2e275b684754dbf7346ccc4521813c5c40dc7b3a5a.js"></script>
+    <script src="https://cdn.discourse.org/ionicframework/assets/pretty-text-bundle-e6da18fa7963f0e2a65694a6d2134876d4b90b0d47caaedea5bb64d9600103af.js"></script>
+    <script src="https://cdn.discourse.org/ionicframework/assets/application-9ddebe1bbdbcf553883d77d75ef7358f9c7c535b8ff0fa465c474f80e5ee89da.js"></script>
+
+
+      
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44023830-5', {"cookieDomain":"auto"});
+  ga('send', 'pageview');
+
+</script>
+
+    <link rel="manifest" href="/manifest.json">
+
+      <link rel="alternate" type="application/rss+xml" title="RSS feed of &#39;Lowercase first letter of project name seems to break plugins&#39;" href="https://forum.ionicframework.com/t/lowercase-first-letter-of-project-name-seems-to-break-plugins/7461.rss" />
+  <meta property="og:site_name" content="Ionic" />
+<meta name="twitter:card" content="summary" />
+<meta property="og:url" content="http://forum.ionicframework.com/t/lowercase-first-letter-of-project-name-seems-to-break-plugins/7461/last" />
+<meta name="twitter:url" content="http://forum.ionicframework.com/t/lowercase-first-letter-of-project-name-seems-to-break-plugins/7461/last" />
+<meta property="og:title" content="Lowercase first letter of project name seems to break plugins" />
+<meta name="twitter:title" content="Lowercase first letter of project name seems to break plugins" />
+<meta property="og:description" content="I&#39;ve had compile errors on 3 ios plugins.    I was able to resolve this by:    Rename my project to start with an uppercase letter  Remove/re-add all platforms Remove/re-add all plugins   Perhaps the Ionic CLI and/or docs should not be creating starter projects starting with lowercase letters?" />
+<meta name="twitter:description" content="I&#39;ve had compile errors on 3 ios plugins.    I was able to resolve this by:    Rename my project to start with an uppercase letter  Remove/re-add all platforms Remove/re-add all plugins   Perhaps the Ionic CLI and/or docs should not be creating starter projects starting with lowercase letters?" />
+<meta property="og:image" content="https://avatars.discourse.org/v2/letter/t/3be4f8/100.png" />
+<meta name="twitter:image" content="https://avatars.discourse.org/v2/letter/t/3be4f8/100.png" />
+
+  </head>
+
+  <body class="">
+    
+
+    <div class='debug-eyeline'></div>
+
+    <noscript data-path="/t/lowercase-first-letter-of-project-name-seems-to-break-plugins/7461/last">
+      <header class="d-header">
+  <div class="wrap">
+    <div class="contents">
+      <div class="row">
+        <div class="title span13">
+          <a href="/">
+              <img src="//s3.amazonaws.com/ionic-forum-static/forum-logo.png" alt="Ionic" id="site-logo">
+          </a>
+        </div>
+            <div class='panel clearfix'>
+              <a href="/login" class='btn btn-primary btn-small login-button'><i class="fa fa-user"></i> Log In</a>
+            </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div id="main-outlet" class="wrap">
+        <!-- preload-content: -->
+        <h1>
+  <a href="/t/lowercase-first-letter-of-project-name-seems-to-break-plugins/7461">Lowercase first letter of project name seems to break plugins</a>
+</h1>
+
+
+
+
+
+<hr>
+
+
+  <div itemscope itemtype='http://schema.org/Article'>
+      <div class='creator'>
+        <span>
+          <a href='/users/techntrails'><b itemprop='author'>techntrails</b></a>
+           
+           <time datetime='2014-07-29T08:40:20Z' itemprop='datePublished'>
+             2014-07-29 08:40:20 UTC
+           </time>
+        </span>
+        <span itemprop='position'>#1</span>
+      </div>
+      <div class='post' itemprop='articleBody'>
+        <p>I've had compile errors on 3 ios plugins. </p>
+
+<p>I was able to resolve this by:</p>
+
+<ol>
+<li>Rename my project to start with an uppercase letter </li>
+<li>Remove/re-add all platforms</li>
+<li>Remove/re-add all plugins</li>
+</ol>
+
+<p>Perhaps the Ionic CLI and/or docs should not be creating starter projects starting with lowercase letters?</p>
+      </div>
+      <meta itemprop='interactionCount' content='UserLikes:0'>
+      <meta itemprop='interactionCount' content='UserComments:0'>
+      <hr>
+  </div>
+  <div itemscope itemtype='http://schema.org/Article'>
+      <div class='creator'>
+        <span>
+          <a href='/users/mhartington'><b itemprop='author'>mhartington</b></a>
+           
+           <time datetime='2014-07-29T19:09:17Z' itemprop='datePublished'>
+             2014-07-29 19:09:17 UTC
+           </time>
+        </span>
+        <span itemprop='position'>#2</span>
+      </div>
+      <div class='post' itemprop='articleBody'>
+        <p>Hmm, just tested this and couldn't reproduce it. Is there any other information you could provide?</p>
+      </div>
+      <meta itemprop='interactionCount' content='UserLikes:0'>
+      <meta itemprop='interactionCount' content='UserComments:1'>
+      <hr>
+  </div>
+  <div itemscope itemtype='http://schema.org/Article'>
+      <div class='creator'>
+        <span>
+          <a href='/users/techntrails'><b itemprop='author'>techntrails</b></a>
+           
+           <time datetime='2014-07-30T10:58:42Z' itemprop='datePublished'>
+             2014-07-30 10:58:42 UTC
+           </time>
+        </span>
+        <span itemprop='position'>#3</span>
+      </div>
+      <div class='post' itemprop='articleBody'>
+        <p>To reproduce the build failure do the following steps. Note that the first step is straight from the Ionic docs. Then, if you run the exact same sequence of steps but replace myFirstIonicApp with MyFirstIonicApp, you own't reproduce the build failure. I suspect this is a cordova defect, but best that you steer Ionic users away from it.</p>
+
+<pre><code>ionic start myFirstIonicApp
+cd myFirstIonicApp
+ionic platform add ios
+ionic plugin add https://github.com/wymsee/cordova-imagePicker.git
+ionic build ios
+ionic plugin add https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git
+ionic build iOS</code></pre>
+      </div>
+      <meta itemprop='interactionCount' content='UserLikes:0'>
+      <meta itemprop='interactionCount' content='UserComments:1'>
+      <hr>
+  </div>
+  <div itemscope itemtype='http://schema.org/Article'>
+      <div class='creator'>
+        <span>
+          <a href='/users/mhartington'><b itemprop='author'>mhartington</b></a>
+           
+           <time datetime='2014-07-30T13:50:23Z' itemprop='datePublished'>
+             2014-07-30 13:50:23 UTC
+           </time>
+        </span>
+        <span itemprop='position'>#4</span>
+      </div>
+      <div class='post' itemprop='articleBody'>
+        <p>Hmm, interesting. </p>
+
+<blockquote><p>ionic start myFirstIonicApp</p></blockquote>
+
+<p>also, this is incorrect, it should be <code>ionic start myFirstIonicApp blank</code> or what ever starter you would like. Just to let you know</p>
+      </div>
+      <meta itemprop='interactionCount' content='UserLikes:0'>
+      <meta itemprop='interactionCount' content='UserComments:0'>
+      <hr>
+  </div>
+
+
+
+
+
+        <!-- :preload-content -->
+        <footer>
+          <nav itemscope itemtype='http://schema.org/SiteNavigationElement'>
+            <a href='/'>Home</a>
+            <a href="/categories">Categories</a>
+            <a href="/guidelines">FAQ/Guidelines</a>
+            <a href="/tos">Terms of Service</a>
+            <a href="/privacy">Privacy Policy</a>
+          </nav>
+        </footer>
+      </div>
+
+      <footer id='noscript-footer'>
+        <p>Powered by <a href="http://www.discourse.org">Discourse</a>, best viewed with JavaScript enabled</p>
+      </footer>
+    </noscript>
+
+      
+
+    <section id='main'>
+    </section>
+
+    <div id='offscreen-content'>
+    </div>
+
+      <form id='hidden-login-form' method="post" action="/login" style="display: none;">
+        <input name="username" type="text"     id="signin_username">
+        <input name="password" type="password" id="signin_password">
+        <input name="redirect" type="hidden">
+        <input type="submit" id="signin-button" value="Log In">
+      </form>
+
+      <script>
+      (function() {
+        var ps = require('preload-store').default;
+          ps.store("site", {"default_archetype":"regular","notification_types":{"mentioned":1,"replied":2,"quoted":3,"edited":4,"liked":5,"private_message":6,"invited_to_private_message":7,"invitee_accepted":8,"posted":9,"moved_post":10,"linked":11,"granted_badge":12,"invited_to_topic":13,"custom":14,"group_mentioned":15,"group_message_summary":16,"watching_first_post":17},"post_types":{"regular":1,"moderator_action":2,"small_action":3,"whisper":4},"groups":[{"id":1,"name":"admins"},{"id":0,"name":"everyone"},{"id":2,"name":"moderators"},{"id":3,"name":"staff"},{"id":10,"name":"trust_level_0"},{"id":11,"name":"trust_level_1"},{"id":12,"name":"trust_level_2"},{"id":13,"name":"trust_level_3"},{"id":14,"name":"trust_level_4"}],"filters":["latest","unread","new","read","posted","bookmarks"],"periods":["all","yearly","quarterly","monthly","weekly","daily"],"top_menu_items":["latest","unread","new","read","posted","bookmarks","category","categories","top"],"anonymous_top_menu_items":["latest","top","categories","category","categories","top"],"uncategorized_category_id":12,"is_readonly":false,"disabled_plugins":[],"user_field_max_length":2048,"suppressed_from_homepage_category_ids":[],"post_action_types":[{"name_key":"bookmark","name":"Bookmark","description":"Bookmark this post","long_form":"bookmarked this post","is_flag":false,"icon":null,"id":1,"is_custom_flag":false},{"name_key":"like","name":"Like","description":"Like this post","long_form":"liked this","is_flag":false,"icon":"heart","id":2,"is_custom_flag":false},{"name_key":"off_topic","name":"Off-Topic","description":"This post is not relevant to the current discussion as defined by the title and first post, and should probably be moved elsewhere.","long_form":"flagged this as off-topic","is_flag":true,"icon":null,"id":3,"is_custom_flag":false},{"name_key":"inappropriate","name":"Inappropriate","description":"This post contains content that a reasonable person would consider offensive, abusive, or a violation of <a href=\"/guidelines\">our community guidelines<\/a>.","long_form":"flagged this as inappropriate","is_flag":true,"icon":null,"id":4,"is_custom_flag":false},{"name_key":"vote","name":"Vote","description":"Vote for this post","long_form":"voted for this post","is_flag":false,"icon":null,"id":5,"is_custom_flag":false},{"name_key":"spam","name":"Spam","description":"This post is an advertisement. It is not useful or relevant to the current topic, but promotional in nature.","long_form":"flagged this as spam","is_flag":true,"icon":null,"id":8,"is_custom_flag":false},{"name_key":"notify_user","name":"Send @{{username}} a message","description":"I want to talk to this person directly and privately about their post.","long_form":"messaged user","is_flag":true,"icon":null,"id":6,"is_custom_flag":true},{"name_key":"notify_moderators","name":"Something Else","description":"This post requires staff attention for another reason not listed above.","long_form":"flagged this for staff attention","is_flag":true,"icon":null,"id":7,"is_custom_flag":true}],"topic_flag_types":[{"name_key":"inappropriate","name":"Inappropriate","description":"This topic contains content that a reasonable person would consider offensive, abusive, or a violation of <a href=\"/guidelines\">our community guidelines<\/a>.","long_form":"flagged this as inappropriate","is_flag":true,"icon":null,"id":4,"is_custom_flag":false},{"name_key":"spam","name":"Spam","description":"This topic is an advertisement. It is not useful or relevant to this site, but promotional in nature.","long_form":"flagged this as spam","is_flag":true,"icon":null,"id":8,"is_custom_flag":false},{"name_key":"notify_moderators","name":"Something Else","description":"This topic requires general staff attention based on the <a href=\"/guidelines\">guidelines<\/a>, <a href=\"/tos\">TOS<\/a>, or for another reason not listed above.","long_form":"flagged this for moderator attention","is_flag":true,"icon":null,"id":7,"is_custom_flag":true}],"can_create_tag":false,"can_tag_topics":false,"categories":[{"id":5,"name":"ionic","color":"4e8cf9","text_color":"FFFFFF","slug":"ionic","topic_count":19111,"post_count":72933,"position":0,"description":"The Ionic category is for all posts related to the Ionic framework itself. If you have any questions about the forum, please use the <code>meta<\/code> tag instead.","description_text":"The Ionic category is for all posts related to the Ionic framework itself. If you have any questions about the forum, please use the meta tag instead.","topic_url":"/t/category-definition-for-ionic/50","logo_url":null,"background_url":null,"read_restricted":false,"permission":null,"notification_level":1,"topic_template":null,"has_children":false},{"id":12,"name":"uncategorized","color":"AB9364","text_color":"FFFFFF","slug":"uncategorized","topic_count":5851,"post_count":21886,"position":1,"description":"Topics that don't need a category, or don't fit into any other existing category.","description_text":"","topic_url":"/t//","logo_url":null,"background_url":null,"read_restricted":false,"permission":null,"notification_level":1,"topic_template":null,"has_children":false},{"id":4,"name":"tutorials","color":"12A89D","text_color":"FFFFFF","slug":"tutorials","topic_count":454,"post_count":2109,"position":1,"description":"Ionic tutorials and tutorial discussion.","description_text":"Ionic tutorials and tutorial discussion.","topic_url":"/t/tutorial-topics/14","logo_url":null,"background_url":null,"read_restricted":false,"permission":null,"notification_level":1,"topic_template":null,"has_children":false},{"id":3,"name":"meta","color":"B3B5B4","text_color":"FFFFFF","slug":"meta","topic_count":86,"post_count":243,"position":2,"description":"The meta category is for all posts about the forum itself.","description_text":"The meta category is for all posts about the forum itself.","topic_url":"/t/meta-topics/12","logo_url":null,"background_url":null,"read_restricted":false,"permission":null,"notification_level":1,"topic_template":null,"has_children":false},{"id":6,"name":"announcement","color":"f7bc1d","text_color":"FFFFFF","slug":"announcement","topic_count":46,"post_count":483,"position":7,"description":"The Announcement category is used for Ionic-related updates and new releases. The devs will use this category periodically when appropriate.","description_text":"The Announcement category is used for Ionic-related updates and new releases. The devs will use this category periodically when appropriate.","topic_url":"/t/category-definition-for-announcement/476","logo_url":null,"background_url":null,"read_restricted":false,"permission":null,"notification_level":1,"topic_template":null,"has_children":false},{"id":14,"name":"ionic-creator","color":"3AB54A","text_color":"FFFFFF","slug":"ionic-creator","topic_count":70,"post_count":173,"position":7,"description":null,"description_text":null,"topic_url":"/t/about-the-ionic-creator-category/10858","logo_url":null,"background_url":null,"read_restricted":false,"permission":null,"notification_level":1,"topic_template":null,"has_children":false},{"id":7,"name":"demo","color":"92278F","text_color":"FFFFFF","slug":"demo","topic_count":175,"post_count":1266,"position":7,"description":"Use this category to show off coolness you've built.","description_text":"Use this category to show off coolness you've built.","topic_url":"/t/demo-category/620","logo_url":null,"background_url":null,"read_restricted":false,"permission":null,"notification_level":1,"topic_template":null,"has_children":false},{"id":15,"name":"jobs","color":"9EB83B","text_color":"FFFFFF","slug":"jobs","topic_count":172,"post_count":666,"position":8,"description":"Here's where you can post open job opportunities for Ionic developers (please note whether the work is full-time or freelance).","description_text":"Here's where you can post open job opportunities for Ionic developers (please note whether the work is full-time or freelance).","topic_url":"/t/about-the-jobs-category/12815","logo_url":"","background_url":"","read_restricted":false,"permission":null,"notification_level":1,"topic_template":null,"has_children":false},{"id":16,"name":"ngCordova","color":"652D90","text_color":"FFFFFF","slug":"ngcordova","topic_count":864,"post_count":2637,"position":9,"description":"Have a question of ngCordova in your Ionic app?  Feel free to post them here.","description_text":"Have a question of ngCordova in your Ionic app?  Feel free to post them here.","topic_url":"/t/about-the-ngcordova-category/15980","logo_url":null,"background_url":null,"read_restricted":false,"permission":null,"notification_level":1,"topic_template":null,"has_children":false},{"id":17,"name":"showcase","color":"F1592A","text_color":"FFFFFF","slug":"show-off-what-youre-working-on","topic_count":44,"post_count":102,"position":10,"description":"Have an app you're really proud of? Or do you have a plugin that you want to promote or showoff? The showcase category is a place to share/showoff things that you have made with ionic.","description_text":"Have an app you're really proud of? Or do you have a plugin that you want to promote or showoff? The showcase category is a place to share/showoff things that you have made with ionic.","topic_url":"/t/about-the-showcase-category/30669","logo_url":null,"background_url":null,"read_restricted":false,"permission":null,"notification_level":1,"topic_template":null,"has_children":false},{"id":18,"name":"ionic 2","color":"313744","text_color":"FFFFFF","slug":"ionic-2","topic_count":3872,"post_count":16713,"position":11,"description":"The <strong>Ionic 2<\/strong> category is for all posts related to version 2 of the Ionic framework itself. If you have any questions about the forum, please use the meta tag instead.","description_text":"The Ionic 2 category is for all posts related to version 2 of the Ionic framework itself. If you have any questions about the forum, please use the meta tag instead.","topic_url":"/t/about-the-ionic-2-category/35251","logo_url":"","background_url":"","read_restricted":false,"permission":null,"notification_level":1,"topic_template":"","has_children":false}],"trust_levels":[{"id":0,"name":"new user"},{"id":1,"name":"basic user"},{"id":2,"name":"member"},{"id":3,"name":"regular"},{"id":4,"name":"leader"}],"archetypes":[{"id":"regular","name":"Regular Topic","options":[]},{"id":"banner","name":"Banner Topic","options":[]}],"user_fields":[]});
+          ps.store("siteSettings", {"title":"Ionic","contact_email":"max@drifty.com","contact_url":"","logo_url":"//s3.amazonaws.com/ionic-forum-static/forum-logo.png","logo_small_url":null,"mobile_logo_url":"//ionic-forum-static.s3.amazonaws.com/forum-icon.png","favicon_url":"//ionic-forum-static.s3.amazonaws.com/forum-icon.png","allow_user_locale":false,"suggested_topics":5,"track_external_right_clicks":false,"ga_universal_tracking_code":"UA-44023830-5","ga_universal_domain_name":"auto","ga_tracking_code":"","ga_domain_name":"","gtm_container_id":"","gtm_ua_domain_name":"auto","top_menu":"latest|new|unread|top|categories","post_menu":"like-count|like|share|flag|edit|bookmark|delete|admin|reply","post_menu_hidden_items":"flag|bookmark|edit|delete|admin","share_links":"twitter|facebook|email","category_colors":"BF1E2E|F1592A|F7941D|9EB83B|3AB54A|12A89D|25AAE2|0E76BD|652D90|92278F|ED207B|8C6238|231F20|808281|B3B5B4|283890","category_style":"bullet","enable_mobile_theme":true,"relative_date_duration":30,"category_featured_topics":3,"fixed_category_positions":true,"fixed_category_positions_on_create":false,"show_subcategory_list":false,"enable_badges":true,"enable_badge_sql":false,"enable_whispers":false,"invite_only":false,"login_required":false,"must_approve_users":false,"enable_local_logins":true,"allow_new_registrations":true,"enable_signup_cta":true,"enable_google_oauth2_logins":false,"enable_yahoo_logins":false,"enable_twitter_logins":false,"enable_instagram_logins":false,"enable_facebook_logins":false,"enable_github_logins":false,"enable_sso":true,"sso_overrides_avatar":false,"min_username_length":3,"max_username_length":20,"min_password_length":10,"min_admin_password_length":15,"logout_redirect":"","full_name_required":false,"enable_names":true,"invites_per_page":40,"delete_user_max_post_age":60,"delete_all_posts_max":60,"show_email_on_profile":false,"prioritize_username_in_ux":true,"enable_user_directory":true,"allow_anonymous_posting":false,"anonymous_posting_min_trust_level":1,"hide_user_profiles_from_public":false,"min_post_length":20,"min_first_post_length":20,"min_private_message_post_length":10,"max_post_length":32000,"min_topic_title_length":10,"max_topic_title_length":255,"min_private_message_title_length":2,"allow_uncategorized_topics":false,"min_title_similar_length":10,"min_body_similar_length":15,"enable_private_messages":true,"edit_history_visible_to_public":true,"delete_removed_posts_after":24,"traditional_markdown_linebreaks":false,"allow_html_tables":false,"suppress_reply_directly_below":true,"suppress_reply_directly_above":true,"max_reply_history":1,"newuser_max_images":3,"newuser_max_attachments":3,"show_pinned_excerpt_mobile":true,"show_pinned_excerpt_desktop":true,"display_name_on_posts":false,"show_time_gap_days":7,"short_progress_text_threshold":10000,"default_code_lang":"auto","autohighlight_all_code":false,"highlighted_languages":"apache|bash|cs|cpp|css|coffeescript|diff|xml|http|ini|json|java|javascript|makefile|markdown|nginx|objectivec|ruby|perl|php|python|sql|handlebars","censored_words":"","enable_emoji":true,"emoji_set":"emoji_one","code_formatting_style":"4-spaces-indent","email_time_window_mins":10,"disable_digest_emails":false,"email_in":false,"disable_emails":false,"bounce_score_threshold":4,"max_image_size_kb":3072,"max_attachment_size_kb":3072,"authorized_extensions":"jpg|jpeg|png|gif","max_image_width":690,"max_image_height":500,"prevent_anons_from_downloading_files":false,"enable_s3_uploads":false,"allow_profile_backgrounds":true,"allow_uploaded_avatars":true,"allow_animated_avatars":false,"default_avatars":"","external_system_avatars_enabled":true,"external_system_avatars_url":"https://avatars.discourse.org/v2/letter/{first_letter}/{color}/{size}.png","tl1_requires_read_posts":30,"tl3_links_no_follow":false,"use_admin_ip_whitelist":false,"alert_admins_if_errors_per_minute":0,"alert_admins_if_errors_per_hour":0,"enable_long_polling":true,"long_polling_base_url":"/","background_polling_interval":60000,"polling_interval":3000,"anon_polling_interval":15000,"flush_timings_secs":20,"verbose_localization":false,"max_new_topics":500,"tos_url":"","privacy_policy_url":"","faq_url":"","maximum_backups":5,"version_checks":true,"suppress_uncategorized_badge":true,"min_search_term_length":3,"topic_views_heat_low":1000,"topic_views_heat_medium":2000,"topic_views_heat_high":5000,"topic_post_like_heat_low":0.5,"topic_post_like_heat_medium":1.0,"topic_post_like_heat_high":2.0,"history_hours_low":12,"history_hours_medium":24,"history_hours_high":48,"cold_age_days_low":14,"cold_age_days_medium":90,"cold_age_days_high":180,"global_notice":"","show_create_topics_notice":true,"bootstrap_mode_min_users":50,"bootstrap_mode_enabled":false,"automatically_unpin_topics":true,"read_time_word_count":500,"disable_mailing_list_mode":false,"default_topics_automatic_unpin":true,"tagging_enabled":false,"tag_style":"simple","max_tags_per_topic":5,"max_tag_length":20,"min_trust_level_to_tag_topics":0,"max_tag_search_results":5,"show_filter_by_tag":false,"tags_sort_alphabetically":false,"staff_tags":"","suppress_overlapping_tags_in_list":false,"details_enabled":true,"poll_enabled":true,"poll_maximum_options":20,"show_version_check":false,"spoiler_enabled":true,"allow_solved_on_all_topics":true,"accept_all_solutions_trust_level":4,"available_locales":"ar|bs_BA|cs|da|de|en|es|et|fa_IR|fi|fr|gl|he|id|it|ja|ko|nb_NO|nl|pl_PL|pt|pt_BR|ro|ru|sk|sq|sv|te|tr_TR|uk|vi|zh_CN|zh_TW"});
+          ps.store("customHTML", {"top":"","footer":""});
+          ps.store("banner", {});
+          ps.store("customEmoji", []);
+          ps.store("translationOverrides", {});
+          ps.store("topic_7461", {"post_stream":{"posts":[{"id":23214,"name":"Mark","username":"techntrails","avatar_template":"https://avatars.discourse.org/v2/letter/t/3be4f8/{size}.png","created_at":"2014-07-29T08:40:20.431Z","cooked":"<p>I've had compile errors on 3 ios plugins. <\/p>\n\n<p>I was able to resolve this by:<\/p>\n\n<ol>\n<li>Rename my project to start with an uppercase letter <\/li>\n<li>Remove/re-add all platforms<\/li>\n<li>Remove/re-add all plugins<\/li>\n<\/ol>\n\n<p>Perhaps the Ionic CLI and/or docs should not be creating starter projects starting with lowercase letters?<\/p>","post_number":1,"post_type":1,"updated_at":"2014-07-29T08:40:20.431Z","reply_count":0,"reply_to_post_number":null,"quote_count":0,"avg_time":28,"incoming_link_count":25,"reads":18,"score":130.0,"yours":false,"topic_id":7461,"topic_slug":"lowercase-first-letter-of-project-name-seems-to-break-plugins","display_username":"Mark","primary_group_name":null,"version":2,"can_edit":false,"can_delete":false,"can_recover":false,"can_wiki":false,"read":true,"user_title":null,"actions_summary":[],"moderator":false,"admin":false,"staff":false,"user_id":3466,"hidden":false,"hidden_reason_id":null,"trust_level":2,"deleted_at":null,"user_deleted":false,"edit_reason":null,"can_view_edit_history":true,"wiki":false,"can_accept_answer":false,"can_unaccept_answer":false,"accepted_answer":false},{"id":23294,"name":"Mike Hartington","username":"mhartington","avatar_template":"/user_avatar/forum.ionicframework.com/mhartington/{size}/97422_1.png","created_at":"2014-07-29T19:09:17.729Z","cooked":"<p>Hmm, just tested this and couldn't reproduce it. Is there any other information you could provide?<\/p>","post_number":2,"post_type":1,"updated_at":"2014-07-29T19:09:17.729Z","reply_count":1,"reply_to_post_number":null,"quote_count":0,"avg_time":30,"incoming_link_count":0,"reads":16,"score":9.7,"yours":false,"topic_id":7461,"topic_slug":"lowercase-first-letter-of-project-name-seems-to-break-plugins","display_username":"Mike Hartington","primary_group_name":null,"version":1,"can_edit":false,"can_delete":false,"can_recover":false,"can_wiki":false,"read":true,"user_title":"Ionic Team","actions_summary":[],"moderator":true,"admin":true,"staff":true,"user_id":220,"hidden":false,"hidden_reason_id":null,"trust_level":4,"deleted_at":null,"user_deleted":false,"edit_reason":null,"can_view_edit_history":true,"wiki":false,"can_accept_answer":false,"can_unaccept_answer":false,"accepted_answer":false},{"id":23360,"name":"Mark","username":"techntrails","avatar_template":"https://avatars.discourse.org/v2/letter/t/3be4f8/{size}.png","created_at":"2014-07-30T10:58:42.292Z","cooked":"<p>To reproduce the build failure do the following steps. Note that the first step is straight from the Ionic docs. Then, if you run the exact same sequence of steps but replace myFirstIonicApp with MyFirstIonicApp, you own't reproduce the build failure. I suspect this is a cordova defect, but best that you steer Ionic users away from it.<\/p>\n\n<pre><code>ionic start myFirstIonicApp\ncd myFirstIonicApp\nionic platform add ios\nionic plugin add https://github.com/wymsee/cordova-imagePicker.git\nionic build ios\nionic plugin add https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git\nionic build iOS<\/code><\/pre>","post_number":3,"post_type":1,"updated_at":"2014-07-30T10:58:42.292Z","reply_count":1,"reply_to_post_number":2,"quote_count":0,"avg_time":32,"incoming_link_count":0,"reads":14,"score":9.4,"yours":false,"topic_id":7461,"topic_slug":"lowercase-first-letter-of-project-name-seems-to-break-plugins","display_username":"Mark","primary_group_name":null,"version":1,"can_edit":false,"can_delete":false,"can_recover":false,"can_wiki":false,"read":true,"user_title":null,"reply_to_user":{"username":"mhartington","avatar_template":"/user_avatar/forum.ionicframework.com/mhartington/{size}/97422_1.png"},"actions_summary":[],"moderator":false,"admin":false,"staff":false,"user_id":3466,"hidden":false,"hidden_reason_id":null,"trust_level":2,"deleted_at":null,"user_deleted":false,"edit_reason":null,"can_view_edit_history":true,"wiki":false,"can_accept_answer":false,"can_unaccept_answer":false,"accepted_answer":false},{"id":23380,"name":"Mike Hartington","username":"mhartington","avatar_template":"/user_avatar/forum.ionicframework.com/mhartington/{size}/97422_1.png","created_at":"2014-07-30T13:50:23.771Z","cooked":"<p>Hmm, interesting. <\/p>\n\n<blockquote><p>ionic start myFirstIonicApp<\/p><\/blockquote>\n\n<p>also, this is incorrect, it should be <code>ionic start myFirstIonicApp blank<\/code> or what ever starter you would like. Just to let you know<\/p>","post_number":4,"post_type":1,"updated_at":"2014-07-30T13:50:23.771Z","reply_count":0,"reply_to_post_number":3,"quote_count":0,"avg_time":6,"incoming_link_count":2,"reads":13,"score":12.9,"yours":false,"topic_id":7461,"topic_slug":"lowercase-first-letter-of-project-name-seems-to-break-plugins","display_username":"Mike Hartington","primary_group_name":null,"version":1,"can_edit":false,"can_delete":false,"can_recover":false,"can_wiki":false,"read":true,"user_title":"Ionic Team","reply_to_user":{"username":"techntrails","avatar_template":"https://avatars.discourse.org/v2/letter/t/3be4f8/{size}.png"},"actions_summary":[],"moderator":true,"admin":true,"staff":true,"user_id":220,"hidden":false,"hidden_reason_id":null,"trust_level":4,"deleted_at":null,"user_deleted":false,"edit_reason":null,"can_view_edit_history":true,"wiki":false,"can_accept_answer":false,"can_unaccept_answer":false,"accepted_answer":false}],"stream":[23214,23294,23360,23380]},"timeline_lookup":[[1,735],[2,734],[4,733]],"id":7461,"title":"Lowercase first letter of project name seems to break plugins","fancy_title":"Lowercase first letter of project name seems to break plugins","posts_count":4,"created_at":"2014-07-29T08:40:18.233Z","views":301,"reply_count":2,"participant_count":2,"like_count":0,"last_posted_at":"2014-07-30T13:50:23.771Z","visible":true,"closed":false,"archived":false,"has_summary":false,"archetype":"regular","slug":"lowercase-first-letter-of-project-name-seems-to-break-plugins","category_id":12,"word_count":195,"deleted_at":null,"user_id":3466,"draft":null,"draft_key":"topic_7461","draft_sequence":null,"unpinned":null,"pinned_globally":false,"pinned":false,"pinned_at":null,"pinned_until":null,"details":{"auto_close_at":null,"auto_close_hours":null,"auto_close_based_on_last_post":false,"created_by":{"id":3466,"username":"techntrails","avatar_template":"https://avatars.discourse.org/v2/letter/t/3be4f8/{size}.png"},"last_poster":{"id":220,"username":"mhartington","avatar_template":"/user_avatar/forum.ionicframework.com/mhartington/{size}/97422_1.png"},"participants":[{"id":220,"username":"mhartington","avatar_template":"/user_avatar/forum.ionicframework.com/mhartington/{size}/97422_1.png","post_count":2},{"id":3466,"username":"techntrails","avatar_template":"https://avatars.discourse.org/v2/letter/t/3be4f8/{size}.png","post_count":2}],"suggested_topics":[{"id":44353,"title":"Facing issue with adding platform","fancy_title":"Facing issue with adding platform","slug":"facing-issue-with-adding-platform","posts_count":2,"reply_count":0,"highest_post_number":2,"image_url":null,"created_at":"2016-02-21T20:28:58.547Z","last_posted_at":"2016-02-21T20:49:31.499Z","bumped":true,"bumped_at":"2016-02-21T20:49:31.499Z","unseen":false,"pinned":false,"unpinned":null,"visible":true,"closed":false,"archived":false,"bookmarked":null,"liked":null,"archetype":"regular","like_count":0,"views":117,"category_id":12,"posters":[{"extras":"latest single","description":"Original Poster, Most Recent Poster","user":{"id":105818,"username":"Astm","avatar_template":"/user_avatar/forum.ionicframework.com/astm/{size}/97234_1.png"}}]},{"id":30877,"title":"Change positive color for the whole project","fancy_title":"Change positive color for the whole project","slug":"change-positive-color-for-the-whole-project","posts_count":5,"reply_count":3,"highest_post_number":5,"image_url":null,"created_at":"2015-08-20T17:10:29.952Z","last_posted_at":"2015-08-20T18:50:33.946Z","bumped":true,"bumped_at":"2015-08-20T18:50:33.946Z","unseen":false,"pinned":false,"unpinned":null,"visible":true,"closed":false,"archived":false,"bookmarked":null,"liked":null,"archetype":"regular","like_count":0,"views":312,"category_id":12,"posters":[{"extras":"latest","description":"Original Poster, Most Recent Poster","user":{"id":99331,"username":"gabrielpasv","avatar_template":"https://avatars.discourse.org/v2/letter/g/f08c70/{size}.png"}},{"extras":null,"description":"Frequent Poster","user":{"id":98742,"username":"rgecy","avatar_template":"https://avatars.discourse.org/v2/letter/r/ac8455/{size}.png"}}]},{"id":34537,"title":"$cordovaInAppBrowser iOS issue","fancy_title":"$cordovaInAppBrowser iOS issue","slug":"cordovainappbrowser-ios-issue","posts_count":2,"reply_count":0,"highest_post_number":2,"image_url":null,"created_at":"2015-10-13T15:01:34.756Z","last_posted_at":"2016-04-20T17:08:45.145Z","bumped":true,"bumped_at":"2016-04-20T17:08:45.145Z","unseen":false,"pinned":false,"unpinned":null,"visible":true,"closed":false,"archived":false,"bookmarked":null,"liked":null,"archetype":"regular","like_count":0,"views":273,"category_id":12,"posters":[{"extras":null,"description":"Original Poster","user":{"id":4444,"username":"tumain","avatar_template":"https://avatars.discourse.org/v2/letter/t/779978/{size}.png"}},{"extras":"latest","description":"Most Recent Poster","user":{"id":104819,"username":"castrojr913","avatar_template":"/user_avatar/forum.ionicframework.com/castrojr913/{size}/96322_1.png"}}]},{"id":40611,"title":"Tabs getting added to Android navigation stack","fancy_title":"Tabs getting added to Android navigation stack","slug":"tabs-getting-added-to-android-navigation-stack","posts_count":1,"reply_count":0,"highest_post_number":1,"image_url":null,"created_at":"2016-01-06T18:23:34.601Z","last_posted_at":"2016-01-06T18:23:34.705Z","bumped":true,"bumped_at":"2016-01-06T18:23:34.705Z","unseen":false,"pinned":false,"unpinned":null,"visible":true,"closed":false,"archived":false,"bookmarked":null,"liked":null,"archetype":"regular","like_count":0,"views":82,"category_id":12,"posters":[{"extras":"latest single","description":"Original Poster, Most Recent Poster","user":{"id":102406,"username":"iarry","avatar_template":"https://avatars.discourse.org/v2/letter/i/d07c76/{size}.png"}}]},{"id":48117,"title":"Error email or password incorrect","fancy_title":"Error email or password incorrect","slug":"error-email-or-password-incorrect","posts_count":1,"reply_count":0,"highest_post_number":1,"image_url":"/uploads/default/optimized/3X/3/c/3cc8c372cf908ac24ba1176375f827f831efd4d6_1_664x500.jpg","created_at":"2016-04-01T17:28:45.161Z","last_posted_at":"2016-04-01T17:28:45.232Z","bumped":true,"bumped_at":"2016-04-01T17:28:45.232Z","unseen":false,"pinned":false,"unpinned":null,"visible":true,"closed":false,"archived":false,"bookmarked":null,"liked":null,"archetype":"regular","like_count":0,"views":90,"category_id":12,"posters":[{"extras":"latest single","description":"Original Poster, Most Recent Poster","user":{"id":107556,"username":"devkantcs","avatar_template":"https://avatars.discourse.org/v2/letter/d/6bbea6/{size}.png"}}]}],"notification_level":1,"can_flag_topic":false},"highest_post_number":4,"deleted_by":null,"actions_summary":[{"id":4,"count":0,"hidden":false,"can_act":false},{"id":7,"count":0,"hidden":false,"can_act":false},{"id":8,"count":0,"hidden":false,"can_act":false}],"chunk_size":20,"bookmarked":null});
+      })();
+      </script>
+
+    
+
+    <script>
+  Ember.RSVP.configure('onerror', function(e) {
+    // Ignore TransitionAborted exceptions that bubble up
+    if (e && e.message === "TransitionAborted") { return; }
+
+    window.onerror(e && e.message, null,null,null,e);
+  });
+
+
+</script>
+
+<script>
+
+  (function() {
+    var ps = require('preload-store').default;
+
+    Discourse.CDN = 'https://cdn.discourse.org/ionicframework';
+    Discourse.BaseUrl = 'forum.ionicframework.com'.replace(/:[\d]*$/,"");
+    Discourse.BaseUri = '';
+    Discourse.Environment = 'production';
+    Discourse.SiteSettings = ps.get('siteSettings');
+    Discourse.LetterAvatarVersion = '5_c0cde1efe2d04fc597c97e478949252e';
+    I18n.defaultLocale = 'en';
+    Discourse.start();
+    Discourse.set('assetVersion','fbf02bfeb3de822da4d4ca42c7e76c0e');
+    Discourse.Session.currentProp("disableCustomCSS", false);
+    Discourse.HighlightJSPath = "/highlight-js/forum.ionicframework.com/133b1767dbeecf92cad6dfc38d42cde22195db05.js";
+  })();
+</script>
+
+<script src="https://cdn.discourse.org/ionicframework/assets/browser-update-f57286e74ddbc53aa899689b01ef467078911e4138050c561939955849af35dd.js"></script>
+
+
+    
+
+      
+  </body>
+</html>

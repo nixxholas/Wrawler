@@ -1,0 +1,423 @@
+
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_ctlHead"><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"ef696407b4","applicationID":"6537233","transactionName":"bgFUYksECBUDU00LVldLd2VpSgUTEURWDxZJBVFTTQALFg5RTQdKFgNTWFwXBwoOVV8WV1gSGFdKFR4=","queueTime":0,"applicationTime":628,"ttGuid":"DD7DF62E3E40CF39","agent":""}</script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(u(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(2),u=t(3),c=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var s=["setPageViewName","setCustomAttribute","finished","addToTrace","inlineHit"],p="api-",l=p+"ixn-";a(s,function(t,e){f[e]=o(p+e,!0,"api")}),f.addPageAction=o(p+"addPageAction",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var d=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{c.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){d[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],2:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],3:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?u(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),u=a.length,c=0;c<u;c++)a[c].apply(i,r);var s=f[m[n]];return s&&s.push([w,n,r,i]),i}function p(t,e){g[t]=l(t).concat(e)}function l(t){return g[t]||[]}function d(t){return s[t]=s[t]||o(n)}function v(t,e){c(t,function(t,n){e=e||"feature",m[n]=e,e in f||(f[e]=[])})}var g={},m={},w={on:p,emit:n,get:d,listeners:l,context:e,buffer:v};return w}function i(){return new r}var a="nr@context",u=t("gos"),c=t(2),f={},s={},p=e.exports=o();p.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!h++){var t=y.info=NREUM.info,e=s.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(m,function(e,n){t[e]||(t[e]=n)});var n="https"===g.split(":")[0]||t.sslForHttp;y.proto=n?"https://":"http://",u("mark",["onload",a()],null,"api");var r=s.createElement("script");r.src=y.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===s.readyState&&i()}function i(){u("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var u=t("handle"),c=t(2),f=window,s=f.document,p="addEventListener",l="attachEvent",d=f.XMLHttpRequest,v=d&&d.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:d,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(1);var g=""+location,m={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-963.min.js"},w=d&&v&&v[p]&&!/CriOS/.test(navigator.userAgent),y=e.exports={offset:a(),origin:g,features:{},xhrWrappable:w};s[p]?(s[p]("DOMContentLoaded",i,!1),f[p]("load",r,!1)):(s[l]("onreadystatechange",o),f[l]("onload",r)),u("mark",["firstbyte",a()],null,"api");var h=0},{}]},{},["loader"]);</script><title>
+	BFO - Background
+</title><meta name="viewport" content="width=device-width" /><link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css" /><link href="/CMSPages/GetResource.ashx?stylesheetfile=/custom/plugins/icheck/minimal/minimal.css" rel="stylesheet" />
+    <!--selectric-->
+    <link rel="stylesheet" href="/CMSPages/GetResource.ashx?stylesheetfile=/custom/plugins/selectric/selectric.css" /><link rel="stylesheet" type="text/css" href="/CMSPages/GetResource.ashx?stylesheetfile=/custom/plugins/magnificpopup/magnific-popup.css" /><link rel="stylesheet" href="/CMSPages/GetResource.ashx?stylesheetfile=/custom/styles/style.css?v=1" />
+
+	<script src="/custom/scripts/modernizr-2.5.3-respond-1.1.0.min.js" type="text/javascript"></script>
+    <script src="/custom/scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="/custom/scripts/jquery.easing.js" type="text/javascript"></script>
+    <script src="/custom/scripts/jquery.fitvids.js" type="text/javascript"></script>
+    <script src="/custom/scripts/flowplayer-3.2.11.min.js" type="text/javascript"></script>
+    <script src="/custom/scripts/flowplayer.ipad-3.2.11.min.js" type="text/javascript"></script>
+
+    <!-- magnificpopup -->
+    <script src="/custom/plugins/magnificpopup/magnificpopup.js"></script>
+
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-55532635-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+	
+	</script>
+    
+<meta name="description" /><meta name="keywords" /><meta name="og:title" content="BFO - Background" /><meta name="og:description" /></head>
+<body>
+    <form method="post" action="Background?aliaspath=%2fAbout-us%2fBackground" id="aspnetForm">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTQ0NTcyNDM5Mw9kFgJmD2QWBAIBD2QWCgICDxYCHgRocmVmBStodHRwOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzP2ZhbWlseT1BYmVsZAIDDxYCHwAFVC9DTVNQYWdlcy9HZXRSZXNvdXJjZS5hc2h4P3N0eWxlc2hlZXRmaWxlPS9jdXN0b20vcGx1Z2lucy9pY2hlY2svbWluaW1hbC9taW5pbWFsLmNzc2QCBQ8WAh8ABVEvQ01TUGFnZXMvR2V0UmVzb3VyY2UuYXNoeD9zdHlsZXNoZWV0ZmlsZT0vY3VzdG9tL3BsdWdpbnMvc2VsZWN0cmljL3NlbGVjdHJpYy5jc3NkAgYPFgIfAAVaL0NNU1BhZ2VzL0dldFJlc291cmNlLmFzaHg/c3R5bGVzaGVldGZpbGU9L2N1c3RvbS9wbHVnaW5zL21hZ25pZmljcG9wdXAvbWFnbmlmaWMtcG9wdXAuY3NzZAIHDxYCHwAFRi9DTVNQYWdlcy9HZXRSZXNvdXJjZS5hc2h4P3N0eWxlc2hlZXRmaWxlPS9jdXN0b20vc3R5bGVzL3N0eWxlLmNzcz92PTFkAgMPZBYMAgEPD2QWAh4Fc3R5bGUFEGJhY2tncm91bmQ6bm9uZTtkAgMPFgIfAQVjYmFja2dyb3VuZC1pbWFnZTp1cmwofi9CRk8vbWVkaWEvY29udGVudHMvSW1hZ2VzL0hlYWRlcnMvaW1hZ2U0LmpwZz93aWR0aD05OTAmaGVpZ2h0PTI0MCZleHQ9LmpwZyk7ZAIFDxYCHgRUZXh0BQpCYWNrZ3JvdW5kZAIHD2QWAgIBDxYCHgtfIUl0ZW1Db3VudAIGFgxmD2QWAgIBDxYCHgVjbGFzcwUOYWJvdXQtdXMtaG92ZXIWCGYPFgYfAAUJL0Fib3V0LXVzHglpbm5lcmh0bWwFCEFib3V0IHVzHwQFCHNlbGVjdGVkZAICDxYCHgdWaXNpYmxlZxYCAgEPFgIfAgULYWJvdXQtdXMtZGRkAgQPFgIfAwIFFgpmD2QWBAIBDxYGHwAFFC9BYm91dC11cy9CYWNrZ3JvdW5kHwUFCkJhY2tncm91bmQfBAUIc2VsZWN0ZWRkAgMPFgIfAwL/////D2QCAQ9kFgQCAQ8WBB8ABSAvQWJvdXQtdXMvTWlzc2lvbi1hbmQt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dGFpbmFibGUgZnV0dXJlLjxiciAvPg0KCUkgd2lsbCBoZWxwIGNyZWF0ZSBhIG1vcmUganVzdCBzb2NpZXR5LjxiciAvPg0KCUkgd2lsbCBzcGVhayBvdXQgYWdhaW5zdCB3cm9uZ2RvaW5nIGFuZCBzdXBwb3J0IG90aGVycyB3aG8gZG8gdGhlIHNhbWUuPGJyIC8+DQoJSSB3aWxsIGFjY2VwdCByZXNwb25zaWJpbGl0eSBmb3IgbXkgYWN0aW9ucy48YnIgLz4NCgk8YnIgLz4NCglJbiB0aGVzZSBhbmQgYWxsIG90aGVyIG1hdHRlcnM7PGJyIC8+DQoJTXkgd29yZCBpcyBteSBib25kLjwvcD4NCmQCBw8WAh8GaGQCAw9kFgJmDxYCHwIFpRs8aDI+DQoJQmFja2dyb3VuZDwvaDI+DQpUaGUgQmFua2luZyBhbmQgRmluYW5jZSBPYXRoIGlzIGZvdW5kZWQgb24gYSBzaGFyZWQgYmVsaWVmIGluIHRoZSBpbmhlcmVudCAmbHNxdW87Z29vZCZyc3F1bzsgb2YgdGhlIGJhbmtpbmcgYW5kIGZpbmFuY2UgaW5kdXN0cnkuIFRoZSBPYXRoIGlzIGFuIGVmZm9ydCB0byByZS1hc3NlcnQgdGhlIGV0aGljYWwgZm91bmRhdGlvbiBvZiB0aGUgaW5kdXN0cnkgYmV5b25kIHJlZ3VsYXRpb24gYW5kIGNvbXBsaWFuY2UsIGJ5IGJyb2FkZW5pbmcgZXhwZWN0YXRpb25zIGFuZCBkaXNjdXNzaW9uIHRvIGluY2x1ZGUgZXRoaWNzLCBpbnRlZ3JpdHksIGhvbmVzdHkgYW5kIHRydXN0LjxiciAvPg0KPGJyIC8+DQpJbXBvcnRhbnRseSB0aGUgQmFua2luZyBhbmQgRmluYW5jZSBPYXRoIGlzIGFuIGluZHVzdHJ5LWxlZCBpbml0aWF0aXZlLiBJbiAyMDA5LCBDbGFyZSBQYXluZSwgaW4gaGVyIHJvbGUgYXMgQXNzb2NpYXRlIERpcmVjdG9yIG9mIHRoZSBJbnRlZ3JpdHkgT2ZmaWNlIG9mIE1hY3F1YXJpZSBCYW5rIGFuZCBhcyBhIHZvbHVudGFyeSBDb25zdWx0aW5nIEZlbGxvdyB3aXRoIHRoZSBFdGhpY3MgQ2VudHJlLCB3cm90ZSB0byBsZWFkZXJzIG9mIHRoZSBCYW5raW5nIGFuZCBGaW5hbmNlIEluZHVzdHJ5IGF0IHRoZSBDRU8sIENoYWlyIGFuZCBCb2FyZCBsZXZlbC4gSW5kdXN0cnkgbGVhZGVycyB3ZXJlIG92ZXJ3aGVsbWluZ2x5IGludGVyZXN0ZWQgaW4gZGlzY3Vzc2luZyB0aGUgZXRoaWNzIG9mIHRoZSBpbmR1c3RyeSBhbmQgaGFkIG1hbnkgaWRlYXMgb24gaG93IHRydXN0IGNvdWxkIGJlIGVuaGFuY2VkLCBhbmQgaW4gc29tZSBzZWN0b3JzIHJlc3RvcmVkLjxiciAvPg0KPGJyIC8+DQpBIFJlcG9ydCB3YXMgcHJvZHVjZWQgYW5kIGluZHVzdHJ5IGxlYWRlcnMgdm90ZWQgb24gdGhlIGluaXRpYXRpdmVzIHRoZXkgd2lzaGVkIHRvIHNlZSBlc3RhYmxpc2hlZC4gVGhlIEJhbmtpbmcgYW5kIEZpbmFuY2UgRXRoaWNzIFBhbmVsIHdhcyBmb3JtZWQgaW4gMjAxMCB3aXRoIHJlcHJlc2VudGF0aXZlcyBmcm9tIEdvbGRtYW4gU2FjaHMsIERldXRzY2hlIEJhbmssIENvbW1vbndlYWx0aCBCYW5rLCBSb3Roc2NoaWxkLCBNb3JnYW4gU3RhbmxleSwgQU1QIENhcGl0YWwsIE1MQyBhbmQgV2VzdHBhYy4gVGhlIEJhbmtpbmcgYW5kIEZpbmFuY2UgT2F0aCBpcyB0aGUgZm91bmRpbmcgaW5pdGlhdGl2ZSBvZiB0aGUgUGFuZWwuPGJyIC8+DQo8YnIgLz4NClRoZSBFdGhpY3MgQ2VudHJlIGFjdHMgYXMgYW4gaW5kZXBlbmRlbnQgYWR2aXNvcnkgdG8gdGhlIEJhbmtpbmcgYW5kIEZpbmFuY2UgT2F0aC4gRHIgU2ltb24gTG9uZ3N0YWZmLCBFeGVjdXRpdmUgRGlyZWN0b3Igb2YgVGhlIEV0aGljcyBDZW50cmUgaG9sZHMgYSBwb3NpdGlvbiBvbiBUaGUgQkZPIEJvYXJkIGFuZCBhc3Npc3RlZCBpbiB3b3JkaW5nIG9mIFRoZSBPYXRoLjxiciAvPg0KPGJyIC8+DQo8aDI+DQoJVGhlIEJhbmtpbmcgYW5kIEZpbmFuY2UgRXRoaWNzIFBhbmVsPC9oMj4NClRoZSBCYW5raW5nIGFuZCBGaW5hbmNlIEV0aGljcyBQYW5lbCB3YXMgZXN0YWJsaXNoZWQgaW4gMjAxMCBieSZuYnNwO2xlYWRlcnMgZnJvbSB0aGUgYmFua2luZyBhbmQgZmluYW5jZSBpbmR1c3RyeSBsZWQgYnkgdGhlIEV0aGljcyBDZW50cmUmIzM5O3MgQ29uc3VsdGluZyBGZWxsb3cgZm9yIEV0aGljcyBpbiBCYW5raW5nIGFuZCBGaW5hbmNlLCBDbGFyZSBQYXluZS48YnIgLz4NCjxiciAvPg0KVGhlIEJhbmtpbmcgYW5kIEZpbmFuY2UgRXRoaWNzIFBhbmVsIGNvbXByaXNlZDo8YnIgLz4NCjx1bD4NCgk8bGk+DQoJCVN0ZXBoZW4gRml0emdlcmFsZCwgZm9ybWVybHkgQ2hpZWYgRXhlY3V0aXZlIE9mZmljZXIsIEdvbGRtYW4gU2FjaHM8L2xpPg0KCTxsaT4NCgkJU3RldmVuIEhhcmtlciwgQ2hpZWYgRXhlY3V0aXZlICZhbXA7IE1hbmFnaW5nIERpcmVjdG9yLCBNb3JnYW4gU3RhbmxleTwvbGk+DQoJPGxpPg0KCQlTdGVwaGVuIER1bm5lLCBNYW5hZ2luZyBEaXJlY3RvciwgQU1QIENhcGl0YWw8L2xpPg0KCTxsaT4NCgkJRGF2aWQgQ29oZW4sIEdyb3VwIEdlbmVyYWwgQ291bnNlbCwgQ29tbW9ud2VhbHRoIEJhbmsgb2YgQXVzdHJhbGlhPC9saT4NCgk8bGk+DQoJCVRyZXZvciBSb3dlIEFPLCBFeGVjdXRpdmUgQ2hhaXJtYW4sIFJvdGhzY2hpbGQgQXVzdHJhbGlhPC9saT4NCgk8bGk+DQoJCVN0ZXZlIFR1Y2tlciwgQ2hpZWYgRXhlY3V0aXZlIE9mZmljZXIsIE1MQzwvbGk+DQoJPGxpPg0KCQlEYXZpZCBCZWxsLCBmb3JtZXJseSBHcm91cCBHZW5lcmFsIENvdW5zZWwsIFdlc3RwYWMgQmFua2luZyBDb3Jwb3JhdGlvbjwvbGk+DQoJPGxpPg0KCQlEciBTaW1vbiBMb25nc3RhZmYsIEV4ZWN1dGl2ZSBEaXJlY3RvciwgVGhlJm5ic3A7RXRoaWNzIENlbnRyZTwvbGk+DQoJPGxpPg0KCQlDbGFyZSBQYXluZSwgQ29uc3VsdGluZyBGZWxsb3csIFRoZSZuYnNwO0V0aGljcyBDZW50cmUmbmJzcDthbmQgZm9ybWVyIERpcmVjdG9yIG9mIHRoZSBJbnRlZ3JpdHkgT2ZmaWNlIG9mIE1hY3F1YXJpZSBCYW5rPC9saT4NCgk8bGk+DQoJCUFtYW5kYSBNY0NsdXNrZXksICZuYnNwO1NlbmlvciBJbnZlc3RtZW50IE1hbmFnZXIgYW5kIENvLUhlYWQgb2YgU3VzdGFpbmFibGUgRnVuZHMsIEZpcnN0IFN0YXRlIFN0ZXdhcnQmbmJzcDtBc2lhIFBhY2lmaWMgLCBTaW5nYXBvcmU8L2xpPg0KPC91bD4NCjxiciAvPg0KVGhlIEJhbmtpbmcgYW5kIEZpbmFuY2UgT2F0aCBMaW1pdGVkIGlzIHRoZSBmaXJzdCBpbml0aWF0aXZlIG9mIHRoZSBCYW5raW5nIGFuZCBGaW5hbmNlIEV0aGljcyBQYW5lbC48YnIgLz4NCjxiciAvPg0KRHIgU2ltb24gTG9uZ3N0YWZmLCBFeGVjdXRpdmUgRGlyZWN0b3IsIFRoZSBFdGhpY3MgQ2VudHJlLCBkcmFmdGVkIFRoZSBCRk8gYWZ0ZXIgZGlzY3Vzc2lvbnMgd2l0aCB0aGUgbWVtYmVycyBvZiB0aGUgcGFuZWwuIFRoZSB2aWV3cyBvZiBlYWNoIHBhbmVsIG1lbWJlciB3ZXJlIHNvdWdodCB3aXRoIHRoZSBmaW5hbCB3b3JkaW5nIGFncmVlZCB1cG9uIGluIEZlYnJ1YXJ5IDIwMTEuPGJyIC8+DQo8YnIgLz4NCjxoMj4NCglPYmplY3RpdmVzPC9oMj4NCldlIGhvcGUgdGhhdCBUaGUgQkZPIHdpbGwgcmVzb25hdGUgd2l0aCBldmVyeW9uZSB3aG8gd29ya3MgaW4gdGhlIGJhbmtpbmcgYW5kIGZpbmFuY2UgaW5kdXN0cnkuIFdlIGVuY291cmFnZSBlYWNoIHBlcnNvbiBpbiB0aGUgaW5kdXN0cnkgdG8gY2hvb3NlIHZvbHVudGFyaWx5IHRvIGNvbW1pdCB0byB0aGUgaW50ZW50IGFuZCBzcGlyaXQgb2YgZWFjaCBlbGVtZW50IG9mIHRoZSBvYXRoLjxiciAvPg0KPGJyIC8+DQpJbiB0dXJuIHdlIGhvcGUgVGhlIEJGTyB3aWxsIGxlYWQgdG8gaW5jcmVhc2VkIGNvbnNpZGVyYXRpb24gb2Ygc3Rha2Vob2xkZXJzIGFuZCBtb3JlIGFjY291bnRhYmlsaXR5IGZvciBkZWNpc2lvbi1tYWtpbmcgYWNyb3NzIHRoZSBpbmR1c3RyeS48YnIgLz4NCjxiciAvPg0KZAILD2QWAgIRDxYCHwMCARYCZg9kFgJmDxUCDy9wcml2YWN5LXBvbGljeQ5Qcml2YWN5IFBvbGljeWRk9VXc7azo2L2xcbd6M80TjbZa2sjzgvzykpjHI2eSrbQ=" />
+
+<input type="hidden" name="lng" id="lng" value="en-AU" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAW+RGqqd+cwNUG0/uVih2SL3PBY0wSE7COkoq6mii3l8eQvmfqq2/xth83sT2gMP0Iqih58GSpZBnyDSc+cgn3zRE66I7nSFsRZKM2NU9NEl3x1ObCp03/czz8JWwuyrZz/09LYJlYVkUTXhE9XeU7h" />
+    <div id="CMSHeaderDiv">
+	<!-- -->
+</div>
+    <script>var $ = jQuery.noConflict();</script>
+    <div class="wrapper">
+        <div class="header">
+        
+        	<div class="banners-desktop">
+            	<div id="ctl00_divBanner" class="banner oath" style="background-image:url(/BFO/media/contents/Images/Headers/image4.jpg?width=990&amp;height=240&amp;ext=.jpg);"><a class="take-the-oath" href="/Membership/Take-the-oath">Take the oath</a></div>
+                
+                <h1>Background</h1>
+            </div>
+            
+ <header>
+    <div class="logo"><a href="/">BFO</a></div>
+    <a href="#" class="mobile-nav-btn"><img src="/custom/images/mobile-menu.png"/></a>
+    <nav class="primary">
+        <ul>
+            
+                <li id="ctl00_ctlHeader_repMenu_ctl00_li" class="about-us-hover"><a href="/About-us" id="ctl00_ctlHeader_repMenu_ctl00_aLink" class="selected">About us</a>
+                    
+                        <div class='about-us-dd'>
+                            <ul>
+                    
+                        
+                                <li><a href="/About-us/Background" id="ctl00_ctlHeader_repMenu_ctl00_repSubMenu_ctl00_aSubLink" class="selected">Background</a></li>
+                                
+                            
+                                <li><a href="/About-us/Mission-and-objectives" id="ctl00_ctlHeader_repMenu_ctl00_repSubMenu_ctl01_aSubLink">The Oath</a></li>
+                                
+                            
+                                <li><a href="/About-us/The-constitution" id="ctl00_ctlHeader_repMenu_ctl00_repSubMenu_ctl02_aSubLink">The Constitution</a></li>
+                                
+                            
+                                <li><a href="/About-us/The-Board" id="ctl00_ctlHeader_repMenu_ctl00_repSubMenu_ctl03_aSubLink">The Board</a></li>
+                                
+                            
+                                <li><a href="/About-us/The-Oath" id="ctl00_ctlHeader_repMenu_ctl00_repSubMenu_ctl04_aSubLink">FAQs</a></li>
+                                
+                            
+                    
+                            </ul>
+                        </div>
+                    
+                </li>
+            
+                <li id="ctl00_ctlHeader_repMenu_ctl01_li" class="the-oath-hover"><a href="/The-Oath" id="ctl00_ctlHeader_repMenu_ctl01_aLink">The oath</a>
+                    
+                        <div class='the-oath-dd'>
+                            <ul>
+                    
+                        
+                                <li><a href="/The-Oath/Mission-and-objectives" id="ctl00_ctlHeader_repMenu_ctl01_repSubMenu_ctl00_aSubLink">The Oath</a></li>
+                                
+                            
+                                <li><a href="/The-Oath/Take-the-oath" id="ctl00_ctlHeader_repMenu_ctl01_repSubMenu_ctl01_aSubLink">Take the oath</a></li>
+                                
+                            
+                                <li><a href="/The-Oath/Support-the-oath" id="ctl00_ctlHeader_repMenu_ctl01_repSubMenu_ctl02_aSubLink">Support the oath</a></li>
+                                
+                            
+                                <li><a href="/The-Oath/Signatories" id="ctl00_ctlHeader_repMenu_ctl01_repSubMenu_ctl03_aSubLink">Signatories</a></li>
+                                
+                            
+                    
+                            </ul>
+                        </div>
+                    
+                </li>
+            
+                <li id="ctl00_ctlHeader_repMenu_ctl02_li" class="program-hover"><a href="/Programs" id="ctl00_ctlHeader_repMenu_ctl02_aLink">Programs</a>
+                    
+                        <div class='program-dd'>
+                            <ul>
+                    
+                        
+                                <li><a href="/Programs/Intern-Program" id="ctl00_ctlHeader_repMenu_ctl02_repSubMenu_ctl00_aSubLink">Intern Program</a></li>
+                                
+                            
+                                <li><a href="/Programs/Like-Minded" id="ctl00_ctlHeader_repMenu_ctl02_repSubMenu_ctl01_aSubLink">Like-Minded</a></li>
+                                
+                            
+                                <li><a href="/Programs/Young-Ambassador" id="ctl00_ctlHeader_repMenu_ctl02_repSubMenu_ctl02_aSubLink">Young Ambassador</a></li>
+                                
+                            
+                                <li><a href="/Programs/Industry-Young-Ambassador" id="ctl00_ctlHeader_repMenu_ctl02_repSubMenu_ctl03_aSubLink">Industry Young Ambassador</a></li>
+                                
+                            
+                                <li><a href="/Programs/Student-Film-Competition" id="ctl00_ctlHeader_repMenu_ctl02_repSubMenu_ctl04_aSubLink">Student Film Competition</a></li>
+                                
+                            
+                                <li><a href="/Programs/The-BFO-Elders" id="ctl00_ctlHeader_repMenu_ctl02_repSubMenu_ctl05_aSubLink">The BFO Elders</a></li>
+                                
+                            
+                                <li><a href="/Programs/100-Committed" id="ctl00_ctlHeader_repMenu_ctl02_repSubMenu_ctl06_aSubLink">100% Committed</a></li>
+                                
+                            
+                    
+                            </ul>
+                        </div>
+                    
+                </li>
+            
+                <li id="ctl00_ctlHeader_repMenu_ctl03_li" class="events-hover"><a href="/Events" id="ctl00_ctlHeader_repMenu_ctl03_aLink">Events</a>
+                    
+                        <div class='events-dd'>
+                            <ul>
+                    
+                        
+                                <li><a href="/Events/Current-Events" id="ctl00_ctlHeader_repMenu_ctl03_repSubMenu_ctl00_aSubLink">Current Events</a></li>
+                                
+                            
+                                <li><a href="/Events/Like-Minded-Lunches-Series" id="ctl00_ctlHeader_repMenu_ctl03_repSubMenu_ctl01_aSubLink">Like Minded Lunches</a></li>
+                                
+                            
+                                <li><a href="/Events/Leadership-Circle" id="ctl00_ctlHeader_repMenu_ctl03_repSubMenu_ctl02_aSubLink">Leadership Circle</a></li>
+                                
+                            
+                                <li><a href="/Events/Past-Events" id="ctl00_ctlHeader_repMenu_ctl03_repSubMenu_ctl03_aSubLink">Past Events</a></li>
+                                
+                            
+                    
+                            </ul>
+                        </div>
+                    
+                </li>
+            
+                <li id="ctl00_ctlHeader_repMenu_ctl04_li"><a href="/Blog" id="ctl00_ctlHeader_repMenu_ctl04_aLink">Articles</a>
+                    
+                        
+                    
+                </li>
+            
+                <li id="ctl00_ctlHeader_repMenu_ctl05_li" class="news-events-hover"><a href="/News-Events" id="ctl00_ctlHeader_repMenu_ctl05_aLink">Press</a>
+                    
+                        <div class='news-events-dd'>
+                            <ul>
+                    
+                        
+                                <li><a href="/News-Events/News" id="ctl00_ctlHeader_repMenu_ctl05_repSubMenu_ctl00_aSubLink">News</a></li>
+                                
+                            
+                                <li><a href="/News-Events/Related-Article" id="ctl00_ctlHeader_repMenu_ctl05_repSubMenu_ctl01_aSubLink">Related Articles</a></li>
+                                
+                            
+                                <li><a href="/News-Events/Media-Release" id="ctl00_ctlHeader_repMenu_ctl05_repSubMenu_ctl02_aSubLink">Media Releases</a></li>
+                                
+                            
+                    
+                            </ul>
+                        </div>
+                    
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+        </div>
+        <article class="main">
+            <div class="wrapper-inner">
+        
+    <div class="left">
+        
+
+    <nav class="subnav">
+        <ul>
+            
+                <li><a href="/About-us/Background" id="ctl00_ContentPlaceHolder1_ctlLeft_repMenu_ctl00_aLink" class="selected">Background</a></li>
+                
+            
+                <li><a href="/About-us/Mission-and-objectives" id="ctl00_ContentPlaceHolder1_ctlLeft_repMenu_ctl01_aLink">The Oath</a></li>
+                
+            
+                <li><a href="/About-us/The-constitution" id="ctl00_ContentPlaceHolder1_ctlLeft_repMenu_ctl02_aLink">The Constitution</a></li>
+                
+            
+                <li><a href="/About-us/The-Board" id="ctl00_ContentPlaceHolder1_ctlLeft_repMenu_ctl03_aLink">The Board</a></li>
+                
+            
+                <li><a href="/About-us/The-Oath" id="ctl00_ContentPlaceHolder1_ctlLeft_repMenu_ctl04_aLink">FAQs</a></li>
+                
+            
+                    
+        </ul>
+    </nav>
+
+    <div id="ctl00_ContentPlaceHolder1_ctlLeft_divCustomLeftNav" class="grey-sub-left">
+         <h2>
+	The Oath</h2>
+<p>
+	Trust is the foundation of my profession.<br />
+	<br />
+	I will serve all interests in good faith.<br />
+	I will compete with honour.<br />
+	I will pursue my ends with ethical restraint.<br />
+	I will help create a sustainable future.<br />
+	I will help create a more just society.<br />
+	I will speak out against wrongdoing and support others who do the same.<br />
+	I will accept responsibility for my actions.<br />
+	<br />
+	In these and all other matters;<br />
+	My word is my bond.</p>
+
+    </div>
+
+    <div class="promo-image">
+        
+    </div>
+    </div>
+    <section>
+        <h2>
+	Background</h2>
+The Banking and Finance Oath is founded on a shared belief in the inherent &lsquo;good&rsquo; of the banking and finance industry. The Oath is an effort to re-assert the ethical foundation of the industry beyond regulation and compliance, by broadening expectations and discussion to include ethics, integrity, honesty and trust.<br />
+<br />
+Importantly the Banking and Finance Oath is an industry-led initiative. In 2009, Clare Payne, in her role as Associate Director of the Integrity Office of Macquarie Bank and as a voluntary Consulting Fellow with the Ethics Centre, wrote to leaders of the Banking and Finance Industry at the CEO, Chair and Board level. Industry leaders were overwhelmingly interested in discussing the ethics of the industry and had many ideas on how trust could be enhanced, and in some sectors restored.<br />
+<br />
+A Report was produced and industry leaders voted on the initiatives they wished to see established. The Banking and Finance Ethics Panel was formed in 2010 with representatives from Goldman Sachs, Deutsche Bank, Commonwealth Bank, Rothschild, Morgan Stanley, AMP Capital, MLC and Westpac. The Banking and Finance Oath is the founding initiative of the Panel.<br />
+<br />
+The Ethics Centre acts as an independent advisory to the Banking and Finance Oath. Dr Simon Longstaff, Executive Director of The Ethics Centre holds a position on The BFO Board and assisted in wording of The Oath.<br />
+<br />
+<h2>
+	The Banking and Finance Ethics Panel</h2>
+The Banking and Finance Ethics Panel was established in 2010 by&nbsp;leaders from the banking and finance industry led by the Ethics Centre&#39;s Consulting Fellow for Ethics in Banking and Finance, Clare Payne.<br />
+<br />
+The Banking and Finance Ethics Panel comprised:<br />
+<ul>
+	<li>
+		Stephen Fitzgerald, formerly Chief Executive Officer, Goldman Sachs</li>
+	<li>
+		Steven Harker, Chief Executive &amp; Managing Director, Morgan Stanley</li>
+	<li>
+		Stephen Dunne, Managing Director, AMP Capital</li>
+	<li>
+		David Cohen, Group General Counsel, Commonwealth Bank of Australia</li>
+	<li>
+		Trevor Rowe AO, Executive Chairman, Rothschild Australia</li>
+	<li>
+		Steve Tucker, Chief Executive Officer, MLC</li>
+	<li>
+		David Bell, formerly Group General Counsel, Westpac Banking Corporation</li>
+	<li>
+		Dr Simon Longstaff, Executive Director, The&nbsp;Ethics Centre</li>
+	<li>
+		Clare Payne, Consulting Fellow, The&nbsp;Ethics Centre&nbsp;and former Director of the Integrity Office of Macquarie Bank</li>
+	<li>
+		Amanda McCluskey, &nbsp;Senior Investment Manager and Co-Head of Sustainable Funds, First State Stewart&nbsp;Asia Pacific , Singapore</li>
+</ul>
+<br />
+The Banking and Finance Oath Limited is the first initiative of the Banking and Finance Ethics Panel.<br />
+<br />
+Dr Simon Longstaff, Executive Director, The Ethics Centre, drafted The BFO after discussions with the members of the panel. The views of each panel member were sought with the final wording agreed upon in February 2011.<br />
+<br />
+<h2>
+	Objectives</h2>
+We hope that The BFO will resonate with everyone who works in the banking and finance industry. We encourage each person in the industry to choose voluntarily to commit to the intent and spirit of each element of the oath.<br />
+<br />
+In turn we hope The BFO will lead to increased consideration of stakeholders and more accountability for decision-making across the industry.<br />
+<br />
+
+        
+    </section>            	
+
+                <div class="clear"></div>
+            </div>
+        </article>
+        <div class="clear"></div>
+        
+<footer>
+    <div class="contact-bar">
+        <div class="wrapper-inner">
+            <div class="col1">
+                STAY up-to-date with the BFO
+            </div>
+            <div class="col2 newsletter-panel">
+                <div class="input"><input class="newsletter-email" type="text" name="subscribe" value="Enter your email address" /></div><a href="#" class="subscribe-pop-button">Go</a>
+                <div class="newsletter-popup">
+                    <div class="form newsletter-form">
+                        <div class="row">
+                            <div class="col">
+                                <label for="txtFName" id="ctl00_ctlFooter_label1">First name *</label>
+                                <input name="ctl00$ctlFooter$txtFName" type="text" maxlength="30" id="txtFName" />
+                            
+                            </div>
+                            <div class="col col-last">
+                                <label for="txtLName" id="ctl00_ctlFooter_Label2">Last name *</label>
+                                <input name="ctl00$ctlFooter$txtLName" type="text" maxlength="30" id="txtLName" />
+                            
+                            </div>
+                        </div><div class="row">
+                            <label for="txtCompanyName" id="ctl00_ctlFooter_label8">Company Name *</label>
+                            <input name="ctl00$ctlFooter$txtCompanyName" type="text" maxlength="100" id="txtCompanyName" />
+                        
+                        </div>
+                        <div class="row">
+                            <label for="txtEmail" id="ctl00_ctlFooter_label3">Email *</label>
+                            <input name="ctl00$ctlFooter$txtEmail" type="text" id="txtEmail" />
+                        
+                        </div>
+                        
+                        <div class="row">
+                            <div class="error"></div>
+                        </div>
+                        <div class="row">
+                        
+                            <a class="submit newsletter-submit" href="#">SUBSCRIBE TO BFO</a>
+                        </div>
+                    </div>
+                    <div class="newsletter-message"><label>Thank you for subscribing to The Banking and Finance Oath.</label></div>
+                    <div class="newsletter-popup-bottom">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col3">
+                CONNECT with us
+            </div>
+        </div>
+                  
+        <div class="col4">
+            <a href="http://www.linkedin.com/groups?gid=4761295" target="_blank" class="linkedin">LinkedIn</a>
+            <a href="https://twitter.com/the_bfo" target="_blank" class="twitter">Twitter</a>
+        </div>
+                
+        <div class="clear"></div>
+    </div>
+            
+    <div class="footer-bar">
+        <div class="wrapper-inner">
+            <div class="col1">
+                <a href="/Contact-us">Contact us</a> | 
+                
+                    <a href="/privacy-policy">Privacy Policy</a> | 
+                 
+                <a href="http://www.devotion.com.au" target="_blank">Made with Devotion</a> | 
+                <a href="http://www.kentico.com" title="Kentico CMS for ASP.NET" >Powered by Kentico CMS for ASP.NET</a>
+            </div>
+            <div class="col2">
+                &copy; Banking and Finance Oath 2012 - 2015
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</footer>
+
+
+    </div>
+        <script src="/custom/scripts/global.js"></script>
+
+        <!-- selectric -->
+         <script src="/custom/plugins/selectric/jquery.selectric.min.js"></script>
+    
+         <!-- icheck -->
+        <script src="/custom/plugins/iCheck/icheck.min.js"></script>
+
+        <!-- masonry -->
+        <script src="/custom/plugins/masonry/masonry.pkgd.min.js"></script>
+        <script src="/custom/plugins/masonry/imagesloaded.pkgd.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#container').imagesLoaded(function () {
+                    $('#container').masonry();
+                });
+
+                $('.video-popup-button').magnificPopup({
+                    items: {
+                        src: $('.popup-video'),
+                        type: 'inline'
+                    }
+                });
+
+            });
+	    </script>
+    </form>
+</body>
+</html>
