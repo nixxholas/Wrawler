@@ -14,35 +14,36 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /**
  * Home to all of the constants.
- * 
+ *
  * @author Nixholas
  */
 public class Constants {
-    
+
     // Every single SearchEngine we add will be stored and be available globally
     public static Queue<ResultObject> cachedResults = new ArrayDeque<ResultObject>();
     public static List<SearchEngine> searchEngines = new ArrayList<SearchEngine>();
-    
+
     /**
      * Main Queue of the whole program
-     * 
+     *
      * Reasons why ArrayDeque was used
-     * 
+     *
      * 3x Faster than LinkedList
      * http://microbenchmarks.appspot.com/run/limpbizkit@gmail.com/com.publicobject.blog.TreeListBenchmark
      * http://stackoverflow.com/questions/6129805/what-is-the-fastest-java-collection-with-the-basic-functionality-of-a-queue
-     * 
+     *
      * Switched to ConcurrentLinkedQueue
-     * 
+     *
      * http://stackoverflow.com/questions/616484/how-to-use-concurrentlinkedqueue
      */
     public static Queue<ResultObject> searchQueue = new ConcurrentLinkedQueue<>();
 
+    // ------------------- JFrame Elements --------------------- //
     // Default JFrame of the Program
     public static MainFrame mainFrame = new MainFrame();
 
@@ -54,13 +55,15 @@ public class Constants {
     public static JPanel leftPanel = new JPanel();
     public static JPanel rightPanel = new JPanel();
     public static JEditorPane jep = new JEditorPane();
+    public static JTextArea jepPure = new JTextArea();
     public static JScrollPane scrollPane = new JScrollPane(jep);
-        
+    public static JScrollPane scrollPanePure = new JScrollPane(jepPure);
+
     // Create a mainPanel for uniform layout
-    public static JPanel mainPanel = new JPanel();    
-    
-    // Global Progress Bar for mainFrame    
-    public static int progBarProgress = 0;
-    public static JProgressBar progBar = new JProgressBar();
-    
+    public static JPanel mainPanel = new JPanel();
+
+    // Global variables for progres    
+    public static int progressRate;
+    public static int actualProgress = 0;
+
 }

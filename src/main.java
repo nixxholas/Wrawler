@@ -1,12 +1,14 @@
 
 import static Backend.BackendServices.loadCache;
 import static Backend.Constants.jep;
+import static Backend.Constants.jepPure;
 import static Backend.Constants.leftPanel;
 import static Backend.Constants.mainFrame;
 import static Backend.Constants.mainPanel;
 import static Backend.Constants.resultFrame;
 import static Backend.Constants.rightPanel;
 import static Backend.Constants.scrollPane;
+import static Backend.Constants.scrollPanePure;
 import static Backend.Constants.searchEngines;
 import static Backend.Constants.searchQueue;
 import Backend.ResultObject;
@@ -15,10 +17,6 @@ import Backend.SearchEngine;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
@@ -27,24 +25,24 @@ import javax.swing.JScrollPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Nixholas
  */
 public class main {
+
     public static void main(String arg[]) {
         // ----------------- START OF PROGRAM SETUP -------------------------- //
-        
+
         // Initialize the components of the program
         initializeRO();
-        
+
         // Load the Cache into memory
         loadCache();
-        
+
         // Configure the Panel and Frame properly before use
         mainPanel.setLayout(new GridLayout(0, 2));
-        leftPanel.setLayout(new GridLayout(0, 1));
+        leftPanel.setLayout(new GridLayout(0, 2));
         rightPanel.setLayout(new GridLayout(0, 5));
 
         // We then add the panel into the frame
@@ -59,9 +57,8 @@ public class main {
 
         // Setup the browser view
         jep.setEditable(false);
-        mainPanel.setLayout(new GridLayout(0, 2));
-        leftPanel.setLayout(new GridLayout(0, 1));
-        rightPanel.setLayout(new GridLayout(0, 5));
+        jepPure.setEditable(false);
+        jep.setContentType("text/html");
 
         // We then add the panel into the frame
         mainPanel.add(leftPanel);
@@ -72,17 +69,15 @@ public class main {
         resultFrame.setSize(1200, 900);
         resultFrame.setLocationRelativeTo(null);
         resultFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        resultFrame.addWindowListener(new WindowAdapter()
-        {
+        resultFrame.addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosing(WindowEvent e)
-            {
+            public void windowClosing(WindowEvent e) {
                 //resultFrame.setVisible(false);
                 mainFrame.setVisible(true);
                 rightPanel.removeAll();
                 rightPanel.revalidate();
                 rightPanel.repaint();
-                                
+
                 // Remove the current search results
                 for (ResultObject ro : searchQueue) {
                     searchQueue.remove(ro);
@@ -91,11 +86,15 @@ public class main {
         });
 
         jep.setSize(0, 1200);
+        jepPure.setSize(0, 1200);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPanePure.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPanePure.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         leftPanel.add(scrollPane);
-        
+        leftPanel.add(scrollPanePure);
+
         // -------------------- END OF PROGRAM SETUP --------------------- //
-        
         // Initialize Google's Search Information
         SearchEngine Google = new SearchEngine("https://www.google.com/search?q=", "(<h3 class=\"r\">)(.+?)(<\\/h3>)", "(?<=\">)(.+?)(?=<a)", "(?<=\\)\\\">)(.+?)(?=<)");
         Google.setName("Google");
@@ -107,11 +106,8 @@ public class main {
         searchEngines.add(Bing);
 
         //searchEngines.add(new SearchEngine("DuckDuckGo", "https://duckduckgo.com/?q="));
-
         // Have yet to add Opera Search
-        
         // Have yet to add Yahoo Search
-
         mainFrame.setVisible(true);
     }
 }

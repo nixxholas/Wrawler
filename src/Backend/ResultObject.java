@@ -7,10 +7,11 @@ package Backend;
 
 import static Backend.Constants.cachedResults;
 import static Backend.Constants.jep;
+import static Backend.Constants.jepPure;
 import static Backend.Constants.mainFrame;
 import static Backend.Constants.rightPanel;
+import static Backend.Constants.scrollPane;
 import static Backend.Constants.searchQueue;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -95,17 +96,17 @@ public class ResultObject implements Serializable, Runnable {
 //                }
 //            }
 //        }
-        
+
         // Check against the history of results
         for (ResultObject RO : cachedResults) {
             if (RO.url.equals(this.url)) {
                 return true;
             }
         }
-        
+
         return false;
     }
-    
+
     private void setFromAdded() {
         for (ResultObject RO : cachedResults) {
             if (RO.url.equals(this.url)) {
@@ -123,7 +124,7 @@ public class ResultObject implements Serializable, Runnable {
                 return RO;
             }
         }
-        
+
         // Definitely won't get here
         return new ResultObject("", "", "");
     }
@@ -192,16 +193,15 @@ public class ResultObject implements Serializable, Runnable {
 
     @Override
     public void run() {
+        String loadedResult;
         try {
             // Don't download if we can find it
             if (this.findResults()) {
-                    System.out.println("hami");
                 // And then we'll set all of it's data from the original
                 this.setFromAdded();
+                loadedResult = this.resultPage;
             } else {
                 // Since we can't find it, we download it
-
-                    System.out.println("Tryingg");
                 URL url = new URL(this.getUrl());
                 PrintWriter writer = new PrintWriter("src/Download/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
 
@@ -216,6 +216,7 @@ public class ResultObject implements Serializable, Runnable {
                 }
 
                 this.setResultPage(finalResult);
+                loadedResult = finalResult;
 
                 // Create a serialized form of the object
                 FileOutputStream fos = new FileOutputStream("src/Caches/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".ser");
@@ -233,12 +234,11 @@ public class ResultObject implements Serializable, Runnable {
             }
 
             // Ultimately, we'll have to create the button
-            
             JButton button = new JButton(this.getName());
-            
+
             // For the action listener
             String resultName = this.getName();
-            
+
             /**
              * Action Listener adapted from:
              *
@@ -252,12 +252,16 @@ public class ResultObject implements Serializable, Runnable {
                      *
                      * http://stackoverflow.com/questions/10601676/display-a-webpage-inside-a-swing-application
                      */
-                    
+                    jep.removeAll();
+                    jepPure.removeAll();
+
                     try {
                         // Pulls the file path
                         File file = new File("src/Download/" + resultName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
-                                                
+
                         jep.setPage(file.toURI().toURL());
+                        jepPure.setText(loadedResult);
+
                         mainFrame.pack();
                     } catch (Exception ex) {
                         jep.setContentType("text/html");
@@ -267,7 +271,7 @@ public class ResultObject implements Serializable, Runnable {
             });
 
             rightPanel.add(button);
-            
+
         } catch (Exception ex) {
 
         }

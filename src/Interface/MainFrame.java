@@ -6,12 +6,13 @@
 package Interface;
 
 import static Backend.BackendServices.clearDirectory;
+import static Backend.Constants.actualProgress;
 import static Backend.Constants.mainFrame;
-import static Backend.Constants.progBar;
-import static Backend.Constants.progBarProgress;
+import static Backend.Constants.progressRate;
 import static Backend.Constants.resultFrame;
 import static Backend.Constants.searchEngines;
 import static Backend.PageRead.*;
+import java.awt.EventQueue;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,6 +43,7 @@ public class MainFrame extends javax.swing.JFrame {
         searchBtn = new javax.swing.JButton();
         mainLabel = new javax.swing.JLabel();
         clearCacheBtn = new javax.swing.JButton();
+        mainFrameProgressBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -73,6 +75,10 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        mainFrameProgressBar.setForeground(new java.awt.Color(0, 204, 0));
+        mainFrameProgressBar.setToolTipText("");
+        mainFrameProgressBar.setValue(-100);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,13 +97,15 @@ public class MainFrame extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(clearCacheBtn)))
                 .addContainerGap(57, Short.MAX_VALUE))
+            .addComponent(mainFrameProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addComponent(mainFrameProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
                 .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(textBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -114,31 +122,55 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_textBoxActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        // Initialize a progress bar for the user       
-        progBar.setValue(progBarProgress);
-        
+
         String result = textBox.getText();
         
-        for (int i = 0; i < searchEngines.size(); i++) {
-            try {
-                // System.out.println(readPage(searchEngines.get(i).getBaseUrl() + result));
-                
-                // Set the trimmedResult into the SearchEngine Objects
-                searchEngines.get(i).setTrimmedResult(getUrlSource(searchEngines.get(i), result));
-                progBarProgress += 100/searchEngines.size();
-                
-            } catch (IOException ex) {
-                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        // Setup the progress value
+        progressRate = 100 / searchEngines.size(); // Lazy Integer for progression
+         
+        // User Input Validation
+        if (result.length() < 1) {
+            textBox.setText("PLEASE ENTER SOMETHING!");
+            return;
         }
+
+        // RegEx for escape characters on user input
         
-        progBarProgress = 100;
-        progBar.setValue(progBarProgress);
-        
-        // Once we're done with loading the searches, we'll show the frame.
-        // and hide the mainFrame (which is called newFrame)
-        resultFrame.setVisible(true);
-        mainFrame.setVisible(false);
+
+        // Setup the Progress Bar
+        searchBtn.setEnabled(false); // Disable the Search Button First
+        mainFrameProgressBar.setMaximum(100);
+        mainFrameProgressBar.setValue(actualProgress);
+
+        // User validation undone
+        // Initialize progressBar
+        Runnable r = () -> {
+            for (int i = 0; i < searchEngines.size(); i++) {
+                try {
+                    // Set the trimmedResult into the SearchEngine Objects
+                    searchEngines.get(i).setTrimmedResult(getUrlSource(searchEngines.get(i), result));
+                    actualProgress = actualProgress + progressRate;
+                    mainFrameProgressBar.setValue(actualProgress);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            // Setup the UI
+            EventQueue.invokeLater(() -> {
+                // Once we're done with loading the searches, we'll show the frame.
+                // and hide the mainFrame (which is called newFrame)
+                resultFrame.setVisible(true);
+                mainFrame.setVisible(false);
+                searchBtn.setEnabled(true);
+                
+                // Reset the progress bar
+                actualProgress = 0;
+                mainFrameProgressBar.setValue(actualProgress);
+            });
+        };
+        Thread th = new Thread(r);
+        th.start();
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void clearCacheBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearCacheBtnActionPerformed
@@ -181,11 +213,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearCacheBtn;
+    private javax.swing.JProgressBar mainFrameProgressBar;
     private javax.swing.JLabel mainLabel;
-    private static javax.swing.JButton searchBtn;
+    public javax.swing.JButton searchBtn;
     public static javax.swing.JTextField textBox;
     // End of variables declaration//GEN-END:variables
 }
