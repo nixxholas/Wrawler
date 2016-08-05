@@ -22,7 +22,8 @@ import java.io.ObjectInputStream;
  *
  * @author Nixholas
  */
-public class BackendServices {    
+public class BackendServices {
+
     /**
      * Method to reset the mainFrame
      */
@@ -37,14 +38,13 @@ public class BackendServices {
     public static void clearDirectory(String path) {
         // Clear the cachedResults as well
         cachedResults.clear();
-        
+
         File directory = new File(path);
 
         /**
-         * Strong problem here,
-         * We'll have to find a way to identify the file deleting issue.
+         * Strong problem here, We'll have to find a way to identify the file
+         * deleting issue.
          */
-        
         // Get all files in directory
         File[] files = directory.listFiles();
         for (File file : files) {
@@ -54,7 +54,7 @@ public class BackendServices {
             } catch (Exception ex) {
                 System.out.println(ex);
             }
-            
+
 //            
 //            if (!file.delete()) {
 //                // Failed to delete file
@@ -80,7 +80,7 @@ public class BackendServices {
                     ObjectInputStream ois = new ObjectInputStream(fis);
                     ResultObject ro = (ResultObject) ois.readObject();
                     ois.close();
-                    
+
                     // Add the object into the cachedResults ArrayDeque
                     cachedResults.add(ro);
                 } catch (Exception ex) {
@@ -93,13 +93,13 @@ public class BackendServices {
             // to avoid race conditions with another process that deletes
             // directories.
         }
-        
+
         // We then load the historyTable with the cachedResults
         loadHistoryTable();
     }
-    
+
     public static void loadHistoryTable() {
-        
+
     }
 
 }

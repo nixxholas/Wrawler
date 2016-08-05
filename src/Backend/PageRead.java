@@ -138,9 +138,8 @@ public class PageRead {
 
                 // Check with the cachedResults
                 if (!findInCache(currentResult) && resultsCounter.getCount() < numberOfResults) {  // Since it has been found and has been added, move on
-                
+
                     // But if it's here, means it's not cached.
-                    
                     // Add the result into the searchQueue as well if it isn't cached
                     if (!queueHasResult(currentResult) && resultsCounter.getCount() < numberOfResults) {
                         // If queue does not have it, we add it and if there adequate results
