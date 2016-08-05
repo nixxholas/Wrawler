@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head><link rel="canonical" href="https://msdn.microsoft.com/en-us/library/jj159342.aspx" />
+    <title>7: Testing in the Software Lifecycle</title>
+
+
+
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/jj159342(d=default,l=en-us,v=pandp.10).aspx" />
+
+<meta name="NormalizedUrl" content="https://msdn.microsoft.com/en-us/library/jj159342(d=default,l=en-us,v=pandp.10).aspx" />
+
+<meta name="ms.normalizedurl" content="https://msdn.microsoft.com/en-us/library/jj159342(d=default,l=en-us,v=pandp.10).aspx" />
+
+<meta name="DCSext.MSDNLibraryNode" content="_pandp_all_" />
+
+<meta name="AmbientContext" content="{&quot;layout.limit_max_width&quot;:true,&quot;AmbientContextId&quot;:&quot;13C94FB9-4BE1-4224-A4B9-3520E789CE64&quot;,&quot;display.use_large_font&quot;:true,&quot;insight.perf_timing&quot;:true,&quot;AmbientContextDownstream&quot;:{&quot;LogTrace&quot;:false},&quot;display.high_contrast&quot;:false,&quot;insight.use_wedcs_vnext&quot;:true}" />
+
+<meta name="VotingContextUrl" content="https://msdn.microsoft.com/en-us/library/jj159342(d=default,l=en-us,v=pandp.10).aspx" />
+
+<meta name="MN" content="61C41DD6-10:39:42 PM" />
+
+<meta name="Search.ShortId" content="jj159342" />
+
+<meta name="ms.shortidmsdn" content="jj159342" />
+
+<meta name="ms.locale" content="en-us" />
+
+<meta name="ms.prodver" content="PandP.10" />
+
+<meta name="ms.contentlang" content="EN" />
+
+<meta name="ms.lang" content="EN" />
+
+<meta name="ms.loc" content="US" />
+
+<meta name="ms.sitever" content="2016.07.15.1" />
+
+<meta name="ms.assetid" content="2a90c440-74e3-4cd5-8b6e-5fd3cb247c2b" />
+
+<meta name="ms.auth" content="0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+        
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" data-do-not-move="true">
+        //<![CDATA[
+        var AmbientContext = null;
+
+        (function(){
+            var root = (function(){return this;}).call(null);
+
+            var GetCookie = function(name){
+                var cookies = root.document.cookie ? root.document.cookie.split('; ') : [];
+                for (var i = 0; i < cookies.length; i++) {
+                    var pos = cookies[i].indexOf('=');
+                    if (name === root.decodeURIComponent(cookies[i].slice(0, pos)))
+                    {
+                        var cookie = cookies[i].slice(pos + 1).replace(/\+/g, ' ');
+                        cookie = root.decodeURIComponent(cookie);
+                        return cookie;
+                    }
+                }
+            };
+
+            var JsonDeserialize = function(content) {
+                return root.JSON && root.JSON.parse ? root.JSON.parse(content) : (new Function('return (' + content + ')'))();
+            };
+
+            try {
+                AmbientContext = GetCookie('AmbientContext');
+                AmbientContext = AmbientContext && JsonDeserialize(AmbientContext);
+            } catch(ex) {
+            } finally {
+                AmbientContext = AmbientContext || null;
+            }
+        })();
+        //]]>
+    </script>
+
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js" data-do-not-move="true" data-provides="jQuery"></script>
+    
+<link rel="stylesheet" type="text/css" href="https://msdn.microsoft.com/Combined.css?resources=0:ImageSprite,0:TopicResponsive,0:TopicResponsive.MediaQueries,1:CodeSnippet,1:ProgrammingSelector,1:ExpandableCollapsibleArea,0:CommunityContent,1:TopicNotInScope,1:FeedViewerBasic,1:ImageSprite,2:Header,2:HeaderFooterSprite,2:Header.MediaQueries,3:Banner.MediaQueries,0:Breadcrumbs,0:Breadcrumbs.MediaQueries,0:ResponsiveToc,0:ResponsiveToc.MediaQueries,0:LibraryMemberFilter,2:Footer,2:Footer.MediaQueries,4:StandardRating,5:LinkList,0:BaseResponsive,6:MsdnResponsive,0:Tables.MediaQueries;/Areas/Library/Content:0,/Areas/Epx/Content/Css:1,/Areas/Centers/Themes/StandardDevCenter/Content:2,/Areas/Epx/Shared/Content:3,/Areas/Global/Content:4,/Areas/Epx/Themes/Base/Content:5,/Areas/Library/Themes/Msdn/Content:6&amp;amp;v=D0CC49B492FAEA77F344A145B5F94661" /></head>
+<body class="library ">
+    <div id="page">
+
+        
+
+        
+    
+
+    
+    <link type="text/css" rel="stylesheet" />
+    
+        
+        
+    <input type="hidden" id="isHeaderBleeding" value="true" />
+    <div id="ux-header" dir="ltr" class="ltr msdn">
+        
+
+      <header>
+        <span id="singleCol"></span>
+        <span id="doubleCol"></span>
+        <span id="isMobile"></span>
+        <div>
+          <div class="row topRow">
+            <div class="top">
+              <div class="left">
+                <a class="msdnLogoImg" href="https://msdn.microsoft.com/en-us" title="MSDN home">
+                  <div id="msft-logo" class="msft-logo"></div>
+                </a>
+                <div class="GrayPipe"></div>
+                  <a class="DevCenterFullNameNonMegaBlade" href="https://msdn.microsoft.com/en-us">Developer Network</a>
+                <a class="DevCenterFullName" href="https://msdn.microsoft.com/en-us">Developer Network</a>
+                <a class="DevCenterShortName" href="https://msdn.microsoft.com/en-us">Developer</a>
+              </div>
+              <div class="right">
+                <div id="signIn">
+
+  <div class="profileImage"></div>
+
+
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=13&amp;ct=1470375582&amp;rver=6.7.6640.0&amp;wp=mcmbi&amp;wlcxt=msdn%24msdn%24msdn&amp;wreply=https%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fjj159342.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-us">Sign in</a></div>
+
+
+
+
+                <div class="auxNav">
+                  <div>
+                    <div data-fragmentName="Subscriptions" id="Fragment_Subscriptions" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="https://msdn.microsoft.com/subscriptions/manage/hh442900" id="Subscriptions_2153_1" xmlns="http://www.w3.org/1999/xhtml">MSDN subscriptions</a>
+</div>
+                    <div data-fragmentName="GetTools" id="Fragment_GetTools" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://go.microsoft.com/fwlink/?LinkId=309297&amp;clcid=0x409&amp;slcid=0x409&amp;campaign=o~msft~msdn~gettools-header~dn308572" id="GetTools_2153_3" xmlns="http://www.w3.org/1999/xhtml">Get tools</a>
+</div>
+                  </div>
+                        <div>
+                            
+                        </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row middleRow">
+            <div class="expandTop">
+              <div class="left"></div>
+              <div class="right"></div>
+            </div>
+          </div>
+        </div>
+        <div id="buttomRowWrapper" class="bg_default">
+          <div class="row buttomRow bg_default">
+            <div class="bottom">
+              <div class="left">
+                <a id="grip" class="menu-icon" href="javascript:void(0)"></a>
+                
+                <div id="drawer">
+                  <div class="toc">
+                    
+        <nav>
+            <ul class="navL1">
+                        <li class="inactive toggle">
+                            <a href="javascript:void(0)">Technologies</a>
+                                <ul class="navL2">
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/app-development-msdn" title="App Development">App Development</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/cloud-app-development-msdn" title="Cloud">Cloud</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/web-app-development-msdn" title="Web">Web</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/big-data-development-msdn" title="Data">Data</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/games-development-msdn" title="Gaming">Gaming</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/internetofthings" title="Internet of Things">Internet of Things</a>
+
+                                                   
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive toggle">
+                            <a href="javascript:void(0)">Downloads</a>
+                                <ul class="navL2">
+                                        <li class="inactive">
+                                            <a href="https://www.visualstudio.com/downloads/download-visual-studio-vs" title="Visual Studio">Visual Studio</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/subscriptions" title="MSDN subscription access">MSDN subscription access</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/microsoft-sdks-msdn" title="SDKs">SDKs</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive toggle">
+                                            <a href="javascript:void(0)" title="Trial software">Trial software</a>
+
+                                                <ul class="navL3">
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/evalcenter" title="Free downloads">Free downloads</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/officeevaluationresources" title="Office resources">Office resources</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/sharepoint2013resources" title="SharePoint Server 2013 resources">SharePoint Server 2013 resources</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/sqlserver2014expressresources" title="SQL Server 2014 Express resources">SQL Server 2014 Express resources</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/windowsserver2012r2resources" title="Windows Server 2012 resources">Windows Server 2012 resources</a>
+                                                        </li>
+                                                </ul>
+                                                   
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive toggle">
+                            <a href="javascript:void(0)">Programs</a>
+                                <ul class="navL2">
+                                        <li class="inactive toggle">
+                                            <a href="javascript:void(0)" title="MSDN subscriptions">MSDN subscriptions</a>
+
+                                                <ul class="navL3">
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/msdn-subscriptions-overview" title="Overview">Overview</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/benefits-overview" title="Benefits">Benefits</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/msdn-subscriptions-administration" title="Administrators">Administrators</a>
+                                                        </li>
+                                                </ul>
+                                                   
+                                        </li>
+                                        <li class="inactive toggle">
+                                            <a href="javascript:void(0)" title="Students">Students</a>
+
+                                                <ul class="navL3">
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/imagine/imagine-home" title="Microsoft Imagine">Microsoft Imagine</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/microsoftstudentpartners" title="Microsoft Student Partners">Microsoft Student Partners</a>
+                                                        </li>
+                                                </ul>
+                                                   
+                                        </li>
+                                        <li class="inactive toggle">
+                                            <a href="javascript:void(0)" title="Architects">Architects</a>
+
+                                                <ul class="navL3">
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/architects-overview-msdn" title="Overview">Overview</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/architects-case-studies-msdn" title="Case studies">Case studies</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/architects-blueprints-msdn" title="Blueprints">Blueprints</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="http://blogs.msdn.com/b/msarchitecture/" title="Blog">Blog</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="http://social.msdn.microsoft.com/forums/en-us/home?brandignore=true&amp;sort=relevancedesc&amp;searchterm=architecture+or+architect" title="Forums">Forums</a>
+                                                        </li>
+                                                </ul>
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/applicationbuilder" title="ISV">ISV</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://www.microsoft.com/bizspark" title="Startups">Startups</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://rewards.msdn.microsoft.com/" title="TechRewards">TechRewards</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="http://events.msdn.microsoft.com/" title="Events">Events</a>
+
+                                                   
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive toggle">
+                            <a href="javascript:void(0)">Community</a>
+                                <ul class="navL2">
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/magazine/dd767791" title="Magazine">Magazine</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://social.msdn.microsoft.com/forums/" title="Forums">Forums</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://blogs.msdn.microsoft.com/" title="Blogs">Blogs</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="http://tech-advisors.msdn.microsoft.com/en-us" title="Tech Advisors">Tech Advisors</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="http://channel9.msdn.com/" title="Channel 9">Channel 9</a>
+
+                                                   
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive current toggle">
+                            <a href="javascript:void(0)">Documentation</a>
+                                <ul class="navL2">
+                                        <li class="inactive current">
+                                            <a href="https://msdn.microsoft.com/library" title="APIs and reference">APIs and reference</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/developer-centers-msdn" title="Dev centers">Dev centers</a>
+
+                                                   
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive">
+                            <a href="https://code.msdn.microsoft.com/">Samples</a>
+                        </li>
+            </ul>
+        </nav>
+
+                  </div>
+                </div>
+              </div>
+              <div class="right">
+                <div data-fragmentName="SearchBox" id="Fragment_SearchBox" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="SearchBox">
+    <form id="HeaderSearchForm" name="HeaderSearchForm" method="get">
+      <button id="FakeHeaderSearchButton" value="Search" type="submit" class="header-search-button">
+        <div id="search-finder" class="search-finder"></div>
+      </button>
+      <button id="HeaderSearchButton" style="display:none"></button>
+      <div id="searchSplitter"></div>
+      <div id="searchCloseIcon" class="search-clear-x"></div>
+      <div id="searchTextContainer" style="width: 0;">
+        <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />
+      </div>
+    </form>
+    
+    
+  </div>
+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </header>
+
+    </div>
+
+    
+    
+    
+    <div id="jumpInfo" style="display: none">We’re sorry. The content you requested has been removed. You’ll be auto redirected in 1 second.</div>
+
+
+
+
+
+<link type="text/css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" />
+
+
+    <div id="breadcrumbs" ms.pgarea="body" ms.cmpgrp="breadcrumbs">
+        <div id="breadcrumbDesktop" class="breadCrumb">
+                        <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/ff921345.aspx" title="patterns &amp; practices"></a></span>
+                        <span><a href="https://msdn.microsoft.com/en-us/library/ff921347.aspx" title="Solution Development Fundamentals"><span>Solution Development Fundamentals</span></a></span>
+                        <span><a href="https://msdn.microsoft.com/en-us/library/hh917294.aspx" title="ALM"><span>ALM</span></a></span>
+                        <span class="breadcrumbDropSmall">
+                            <a id="breadcrumbDropDownButton" href="#" targethref="https://msdn.microsoft.com/en-us/library/hh917294.aspx" title="Testing for Continuous Delivery with Visual Studio 2012"><span>Testing for Continuous Delivery with Visual Studio 2012</span></a>
+                        </span>
+        </div>
+        <div id="breadcrumbDropDownMenu"></div>
+        <div id="tocDropDownMenu"></div>
+
+        <div id="breadcrumbTablet" class="breadCrumb">
+                        <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/hh917294.aspx" title="ALM"></a></span>
+                    <span><a href="https://msdn.microsoft.com/en-us/library/jj159345.aspx" title="Testing for Continuous Delivery with Visual Studio 2012"><span>Testing for Continuous Delivery with Visual Studio 2012</span></a></span>
+                <span class="breadcrumbDropSmall"><a id="tocDropDownButton" href="#" title="7: Testing in the Software Lifecycle"><span>7: Testing in the Software Lifecycle</span></a></span>
+        </div>
+        <div id="breadcrumbMobile" class="breadCrumb">
+                <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/jj159345.aspx" title="Testing for Continuous Delivery with Visual Studio 2012"></a></span>
+            <span class="breadcrumbDropSmall"><a id="tocPopupButton" href="#" title="7: Testing in the Software Lifecycle"><span>7: Testing in the Software Lifecycle</span></a></span>
+        </div>
+    </div>
+    <div id="tocPopupMenu">
+        <div id="tocPopMenuClose" class="tocCloseLarge"></div>
+        <div id="tocTitle">7: Testing in the Software Lifecycle</div>        
+    </div>
+
+    
+
+
+        <div id="body" ms.pgarea="body" class="">
+            <span id="tabletView_large"></span>
+            <span id="tabletView_small"></span>
+            <span id="mobileView"></span>
+            
+
+
+
+
+
+
+
+
+
+    <div id="leftNav" ms.cmpgrp="left toc">
+
+    
+
+
+
+<div id="tocnav" class="hide-archive ArchiveV2">
+    <div class="tocunselected">
+        <div id="tocExpandArea">
+            <span class="toc_empty"></span>
+            <span id="tocExpandButton"><a href="#"></a></span>
+        </div>
+        <div id="tocExpand"></div>
+    </div>
+    <div class="tocselected"></div>
+    <div class="tocunselected">
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/jj159344.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Preface">Preface</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/jj159336.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="1: The Old Way and the New Way">1: The Old Way and the New Way</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/jj159340.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="2: Unit Testing: Testing the Inside">2: Unit Testing: Testing the Inside</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/jj159341.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="3: Lab Environments">3: Lab Environments</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/jj159334.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="4: Manual System Tests">4: Manual System Tests</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/jj159335.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="5: Automating System Tests">5: Automating System Tests</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/jj159337.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="6: A Testing Toolbox">6: A Testing Toolbox</a>                </div>
+                <div class="toclevel current" data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/jj159342.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="7: Testing in the Software Lifecycle">7: Testing in the Software Lifecycle</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/jj159339.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Bibliography">Bibliography</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/jj159343.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Appendix: Setting up the Infrastructure">Appendix: Setting up the Infrastructure</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/jj159338.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Foreword by Sam Guckenheimer">Foreword by Sam Guckenheimer</a>                </div>
+    </div>
+    <a id="tocMenuToggler" href="#">
+        <span id="tocMenuTogglerIcon" class="tocMenuCollapse"></span>
+        <div id="tocMenuTogglerLabel">TOC</div>
+    </a>
+</div>            <div style="display:none">
+                <div id="CollapseLocalizeString">Collapse the table of content</div>
+                <div id="ExpandLocalizeString">Expand the table of content</div>
+            </div>
+        <div>
+            <a id="isd_archiveControlResponsive" style="display:none;" data-include-archive="Show Archived Versions" data-exclude-archive="Hide Archived Versions">
+            </a>
+            <div id="isd_archiveInstrument" style="display:none">The document is archived and information here might be outdated</div>
+        </div>
+    </div>
+     <div id="content" class="content" ms.cmpgrp="content body">
+
+
+
+
+
+
+
+
+    <div id="archiveDisclaimerText" style="display:none">The document is archived and information here might be outdated</div>
+
+
+
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">7: Testing in the Software Lifecycle</h1>
+  
+  <div id="mainSection">
+      <div id="mainBody">
+        
+        <p>
+          </p><p>
+            <img id="pnp-logo" alt="patterns &amp; practices Developer Center" src="https://msdn.microsoft.com/dynimg/IC368873.png" title="patterns &amp; practices Developer Center" xmlns="" />
+          </p>
+                
+        <p>
+        </p><div id="pandpInPageNav" class="alert">
+<table Responsive="true">
+  <tr Responsive="true"><th>On this page:</th><th>Download:</th></tr>
+  <tr><td rowspan="2" data-th="On this page:">
+      
+         <strong><a href="#sec1">Process wars</a></strong><span> | </span>
+         <strong><a href="#sec2">Who creates system tests?</a></strong><span> | </span>
+         <strong><a href="#sec3">DevOps</a></strong><span> | </span>
+         <strong><a href="#sec4">Testing the business process</a></strong><span> | </span>
+         <strong><a href="#sec5">Operational monitoring</a></strong><span> | </span>
+         <strong><a href="#sec6">Shortening the devOps cycle</a></strong><span> | </span>
+         <strong><a href="#sec7">Updating existing code</a></strong><span> | </span>
+         <strong><a href="#sec8">Testing in the development cycle</a></strong><span> | </span>
+         <strong><a href="#sec9">Tests are executable requirements</a></strong><span> | </span>
+         <strong><a href="#sec10">Inception</a></strong><span> | </span>
+         <strong><a href="#sec11">Each sprint</a></strong><span> | </span>
+         <strong><a href="#sec12">Using plans and suites</a></strong><span> | </span>
+         <strong><a href="#sec13">Reports</a></strong><span> - </span>
+         <em><a href="#sec14">Test plan progress report</a></em><span>, </span>
+         <em><a href="#sec15">User story test status</a></em><span>, </span>
+         <em><a href="#sec16">Test case readiness</a></em><span> | </span>
+         <strong><a href="#sec17">Process improvements</a></strong><span> | </span>
+         <strong><a href="#sec18">What do we get by testing this way?</a></strong><span> | </span>
+         <strong><a href="#sec19">What to do next</a></strong><span> | </span>
+         <strong><a href="#sec20">Where to go for more information</a></strong>
+      
+    </td><td data-th="Download:">
+      <p><a href="https://www.microsoft.com/en-us/download/details.aspx?id=35380"><img id="Download_PDF_sm" alt="Download PDF" src="https://msdn.microsoft.com/dynimg/IC651205.png" title="Download PDF" xmlns="" /></a></p>
+      <p><a href="https://www.microsoft.com/en-us/download/details.aspx?id=35380"><img id="download_code_samples_sm" alt="Download code samples" src="https://msdn.microsoft.com/dynimg/IC651204.png" title="Download code samples" xmlns="" /></a></p>
+       <p><a href="http://www.amazon.com/Continuous-Delivery-Microsoft-patterns-practices/dp/1621140180/"><img id="download-paperback" alt="Download Paperback" src="https://msdn.microsoft.com/dynimg/IC651206.png" title="Download Paperback" xmlns="" /></a></p>
+    </td></tr>
+</table>
+</div>
+        <p>Testing is a vital part of software development, and it is important to start it as early as possible, and to make testing a part of the process of deciding requirements. To get the most useful perspective on your development project, it is worthwhile devoting some thought to the entire lifecycle including how feedback from users will influence the future of the application. The tools and techniques we've discussed in this book should help your team to be more responsive to changes without extra cost, despite the necessarily wide variety of different development processes. Nevertheless, new tools and process improvements should be adopted gradually, assessing the results after each step. </p>
+        <p>Testing is part of a lifecycle. The software development lifecycle is one in which you hear of a need, you write some code to fulfill it, and then you check to see whether you have pleased the stakeholders—the users, owners, and other people who have an interest in what the software does. Hopefully they like it, but would also like some additions or changes, so you update or augment your code; and so the cycle continues. This cycle might happen every few days, as it does in Fabrikam's ice cream vending project, or every few years, as it does in Contoso's carefully specified and tested healthcare support system.</p>
+        <p>
+          <img id="83487B2A5803F6195B581CA6A96693A8" alt="JJ159342.83487B2A5803F6195B581CA6A96693A8(en-us,PandP.10).png" src="https://msdn.microsoft.com/dynimg/IC590933.png" title="JJ159342.83487B2A5803F6195B581CA6A96693A8(en-us,PandP.10).png" xmlns="" />
+        </p>
+        <p class="label">
+          </p><div class="caption">Software development lifecycle</div>
+        
+        <p>Testing is a proxy for the customer. You could conceivably do your testing by releasing it into the wild and waiting for the complaints and compliments to come back. Some companies have been accused of having such a strategy as their business model even before it became fashionable. But on the whole, the books are better balanced by trying to make sure that the software will satisfy the customer before we hand it over. </p>
+        <p>We therefore design tests based on the stakeholders' needs, and run the tests before the product reaches the users. Preferably well before then, so as not to waste our time working on something that isn't going to do the job. </p>
+        <p>In this light, two important principles become clear:</p>
+        <ul>
+          <li>
+            <strong>Tests represent requirements</strong>. Whether you write user stories on sticky notes on the wall, or use cases in a big thick document, your tests should be derived from and linked to those requirements. And as we've said, devising tests is a good vehicle for discussing the requirements.</li>
+          <li>
+            <strong>We're not done till the tests pass</strong>. The only useful measure of completion is when tests have been performed successfully. </li>
+        </ul>
+        <p>Those principles apply no matter how you develop your software.</p>
+        <h1 class="heading" id="sec1">Process wars</h1>
+        <p>Different teams have different processes, and often for good reasons. The software that controls a car's engine is critical to its users' safety and difficult to change in the field. By contrast, a vending site is less obviously safety-critical, and can be changed in hours. The critical software is developed with high ceremony—much auditing, many documents, many stages and roles—while the rapid-cycling software is developed by much less formal teams with less differentiated roles and an understandable abhorrence of documentation, specifications, and book chapters about process.</p>
+        <p>Nevertheless, development teams at different locations on this axis do have some common ground and can benefit from many of the same tools and practices.</p>
+        <p>
+          <a href="https://msdn.microsoft.com/en-us/library/jj159342.dc14cf8da9dffa078b5dc152ea2212f6(l=en-us).png" target="_blank"><img id="DC14CF8DA9DFFA078B5DC152EA2212F6-thumb" alt="Follow link to expand image" src="https://msdn.microsoft.com/dynimg/IC590935.png" title="Follow link to expand image" xmlns="" /></a>
+        </p>
+        <p>
+          <a href="https://msdn.microsoft.com/en-us/library/jj159342.50cd7db4fbf7ade4f56f283172868bf5(l=en-us).png" target="_blank"><img id="50CD7DB4FBF7ADE4F56F283172868BF5-thumb" alt="Follow link to expand image" src="https://msdn.microsoft.com/dynimg/IC590937.png" title="Follow link to expand image" xmlns="" /></a>
+        </p>
+        <p>
+          <a href="https://msdn.microsoft.com/en-us/library/jj159342.8f3bf4aa803b210a8bfaa704295609a4(l=en-us).png" target="_blank"><img id="8F3BF4AA803B210A8BFAA704295609A4-thumb" alt="Follow link to expand image" src="https://msdn.microsoft.com/dynimg/IC590939.png" title="Follow link to expand image" xmlns="" /></a>
+        </p>
+        <h2 class="subheading" id="sec2">Who creates system tests?</h2>
+        <p>There are two sides to the debate over whether system tests should be performed by the developers, or by a separate group of testers. As usual, the answer is somewhere in between the extremes, and depends on your circumstances.</p>
+        <p>In projects where a rapid overall cycle is essential, a separation between development and test is not favored. It introduces a handoff delay. Bugs aren't detected until the developers have moved on.</p>
+        <p>In support of separation, the most compelling argument is that testing and development require different skills and different attitudes. While developing, you think "How can I make this as useful as it can be for its users?" but in testing you think "I am going to break this!" Members of a development team—so the argument runs—tend to be too gentle with the product, moving it nicely along the happy paths; while the skilled tester will look for the vulnerabilities, setting up states and performing sequences of actions which the developers would find perverse in order to expose a crack in the armor. </p>
+        <p>The most versatile testers are those who can write code; just as the most versatile developers are those who can devise a good test. In Microsoft we have a job title, Software Development Engineer in Test. They are specialists whose skills go beyond simply trying out the software, and also beyond simply writing good code. A good SDET is able to create model-based tests; and has sufficient insight into the design of the system and its dependencies to be able to spot the likely sources of error. </p>
+        <p>Whether you have separate testers depends on the history of your team, and the nature of your project. We don't recommend separate development and test teams, unless you're writing a critical system. Even if different individuals focus on development and test, keep them on the same team. Move people occasionally between the two roles.</p>
+        <p>If you do have separate testers, bear in mind the following points:</p>
+        <ul>
+          <li>Writing test cases is a crucial part of determining requirements. Make sure your test team members are key participants in every discussion of user stories (or other requirements). As we discussed in Chapter 4, "<a href="https://msdn.microsoft.com/en-us/library/jj159334.aspx">Manual System Tests</a>," some teams practice acceptance test-driven development, in which the system tests are the only statement of the requirements. </li>
+          <li>Automated system tests are important tools for reducing regression bugs, and an important enabler for shortening your development cycles. Introduce a developer or two to the test team. Our experience is that this brings substantial improvements in many aspects of testing.</li>
+        </ul>
+        <h1 class="heading" id="sec3">DevOps</h1>
+        <p>An application spends most of the lifecycle deployed for customers to use it. Although the excitement and challenge in developing a software system is intense, from an operational perspective it's just part of the early lifecycle of the system. What the operational folks care more about is how well behaved the system is in actual operation. </p>
+        <p>One thing you can be certain of: No matter what you do, there will nearly always be another version, another release, another iteration. Your client, flush with their initial success, will stretch their ambition to selling crêpes as well as ice cream. Or they will discover they can't add flavors that contain accented characters (and consider this to be a bug, even though they never asked). And, yes, there will be bugs that find their way through to the working system.</p>
+        <p>By contrast, in a typical web sales application, the cycle should be very short, and updates are typically frequent. This is the sort of process Fabrikam had finely honed over the last few years. The time that elapses between a new business idea such as "let's let customers set up a weekly order" and implementing it in the software should be short because it's not only software developers who practice agility. A successful business performs continuous small improvements, trying out an idea, getting customer feedback, and making further changes in response. </p>
+        <p>
+          <img id="4B696E6D6383D8538BA5A7684F13BD42" alt="JJ159342.4B696E6D6383D8538BA5A7684F13BD42(en-us,PandP.10).png" src="https://msdn.microsoft.com/dynimg/IC590870.png" title="JJ159342.4B696E6D6383D8538BA5A7684F13BD42(en-us,PandP.10).png" xmlns="" />
+        </p>
+        <p class="label">
+          </p><div class="caption">Continuous improvement</div>
+        
+        <p>In the aircraft project, there are many iterations of development between each release of working software; in the web project, there are fewer—or maybe none. In <em>continuous deployment</em>, each feature released as soon as it is done.</p>
+        <p>The study of this cycle has come to be called "devOps." Like so many methodological insights, the point is not that we've just invented the devOps cycle; software systems have always had next versions and updates, whether the cycles take years or hours. But by making the observation, we can evaluate our objectives in terms of a perspective that doesn't terminate at the point of the software's delivery. </p>
+        <p>For example, we can think about the extent to which we are testing not just the software, but the business process that surrounds it; and what we can do to monitor the software while it is operational; and how we adopt software that is already in a devOps cycle.</p>
+        <h2 class="subheading" id="sec4">Testing the business process</h2>
+        <p>Don't forget that your application is just a part of something that your users are doing, and that their real requirements are about that process. Whether they are making friends, buying and delivering ice cream, or running an oil refinery, the most important tests are not about what's displayed on the screen, but about whether the friends are kept or offended, the ice cream is delivered or melted, and the oil cracked or sent up in flames.</p>
+        <p>Testing critical or embedded software involves setting up test harnesses that simulate the operation of the factory, aircraft, or phone (as examples). The harness takes the system through many sequences of operation and verifies that it remains within its correct operational envelope. This is outside the scope of this book, beyond noting that simulation isolates the system just as we discussed isolating units in Chapter 2, "<a href="https://msdn.microsoft.com/en-us/library/jj159340.aspx">Unit Testing: Testing the Inside</a>."</p>
+        <p>For less critical systems, and tools that depend heavily on the behavior and preferences of their users, the only real way to test the process surrounding your application is to observe it in operation.</p>
+        <h2 class="subheading" id="sec5">Operational monitoring</h2>
+        <p>There are two aspects to operational monitoring: monitoring your system to see if it behaves as it should; and monitoring the users to see what they do with it. What you want to monitor depends on the system. A benefit of bringing the testing approach into the requirements discussions is a greater awareness of the need to design monitoring into the system from the start.</p>
+        <p>If your system is a website on Internet Information Services (IIS), then you can use the IntelliTrace feature of Visual Studio to log a trace of method calls and other events while it is running. For the default settings, the effect on performance is small, and you can use the trace to debug any problems that are seen in operation. To use this, download the <a href="https://www.microsoft.com/download/en/details.aspx?id=29036">standalone IntelliTrace Collector</a>. You can use Visual Studio Ultimate to analyze the trace later.</p>
+        <h2 class="subheading" id="sec6">Shortening the devOps cycle</h2>
+        <p>Testing allows you to go around the cycle more rapidly. Instead of consulting the customers, you can push a button and run the tests. </p>
+        <p>
+          <img id="18BC448A87D87EDFAB401DA2A3256347" alt="JJ159342.18BC448A87D87EDFAB401DA2A3256347(en-us,PandP.10).png" src="https://msdn.microsoft.com/dynimg/IC590940.png" title="JJ159342.18BC448A87D87EDFAB401DA2A3256347(en-us,PandP.10).png" xmlns="" />
+        </p>
+        <p class="label">
+          </p><div class="caption">Rapid devOps cycle with test as a proxy for stakeholders</div>
+        
+        <p>Of course, tests are no real substitute for letting the clients try the software. But tests can do two things more effectively. Automated tests (and, to a lesser extent, scripted tests) can check very rapidly that nothing that used to work has stopped working. Manual tests—especially if performed by an experienced tester—can discover bugs that ordinary clients would take much longer to find, or which would be expensive if they appeared in live operation.</p>
+        <p>Feedback from tests and stakeholders reduces the risk that you are producing the wrong thing. To reduce the waste of going down wrong tracks, run tests as early as possible, and consult with your clients as frequently as possible.</p>
+        <p>
+          <img id="BFA98124AAB31E60DAC6336A0E62E8E6" alt="JJ159342.BFA98124AAB31E60DAC6336A0E62E8E6(en-us,PandP.10).png" src="https://msdn.microsoft.com/dynimg/IC590941.png" title="JJ159342.BFA98124AAB31E60DAC6336A0E62E8E6(en-us,PandP.10).png" xmlns="" />
+        </p>
+        <h2 class="subheading" id="sec7">Updating existing code</h2>
+        <p>If you're updating a system that exists already, we hope there are tests for it and that they all pass. If not, you need to write some. Write tests around the boundary of the part that you want to change. That is, write tests for the behavior that will not change, of the components that will change. </p>
+        <p>For example, if you're thinking of just replacing a single method with something that does the same job more efficiently, then write a unit test for the behavior that should be exhibited by both old and new methods. If, on the other hand, you're thinking of rewriting the whole system, write system tests for the system features that will not change. </p>
+        <p>The same approach applies whether you write coded tests or manual test steps.</p>
+        <p>Make sure the tests pass before you make the changes to the code. Then add tests for the new or improved behavior. After the updates to the code, both sets of tests should pass. </p>
+        <h1 class="heading" id="sec8">Testing in the development cycle</h1>
+        <p>Methodologies vary, and your own project will be different, as we mentioned. But in any case, there is a role for testing in every phase of your project and throughout the lifetime of the application. Let's now take a look at those roles in at different stages in a project's life.</p>
+        <h2 class="subheading" id="sec9">Tests are executable requirements</h2>
+        <p>No matter what methodology you follow, it's a fundamental truth that the system tests are the requirements—user stories, product backlog items, use cases, whatever you call them, rendered into executable form. </p>
+        <p>The requirements might change from day to day. Quite likely, they will change when you ask about some fine detail of a test you are writing. </p>
+        <p>Therefore:</p>
+        <ul>
+          <li>
+            <strong>Create a test suite from each requirement.</strong> Create test cases to cover a representative sample of cases. In each test case, write the manual test steps or the automated test code to exercise one particular scenario. Parameterize it to allow a variety of inputs.</li>
+          <li>
+            <strong>Cover both functional and quality of service(QoS) requirements</strong>. QoS requirements include security, performance, and robustness.</li>
+          <li>
+            <strong>Include unstated requirements.</strong> Many of the QoS requirements are not explicitly discussed. Your job as a tester is to make sure these aspects are covered.</li>
+          <li>
+            <strong>Discuss the test cases with the stakeholders</strong>. The relationship between requirements and tests is not one-directional. Your need to make precise tests helps to clarify the requirements, and feeds back into them.</li>
+          <li>
+            <strong>Explore.</strong> Much of the system's behavior was not explicitly specified. Did the client actually state that they didn't want a picture of a whale displayed when the users buy an ice cream? No. Is it desirable behavior? Perhaps not. Perform exploratory testing to discover what the system does.</li>
+          <li>
+            <strong>Automate important tests gradually.</strong> You need to repeat tests for later iterations, later releases, and after bug fixes or updates. By automating tests, you can perform them quickly as part of the daily build. In addition, they're repeatable—that is, they reliably produce the same results each time, unless something changes. </li>
+          <li>
+            <strong>Don't delay testing.</strong> Test as soon as the feature is available. Plan to write features in small increments (of no more than a few days) so that the lag between development and testing is short.</li>
+          <li>
+            <strong>System tests are the arbiter of "done." </strong>No one goes home until there are automatic or manual tests that cover all the requirements, and all the tests pass. This applies to each feature, to each cycle in your process, and to the whole project.<p>("No one goes home" is a metaphor. Do not actually lock your staff in; to do so may be contrary to fire regulations and other laws in your locality.)</p></li>
+        </ul>
+        <h2 class="subheading" id="sec10">Inception</h2>
+        <p>At or near the inception of the project, sometimes called Sprint 0, you will typically need to:</p>
+        <ul>
+          <li>
+            <strong>Set up the test infrastructure</strong>. Build the machinery, the services, the service accounts, the permissions, and other headaches, source control, builds, labs, VM templates. See the <a href="https://msdn.microsoft.com/en-us/library/jj159343.aspx">Appendix</a>, or, (even better) talk to someone who has done it before.</li>
+          <li>
+            <strong>Make sure you know what you're doing</strong>. Get the team together and agree on the practices you're going to follow. Start with what everyone knows, and add one practice at a time. If all else fails, make them read this book, and Guckenheimer &amp; Loje as well.</li>
+          <li>
+            <strong>Create or import and run tests for existing code</strong>. If you are updating existing code, make sure you have the existing manual or automatic tests. If it was created via Visual Studio application lifecycle management processes, it will be easy.</li>
+          <li>
+            <strong>Understand what the stakeholders want</strong>. Spend a lot of time with the clients and developers. Together with them, write down business goals and values; create slide shows of user scenarios; write down user stories; and draw business activity diagrams, models of business entities and relationships, and diagrams of interactions between the principal actors.</li>
+          <li>
+            <strong>Understand the architecture</strong>. Spend time with the developers. Work out the principal components of the system, and the dependencies on external systems such as credit card authorities. Discuss how each component will be tested in isolation as it is developed. Understanding how the system is built tells you about its vulnerabilities. As a tester, you are looking for the loose connections and the soft bits.</li>
+          <li>
+            <strong>Draft the plan</strong>.<em> </em>The <em>product backlog</em> is the list of user stories, in the order in which they will be implemented. Each item is a requirement for which you will create a test suite. At the start of the project, the backlog items are broad, and the ordering is approximate. They are refined as the project progresses. <p>Product backlog items (PBIs) are named and described in terms that are meaningful to stakeholders of the project, such as users and owners. They are not described in implementation terms. "As a customer I can order an ice-cream" is good; "A customer can create a record in the order database" is bad.</p><p>Each item also has a rough estimate of its cost in terms of time and other resources. Remind team members that this should include the time taken to write and run unit tests and system tests. (And while you're there, mention that any guidance documents that might be required should be factored in to the cost as well, and that good technical writers don't come cheap. On the other hand, if user interfaces were always as good as they could be, help texts and their writers would arguably be redundant.)</p></li>
+        </ul>
+        <h2 class="subheading" id="sec11">Each sprint</h2>
+        <p>A development plan is typically organized into iterations, mostly called sprints, even in teams where the Scrum methodology has not been adopted wholesale. Each sprint typically lasts a few weeks. At or near the beginning of each sprint, a set of requirements is picked from the top of the product backlog. Each item is discussed and clarified, and a collection of development tasks is created in Team Foundation Server. You create test suites for each requirement.</p>
+        <p>Early in the sprint, when the developers are all heads-down writing code, testers can:</p>
+        <ul>
+          <li>Write test cases for system tests. Create test steps. If there are storyboard slide shows, write steps that work through these stories. Writing down the steps in advance is important: it avoids a bias towards what the system actually does.</li>
+          <li>Automate some of the manual tests from previous sprints. Automate and extend the important tests that you'll want to repeat. These tests are used to make sure features that worked before haven't been broken by recent changes to the code. Add these tests to the daily builds.</li>
+        </ul>
+        <p>When the developers check in working features:</p>
+        <ul>
+          <li>Perform exploratory tests of the new features. Exploratory testing is vital to get a feel for how the product works, and to find unexpected behaviors. From exploratory tests, you will usually decide to write some new test cases.</li>
+          <li>Perform the manual scripted test cases that you planned for the new requirements.</li>
+          <li>Log bugs. (Anyone can log bugs—testers, developers, product owners, and even technical writers.)</li>
+          <li>A bug should initially be considered part of what has to be done for the current iteration. If a bug turns out to need substantial work, discuss it with the team and create a product backlog item to fix it. Then you can put that into the usual process of assigning PBIs to iterations.</li>
+        </ul>
+        <p>Towards the end of the sprint:</p>
+        <ul>
+          <li>Run important manual tests from previous sprints that have not yet been automated, to make sure those features are still working. </li>
+          <li>Start automating the most important manual tests from this sprint.</li>
+        </ul>
+        <p>At the end of the sprint:</p>
+        <ul>
+          <li>System testing is the primary arbiter of "done" for the sprint. The sprint isn't complete until the test cases assigned to that sprint all pass.</li>
+        </ul>
+        <p>
+          <img id="184D214DF2D572A9902B2014255E3585" alt="JJ159342.184D214DF2D572A9902B2014255E3585(en-us,PandP.10).png" src="https://msdn.microsoft.com/dynimg/IC590942.png" title="JJ159342.184D214DF2D572A9902B2014255E3585(en-us,PandP.10).png" xmlns="" />
+        </p>
+        <p class="label">
+          </p><div class="caption">Test activities within sprints</div>
+        
+        <h2 class="subheading" id="sec12">Using plans and suites</h2>
+        <p>A test plan represents a combination of test suites, test environment, and test configuration.</p>
+        <p>Create a new test plan for each iteration of your project. You can copy test suites from one to another.</p>
+        <p>If you want to run the same tests on different configurations, such as different web browsers, create a test plan for each configuration. Two or more plans can share tests, and again you can copy suites from one plan to another, changing only the configuration of the test environment in the Test Plan's properties. </p>
+        <p>
+          <img id="B121A29F0F553743CC3D52BEDC50D59F" alt="JJ159342.B121A29F0F553743CC3D52BEDC50D59F(en-us,PandP.10).png" src="https://msdn.microsoft.com/dynimg/IC590943.png" title="JJ159342.B121A29F0F553743CC3D52BEDC50D59F(en-us,PandP.10).png" xmlns="" />
+        </p>
+        <p class="label">
+          </p><div class="caption">Test plans and suites within sprints</div>
+        
+        <p>You can, in essence, branch your test plan by performing a clone operation on your test suites. The cloning operation allows your team to work on two different releases simultaneously. </p>
+        <h2 class="subheading" id="sec13">Reports</h2>
+        <p>The project website provides a number of graphical reports that are relevant to testing. The choice of reports available, and where you find them, depends on the Team Foundation Server project template that your team uses. See <a href="https://msdn.microsoft.com/library/hh533801(vs.110).aspx">Process Guidance and Process Templates</a> and its children on MSDN.</p>
+        <h3 class="subheading" id="sec14">Test plan progress report</h3>
+        <p>This graph summarizes the results of tests in a chosen test plan, over time. The graph relates to one iteration.</p>
+        <p>Worry if the green section is not increasing. It should be all green towards the end of the iteration.</p>
+        <p>The total number of test cases is represented by the total height of the graph. If your practice is to write a lot of test cases in advance, you should see a sharp rise followed by a relatively flat section.</p>
+        <p>
+          <img id="49FCE56F3C70E87E29CFB8907EC3A471" alt="JJ159342.49FCE56F3C70E87E29CFB8907EC3A471(en-us,PandP.10).png" src="https://msdn.microsoft.com/dynimg/IC590944.png" title="JJ159342.49FCE56F3C70E87E29CFB8907EC3A471(en-us,PandP.10).png" xmlns="" />
+        </p>
+        <p class="label">
+          </p><div class="caption">Number of test points</div>
+        
+        <h3 class="subheading" id="sec15">User story test status</h3>
+        <p>The user story test status report is a list of requirements that are scheduled to be implemented in the current iteration, showing the results of the tests linked to each requirement.</p>
+        <p>Worry if one of the requirements shows an unusually short line. The requirements should be roughly balanced in terms of how many tests they have—if not, break up the larger ones. </p>
+        <p>Worry if there is a large red section. By the time the requirements are manually tested, they should be mostly passing.</p>
+        <p>Worry if the chart isn't mostly green towards the end of the iteration.</p>
+        <p>
+          <img id="2113E95D0128F1D30BBA548E11356C27" alt="JJ159342.2113E95D0128F1D30BBA548E11356C27(en-us,PandP.10).png" src="https://msdn.microsoft.com/dynimg/IC590834.png" title="JJ159342.2113E95D0128F1D30BBA548E11356C27(en-us,PandP.10).png" xmlns="" />
+        </p>
+        <p class="label">
+          </p><div class="caption">User story test status</div>
+        
+        <h3 class="subheading" id="sec16">Test case readiness</h3>
+        <p>When you plan a test case, you can set a flag that says whether it is Planned or Ready. The purpose of this is simply to make it easy to see what stage the tests are in, if the practice on your team is to work out test case steps in advance.</p>
+        <p>At the start of an iteration, you create test cases from requirements, just with their titles. Then you spend some time working out the steps of the test cases. When the steps are worked out and the code is ready, the tests can be run. This chart shows the state of the test cases for the iteration.</p>
+        <p>On the other hand, if your practice is to generate most test cases from exploratory tests after the code is ready, you might find this chart less useful.</p>
+        <p>
+          <img id="A6E1D3025C240FA1B4B59837B17A5B11" alt="JJ159342.A6E1D3025C240FA1B4B59837B17A5B11(en-us,PandP.10).png" src="https://msdn.microsoft.com/dynimg/IC590945.png" title="JJ159342.A6E1D3025C240FA1B4B59837B17A5B11(en-us,PandP.10).png" xmlns="" />
+        </p>
+        <p class="label">
+          </p><div class="caption">Test case readiness</div>
+        
+        <h1 class="heading" id="sec17">Process improvements</h1>
+        <p>To summarize the points we've discussed, here are some of the improvements Contoso could consider making to their development process. Any change should be made one step at a time, and assessed carefully before and after.</p>
+        <ul>
+          <li>When you are discussing scenarios, user stories, or other requirements, think of them sometimes in terms of how you will test them. Tests are executable requirements. Discuss test cases with stakeholders as one way of clarifying the requirements.</li>
+          <li>Think about validating not only the system but the business process around it. How will you verify that the user really did get and enjoy the ice cream? How will you use the feedback you get?</li>
+          <li>Create requirement and test case work items in your team project, and write out the steps of some key test cases. This provides a clear objective for the development work.</li>
+          <li>Write unit tests and aim for code coverage of 70-80%. Try to write at least some of the tests before the application code. Use the tests as a means to think about and discuss what the code should do. </li>
+          <li>Use fakes to isolate units so that you can test them even if units they depend on aren't yet complete.</li>
+          <li>Set up continuous build-test runs, and switch on email alerts for failing tests. Fix build breaks as soon as they occur. Consider using gated check-ins, which keep the main source free of breaks.</li>
+          <li>Plan application development as an iterative process, so that you get basic demonstrable end-to-end functionality early on, and add demonstrable functionality as time goes on. This substantially reduces the risks of developing something that isn't what the users need, and of getting the architecture wrong. Unit tests make it safe to revisit code.</li>
+          <li>Set up virtual labs to perform system tests. </li>
+          <li>Run each test case as soon as you can. Whenever a build becomes available, perform exploratory testing to find bugs, and to define additional test cases.</li>
+          <li>Record your actions when you run manual test cases. In future runs, replay the steps. This allows you to run regression tests much more quickly.</li>
+          <li>Use the one-click bug report feature of MTM with environment snapshots, to make bugs easier to reproduce.</li>
+          <li>Automate key manual tests and incorporate them into fully automated builds. This provides much more confidence in the system's integrity as you develop it. </li>
+          <li>If your team doesn't distinguish the roles of test and development, consider identifying the people who are good at finding bugs, and get them to focus for some of the time on exploratory testing. Ask them also to think about test planning.</li>
+          <li>In teams that do separate the developers and testers, consider mixing them up a bit. Involve test leads in the requirements process, and bring developers in to help automate tests.</li>
+        </ul>
+        <p>
+          <img id="DB8C42254D36AA6421D7E6DAA6E1507A" alt="JJ159342.DB8C42254D36AA6421D7E6DAA6E1507A(en-us,PandP.10).png" src="https://msdn.microsoft.com/dynimg/IC590946.png" title="JJ159342.DB8C42254D36AA6421D7E6DAA6E1507A(en-us,PandP.10).png" xmlns="" />
+        </p>
+        <p class="label">
+          </p><div class="caption">Thinking of requirements in terms of tests helps to make the requirements more exact</div>
+        
+        <h1 class="heading" id="sec18">What do we get by testing this way?</h1>
+        <p>
+          <strong>Faster response to requirements changes and bug reports.</strong>
+        </p>
+        <ul>
+          <li>Because you have automated many regression tests and can quickly replay others, testing is no longer an obstacle to releasing an update. Manual testing is only required for the new or fixed feature. With virtual lab environments, you can begin testing very quickly. So let's fix that back-button bug, run the regression tests overnight, and release in the morning.</li>
+          <li>Stakeholders can experiment and tune their systems. For example, the ice cream vendors need not speculate about whether customers would like to advertise their favorite flavors on a social networking site; they can try the idea and see whether it works.</li>
+        </ul>
+        <p>
+          <strong>Reduced costs through less waste</strong>. </p>
+        <ul>
+          <li>Unit tests and automated system tests make it acceptable to revisit existing code because you can be confident that you will find any accidental disturbances of the functions you already have working. This means that instead of finishing each piece of code one at a time, you can develop a very basic working version of your system at an early stage. If your architecture doesn't work as well as you'd hoped, or if the users don't like it as well as they'd thought, you avoid spending time working on the wrong thing. Either you can adjust the project's direction, or, at worst cancel at an early stage.</li>
+          <li>Fewer "no repro" bugs. The action recording feature of Microsoft Test Manager automatically logs the steps you took in your bug report. Fewer arguments among team members.</li>
+        </ul>
+        <p>
+          <strong>Happier customers.</strong>
+        </p>
+        <ul>
+          <li>By getting regular feedback, you allow your users to try out the system and tune both their process and what they want of the system. The end product is more likely to fit their needs. </li>
+          <li>When your stakeholders ask for something different, or when they report a bug, you can improve or fix your system quickly.</li>
+        </ul>
+        <p>
+          <a href="https://msdn.microsoft.com/en-us/library/jj159342.d4c186c54a7397d2466de8ccc2e65c13(l=en-us).png" target="_blank"><img id="D4C186C54A7397D2466DE8CCC2E65C13-thumb" alt="Follow link to expand image" src="https://msdn.microsoft.com/dynimg/IC590948.png" title="Follow link to expand image" xmlns="" /></a>
+        </p>
+        <h1 class="heading" id="sec19">What to do next</h1>
+        <p>We hope you've got some ideas from this book that will help you and your team develop software that satisfies your clients better and faster and with less pain to you. Maybe you're like Fabrikam and already have these practices and tools in daily use; maybe you feel your company is more like Contoso and you feel there are a number of improvements that can be made. Most likely, you're like us: as we look around our company, we can see some parts that have very sophisticated testing and release practices, and other parts that are still thinking about it. </p>
+        <p>Organizations learn and change more slowly than individuals. Partly this is because they need time to achieve consensus. Each person's vision of the way forward might be good and effective if implemented across the team, but chaos comes from everybody following their own path. Partly it's because, with substantial investments at stake, it's important to take one step at a time and assess the results of each step. </p>
+        <p>You must not only have a vision of where you want to get to, but also form an incremental plan for getting there, in which each step provides value in its own right.</p>
+        <p>In this book we've tried to address that need. The plan of the book suggests a possible route through the process of taking up the Visual Studio testing tools, and the adaptations in your process that you can achieve along the way. </p>
+        <p>In this book, we've advocated using the Visual Studio tools to automate your testing process more, and we've shown different ways you can do that. That should make it possible to do regression tests more effectively and repeatably, while freeing up people to do more exploratory testing. We've also recommended you bring testing forward in the process as far as you can to reduce risk, and to make defining tests part of determining what the stakeholders need. In consequence, you should be able to adopt a process that is more responsive to change and satisfies your clients better.</p>
+        <p>But whatever you do, take one step at a time! The risks inherent in change, and the fear of change, are mitigated by assessing each change as you go.</p>
+        <p>
+          <a href="http://www.bugbash.net/comic/1.html"><img id="8A2F5BE06791695C53F21AB7CAD4ADB0" alt="JJ159342.8A2F5BE06791695C53F21AB7CAD4ADB0(en-us,PandP.10).png" src="https://msdn.microsoft.com/dynimg/IC590949.png" title="JJ159342.8A2F5BE06791695C53F21AB7CAD4ADB0(en-us,PandP.10).png" xmlns="" /></a>
+        </p>
+        <p>The above cartoon is reproduced with permission from the creator, Hans Bjordahl. See <a href="http://www.bugbash.net/">http://www.bugbash.net/</a> for more Bug Bash cartoons.</p>
+        <h1 class="heading" id="sec20">Where to go for more information</h1>
+        <p>There are a number of resources listed in text throughout the book. These resources will provide additional background, bring you up to speed on various technologies, and so forth. For your convenience, there is a <a href="https://msdn.microsoft.com/en-us/library/jj159339.aspx">bibliography</a> online that contains all the links so that these resources are just a click away. </p>
+      </div>
+      <div id="topicLinks" class="navigationLinks">
+        <a href="https://msdn.microsoft.com/en-us/library/jj159339.aspx">Next Topic</a>
+        <span> | </span>
+        <a href="https://msdn.microsoft.com/en-us/library/jj159337.aspx">Previous Topic</a>
+      
+        <span> | </span>
+        <a href="https://msdn.microsoft.com/en-us/library/jj159345.aspx">Home</a>
+        <span> | </span>
+        <a href="http://tig.codeplex.com/">Community</a>
+      </div>
+      
+      <div>
+        <p id="pandpDate">Last built: Aug 6, 2012</p>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+
+    </div>
+<div id="rightNavigationMenu" ms.cmpgrp="right nav">
+    <div id="mobileButtons">
+        <div id="navigationButtons">
+            <a id="isd_print" href="https://msdn.microsoft.com/en-us/library/jj159342(d=printer).aspx" rel="nofollow"><ins class="print"></ins>Print </a>
+            <a id="isd_printABook" href="/en-us/library/export/help/?returnurl=%2fen-us%2flibrary%2fjj159342.aspx">
+                <ins class="export"></ins>Export (<span class="count">0</span>)
+            </a>
+        </div>
+    </div>
+    <div id="navMain">
+        <div id="closeNavigation">
+            <a class="tocCloseSmall" id="closeButton"></a>
+        </div>
+        <div id="navigationButtons">
+            <a id="isd_print" href="https://msdn.microsoft.com/en-us/library/jj159342(d=printer).aspx" rel="nofollow"><ins class="print"></ins>Print </a>
+            <a id="isd_printABook2" href="/en-us/library/export/help/?returnurl=%2fen-us%2flibrary%2fjj159342.aspx">
+                <ins class="export"></ins>Export (<span class="count">0</span>)
+            </a>
+            <a id="isdShare" href="#">
+                <ins class="share"></ins>Share
+            </a>
+            <div id="socials" style="display: none">
+                <a class="isdFacebook" href="#">
+                    <ins class="facebook"></ins>
+                </a>
+                <a class="isdTwitter" href="#">
+                    <ins class="twitter"></ins>
+                </a>
+                <a class="isdGooglePlus" href="#">
+                    <ins class="googlePlus"></ins>
+                </a>
+            </div>
+        </div>
+        <div id="indoc_toc" style="display: none" ms.cmpgrp="indoc toc">
+            <div id="indoc_title">IN THIS ARTICLE</div>
+            <ul id="indoc_toclist"></ul>
+        </div>
+    </div>
+</div>
+<div id="rightNavigationMenuThumbnail" class="rightNavigationMenuThumbnail">
+</div>
+
+
+
+
+
+        </div>
+        <div class="clear"></div>
+
+        
+
+<input name="__RequestVerificationToken" type="hidden" value="-jtQqkn3pqo9dnge0XjrBLiondXFe8mHml6UxtaZyyyvsloYkCnbT1vPZ4wDhNtkXvUOUMLStqdwDwkhCk4eC2rAbmU1" />
+<input id="ratingValueSubmitUrl" type="hidden" value="https://msdn.microsoft.com/en-us/library/feedback/rate/jj159342.aspx" />
+<input id="ratingAdditionalSubmitUrl" type="hidden" value="https://msdn.microsoft.com/en-us/library/feedback/additional/jj159342.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+
+    <div id="lib-footer">
+        
+
+    
+    <link type="text/css" rel="stylesheet" />
+    
+        
+    <div id="ux-footer" class="" style="" dir="ltr">
+
+
+    <div id="standardRatingBefore" class="clear stdr-container-before"></div>
+    <div id="standardRating" class="stdr-container" ms.pgarea="body">
+        <div class="stdr-close"></div>
+        <div class="stdr-vote stdr-content">
+            <div class="stdr-content">
+                <span class="stdr-votetitle">Is this page helpful?</span>
+                <button class="stdr-yes" aria-label="Yes, this page was helpful">Yes</button>
+                <button class="stdr-no" aria-label="No, this page was not helpful">No</button>
+                <input id="s_ratingValue" type="hidden" value="" />
+            </div>
+        </div>
+        <div class="stdr-feedback" style="display: none">
+            <div class="stdr-form">
+                <div class="stdr-fieldtitle">Additional feedback?</div>
+                <textarea class="stdr-detail" rows="6" maxlength="1500"></textarea>
+                <div>
+                    <span class="stdr-count"><span class="stdr-charcnt">1500</span> characters remaining</span>
+                    <div class="stdr-buttons">
+                        <button class="stdr-provide" aria-label="Submit my additional feedback">Submit</button>
+                        <button class="stdr-skip" aria-label="Skip additional feedback">Skip this</button>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="stdr-thanks" style="display: none">
+            <div class="stdr-content">
+                <span class="stdr-thankyou">Thank you!</span>
+                <span class="stdr-appreciate">We appreciate your feedback.</span>
+            </div>
+        </div>
+
+        
+        <div id="contentFeedbackQAContainer" style="display: none;"></div>
+    </div>
+    <div id="standardRatingPlaceholder" style="display: none"></div>
+    
+
+        <footer class="top">
+            <div data-fragmentName="LeftLinks" id="Fragment_LeftLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Dev centers</div>
+    <ul class="links">
+      <li>
+        <a href="https://dev.windows.com" id="LeftLinks_2148_1" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows</a>
+      </li>
+      <li>
+        <a href="http://dev.office.com" id="LeftLinks_2148_3" class="office" xmlns="http://www.w3.org/1999/xhtml">Office</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/vstudio" id="LeftLinks_2148_4" class="visualStudio" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+      </li>
+      <li>
+        <a href="http://azure.microsoft.com/en-us/documentation/" target="_blank" id="LeftLinks_2148_12" xmlns="http://www.w3.org/1999/xhtml">Microsoft Azure</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/developer-centers-msdn" id="LeftLinks_2148_5" xmlns="http://www.w3.org/1999/xhtml">More...</a>
+      </li>
+    </ul>
+  </div>
+</div>
+            <div id="rightLinks">
+                <div data-fragmentName="CenterLinks1" id="Fragment_CenterLinks1" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Learning resources</div>
+    <ul class="links">
+      <li>
+        <a href="http://www.microsoftvirtualacademy.com/" id="CenterLinks1_2151_4" xmlns="http://www.w3.org/1999/xhtml">Microsoft Virtual Academy</a>
+      </li>
+      <li>
+        <a href="http://channel9.msdn.com/" id="CenterLinks1_2151_5" xmlns="http://www.w3.org/1999/xhtml">Channel 9</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/magazine/" id="CenterLinks1_2151_7" xmlns="http://www.w3.org/1999/xhtml">MSDN Magazine</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentName="CenterLinks2" id="Fragment_CenterLinks2" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Community</div>
+    <ul class="links">
+      <li>
+        <a href="https://social.msdn.microsoft.com/forums/en-us/home" id="CenterLinks2_2151_8" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+      </li>
+      <li>
+        <a href="http://blogs.msdn.com/b/developer-tools/" id="CenterLinks2_2151_9" xmlns="http://www.w3.org/1999/xhtml">Blogs</a>
+      </li>
+      <li>
+        <a href="http://www.codeplex.com" id="CenterLinks2_2151_10" xmlns="http://www.w3.org/1999/xhtml">Codeplex</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentName="CenterLinks3" id="Fragment_CenterLinks3" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Support</div>
+    <ul class="links">
+      <li>
+        <a href="https://msdn.microsoft.com/hh361695" id="CenterLinks3_2151_11" xmlns="http://www.w3.org/1999/xhtml">Self support</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentName="CenterLinks4" id="Fragment_CenterLinks4" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Programs</div>
+    <ul class="links">
+      <li>
+        <a href="https://www.microsoft.com/bizspark/" id="CenterLinks4_2151_13" xmlns="http://www.w3.org/1999/xhtml">BizSpark (for startups)</a>
+      </li>
+      <li>
+        <a href="https://www.dreamspark.com/" id="CenterLinks4_2151_14" xmlns="http://www.w3.org/1999/xhtml">DreamSpark</a>
+      </li>
+      <li>
+        <a href="http://www.imaginecup.com" id="CenterLinks4_2151_17" xmlns="http://www.w3.org/1999/xhtml">Imagine Cup</a>
+      </li>
+    </ul>
+  </div>
+</div>
+            </div>
+        </footer>
+
+        <footer class="bottom">
+            <span class="localeContainer">
+                
+    <form class="selectLocale" id="selectLocaleForm" action="https://msdn.microsoft.com/en-us/selectlocale-dmc">
+        <input type="hidden" name="fromPage" value="https%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fjj159342.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>
+
+
+            </span>
+
+            <div data-fragmentName="BottomLinks" id="Fragment_BottomLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <ul class="links horizontal">
+      <li>
+        <a href="https://msdn.microsoft.com/newsletter.aspx" id="BottomLinks_2148_7" xmlns="http://www.w3.org/1999/xhtml">Newsletter</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/dn529288" id="BottomLinks_2148_8" xmlns="http://www.w3.org/1999/xhtml">Privacy &amp; cookies</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/cc300389" id="BottomLinks_2148_9" xmlns="http://www.w3.org/1999/xhtml">Terms of use</a>
+      </li>
+      <li>
+        <a href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" id="BottomLinks_2148_10" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+      </li>
+    </ul>
+  </div>
+</div>
+            <span class="logoLegal">
+                <span class="logo"></span>
+                <span class="copyright">© 2016 Microsoft</span>
+            </span>
+        </footer>
+    </div>
+    
+
+    </div>
+
+
+        <div class="footerPrintView">
+            <div class="footerCopyrightPrintView">© 2016 Microsoft</div>
+        </div>
+
+        
+        
+
+        
+        
+        
+
+    <input id="tocPaddingPerLevel" type="hidden" value="17" />
+
+
+
+        <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+
+        
+        
+        
+            
+        
+
+<![CDATA[ WebTrends view model not available or IncludeLegacyWebTrendsScriptInGlobal feature flag is off]]>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="ulSW_NZxuiJj1qNXR2k6fYFBH75ZK3IIsN8iA6t97ZWfoZn77r4sUMvZuvEtvDcFaPWyIzd2j5vgbsgTwH0YNuqVDbU1" />
+</div>
+
+
+    </div>
+
+    
+    
+
+    
+
+    
+<script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"https://msdn.microsoft.com\", \r\n\t\"js\": \"https://msdn.microsoft.com\", \r\n\t\"css\": \"https://msdn.microsoft.com\", \r\n\t\"xap\": \"https://msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ txt: "//\n\n        window.appInsightsId = \u00275eb1b2eb-c47a-497a-a7ac-a1c230b2882f\u0027;\n        //" },
+	{ url: "https://msdn.microsoft.com/Combined.js?resources=0:Utilities,1:Layout,2:Header,3:Breadcrumbs,4:LibraryRightNavigationMenu,4:PrintExportButton,5:StandardRating,2:Footer,0:Topic,0:AppInsightsPerf,3:ResponsiveToc,0:ABTestControl,4:WEDCS,3:CmpgrpForHeader,1:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Epx/Themes/Base/Content:1,/Areas/Centers/Themes/StandardDevCenter/Content:2,/Areas/Library/Content:3,/Areas/Library/Themes/Base/Content:4,/Areas/Global/Content:5\u0026amp;hashKey=B5F7D40C62EAE13EAD28F72217F566AA\u0026amp;v=E0F3206C2F4778613BC911E56B700A4A" },
+	{ url: "https://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026minimumTermLength=2\u0026pgArea=header\u0026brand=Msdn\u0026loc=en-us\u0026focusOnInit=false\u0026emptyWatermark=true\u0026searchButtonTooltip=Search MSDN" },
+	{ url: "https://msdn.microsoft.com/Combined.js?resources=0:JumpRedirect,1:LibraryMemberFilter,2:Toc_Fixed,2:CodeSnippet,2:TopicNotInScope,1:ResponsiveSupport,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Base/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2\u0026amp;hashKey=33CDFDC7502481CE0D99A227E77E3D40\u0026amp;v=E0F3206C2F4778613BC911E56B700A4A" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+</html>

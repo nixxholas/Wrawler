@@ -1,6 +1,6 @@
 
 import static Backend.BackendServices.loadCache;
-import static Backend.Constants.getSearchQueue;
+import static Backend.Constants.clearQueue;
 import static Backend.Constants.jep;
 import static Backend.Constants.jepPure;
 import static Backend.Constants.leftPanel;
@@ -13,7 +13,6 @@ import static Backend.Constants.scrollPanePure;
 import static Backend.Constants.searchEngines;
 import static Backend.Constants.searchResultsSliderTable;
 import static Backend.Constants.settingsFrame;
-import Backend.ResultObject;
 import static Backend.ResultObject.initializeRO;
 import Backend.SearchEngine;
 import static Interface.Settings.searchResultsSlider;
@@ -110,9 +109,7 @@ public class main {
                 rightPanel.repaint();
 
                 // Remove the current search results
-                for (ResultObject ro : getSearchQueue()) {
-                    getSearchQueue().remove(ro);
-                }
+                clearQueue();
             }
         });
 

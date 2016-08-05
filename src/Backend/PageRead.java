@@ -8,7 +8,7 @@ package Backend;
 import static Backend.Constants.addToQueue;
 import static Backend.Constants.numberOfResults;
 import static Backend.Constants.queueHasResult;
-import static Backend.Constants.searchEngines;
+import static Backend.Constants.resultsCounter;
 import static Backend.ResultObject.findInCache;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,17 +44,6 @@ public class PageRead {
      * @throws java.io.IOException
      */
     public static String getUrlSource(SearchEngine se, String result) throws IOException {
-        /**
-         * Fair SearchEngine System
-         *
-         * Allow fair workload on all searchEngine Threads
-         *
-         * Deactivated for the another method
-         *
-         */
-        int resultsCounter = 0;
-        int resultsToReturn = numberOfResults / searchEngines.size();
-
         /**
          * Note that this Regular Expression DOES take in the open AND closed
          * inverted commas that is beside the URL.
@@ -148,15 +137,15 @@ public class PageRead {
                 se.addResult(currentResult);
 
                 // Check with the cachedResults
-                if (!findInCache(currentResult)) {  // Since it has been found and has been added, move on
+                if (!findInCache(currentResult) && resultsCounter.getCount() < numberOfResults) {  // Since it has been found and has been added, move on
                 
                     // But if it's here, means it's not cached.
                     
                     // Add the result into the searchQueue as well if it isn't cached
-                    if (!queueHasResult(currentResult) && resultsCounter < resultsToReturn) {
+                    if (!queueHasResult(currentResult) && resultsCounter.getCount() < numberOfResults) {
                         // If queue does not have it, we add it and if there adequate results
                         addToQueue(currentResult);
-                        resultsCounter++; // Increment the Counter
+                        resultsCounter.incrementCount();
                     }
                 }
 

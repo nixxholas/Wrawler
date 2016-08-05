@@ -1,0 +1,761 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+    <title>Structured Software Testing</title>
+
+    <link type="text/css" href="MyCss.css" rel="stylesheet" />
+    <link rel="stylesheet" href="menu bar/mbcsmbmcp.css" type="text/css" />
+    <style>
+	body {
+	width=100%; min-width:400px; max-width:2000px;}
+	.style24 {font-size: 16px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+    .style27 {color: #C3E6F9;
+	font-weight: bold;
+}
+.style28 {font-size: 18px;
+	color: #FFFFFF;
+}
+.style29 {color: #FDD526}
+.style29 {font-size: 18px
+}
+    </style>
+</head>
+
+<body>
+
+	<table align="center" bgcolor="#FFFFFF" width="1010" cellspacing="0" cellpadding="0" border="0">
+
+		
+
+		<tr>
+
+			<td width="1010" height="78" bgcolor="#C9D4CF" valign="top">	
+
+				<table border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#000610">
+
+					<tr>
+
+						<td height="120"><table width="1007" height="86" border="0" align="left">
+                          <tr>
+                            <td width="660" height="82"><div align="center"><span class="style27"><font face="Freestyle Script" size="+2" >Arunkumar</font></span> <span class="style29"><font face="Matura MT Script Capitals" size="+2" >Khannur's Software Testing 
+                              Knowledge Center<br />
+                                </font></span>
+                                    <div align="center"><strong><a href="http://www.isqtinternational.com/isqt_khannur/khannur.htm" target="_self" class="whitelink style23 style28 style29" style="text-decoration:none;"><em>Fostering Understanding and 
+                                      Advancement of Software Testing</em></a></strong></div>
+                              <span class="style29"><font face="Matura MT Script Capitals" size="+2" > </font></span></div></td>
+                            <td width="17">&nbsp;</td>
+                            <td width="18">&nbsp;</td>
+                            <td width="166"><div align="right"><a href="https://www.youtube.com/channel/UC9V1I_9ARgWjH10o2ksRnmA"><img src="images/youtube.jpg" alt=""  width="76" height="76"/></a></div></td>
+                            <td width="28"><a href="https://www.facebook.com/arunkumar.khannur"><img src="images/facebook.jpg" alt=""  width="28" height="28"/></a></td>
+                            <td width="28"><a href="https://twitter.com/arun_khannur"><img src="images/twitter.jpg"alt=""  width="28" height="28"/></a></td>
+                            <td width="28"><a href="https://www.linkedin.com/in/khannur?trk=nav_responsive_tab_profile"><img src="images/linkendin.jpg" alt=""   width="28" height="28"/></a></td>
+                            <td width="28"><a href="https://plus.google.com/u/0/105600311262137824136/posts"><img src="images/google +.jpg"alt=""  width="28" height="28"/></a></td>
+                          </tr>
+                        </table></td>
+				  </tr>
+				</table>
+
+				
+
+		  </td>
+
+		</tr>
+
+		
+
+		<tr>
+
+			<td valign="top" align="center">
+
+				
+
+		  </td>
+
+		</tr>
+
+		<tr>
+
+			<td valign="top" bgcolor="000610"><div id="mbmcpebul_wrapper" style="max-width: 1000px;">
+  <ul id="mbmcpebul_table" class="mbmcpebul_menulist css_menu">
+  <li><div class="buttonbg" style="width: 100px;"><a class="button_1" href="index.htm">Home</a></div></li>
+  <li><div class="buttonbg" style="width: 150px;"><a href="About-khannur.htm">About Khannur</a></div></li>
+  <li><div class="arrow buttonbg" style="width: 220px;"><a class="button_3">Knowledge Center</a></div>
+    <ul>
+    <li><a href="Principles.htm">16 Principles</a></li>
+    <li><a href="Learn Software Testing.html">Learn Software Testing</a></li>
+    <li><a href="KhannurFramework.htm">Software Testing Framework</a></li>
+    <li><a href="Training-Schedule.htm">Course</a></li>
+    </ul></li>
+  <li><div class="buttonbg" style="width: 130px;"><a href="Gallery.html">Gallery</a></div></li>
+  <li><div class="arrow buttonbg" style="width: 180px;"><a class="button_3">Social Services</a></div>
+  <ul>
+    <li><a href="http://khannurfoundation.org/">Khannur Foundation</a></li>
+    <li><a href="http://smilebengaluru.org/">SMILE Society</a></li>
+    </ul></li>
+  <li><div class="buttonbg" style="width: 130px;"><a href="Contact-us.htm">Contact Us</a></div></li>
+  </ul>
+</div>
+
+
+<script type="text/javascript" src="menu bar/mbjsmbmcp.js"></script></td>
+
+	  </tr>
+
+		<tr>
+
+			<td height="440" valign="top">			
+
+				<table width="1011" height="440" border="0" cellpadding="0" cellspacing="0">
+
+					<tr>
+
+						<td width="21" height="440">&nbsp;					  </td>
+
+					  <td valign="top" width="682">
+
+					  	<table border="0" cellspacing="0" cellpadding="0" width="660">
+
+							<tr>
+
+								<td height="42" id="heading2">
+
+									
+
+										<br>
+
+									<strong>4.2. Test Phases</strong>
+
+									<br>
+
+							  <hr>								</td>
+
+							</tr>
+
+							
+
+							<tr>
+
+								<td id="heading5">
+
+									Each phase of testing has a different emphasis and purpose. Different phases of software testing help us to evaluate different work products of software starting at the lowest (smallest) possible item, and work towards testing the entire system as a whole (include business processes where applicable).  Different phases of software testing are represented in the form of diagram in  Fig. 4.1: Phases and Structure of Software Testing.
+
+								</td>
+
+							</tr>
+
+							<tr>
+
+								<td height="49" align="center">
+
+									<img src="images/sst4a.jpg" width="650" border="0" >
+
+								</td>
+
+							</tr>
+
+							<tr>
+
+								<td id="heading5">
+
+									The following are the test phases that would allow verifying and validating lowest level structures of the software and moving towards system.<br>
+
+									<ul>
+
+										<li>
+
+											Unit Testing: Units are made up of program components. In unit testing the focus is to verify individual hardware or software units, or small groups of related code unit. In Unit Testing, the emphasis is on removal of basic coding errors and also, compliance with programming style and standards.
+
+										</li>
+
+										<li>
+
+											Integration Testing: Verifies inter-module interfaces, critical external interfaces and user and business workflows and scenarios that would be helpful in evolving the system. Integration testing includes Functional Testing.
+
+										</li>
+
+										<li>
+
+											Functional Testing at integration level focuses on verifying modules that are basically small groups of interdependent units that are functionally or logically related. This involves verification of behavior of the group and also, interfaces that connect the units. This phase is optional, but recommended in case modules involved are having complex processing areas.  Function Test also exercises the behavior of the module based on specific input including new functionality and that error conditions are properly handled.
+
+										</li>
+
+										<li>
+
+											System Testing: Verifies the complete, integrated system meets its functional and non-functional objectives and requirements. <br>
+
+											<ul type="circle">
+
+												<li>
+
+													Functional Testing at system level verifies interoperability testing of interfacing with all external components along with end-to-end business workflows and Interoperability. Interoperability Testing verifies the interfaces (data and control elements) with external systems. Usually requires special test environments and coordination. Many times part of development and testing happens in operational environment during deployment.
+
+												</li>
+
+												<li>
+
+													Non-functionality Testing in System Testing includes Usability Testing, Reliability Testing, Efficiency Testing, Portability Testing, and Maintainability Testing. In these non-functional tests, performance testing one type of testing. 
+
+												</li>
+
+											</ul>
+
+										</li>
+
+										<li>
+
+											Performance Testing verifies the system to know the extent to which it meets the performance requirements like load, volume, stress and also, worst case scenarios.Non-functionality Testing in System Testing includes Usability Testing, Reliability Testing, Efficiency Testing, Portability Testing, and Maintainability Testing. In these non-functional tests, performance testing one type of testing.
+
+										</li>
+
+										<li>
+
+											Regression Testing: Re-execution of previously executed tests to ensure the test results are the same. Regression testing may be performed at the end of each test phase after  reported bugs are fixed or as a separate test phase prior to Acceptance Testing or changes are made to the system to address client and user complaints post-release of system. Regression testing will help to evaluate the impact of recent changes to know whether they have degraded the system.
+
+										</li>
+
+										<li>
+
+											User/Acceptance Testing: User Acceptance Testing (UAT) validates the integrated system with its acceptance criteria and the customer's expectations.  UAT is a testing by the End Customer who would sign off the Final Product for acceptance. Usually the users are responsible for executing the tests. May also involve verification of help desk functions, backup and recovery, business processes, user training material evaluations, etc. Approach and procedure for UAT and system acceptance criteria are arrived at with the help of  the system requirements specification (SRS), and or request for proposal (RFP) and/or Integration Test Plan (ITP) and/or contract.
+
+										</li>
+
+										<li>
+
+											Pilot/Field Testing: Verifies the system and business processes in the deployment like environment under typical business conditions. May also involve verification of help desk functions and manual procedures. This phase is optional. Pilot/field testing is usually discussed in the request for proposal (RFP) and/or Integration Test Plan (ITP) and/or contract.
+
+										</li>
+
+										<li>
+
+											Installation or Production Testing: Verifies the installed system performs as expected in the user’s environment if acceptance or pilot testing was not performed at the user location. This is the final check-out of the system prior to retiring the existing system (if one exists), and/or turning responsibility for the system over to the user organization or Maintenance and Operations (M&O) staff. The system is used for processing actual business using "live" data and the new/modified business processes.
+
+										</li>
+
+									</ul>
+
+								</td>
+
+							</tr>
+
+							<tr>
+
+								<td id="heading5">
+
+									<br>
+
+									Following Table 4.1 summarizes Phases of Testing along with Structural Level, in phase and its constituents.
+
+								</td>
+
+							</tr>
+
+							<tr>
+
+								<td valign="top">
+
+									<table border="1" cellspacing="0" cellpadding="0" width="100%" style="border-color:#999999; border-width:thin; border-style:groove; ">
+
+                              <tr>
+
+                                <td id="heading4" colspan="3"> Table 4.1 Phases of Testing, Structural Level, and Constituents </td>
+
+                              </tr>
+
+                              <tr>
+
+                                <td width="21%" id="heading4"><strong>Phase of Testing</strong> </td>
+
+                                <td width="26%" id="heading4"><strong>Software and its Structural Level</strong> </td>
+
+                                <td width="53%" id="heading4"><strong>Constituents</strong> </td>
+
+                              </tr>
+
+                              <tr>
+
+                                <td rowspan="5" id="heading5"> Unit Testing </td>
+
+                                <td id="heading5"> Units </td>
+
+                                <td id="heading5"> Set of Programs </td>
+
+                              </tr>
+
+                              <tr>
+
+                                <td id="heading5"> Programs </td>
+
+                                <td id="heading5"> Set of Statements, Loop, Function/ Procedure call, Assignment </td>
+
+                              </tr>
+
+                              <tr>
+
+                                <td id="heading5"> Statements </td>
+
+                                <td id="heading5"> Statement Type, Resulting Value and its Type from Expression, Assigned and Stored Value and its Type in Variable </td>
+
+                              </tr>
+
+                              <tr>
+
+                                <td id="heading5"> Expressions </td>
+
+                                <td id="heading5"> Precedence Rules, Operators, Operands, Type of Result </td>
+
+                              </tr>
+
+                              <tr>
+
+                                <td id="heading5"> Data </td>
+
+                                <td id="heading5"> Records, Variables, Constants, Types </td>
+
+                              </tr>
+
+							  <tr>
+
+							  	<td id="heading5">
+
+									Integration Testing
+
+								</td>
+
+								<td id="heading5">
+
+									Modules
+
+								</td>
+
+								<td id="heading5">
+
+									Functions and procedures, Interfaces at unit level, Behavior of Connected Units, Error Handling
+
+								</td>
+
+							  </tr>
+
+							  <tr>
+
+							  	<td id="heading5">
+
+									System Testing
+
+								</td>
+
+								<td id="heading5">
+
+									System that is complete and integrated
+
+								</td>
+
+								<td id="heading5">
+
+									Functionality: end to end workflows
+
+Interfacing with external systems
+
+Applicable non-functionality that includes Reliability, Efficiency,  Usability, Portability, Maintainability
+
+
+
+								</td>
+
+							  </tr>
+
+							   <tr>
+
+                          <td id="heading5">
+
+						  	Regression Testing
+
+						  </td>
+
+						   <td id="heading5">
+
+						  System in Operation
+
+						  </td>
+
+						   <td id="heading5">
+
+						  Modified System with addressed Maintenance Requests, Change Requests, and Fixed Bugs
+
+                          </td>
+
+                        </tr>
+
+						 <tr>
+
+                          <td id="heading5">
+
+						  	User Acceptance Testing
+
+						  </td>
+
+						   <td id="heading5">
+
+						  	Integrated system with its acceptance criteria and the customer's expectations
+
+						  </td>
+
+						   <td id="heading5">
+
+						  	Business processes, help desk functions, backup and recovery, user training material evaluations
+
+                          </td>
+
+                        </tr>
+
+						 <tr>
+
+                          <td id="heading5">
+
+						  	Pilot or Field Testing
+
+						  </td>
+
+						   <td id="heading5">
+
+						  	System and business processes in the deployment like environment under typical business conditions
+
+						  </td>
+
+						   <td id="heading5">
+
+						  	System installed in deployment like environment
+
+                          </td>
+
+                        </tr>
+
+						 <tr>
+
+                          <td id="heading5">
+
+						  	Installation or Production Testing
+
+						  </td>
+
+						   <td id="heading5">
+
+						  	Installing System in Live Environment
+
+						  </td>
+
+						   <td id="heading5">
+
+						  	Installation Guidelines
+
+User Manuals
+
+Trouble shooting Manuals
+
+System Installation
+
+System connected to other Systems in Environment
+
+
+
+                          </td>
+
+                        </tr>
+
+                          </table>
+
+								</td>
+
+							</tr>
+
+							<tr>
+
+								<td id="heading5">&nbsp;
+
+									</td>
+
+							</tr>
+
+							<tr>
+
+								<td align="right" valign="top">
+
+									<table width="286" border="0" cellpadding="0" cellspacing="0">
+
+										<tr>
+
+											<td width="103">
+
+												<form method="post" action="sst4.1.htm">
+
+										<input type="submit" name="back" value=" << Back " />
+
+									</form>
+
+										  </td>
+
+											<td width="98">
+
+													<form method="post" action="index.htm">
+
+										<input type="submit" name="home" value="  Home  " />
+
+									</form>
+
+										  </td>
+
+											<td width="85">
+
+												<form method="post" action="sst4.3.htm">
+
+										<input type="submit" name="next" value=" Next >> " />
+
+									</form>
+
+										  </td>
+
+										</tr>
+
+								  </table>
+
+									
+
+								</td>
+
+							</tr>
+
+							<tr>
+
+								<td id="heading5">&nbsp;
+
+									</td>
+
+							</tr>
+
+						</table>
+
+					  </td>
+
+						<td width="308" valign="top">
+
+						<table width="308" border="0" cellpadding="0" cellspacing="0">
+
+							<tr>
+
+								<td colspan="2">&nbsp;
+
+									
+
+								</td>
+
+							</tr>
+
+							<tr bgcolor="#E7EBE9">
+
+
+
+									<td height="31" colspan="2" align="center" id="heading2">
+
+										Khannur's Book									</td>
+
+						  </tr>
+
+								<tr>
+
+								  <td width="91" height="126" align="center">
+
+								  	<a href="http://pearson.vrvbookshop.com/book/software-testing-arun-kumar-khannur/9788131758366" target="_blank">
+
+										<img src="images/bookbyme.jpg" width="66" height="103" border="0"></a>									</td>
+
+									<td width="217" id="heading7">	Arunkumar Khannur,  <em>Software Testing - Techniques and Applications</em>, 
+
+									  Published by Pearson Publications, 2011
+
+									  (ISBN:978-81-317-5836-6; Pages:341 + xxii)</td>
+
+								</tr>
+
+								<tr bgcolor="#E7EBE9">
+
+
+
+									<td height="31" colspan="2" align="center"  id="heading2">
+
+										Follow Khannur </td>
+
+						  </tr>
+
+								<tr>
+
+								  <td height="65" colspan="2" valign="top">
+
+								  	<table width="308" height="65" border="0" cellpadding="0" cellspacing="0">
+
+										<tr>
+
+											<td width="34">&nbsp;										  </td>
+
+											<td width="53" height="65" align="center">
+
+												<a href="http://www.facebook.com/arunkumar.khannur" target="_blank">
+
+												<img src="images/f-icon.png" border="0" width="40" height="40">												</a>											</td>
+
+										  <td width="10">&nbsp;										  </td>
+
+											<td width="56" align="center">	
+
+												<a href="http://twitter.com/arun_khannur" target="_blank">
+
+													<img src="images/t-icon.png" border="0" width="40" height="40">												</a>											</td>
+
+											<td width="11">&nbsp;										  </td>
+
+											<td width="54" align="center">
+
+												<a href="mailto:khannur@isqtinternational.com">
+
+													<img src="images/e-mail.png" border="0" width="40" height="40">												</a>											</td>
+
+											<td width="10">&nbsp;										  </td>
+
+											<td width="47" align="center">
+
+												
+
+													<img src="images/g-icon.png" border="0" width="40" height="40">																							</td>
+
+											<td width="33">&nbsp;										  </td>
+
+										</tr>
+
+									</table>
+
+								  </td>
+
+								</tr>
+
+								<tr bgcolor="#E7EBE9">
+
+
+
+									<td height="31" colspan="2" align="center" id="heading2">
+
+										Khannur's Company									</td>
+
+						  </tr>
+
+								<tr>
+
+									<td height="82" align="center">
+
+										<a href="http://www.isqtinternational.com" target="_blank"><img src="http://isqtinternational.com/Isqt_testing/images/isqtlogo2.png" border="0" width="51" height="53"></a>								</td> 
+
+									<td id="heading7" align="center">
+
+										ISQT Process & Consulting Services Pvt. Ltd., Bangalore, INDIA
+
+									</td>
+
+								</tr>
+
+								<tr bgcolor="#E7EBE9">
+
+
+
+									<td height="31" colspan="2" align="center" id="heading2">
+
+										Khannur's Software Testing Forum									</td>
+
+						  </tr>
+
+									<tr>
+
+									<td height="80" align="center">
+
+										<a href="http://www.stepauto.com" target="_blank"><img src="http://www.isqtinternational.com/Isqt_testing/images/stepautologo.jpg" border="0" width="54" height="47"></a>									</td>
+
+									<td id="heading7" align="center">
+
+										STEP-AUTO Forum
+
+									</td>
+
+								</tr>
+
+									
+
+								<tr bgcolor="#E7EBE9">
+
+
+
+									<td height="31" colspan="2" align="center" id="heading2">
+
+										&nbsp;Contact Khannur </td>
+
+						  </tr>
+
+									<tr>
+
+
+
+									<td height="124" colspan="2" id="heading7" align="center">
+
+										<strong>ISQT Process & Consulting Services Pvt. Ltd.</strong><br>
+
+								#732, 1st Floor, 12th Main, <br>
+
+								3rd Block, 
+
+Rajajinagar, <br>
+
+Bangalore - 560010, INDIA<br>
+
+Phone: +91 80 23012511<br>
+
+URL: www.isqtinternational.com <br>
+
+	Email: khannur@isqtinternational.com<br>
+
+	Skype: arun.isqt									</td>
+
+								</tr>
+
+								
+
+						  </table>
+
+					  </td>
+
+					</tr>
+
+			  </table>
+
+		  </td>
+
+		</tr>
+
+		<tr>
+
+			<td height="50" bgcolor="#C9D4CF" id="copyright">			
+
+				All &copy; Rights Reserved With Mr. Arunkumar Khannur 2012	-2016		</td>
+
+		</tr>
+
+</table>
+
+
+
+</body>
+
+</html>
+

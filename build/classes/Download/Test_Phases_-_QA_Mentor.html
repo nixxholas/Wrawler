@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en-US" prefix="og: http://ogp.me/ns#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+Test Phases - QA Mentor</title>
+<script type="text/javascript"> //<![CDATA[ 
+var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
+document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+//]]>
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="http://www.qamentor.com/wp-content/themes/BizCorp/lib/css/reset.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="http://www.qamentor.com/wp-content/themes/BizCorp/lib/css/defaults.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="http://www.qamentor.com/wp-content/themes/BizCorp/style.css" type="text/css" media="screen, projection" />
+
+
+<script language="javascript">
+
+function check(x)
+{
+  var level = 0;
+  var p1 = /[a-z]/;
+  var p2 = /[A-Z]/;
+  var p3 = /[0-9]/;
+  var p4 = /[\!\@\#\$\%\^\&\*\(\)\-\_\=\+\[\{\]\}\|\\\;\:\'\"\,\<\.\>\/\?\`\~]/;
+  if(x.length>=8)
+    level++;
+  if(p1.test(x))
+    level++;
+  if(p2.test(x))
+    level++;
+  if(p3.test(x))
+    level++;
+  if(p4.test(x))
+    level++;
+  prog_bar(level,0,5,200,5,"#0066FF","#99FFFF");
+}
+function prog_bar(cur_val,min_val,max_val,width,height,border,fill)
+{
+var str = "",res = 0;
+if(cur_val>=min_val && cur_val<=max_val)
+{
+  if(min_val<max_val)
+  {
+    res = ((cur_val-min_val)/(max_val-min_val))*100;
+ res = Math.floor(res);
+  }
+  else
+  {
+    res = 0;
+  }
+}
+else
+{
+  res = 0;
+}
+if(res<=40)
+  fill = "#FF0000";
+else if(res<=80)
+  fill = "#FFFF00";
+else
+  fill = "#00FF00";
+str = str + "<div style=\"border:"+border+" solid thin; width:"+width+"px; height:"+height+"px;\">";
+str = str + "<div style=\"background-color:"+fill+"; width:"+res+"%; height:"+height+"px;\">";
+str = str + "</div></div>";
+if(res<=40)
+  str = str + "Weak";
+else if(res<=60)
+  str = str + "Good";
+else if(res<=80)
+  str = str + "Strong";
+else
+  str = str + "Excellent";
+  
+document.getElementById("prog_bar").innerHTML = str;
+}
+
+function funsub()
+{
+			if (document.frm.email.value == "" )
+			
+				{
+					alert("Please fill in email")
+					document.frm.email.focus();
+			
+				}		
+			else if (document.frm.pass.value == "" )
+			{
+				alert("Please fill in password.")
+				document.frm.pass.focus();
+			}
+		else
+			{
+				document.frm.action2.value="verify"
+				document.frm.action = "https://qamentor.com/member-login/";
+				document.frm.submit();
+			}
+}
+
+
+
+function funsub2()
+{
+var x=document.frm.email.value;
+var atpos=x.indexOf("@");
+var dotpos=x.lastIndexOf(".");
+			if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+			 {
+				 alert("Please enter valid e-mail address");
+					document.frm.email.focus();
+				}	
+			else
+			{
+				document.frm.action2.value="verify"
+				document.frm.action = "https://qamentor.com/forgot-password/";
+				document.frm.submit();
+			}
+}
+
+
+
+
+
+function funsub1()
+{
+
+var x=document.frm.email.value;
+var atpos=x.indexOf("@");
+var dotpos=x.lastIndexOf(".");
+str=document.frm.cemails.value
+if(str!="")
+{
+	var res = str.split(",");
+}
+
+
+
+var x = res.length;  
+var y = res.indexOf(document.frm.email.value);
+
+/////////////////
+
+if(document.frm.pono.value!="" && document.frm.pocode.value!=""  && document.frm.payby.value=="1" && document.frm.poplans.value!="*")
+{
+	var ponocode=document.frm.pono.value+"|"+document.frm.pocode.value
+	po=document.frm.poinfos.value
+
+	if(po!="")
+	{
+		var res1 = po.split(",");
+	}
+	var x1 = res1.length;  
+
+	var y1 = res1.indexOf(ponocode);
+}
+if (eval(y1)>=0 && document.frm.plantype.value!="" && document.frm.payby.value=="1" && document.frm.poplans.value!="*")
+{
+	///////////////// chk plan with po
+	
+	var poplan=document.frm.pono.value+"|"+document.frm.plantype.value
+	po=document.frm.poplans.value
+
+	if(po!="")
+	{
+		var res2 = po.split(",");
+	}
+	var x2 = res2.length;
+	var y2 = res2.indexOf(poplan);	
+	////////////////////
+
+}
+
+/////////////////
+
+	if (document.frm.first_name.value == "" )
+	{
+			alert("Please enter your First Name")
+		document.frm.first_name.focus();
+	}	
+
+	else if (document.frm.last_name.value == "" )
+	{
+
+		alert("Please enter your Last Name")
+		document.frm.last_name.focus();
+	}
+	else if (document.frm.company.value == "" )
+	{
+		alert("Please enter Company Name")
+		document.frm.company.focus();
+	}
+
+	else if (document.frm.address1.value == "" )
+	{
+		alert("Please enter your Address")
+		document.frm.address1.focus();
+	}
+	else if (document.frm.state.value == "" )
+	{
+		alert("Please select State")
+		document.frm.state.focus();
+	}
+	else if (document.frm.zip.value == "" )
+	{
+		alert("Please enter Zip Code")
+		document.frm.zip.focus();
+	}
+	else if (document.frm.country.value == "" )
+	{
+		alert("Please enter Country")
+		document.frm.country.focus();
+	}
+	else if (document.frm.phone.value == "" )
+	{
+		alert("Please enter your Contact No.")
+		document.frm.phone.focus();
+	}	
+
+	else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+  	{
+ 		 alert("Please enter valid e-mail address");
+		document.frm.email.focus();
+	}	
+	else if(eval(y)>=0)
+	{
+		alert("Your Email address is already register with us, please Login to proceed or try again.")
+		document.frm.email.focus();
+	}
+	else if (document.frm.pass.value == "" )
+	{
+		alert("Please enter password.")
+		document.frm.pass.focus();
+	}
+	else if (document.frm.pass1.value == "" )
+	{
+		alert("Please confirm your password.")
+		document.frm.pass1.focus();
+	}
+	else if (document.frm.pass1.value!=document.frm.pass.value )
+	{
+		alert("Please password and confirmation password not match")
+		document.frm.pass1.focus();
+	}
+	else if (document.frm.pass1.value == "" )
+	{
+		alert("Please confirm your password.")
+		document.frm.pass1.focus();
+	}
+	else if (document.frm.plantype.value == "" )
+	{
+		alert("Please select Subscription Plan")
+		document.frm.plantype.focus();
+	}
+	else if (document.frm.payby.value == "" )
+	{
+		alert("Please select Payment Mode")
+		document.frm.pmode[0].focus();
+	}
+	else if (document.frm.creditCardType.value == "" && document.frm.payby.value=="0")
+	{
+		alert("Please Select Card Type")
+		document.frm.creditCardType.focus();
+	}
+	else if (document.frm.creditCardNumber.value == "" && document.frm.payby.value=="0")
+	{
+		alert("Please enter Card Number")
+		document.frm.creditCardNumber.focus();
+	}
+	else if (document.frm.expDateMonth.value == "" && document.frm.payby.value=="0")
+	{
+		alert("Please select card expiration month")
+		document.frm.expDateMonth.focus();
+	}
+	else if (document.frm.expDateYear.value == "" && document.frm.payby.value=="0")
+	{
+
+		alert("Please select card expiration year")
+		document.frm.expDateYear.focus();
+
+	}
+	else if ((document.frm.cvv2Number.value == "" || isNaN(eval("document.frm.cvv2Number.value"))) && document.frm.payby.value=="0")
+	{
+
+		alert("Please enter CVV Code")
+		document.frm.cvv2Number.focus();
+	}	
+
+	else if (document.frm.pono.value == ""  && document.frm.payby.value=="1")
+	{
+		alert("Please enter your Purchase Order number")
+		document.frm.pono.focus();
+	}	
+
+	else if (document.frm.pocode.value == ""  && document.frm.payby.value=="1")
+	{
+		alert("Please enter your Purchase Order code")
+		document.frm.pocode.focus();
+	}	
+
+	else if (document.frm.payby.value=="1" && eval(y1)<0)
+	{
+		alert("Invalid Purchase Order Details")
+		document.frm.pocode.focus();
+	}
+	else if (document.frm.payby.value=="1" && eval(y2)<0)
+	{
+		alert("Please select another plan, you are not applicable for this plan")
+		document.frm.plantype.focus();
+	}
+	else if (document.frm.payby.value=="1" && document.frm.poplans.value=="*")
+	{
+		alert("Invalid Purchase Order Details")
+		document.frm.pocode.focus();
+	}
+	else if (document.frm.checkbox.checked==false )
+	{
+		alert("Please accept terms and conditions");
+		document.frm.checkbox.focus();
+	}
+	else
+	{
+		document.frm.action2.value="save";
+		document.frm.action = "https://qamentor.com/payment/recurring.php";
+		document.frm.submit();
+
+	}
+
+}
+
+function funpay(k)
+{
+	if(k==0)
+	{
+		document.getElementById('crinfo').style.display = "block";
+		document.getElementById('poinfo').style.display = "none";
+		document.frm.payby.value=k
+	}
+	else
+	{
+
+		document.getElementById('crinfo').style.display = "none";
+		document.getElementById('poinfo').style.display = "block";
+		document.frm.payby.value=k
+	}
+}
+
+function funprice()
+{
+	if (document.frm.plantype.value == "Monthly" )
+	{		
+		document.getElementById('mdiv').style.display = "block";
+		document.getElementById('adiv').style.display = "none";
+		document.getElementById('mdiv1').style.display = "block";
+		document.getElementById('adiv1').style.display = "none";
+		document.frm.amount.value="695.00";
+	}
+	else if(document.frm.plantype.value == "Annual")
+	{		
+		document.getElementById('mdiv').style.display = "none";
+		document.getElementById('adiv').style.display = "block";
+		document.getElementById('mdiv1').style.display = "none";
+		document.getElementById('adiv1').style.display = "block";
+		document.frm.amount.value="7645.00";
+	}
+	else
+	{		
+
+		document.getElementById('mdiv').style.display = "none";
+		document.getElementById('adiv').style.display = "none";
+		document.getElementById('mdiv1').style.display = "none";
+		document.getElementById('adiv1').style.display = "none";
+		document.frm.amount.value=""
+	}
+}
+function funback()
+{
+document.frm.action = "https://qamentor.com/member-login/";
+		document.frm.submit();
+}
+</script>
+ <style type="text/css">
+<!--
+#menu-item-23 a 
+{
+	box-shadow: inset -1px -8px 12px -10px #000;
+	min-width:75px;/*padding: 12px 16px 11px 16px;*/
+}
+-->
+</style>
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.7.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="http://www.qamentor.com/testing-coverage/test-phases/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Test Phases - QA Mentor" />
+<meta property="og:description" content="There are six different phases used during a full software quality assurance test cycle. The first is the Static Testing Phase which verifies that the requirements and specifications are thorough, complete, and make sense for the goal of the product. This is done before any coding starts and seeks to eliminate defects before they’re even in the system." />
+<meta property="og:url" content="http://www.qamentor.com/testing-coverage/test-phases/" />
+<meta property="og:site_name" content="QA Mentor" />
+<meta property="og:image" content="http://www.qamentor.com/wp-content/uploads/2013/11/banner_testing-phases.jpg" />
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="QA Mentor &raquo; Test Phases Comments Feed" href="http://www.qamentor.com/testing-coverage/test-phases/feed/" />
+<link rel='stylesheet' id='dws_bootstrap-css'  href='http://www.qamentor.com/wp-content/themes/BizCorp/lib/shortcodes/css/bootstrap.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='dws_shortcodes-css'  href='http://www.qamentor.com/wp-content/themes/BizCorp/lib/shortcodes/css/shortcodes.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='iscpgallerycss-css'  href='http://www.qamentor.com/wp-content/plugins/is-circular-photo-gallery/css/screen.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='jobman-display-css'  href='http://www.qamentor.com/wp-content/plugins/job-manager/css/display.css?ver=0.7.20' type='text/css' media='all' />
+<link rel='stylesheet' id='wpimageflow2css-css'  href='http://www.qamentor.com/wp-content/plugins/wp-imageflow2/css/screen.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='axScrollToTop-css'  href='http://www.qamentor.com/wp-content/plugins/ax-scrollto-top/ax-scrollto-top.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='child-pages-shortcode-css-css'  href='http://www.qamentor.com/wp-content/plugins/child-pages-shortcode/style.css?ver=1.1.4' type='text/css' media='all' />
+<link rel='stylesheet' id='rs-settings-css'  href='http://www.qamentor.com/wp-content/plugins/revslider/rs-plugin/css/settings.css?rev=4.1.4&#038;ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='rs-captions-css'  href='http://www.qamentor.com/wp-content/plugins/revslider/rs-plugin/css/dynamic-captions.css?rev=4.1.4&#038;ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='rs-plugin-static-css'  href='http://www.qamentor.com/wp-content/plugins/revslider/rs-plugin/css/static-captions.css?rev=4.1.4&#038;ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap_funBox_style-css'  href='http://www.qamentor.com/wp-content/plugins/wp-visual-slidebox-builder/bootstrap.min.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='custom_funBox_style-css'  href='http://www.qamentor.com/wp-content/plugins/wp-visual-slidebox-builder/custom-fun-box.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='animated_css-css'  href='http://www.qamentor.com/wp-content/plugins/wp-visual-slidebox-builder/animate-custom.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='fancybox-css'  href='http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/jquery.fancybox-1.3.6.pack.css?ver=1.5.6' type='text/css' media='screen' />
+<link rel='stylesheet' id='ss-downloads-css'  href='http://www.qamentor.com/wp-content/plugins/ss-downloads/css/ss-downloads.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wpui-jqueryui-css'  href='http://www.qamentor.com/wp-content/plugins/wp-ui/css/jquery-ui-wp-fix.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='ui-darkness-css'  href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/ui-darkness/jquery-ui.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-ui-all-css'  href='http://www.qamentor.com/wp-content/plugins/wp-ui/css/themes/wpui-all.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wpui-custom-css-css'  href='http://www.qamentor.com/?wpui-style=custom&#038;ver=3.5.1' type='text/css' media='all' />
+<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
+<script type='text/javascript'>try{jQuery.noConflict();}catch(e){};</script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/vertical-news-scroller/js/jquery.validate.js?ver=3.5.1'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/themes/BizCorp/lib/shortcodes/js/bootstrap.js?ver=3.5.1'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/is-circular-photo-gallery/js/iscirculargallery.js?ver=1.9'></script>
+<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/job-manager/js/display.js?ver=0.7.20'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/wp-imageflow2/js/imageflowplus.js?ver=1.7'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-includes/js/comment-reply.min.js?ver=3.5.1'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/child-pages-shortcode/script.js?ver=1.1.4'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/revslider/rs-plugin/js/jquery.themepunch.plugins.min.js?rev=4.1.4&#038;ver=3.5.1'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/revslider/rs-plugin/js/jquery.themepunch.revolution.min.js?rev=4.1.4&#038;ver=3.5.1'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/wp-visual-slidebox-builder/js/fun_box.js?ver=3.5.1'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/wp-visual-slidebox-builder/js/bootstrap.min.js?ver=3.5.1'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/themes/BizCorp/lib/js/superfish.js?ver=3.5.1'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/themes/BizCorp/lib/js/jquery.mobilemenu.js?ver=3.5.1'></script>
+<script type='text/javascript' src='http://www.qamentor.com/?wpui-script=before&#038;ver=3.5.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpUIOpts = {"wpUrl":"http:\/\/www.qamentor.com","pluginUrl":"http:\/\/www.qamentor.com\/wp-content\/plugins\/wp-ui\/","enableTabs":"on","enableAccordion":"off","enableSpoilers":"off","enableDialogs":"off","tabsEffect":"none","effectSpeed":"400","accordEffect":"none","alwaysRotate":"stop","tabsEvent":"mouseover","collapsibleTabs":"off","accordEvent":"click","singleLineTabs":"on","accordAutoHeight":"on","accordCollapsible":"off","accordEasing":"false","mouseWheelTabs":"false","bottomNav":"on","tabPrevText":"Prev","tabNextText":"Next","spoilerShowText":"Click to show","spoilerHideText":"Click to hide","cookies":"off","hashChange":"off","docWriteFix":"off","linking_history":"off","misc_options":"hashing_timeout=1000"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/wp-ui/js/wp-ui.js?ver=0.8.8'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.qamentor.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.qamentor.com/wp-includes/wlwmanifest.xml" /> 
+
+
+<script type="text/javascript"><!--
+var a2a_config=a2a_config||{},wpa2a={done:false,html_done:false,script_ready:false,script_load:function(){var a=document.createElement('script'),s=document.getElementsByTagName('script')[0];a.type='text/javascript';a.async=true;a.src='http://static.addtoany.com/menu/page.js';s.parentNode.insertBefore(a,s);wpa2a.script_load=function(){};},script_onready:function(){if(a2a.type=='page'){wpa2a.script_ready=true;if(wpa2a.html_done)wpa2a.init();}},init:function(){for(var i=0,el,target,targets=wpa2a.targets,length=targets.length;i<length;i++){el=document.getElementById('wpa2a_'+(i+1));target=targets[i];a2a_config.linkname=target.title;a2a_config.linkurl=target.url;if(el){a2a.init('page',{target:el});el.id='';}wpa2a.done=true;}wpa2a.targets=[];}};a2a_config.tracking_callback=['ready',wpa2a.script_onready];
+a2a_config.onclick=1;
+a2a_config.show_title=1;
+//--></script>
+<link rel="shortcut icon" href="//qamentor.com/wp-content/uploads/2014/05/favicon1.ico" type="image/x-icon" />
+<link rel="alternate" type="application/rss+xml" title="QA Mentor RSS Feed" href="http://www.qamentor.com/feed/" />
+<link rel="pingback" href="http://www.qamentor.com/xmlrpc.php" />
+
+	<!-- Easy FancyBox 1.5.6 using FancyBox 1.3.6 - RavanH (http://status301.net/wordpress-plugins/easy-fancybox/) -->
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	var fb_timeout = null;
+	var fb_opts = { 'overlayShow' : true, 'hideOnOverlayClick' : true, 'showCloseButton' : true, 'centerOnScroll' : true, 'enableEscapeButton' : true, 'autoScale' : true };
+	var easy_fancybox_handler = function(){
+	/* IMG */
+	var fb_IMG_select = 'a[href*=".jpg"]:not(.nofancybox):has(img), area[href*=".jpg"]:not(.nofancybox):has(img), a[href*=".jpeg"]:not(.nofancybox):has(img), area[href*=".jpeg"]:not(.nofancybox):has(img), a[href*=".png"]:not(.nofancybox):has(img), area[href*=".png"]:not(.nofancybox):has(img)';
+	jQuery(fb_IMG_select).addClass('fancybox');
+	var fb_IMG_sections = jQuery('div.gallery');
+	fb_IMG_sections.each(function() { jQuery(this).find(fb_IMG_select).attr('rel', 'gallery-' + fb_IMG_sections.index(this)); });
+	jQuery('a.fancybox, area.fancybox, li.fancybox a:not(li.nofancybox a)').fancybox( jQuery.extend({}, fb_opts, { 'transitionIn' : 'elastic', 'easingIn' : 'easeInBack', 'transitionOut' : 'elastic', 'easingOut' : 'easeOutBack', 'opacity' : true, 'hideOnContentClick' : true, 'titleShow' : false, 'titlePosition' : 'over', 'titleFromAlt' : true, 'showNavArrows' : true, 'enableKeyboardNav' : true, 'cyclic' : false }) );
+	/* PDF */
+	jQuery('a[href*=".pdf"]:not(.nofancybox):has(img), area[href*=".pdf"]:not(.nofancybox):has(img)').addClass('fancybox-pdf');
+	jQuery('a.fancybox-pdf, area.fancybox-pdf, li.fancybox-pdf a:not(li.nofancybox a)').fancybox( jQuery.extend({}, fb_opts, { 'type' : 'html', 'width' : '80%', 'height' : '90%', 'padding' : 2, 'titleShow' : true, 'titlePosition' : 'float', 'titleFromAlt' : true, 'autoDimensions' : false, 'scrolling' : 'no', 'onStart' : function(selectedArray, selectedIndex, selectedOpts) { selectedOpts.content = '<embed src="' + selectedArray[selectedIndex].href + '#toolbar=1&navpanes=0&nameddest=self&page=1&view=FitH,0&zoom=80,0,0" type="application/pdf" height="100%" width="100%" />' } }) );
+	/* Auto-click */ 
+	jQuery('#fancybox-auto').trigger('click');
+	}
+	/* ]]> */
+	</script>
+	<style type="text/css">
+.fancybox-hidden{display:none}.rtl #fancybox-left{left:auto;right:0px}.rtl #fancybox-right{left:0px;right:auto}.rtl #fancybox-right-ico{background-position:-40px -30px}.rtl #fancybox-left-ico{background-position:-40px -60px}.rtl .fancybox-title-over{text-align:right}.rtl #fancybox-left-ico,.rtl #fancybox-right-ico{right:-9999px}.rtl #fancybox-right:hover span{right:auto;left:20px}.rtl #fancybox-left:hover span{right:20px}#fancybox-img{max-width:none;max-height:none}
+#fancybox-overlay{background-attachment:fixed;background-image:url("http://www.qamentor.com/wp-content/plugins/easy-fancybox/light-mask.png");background-position:center;background-repeat:no-repeat;background-size:cover;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/light-mask.png",sizingMethod="scale");-ms-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://www.qamentor.com/wp-content/plugins/easy-fancybox/light-mask.png',sizingMethod='scale')";}
+#fancybox-outer{background-color:#fff}
+#fancybox-content{border-color:#fff}
+#fancybox-content{color:inherit}
+	</style>
+	<!--[if lt IE 8]>            
+		<style type="text/css">
+.fancybox-ie6 #fancybox-close{background:transparent;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_close.png",sizingMethod="scale")}
+.fancybox-ie6 #fancybox-left-ico{background:transparent;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_nav_left.png",sizingMethod="scale")}
+.fancybox-ie6 #fancybox-right-ico{background:transparent;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_nav_right.png",sizingMethod="scale")}
+.fancybox-ie6 #fancybox-title-over{background:transparent;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_title_over.png",sizingMethod="scale");zoom:1}
+.fancybox-ie6 #fancybox-title-float-left{background:transparent;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_title_left.png",sizingMethod="scale")}
+.fancybox-ie6 #fancybox-title-float-main{background:transparent;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_title_main.png",sizingMethod="scale")}
+.fancybox-ie6 #fancybox-title-float-right{background:transparent;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_title_right.png",sizingMethod="scale")}
+.fancybox-ie6 #fancybox-bg-w,.fancybox-ie6 #fancybox-bg-e,.fancybox-ie6 #fancybox-left,.fancybox-ie6 #fancybox-right,#fancybox-hide-sel-frame{height:expression(this.parentNode.clientHeight+"px")}
+#fancybox-loading.fancybox-ie6{position:absolute;margin-top:0;top:expression((-20+(document.documentElement.clientHeight ? document.documentElement.clientHeight/2 : document.body.clientHeight/2)+(ignoreMe=document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+"px")}
+#fancybox-loading.fancybox-ie6 div{background:transparent;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_loading.png", sizingMethod="scale")}
+.fancybox-ie #fancybox-bg-n{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_n.png",sizingMethod="scale")}
+.fancybox-ie #fancybox-bg-ne{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_ne.png",sizingMethod="scale")}
+.fancybox-ie #fancybox-bg-e{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_e.png",sizingMethod="scale")}
+.fancybox-ie #fancybox-bg-se{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_se.png",sizingMethod="scale")}
+.fancybox-ie #fancybox-bg-s{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_s.png",sizingMethod="scale")}
+.fancybox-ie #fancybox-bg-sw{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_sw.png",sizingMethod="scale")}
+.fancybox-ie #fancybox-bg-w{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_w.png",sizingMethod="scale")}
+.fancybox-ie #fancybox-bg-nw{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_nw.png",sizingMethod="scale")}
+		</style>
+	<![endif]-->
+	<!--[if IE 8]>            
+		<style type="text/css">
+.fancybox-ie #fancybox-bg-n{-ms-filter:'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_n.png",sizingMethod="scale")'}
+.fancybox-ie #fancybox-bg-ne{-ms-filter:'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_ne.png",sizingMethod="scale")'}
+.fancybox-ie #fancybox-bg-e{-ms-filter:'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_e.png",sizingMethod="scale")'}
+.fancybox-ie #fancybox-bg-se{-ms-filter:'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_se.png",sizingMethod="scale")'}
+.fancybox-ie #fancybox-bg-s{-ms-filter:'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_s.png",sizingMethod="scale")'}
+.fancybox-ie #fancybox-bg-sw{-ms-filter:'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_sw.png",sizingMethod="scale")'}
+.fancybox-ie #fancybox-bg-w{-ms-filter:'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_w.png",sizingMethod="scale")'}
+.fancybox-ie #fancybox-bg-nw{-ms-filter:'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/fancy_shadow_nw.png",sizingMethod="scale")'}
+		</style>
+	<![endif]-->
+</head><body class="page page-id-311 page-parent page-child parent-pageid-17 page-template-default">
+
+<div id="container">
+<div id="header">
+  <div class="logo">
+        <a href="http://www.qamentor.com"><img src="//qamentor.com/wp-content/uploads/2014/03/logo_01.png" alt="QA Mentor" title="QA Mentor" /></a>
+
+      </div>
+  <!-- .logo -->
+  <div class="header-right">
+    <div id="topsearch1"> <img src="http://www.qamentor.com/wp-content/themes/BizCorp/images/icon_home_01.png">&nbsp;<a href='http://www.qamentor.com'>Home </a>&nbsp;&nbsp; <img src="http://www.qamentor.com/wp-content/themes/BizCorp/images/icon_sitemap.png">&nbsp;<a href='//qamentor.com/sitemap/'>Sitemap</a>&nbsp;&nbsp;<a href="https://www.linkedin.com/company/1237664" target="_blank"><img src="http://www.qamentor.com/wp-content/themes/BizCorp/images/linkedin.png"></a>&nbsp;<a href="https://www.facebook.com/QAMENTOR1" target="_blank"><img src="http://www.qamentor.com/wp-content/themes/BizCorp/images/facebook.png" border="0"></a>&nbsp;<a href="https://twitter.com/QAMENTOR1" target="_blank"><img src="http://www.qamentor.com/wp-content/themes/BizCorp/images/twitter.png"></a>&nbsp;<a href="https://www.youtube.com/channel/UCrX_b8G7PqMXuVj5H4xvYlw" target="_blank"><img src="http://www.qamentor.com/wp-content/themes/BizCorp/images/youtube.png"></a><br>
+      <img src="http://www.qamentor.com/wp-content/themes/BizCorp/images/Phone-icon.png">&nbsp;<span style="font-weight:bold; color:#112D42; font-size:12px;">1-800-622-2602&nbsp;&nbsp;|&nbsp;&nbsp;<img src="http://www.qamentor.com/wp-content/themes/BizCorp/images/email_go1.png">&nbsp;<a href="mailto:support@qamentor.com"><span style="font-weight:bold; color:#112D42; font-size:12px;">support@qamentor.com</span></a></div>
+    <div id="topsearch">
+      <form role="search" method="get" id="searchform" action="http://www.qamentor.com/" >
+	<div style="display:block;"><label class="screen-reader-text" for="s"></label><input type="text" value="" name="s" id="s" /><input type="submit" id="searchsubmit" value="" />
+	</div>
+	</form>    </div>
+  </div>
+  <!-- .header-right --> </div>
+<!-- #header -->
+<div class="clearfix">
+
+  			<div class="menu-primary-container"><ul id="menu-qamenu" class="menus menu-primary"><li id="menu-item-123" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-123 has-image"><a href="http://www.qamentor.com/"><img width="22" height="19" src="http://www.qamentor.com/wp-content/uploads/2013/11/home-icon.png" class="attachment-full wp-post-image" alt="Home" title="Home" /></a></li>
+<li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13"><a href="http://www.qamentor.com/company/">Company</a>
+<ul class="sub-menu">
+	<li id="menu-item-15" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"><a href="http://www.qamentor.com/company/about-us/">About Us</a></li>
+	<li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14"><a href="http://www.qamentor.com/company/management-team/">Management Team</a></li>
+	<li id="menu-item-202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-202"><a href="http://www.qamentor.com/company/message-from-our-ceo/">Message from our CEO</a></li>
+	<li id="menu-item-210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-210"><a href="http://www.qamentor.com/company/global-presence/">Global Presence</a></li>
+	<li id="menu-item-203" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-203"><a href="http://www.qamentor.com/company/why-we-are-different/">Why We Are Different</a></li>
+	<li id="menu-item-204" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-204"><a href="http://www.qamentor.com/company/why-outsourcing/">Why Outsourcing</a></li>
+	<li id="menu-item-205" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-205"><a href="http://www.qamentor.com/company/mission-vision-values/">Mission, Vision &#038; Values</a></li>
+	<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206"><a href="http://www.qamentor.com/company/clients/">Clients</a></li>
+	<li id="menu-item-207" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-207"><a href="http://www.qamentor.com/company/partners/">Partners</a></li>
+	<li id="menu-item-784" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-784"><a href="http://www.qamentor.com/company/news-press-releases/">News &#038; Press Releases</a></li>
+	<li id="menu-item-783" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-783"><a href="http://www.qamentor.com/company/testimonials/">Testimonials</a></li>
+</ul>
+</li>
+<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="http://www.qamentor.com/qa-services/">QA Services</a>
+<ul class="sub-menu">
+	<li id="menu-item-7191" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7191"><a href="http://www.qamentor.com/qa-services/free-website-verification-testing-services/">Free Website Verification Testing Services</a></li>
+	<li id="menu-item-8379" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8379"><a href="http://www.qamentor.com/qa-services/testing-time-zone-service/">Testing in Your Time Zone Services</a></li>
+	<li id="menu-item-8466" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8466"><a href="http://www.qamentor.com/qa-services/agile-qa-services/">Agile Transformation QA Services</a></li>
+	<li id="menu-item-8492" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8492"><a href="http://www.qamentor.com/qa-services/data-warehouse-etl-testing-services/">Data Warehouse and ETL Testing Services</a></li>
+	<li id="menu-item-249" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-249"><a href="http://www.qamentor.com/qa-services/advisory-support-subscription-services/">Advisory Support Subscription Services</a></li>
+	<li id="menu-item-248" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-248"><a href="http://www.qamentor.com/qa-services/application-architecture-inspection-services/">Application Architecture Inspection Services</a></li>
+	<li id="menu-item-2910" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2910"><a href="http://www.qamentor.com/qa-services/crowdsourced-testing-services/">Crowdsourced Testing Services</a></li>
+	<li id="menu-item-247" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-247"><a href="http://www.qamentor.com/qa-services/manual-test-design-execution-services/">Manual Test Design &#038; Execution Services</a></li>
+	<li id="menu-item-246" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-246"><a href="http://www.qamentor.com/qa-services/qa-audit-services-2/">QA Audit &#038; Process Improvement Services</a></li>
+	<li id="menu-item-245" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-245"><a href="http://www.qamentor.com/qa-services/qa-automation-tool-expert-services/">QA Automation Tool Expert Services</a></li>
+	<li id="menu-item-244" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-244"><a href="http://www.qamentor.com/qa-services/qa-candidate-interview-assessment-services/">QA Candidate Interview Assessment Services</a></li>
+	<li id="menu-item-243" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-243"><a href="http://www.qamentor.com/qa-services/qa-environment-management-services/">QA Environment Management Services</a></li>
+	<li id="menu-item-242" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-242"><a href="http://www.qamentor.com/qa-services/qa-lab-compatibility-services/">QA Lab Compatibility Services</a></li>
+	<li id="menu-item-241" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-241"><a href="http://www.qamentor.com/qa-services/qa-manager-on-demand-services/">QA Manager on Demand  Services</a></li>
+	<li id="menu-item-240" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-240"><a href="http://www.qamentor.com/qa-services/qa-performance-capacity-planning-services/">QA Performance &#038; Capacity Planning Services</a></li>
+	<li id="menu-item-239" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-239"><a href="http://www.qamentor.com/qa-services/qa-performance-engineering-optimization-services/">QA Performance Engineering &#038; Optimization Services</a></li>
+	<li id="menu-item-238" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-238"><a href="http://www.qamentor.com/qa-services/qa-recruitment-staffing-services/">QA Recruitment &#038; Staffing Services</a></li>
+	<li id="menu-item-237" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-237"><a href="http://www.qamentor.com/qa-services/qa-training-seminars-services/">QA Training  &#038; Seminars Services</a>
+	<ul class="sub-menu">
+		<li id="menu-item-5979" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5979"><a href="http://www.qamentor.com/qa-services/qa-training-seminars-services/qa-corporate-training-coaching/">QA Corporate Training &#038; Coaching</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1077" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1077"><a href="http://www.qamentor.com/qa-services/qa-technical-writing-services/">QA Technical Writing Services</a></li>
+	<li id="menu-item-282" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-282"><a href="http://www.qamentor.com/qa-services/regression-testing-execution-factory-services/">Regression Testing Execution Factory Services</a></li>
+	<li id="menu-item-281" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-281"><a href="http://www.qamentor.com/qa-services/security-testing-services/">Security Testing Services</a></li>
+	<li id="menu-item-280" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-280"><a href="http://www.qamentor.com/qa-services/static-testing-inspection-artifacts-services/">Static Testing &#038; Inspection Artifacts Services</a></li>
+	<li id="menu-item-279" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-279"><a href="http://www.qamentor.com/qa-services/tcoe-establishment-services/">TCOE Establishment Services</a></li>
+	<li id="menu-item-278" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-278"><a href="http://www.qamentor.com/qa-services/test-automation-framework-design-services/">Test Automation Framework Design Services</a></li>
+	<li id="menu-item-277" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-277"><a href="http://www.qamentor.com/qa-services/test-cases-coverage-review-services/">Test Cases Coverage Review Services</a></li>
+	<li id="menu-item-276" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-276"><a href="http://www.qamentor.com/qa-services/test-data-management-services/">Test Data Management (TDM) Services</a></li>
+	<li id="menu-item-275" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-275"><a href="http://www.qamentor.com/qa-services/test-design-on-demand-services/">Test Design on Demand Services</a></li>
+	<li id="menu-item-273" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-273"><a href="http://www.qamentor.com/qa-services/testing-execution-on-demand-services/">Testing Execution on Demand Services</a></li>
+</ul>
+</li>
+<li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29"><a href="http://www.qamentor.com/qa-solutions/">QA Solutions</a>
+<ul class="sub-menu">
+	<li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="http://www.qamentor.com/qa-solutions/e-commerce/">E-Commerce</a></li>
+	<li id="menu-item-306" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-306"><a href="http://www.qamentor.com/qa-solutions/e-learning/">E-Learning</a></li>
+	<li id="menu-item-56" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-56"><a href="http://www.qamentor.com/qa-solutions/finance-banking/">Finance &#038; Banking</a></li>
+	<li id="menu-item-305" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-305"><a href="http://www.qamentor.com/qa-solutions/gaming/">Gaming</a></li>
+	<li id="menu-item-304" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-304"><a href="http://www.qamentor.com/qa-solutions/healthcare/">Healthcare</a></li>
+	<li id="menu-item-303" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-303"><a href="http://www.qamentor.com/qa-solutions/media-entertainment/">Media &#038; Entertainment</a></li>
+	<li id="menu-item-302" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-302"><a href="http://www.qamentor.com/qa-solutions/mobile-wireless/">Mobile &#038; Wireless</a></li>
+	<li id="menu-item-301" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-301"><a href="http://www.qamentor.com/qa-solutions/social-media-web-2-0/">Social Media Web 2.0</a></li>
+	<li id="menu-item-300" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-300"><a href="http://www.qamentor.com/qa-solutions/travel-leisure/">Travel &#038; Leisure</a></li>
+</ul>
+</li>
+<li id="menu-item-28" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-28"><a href="http://www.qamentor.com/testing-coverage/">Test Coverage</a>
+<ul class="sub-menu">
+	<li id="menu-item-875" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-875"><a href="http://www.qamentor.com/testing-coverage/functional-testing/">Functional Testing</a>
+	<ul class="sub-menu">
+		<li id="menu-item-368" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-368"><a href="http://www.qamentor.com/testing-coverage/functional-testing/acceptance-testing/">Acceptance Testing</a></li>
+		<li id="menu-item-369" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-369"><a href="http://www.qamentor.com/testing-coverage/functional-testing/alpha-testing/">Alpha Testing</a></li>
+		<li id="menu-item-370" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-370"><a href="http://www.qamentor.com/testing-coverage/functional-testing/automation-testing/">Automation Testing</a></li>
+		<li id="menu-item-371" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-371"><a href="http://www.qamentor.com/testing-coverage/functional-testing/beta-testing/">Beta Testing</a></li>
+		<li id="menu-item-365" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-365"><a href="http://www.qamentor.com/testing-coverage/functional-testing/black-box-testing/">Black-box Testing</a></li>
+		<li id="menu-item-364" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-364"><a href="http://www.qamentor.com/testing-coverage/functional-testing/database-testing/">Database Testing</a></li>
+		<li id="menu-item-362" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362"><a href="http://www.qamentor.com/testing-coverage/functional-testing/end-to-end-testing/">End-to-end Testing</a></li>
+		<li id="menu-item-361" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-361"><a href="http://www.qamentor.com/testing-coverage/functional-testing/exploratory-testing/">Exploratory Testing</a></li>
+		<li id="menu-item-360" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-360"><a href="http://www.qamentor.com/testing-coverage/functional-testing/failover-testing/">Failover Testing</a></li>
+		<li id="menu-item-372" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-372"><a href="http://www.qamentor.com/testing-coverage/functional-testing/functional-testing/">Functional Testing</a></li>
+		<li id="menu-item-2105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2105"><a href="http://www.qamentor.com/testing-coverage/functional-testing/incremental-integration-testing/">Incremental Integration Testing</a></li>
+		<li id="menu-item-357" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-357"><a href="http://www.qamentor.com/testing-coverage/functional-testing/integration-testing/">Integration Testing</a></li>
+		<li id="menu-item-356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-356"><a href="http://www.qamentor.com/testing-coverage/functional-testing/negative-testing/">Negative Testing</a></li>
+		<li id="menu-item-355" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-355"><a href="http://www.qamentor.com/testing-coverage/functional-testing/positive-testing/">Positive Testing</a></li>
+		<li id="menu-item-354" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-354"><a href="http://www.qamentor.com/testing-coverage/functional-testing/regression-testing/">Regression Testing</a></li>
+		<li id="menu-item-2104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2104"><a href="http://www.qamentor.com/testing-coverage/functional-testing/sanity-testing/">Sanity Testing</a></li>
+		<li id="menu-item-353" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-353"><a href="http://www.qamentor.com/testing-coverage/functional-testing/system-testing/">System Testing</a></li>
+		<li id="menu-item-352" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-352"><a href="http://www.qamentor.com/testing-coverage/functional-testing/unit-testing/">Unit Testing</a></li>
+		<li id="menu-item-351" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-351"><a href="http://www.qamentor.com/testing-coverage/functional-testing/white-box-testing/">White-box Testing</a></li>
+	</ul>
+</li>
+	<li id="menu-item-366" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-366"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/">Non-Functional Testing</a>
+	<ul class="sub-menu">
+		<li id="menu-item-429" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-429"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/comparison-testing/">Comparison Testing</a></li>
+		<li id="menu-item-430" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-430"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/compatibility-testing/">Compatibility Testing</a></li>
+		<li id="menu-item-432" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-432"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/configuration-testing/">Configuration Testing</a></li>
+		<li id="menu-item-434" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-434"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/endurance-testing/">Endurance Testing</a></li>
+		<li id="menu-item-428" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-428"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/globalization-testing/">Globalization Testing</a></li>
+		<li id="menu-item-426" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-426"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/installation-testing/">Installation Testing</a></li>
+		<li id="menu-item-425" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-425"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/load-testing/">Load Testing</a></li>
+		<li id="menu-item-424" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-424"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/localization-testing/">Localization Testing</a></li>
+		<li id="menu-item-2103" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2103"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/mobile-testing/">Mobile Testing</a></li>
+		<li id="menu-item-423" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-423"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/performance-testing/">Performance Testing</a></li>
+		<li id="menu-item-422" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-422"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/portability-testing/">Portability Testing</a></li>
+		<li id="menu-item-421" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-421"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/recovery-testing/">Recovery Testing</a></li>
+		<li id="menu-item-420" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-420"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/stress-testing/">Stress Testing</a></li>
+		<li id="menu-item-419" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-419"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/scalability-testing/">Scalability Testing</a></li>
+		<li id="menu-item-418" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-418"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/security-testing/">Security Testing</a></li>
+		<li id="menu-item-417" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-417"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/static-testing/">Static Testing</a></li>
+		<li id="menu-item-416" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-416"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/usability-testing/">Usability Testing</a></li>
+		<li id="menu-item-415" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-415"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/volume-testing/">Volume Testing</a></li>
+	</ul>
+</li>
+	<li id="menu-item-367" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-311 current_page_item menu-item-367"><a href="http://www.qamentor.com/testing-coverage/test-phases/">Test Phases</a>
+	<ul class="sub-menu">
+		<li id="menu-item-448" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-448"><a href="http://www.qamentor.com/testing-coverage/test-phases/static-testing-phase/">Static Testing Phase</a></li>
+		<li id="menu-item-449" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-449"><a href="http://www.qamentor.com/testing-coverage/test-phases/module-unit-testing-phase/">Module &#038; Unit Testing Phase</a></li>
+		<li id="menu-item-450" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-450"><a href="http://www.qamentor.com/testing-coverage/test-phases/module-components-integration-testing-phase/">Module &#038; Components Integration Testing Phase</a></li>
+		<li id="menu-item-451" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-451"><a href="http://www.qamentor.com/testing-coverage/test-phases/system-system-integration-testing-phase/">System &#038; System Integration Testing Phase</a></li>
+		<li id="menu-item-452" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-452"><a href="http://www.qamentor.com/testing-coverage/test-phases/user-acceptance-testing-phase/">User Acceptance Testing Phase</a></li>
+		<li id="menu-item-453" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-453"><a href="http://www.qamentor.com/testing-coverage/test-phases/production-verification-acceptance-testing-phase/">Production Verification &#038; Acceptance Testing Phase</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25"><a href="http://www.qamentor.com/wisdom-center/">Wisdom Center</a>
+<ul class="sub-menu">
+	<li id="menu-item-513" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-513"><a href="http://www.qamentor.com/wisdom-center/articles/">Articles</a></li>
+	<li id="menu-item-512" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-512"><a href="http://www.qamentor.com/wisdom-center/blog/">Blog</a></li>
+	<li id="menu-item-511" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-511"><a href="http://www.qamentor.com/wisdom-center/case-studies/">Case Studies</a></li>
+	<li id="menu-item-510" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-510"><a href="http://www.qamentor.com/wisdom-center/forum/">Forum</a></li>
+	<li id="menu-item-4626" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4626"><a href="http://www.qamentor.com/wisdom-center/movies/">Videos</a></li>
+	<li id="menu-item-508" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-508"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/">Sample Deliverables Showcase</a>
+	<ul class="sub-menu">
+		<li id="menu-item-565" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-565"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/automation-test-plan/">Automation Test Plan</a></li>
+		<li id="menu-item-554" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-554"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/automation-test-strategy/">Automation Test Strategy</a></li>
+		<li id="menu-item-553" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-553"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/code-review-checklist/">Code Review Checklist</a></li>
+		<li id="menu-item-566" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-566"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/daily-testing-execution-progress-report/">Daily Testing Execution Progress Report</a></li>
+		<li id="menu-item-567" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-567"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/defect-leakage-analysis/">Defect Leakage Analysis</a></li>
+		<li id="menu-item-564" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-564"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/estimation-worksheet/">Estimation Worksheet</a></li>
+		<li id="menu-item-563" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-563"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/execution-completion-report/">Execution Completion Report</a></li>
+		<li id="menu-item-562" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-562"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/manual-test-case/">Manual Test Case</a></li>
+		<li id="menu-item-561" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-561"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/manual-test-case-scenarios/">Manual Test Case Scenarios</a></li>
+		<li id="menu-item-560" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-560"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/performance-defect-report/">Performance Defect Report</a></li>
+		<li id="menu-item-559" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-559"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/performance-graphs-analysis/">Performance Graphs &#038; Analysis</a></li>
+		<li id="menu-item-558" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-558"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/performance-recommendation-report/">Performance Recommendation Report</a></li>
+		<li id="menu-item-557" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-557"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/performance-test-plan/">Performance Test Plan</a></li>
+		<li id="menu-item-556" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-556"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/static-testing-checklist/">Static Testing Checklist</a></li>
+		<li id="menu-item-555" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-555"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/system-test-plan/">System Test Plan</a></li>
+		<li id="menu-item-2799" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2799"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/system-test-strategy/">System Test Strategy</a></li>
+		<li id="menu-item-552" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-552"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/test-coverage-readiness-checklist/">Test Coverage Readiness Checklist</a></li>
+		<li id="menu-item-551" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-551"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/traceability-matrix/">Traceability Matrix</a></li>
+		<li id="menu-item-550" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-550"><a href="http://www.qamentor.com/wisdom-center/sample-deliverables-showcase/unit-testing-checklist/">Unit Test Assessment Checklist</a></li>
+	</ul>
+</li>
+	<li id="menu-item-507" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-507"><a href="http://www.qamentor.com/wisdom-center/automation-tools-paradise/">Automation Tools Paradise</a>
+	<ul class="sub-menu">
+		<li id="menu-item-600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-600"><a href="http://www.qamentor.com/wisdom-center/automation-tools-paradise/api-testing-tools/">API Testing Tools</a></li>
+		<li id="menu-item-598" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-598"><a href="http://www.qamentor.com/wisdom-center/automation-tools-paradise/database-testing-tools/">Database Testing Tools</a></li>
+		<li id="menu-item-599" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-599"><a href="http://www.qamentor.com/wisdom-center/automation-tools-paradise/defect-tracking-tools/">Defect Tracking Tools</a></li>
+		<li id="menu-item-596" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-596"><a href="http://www.qamentor.com/wisdom-center/automation-tools-paradise/mobile-testing-tools/">Mobile Testing Tools</a></li>
+		<li id="menu-item-594" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-594"><a href="http://www.qamentor.com/wisdom-center/automation-tools-paradise/performance-testing-tools/">Performance Testing Tools</a></li>
+		<li id="menu-item-593" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-593"><a href="http://www.qamentor.com/wisdom-center/automation-tools-paradise/security-testing-tools/">Security Testing Tools</a></li>
+		<li id="menu-item-5645" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5645"><a href="http://www.qamentor.com/wisdom-center/automation-tools-paradise/simulator-test-tools/">Simulator Test Tools</a></li>
+		<li id="menu-item-5046" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5046"><a href="http://www.qamentor.com/wisdom-center/automation-tools-paradise/static-code-analysis-tools/">Static Code Analysis Tools</a></li>
+		<li id="menu-item-595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="http://www.qamentor.com/wisdom-center/automation-tools-paradise/test-automation-tools/">Test Automation Tools</a></li>
+		<li id="menu-item-591" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-591"><a href="http://www.qamentor.com/wisdom-center/automation-tools-paradise/test-data-management-tools/">Test Data Management Tools</a></li>
+		<li id="menu-item-592" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-592"><a href="http://www.qamentor.com/wisdom-center/automation-tools-paradise/test-management-tools/">Test Management Tools</a></li>
+		<li id="menu-item-590" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-590"><a href="http://www.qamentor.com/wisdom-center/automation-tools-paradise/test-virtualization-tools/">Test Virtualization Tools</a></li>
+		<li id="menu-item-597" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-597"><a href="http://www.qamentor.com/wisdom-center/automation-tools-paradise/web-site-link-verification-testing-tools/">Web Site Link Verification Testing Tools</a></li>
+	</ul>
+</li>
+	<li id="menu-item-509" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-509"><a href="http://www.qamentor.com/wisdom-center/white-papers/">White Papers</a></li>
+</ul>
+</li>
+<li id="menu-item-27" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-27"><a href="http://www.qamentor.com/engagement-models/">Engagement Models</a>
+<ul class="sub-menu">
+	<li id="menu-item-466" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-466"><a href="http://www.qamentor.com/engagement-models/dedicated-teams/">Dedicated Team Model</a></li>
+	<li id="menu-item-467" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-467"><a href="http://www.qamentor.com/engagement-models/fixed-price-cost-2/">Fixed Price Cost Model</a></li>
+	<li id="menu-item-468" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-468"><a href="http://www.qamentor.com/engagement-models/hybrid-model/">Hybrid Model</a></li>
+	<li id="menu-item-469" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-469"><a href="http://www.qamentor.com/engagement-models/managed-services/">Managed Services Model</a></li>
+	<li id="menu-item-470" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-470"><a href="http://www.qamentor.com/engagement-models/time-material/">Time &#038; Material Model</a></li>
+	<li id="menu-item-471" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-471"><a href="http://www.qamentor.com/engagement-models/transaction-based/">Transaction Based Model</a></li>
+	<li id="menu-item-2290" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2290"><a href="http://www.qamentor.com/engagement-models/proof-of-concept-model/">Proof of Concept Model</a></li>
+</ul>
+</li>
+<li id="menu-item-26" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26"><a href="http://www.qamentor.com/methodologies/">Methodologies</a>
+<ul class="sub-menu">
+	<li id="menu-item-492" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-492"><a href="http://www.qamentor.com/methodologies/automation-methodology/">Automation Methodology</a></li>
+	<li id="menu-item-491" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-491"><a href="http://www.qamentor.com/methodologies/performance-testing-methodology/">Performance Testing Methodology</a></li>
+	<li id="menu-item-490" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-490"><a href="http://www.qamentor.com/methodologies/static-testing-methodology/">Static Testing Methodology</a></li>
+	<li id="menu-item-489" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-489"><a href="http://www.qamentor.com/methodologies/regression-testing-methodology/">Regression Testing Methodology</a></li>
+	<li id="menu-item-488" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-488"><a href="http://www.qamentor.com/methodologies/compatibility-testing-methodology/">Compatibility Testing Methodology</a></li>
+	<li id="menu-item-487" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-487"><a href="http://www.qamentor.com/methodologies/traceability-matrix-methodology/">Traceability Matrix Methodology</a></li>
+	<li id="menu-item-486" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-486"><a href="http://www.qamentor.com/methodologies/security-testing-methodology/">Security Testing Methodology</a></li>
+</ul>
+</li>
+<li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24"><a href="http://www.qamentor.com/careers/">Careers</a>
+<ul class="sub-menu">
+	<li id="menu-item-643" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-643"><a href="http://www.qamentor.com/careers/why-join-qa-mentor/">Why Join QA Mentor?</a></li>
+	<li id="menu-item-642" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-642"><a href="http://www.qamentor.com/careers/employee-recognition-corner/">Employee Recognition Corner</a></li>
+	<li id="menu-item-3466" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3466"><a href="http://www.qamentor.com/careers/jobs/">Search Our Openings</a></li>
+	<li id="menu-item-640" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-640"><a href="//www.qamentor.com/careers/jobs/apply/3545/">Submit Resume</a></li>
+	<li id="menu-item-639" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-639"><a href="http://www.qamentor.com/careers/team-building/">Team Building</a></li>
+	<li id="menu-item-638" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-638"><a href="http://www.qamentor.com/careers/our-training-programs/">Employee Training Programs</a></li>
+	<li id="menu-item-637" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-637"><a href="http://www.qamentor.com/careers/internships/">Internships</a></li>
+</ul>
+</li>
+<li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23"><a href="http://www.qamentor.com/contact-us/">Contact Us</a>
+<ul class="sub-menu">
+	<li id="menu-item-659" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-659"><a href="http://www.qamentor.com/contact-us/contact-information/">Contact Information</a></li>
+	<li id="menu-item-660" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-660"><a href="http://www.qamentor.com/contact-us/affiliate-program/">Affiliate Program</a></li>
+	<li id="menu-item-658" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-658"><a href="http://www.qamentor.com/contact-us/download-brochure/">Download Brochure</a></li>
+	<li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="http://www.qamentor.com/contact-us/request-a-call-back/">Request a Call Back</a></li>
+	<li id="menu-item-656" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-656"><a href="http://www.qamentor.com/contact-us/request-a-quote/">Request a Quote</a></li>
+	<li id="menu-item-655" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-655"><a href="http://www.qamentor.com/contact-us/request-online-presentation/">Request Online Presentation</a></li>
+	<li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="http://www.qamentor.com/contact-us/request-for-free-proof-of-concept/">Request for Free Proof of Concept</a></li>
+	<li id="menu-item-3104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3104"><a href="http://www.qamentor.com/contact-us/request-for-free-pilot-project/">Request for Free Pilot Project</a></li>
+	<li id="menu-item-3103" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3103"><a href="http://www.qamentor.com/contact-us/request-for-functional-testing/">Request for Functional Testing</a></li>
+	<li id="menu-item-3102" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3102"><a href="http://www.qamentor.com/contact-us/request-for-non-functional-testing/">Request for Non-Functional Testing</a></li>
+	<li id="menu-item-3101" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3101"><a href="http://www.qamentor.com/contact-us/request-for-qa-services/">Request for QA Services</a></li>
+</ul>
+</li>
+</ul></div>              <!--.primary menu--> 	
+        
+</div>
+
+<div class="featured_image">
+  <img width="1099" height="180" src="http://www.qamentor.com/wp-content/uploads/2013/11/banner_testing-phases.jpg" class="attachment-post-thumbnail wp-post-image" alt="banner_testing-phases" /></div>
+
+
+
+
+
+
+	 <div id="main" >
+	
+		<div id="sidebar-seconday">		
+
+    <style type="text/css">.advanced-sidebar-menu ul li a{
+	/*font-weight: bold;
+	font-size: 130%;
+	text-decoration: none;*/
+	
+	line-height: 20px;
+font-family: Arial;
+font-size: 12px;
+color:#000;
+padding: 0 0 2px 0;
+border-bottom: dashed #C3C3C3 1px;
+width:200px;
+display:block;
+
+
+}
+
+.advanced-sidebar-menu ul li:last-child a
+{
+border-bottom:none;
+}
+
+.advanced-sidebar-menu ul li a:hover{
+	text-decoration:none;
+	background-color:#F2F2F2;
+	font-weight:bold;
+}
+
+.advanced-sidebar-menu ul ul li a{
+	/*font-weight: normal;
+	font-size: 100%;
+	*/
+	line-height: 20px;
+font-family: Arial;
+font-size: 12px;
+color: #000;
+padding: 0 0 2px 0;
+}
+
+.advanced-sidebar-menu ul{
+
+	margin: 0 0 0 15px;
+	list-style: none;
+	list-style-type: none;
+	padding: 0 0 2px 0;
+}
+
+.advanced-sidebar-menu ul li{
+	list-style:none;
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0 2px 0;
+	
+}
+
+.advanced-sidebar-menu li.current_page_item{
+	list-style-type:none;	
+
+	size:20px;
+	font:bold;
+	/*color:#990000;	*/
+	color:#153750;
+	
+}
+
+.advanced-sidebar-menu li.current_page_item a{
+	font-weight: bold;
+	line-height: 20px;
+font-family: Arial;
+font-size: 12px;
+color:#d22f23;
+padding: 0 0 2px 0;
+
+
+}
+
+.advanced-sidebar-menu li.current_page_item li a{
+    font-weight: normal;
+}
+.advanced-sidebar-menu ul.grandchild-sidebar-menu.level-2.children
+{
+color: #000;
+}
+.advanced-sidebar-menu li.current_page_item ul li a
+{
+color: #000;
+}
+
+.advanced-sidebar-menu li.current_page_item ul li a:hover{
+	text-decoration:none;
+	background-color:#F2F2F2;
+	font-weight:bold;
+	color:#d22f23;
+}
+
+.advanced-sidebar-menu li.page_item.current_page_ancestor.current_page_parent.has_children a
+{
+color: #112D42;
+font-weight:bold;
+}</style><ul class="widget-1 first-widget widget-container"><li id="advanced_sidebar_menu-2" class="widget-1 first-widget widget advanced-sidebar-menu"><h2 class="widgettitle"><a href="http://www.qamentor.com/testing-coverage/">Test Coverage</a></h2><ul class="child-sidebar-menu"><li class="page_item page-item-307 has_children"><a href="http://www.qamentor.com/testing-coverage/functional-testing/">Functional Testing</a></li>
+<li class="page_item page-item-309 has_children"><a href="http://www.qamentor.com/testing-coverage/non-functional-testing/">Non-Functional Testing</a></li>
+<li class="page_item page-item-311 current_page_item has_children"><a href="http://www.qamentor.com/testing-coverage/test-phases/">Test Phases</a></li>
+</ul><!-- End child-sidebar-menu --></li></ul><ul class="widget-2 widget-container"><li id="section-3" class="widget-2 widget section-widget"><h2 class="widgettitle">Try it now!</h2><p><a href="//qamentor.com/contact-us/request-for-free-proof-of-concept/"><img src="//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn_01.png" onmouseover="this.src='//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn-rol_01.png'" onmouseout="this.src='//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn_01.png'" /></a><br><br />
+<a href="//qamentor.com/contact-us/request-for-free-pilot-project/"><img src="//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn_02.png" onmouseover="this.src='//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn-rol_02.png'" onmouseout="this.src='//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn_02.png'" /></a><br><br />
+<a href="//qamentor.com/contact-us/request-for-functional-testing/"><img src="//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn_03.png" onmouseover="this.src='//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn-rol_03.png'" onmouseout="this.src='//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn_03.png'" /></a><br><br />
+<a href="//qamentor.com/contact-us/request-for-non-functional-testing/"><img src="//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn_04.png" onmouseover="this.src='//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn-rol_04.png'" onmouseout="this.src='//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn_04.png'" /></a><br><br />
+<a href="//qamentor.com/contact-us/request-for-qa-services/"><img src="//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn_05.png" onmouseover="this.src='//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn-rol_05.png'" onmouseout="this.src='//qamentor.com/wp-content/themes/BizCorp/images/intrnl_rght-btn_05.png'" /></a></p>
+</li></ul><ul class="widget-3 widget-container"><li id="section-6" class="widget-3 widget section-widget"><h2 class="widgettitle">Our Clients</h2><div id="su_slider_57a4269e1655c" class="su-slider su-slider-centered su-slider-pages-no su-slider-responsive-no" style="width:160px;height:50px" data-autoplay="3000" data-speed="600" data-mousewheel="true">
+<div class="su-slider-slides">
+<div class="su-slider-slide"><a href="#"><img src="http://www.qamentor.com/wp-content/uploads/2013/11/shocase-logo-160x50.jpg" alt="shocase-logo" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://www.qamentor.com/wp-content/uploads/2015/09/legacyshieldbig-160x50.jpg" alt="legacyshieldbig" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://www.qamentor.com/wp-content/uploads/2015/08/afex_logo-160x50-160x50.jpg" alt="afex" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://www.qamentor.com/wp-content/uploads/2015/01/hsbcnew1-160x50.jpg" alt="hsbcnew" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://qamentor.com/wp-content/uploads/2014/01/usdnzone-160x50.jpg" alt="usdnzone" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://www.qamentor.com/wp-content/uploads/2015/08/Gamecloud1-160x50.jpg" alt="Gamecloud1" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://qamentor.com/wp-content/uploads/2014/01/citi-160x50.jpg" alt="citi" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://qamentor.com/wp-content/uploads/2014/01/brainmatch-160x50.jpg" alt="brainmatch" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://www.qamentor.com/wp-content/uploads/2015/05/bwell-logo-160x50.jpg" alt="bwell-logo" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://www.qamentor.com/wp-content/uploads/2015/05/pcg-logo-160x50.jpg" alt="pcg-logo" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://qamentor.com/wp-content/uploads/2014/01/chefmod-160x50.jpg" alt="chefmod" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://qamentor.com/wp-content/uploads/2014/01/solbright-160x50.jpg" alt="solbright" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://qamentor.com/wp-content/uploads/2014/01/sterling-infosystems-160x50.jpg" alt="sterling-infosystems" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://qamentor.com/wp-content/uploads/2014/01/survey-pool-160x50.jpg" alt="survey-pool" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://qamentor.com/wp-content/uploads/2014/01/beezuka-160x50.jpg" alt="beezuka" /></a></div>
+<div class="su-slider-slide"><a href="#"><img src="http://qamentor.com/wp-content/uploads/2014/01/digitaledge-160x50.jpg" alt="digitaledge" /></a></div>
+</div>
+<div class="su-slider-nav">
+<div class="su-slider-direction"><span class="su-slider-prev"></span><span class="su-slider-next"></span></div>
+<div class="su-slider-pagination"></div>
+</div>
+</div>
+</li></ul><ul class="widget-4 widget-container"><li id="section-7" class="widget-4 widget section-widget"><h2 class="widgettitle">Testimonials</h2><div class="testimonials-widget-testimonials testimonials-widget-testimonials100000">
+<div class="post-942 testimonials-widget type-testimonials-widget status-publish hentry category-testimonials testimonials-widget-testimonial">
+<div itemscope itemtype="http://schema.org/Review">
+<blockquote>&#8220;Ruslan Desyatnikov from QA Mentor is the consummate Quality Professional and bussiness partner. His years of experience show in his ability to rapidly bring total transformation to a Quality Assurance group. He understands the absolutely critical role QA plays within…<span class="close-quote"></span>  <a href="https://qamentor.com/company/testimonials/john-barra/" rel="nofollow" style="color:#ff0000;"><strong>read more&#8230;</strong></a></p></blockquote>
+<div class="credit"><span class="author">John Barra, Director PMO, Federal Reserve Bank of New York</span></div>
+<div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="John Barra, Director PMO, Federal Reserve Bank of New York" /></div>
+<p><meta itemprop="datePublished" content="2013-12-17" /><meta itemprop="dateModified" content="2014-11-11" /><meta itemprop="name" content="Ruslan Desyatnikov from QA Mentor is the consummate Quality Professional and bussiness partner. His years of experience show in his ability to rapidly bring…" /><meta itemprop="url" content="http://www.qamentor.com/testimonial/john/" />
+<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><meta itemprop="reviewCount" content="5" /></div>
+<div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Thing"><meta itemprop="name" content="qamentor" /><meta itemprop="url" content="https://qamentor.com" /></div>
+</div>
+</div>
+<div class="post-938 testimonials-widget type-testimonials-widget status-publish hentry category-testimonials testimonials-widget-testimonial">
+<div itemscope itemtype="http://schema.org/Review">
+<blockquote>&#8220;Ruslan Desyatnikov and QA Mentor brought quality assurance processes and resource functions into very successful practice to our company where none previously existed. They rolled out an enterprise tool to assist the team in achieving an amazing level of automation…<span class="close-quote"></span>  <a href="http://qamentor.com/company/testimonials/frank-materia/" rel="nofollow" style="color:#ff0000;"><strong>read more&#8230;</strong></a></p></blockquote>
+<div class="credit"><span class="author">Frank Materia, Program Manager, Sterling Infosystems, Inc.</span></div>
+<div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Frank Materia, Program Manager, Sterling Infosystems, Inc." /></div>
+<p><meta itemprop="datePublished" content="2013-12-17" /><meta itemprop="dateModified" content="2014-05-05" /><meta itemprop="name" content="Ruslan Desyatnikov and QA Mentor brought quality assurance processes and resource functions into very successful practice to our company where none previous…" /><meta itemprop="url" content="http://www.qamentor.com/testimonial/frank-materia/" />
+<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><meta itemprop="reviewCount" content="5" /></div>
+<div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Thing"><meta itemprop="name" content="qamentor" /><meta itemprop="url" content="https://qamentor.com" /></div>
+</div>
+</div>
+<div class="post-940 testimonials-widget type-testimonials-widget status-publish hentry category-testimonials testimonials-widget-testimonial">
+<div itemscope itemtype="http://schema.org/Review">
+<blockquote>&#8220;I had the privilege and the pleasure of working with Ruslan Desyatnikov and his QA Experts from QA Mentor. He is a rare individual who brings to the table a unique combination of strong technical acumen, leadership, high integrity and…<span class="close-quote"></span>  <a href="http://qamentor.com/company/testimonials/adrian-iosifescu/" rel="nofollow" style="color:#ff0000;"><strong>read more&#8230;</strong></a></p></blockquote>
+<div class="credit"><span class="author">Adrian Iosifescu, Chief Technology Officer, Deep Harbor Partners LLC.</span></div>
+<div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Adrian Iosifescu, Chief Technology Officer, Deep Harbor Partners LLC." /></div>
+<p><meta itemprop="datePublished" content="2013-12-17" /><meta itemprop="dateModified" content="2014-05-05" /><meta itemprop="name" content="I had the privilege and the pleasure of working with Ruslan Desyatnikov and his QA Experts from QA Mentor. He is a rare individual who brings to the table a…" /><meta itemprop="url" content="http://www.qamentor.com/testimonial/adrian-iosifescu/" />
+<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><meta itemprop="reviewCount" content="5" /></div>
+<div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Thing"><meta itemprop="name" content="qamentor" /><meta itemprop="url" content="https://qamentor.com" /></div>
+</div>
+</div>
+<div class="post-941 testimonials-widget type-testimonials-widget status-publish hentry category-testimonials testimonials-widget-testimonial">
+<div itemscope itemtype="http://schema.org/Review">
+<blockquote>&#8220;Ruslan Desyatnikov from QA Mentor is a professional Quality Manager. He grasps and implements the top level principles of TQM. He augments his conceptual commitments with a deep, facile grasp of a wide array of engineering principles &#8212; enterprise architecture,…<span class="close-quote"></span>  <a href="http://qamentor.com/company/testimonials/joe-palau/" rel="nofollow" style="color:#ff0000;"><strong>read more&#8230;</strong></a></p></blockquote>
+<div class="credit"><span class="author">Joe Palau, Senior Management Consultant, Manhattan Valley Associates</span></div>
+<div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Joe Palau, Senior Management Consultant, Manhattan Valley Associates" /></div>
+<p><meta itemprop="datePublished" content="2013-12-17" /><meta itemprop="dateModified" content="2014-11-11" /><meta itemprop="name" content="Ruslan Desyatnikov from QA Mentor is a professional Quality Manager. He grasps and implements the top level principles of TQM. He augments his conceptual co…" /><meta itemprop="url" content="http://www.qamentor.com/testimonial/joe-palau/" />
+<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><meta itemprop="reviewCount" content="5" /></div>
+<div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Thing"><meta itemprop="name" content="qamentor" /><meta itemprop="url" content="https://qamentor.com" /></div>
+</div>
+</div>
+<div class="post-939 testimonials-widget type-testimonials-widget status-publish hentry category-testimonials testimonials-widget-testimonial">
+<div itemscope itemtype="http://schema.org/Review">
+<blockquote>&#8220;When it comes to establishing a Global Quality Assurance Organization from the ground up, Ruslan Desyatnikov from QA Mentor is both expert and innovative. Having worked together for many years, I can speak from first hand experience of his accomplishments…<span class="close-quote"></span>  <a href="http://qamentor.com/company/testimonials/andrew-t-madejczyk/" rel="nofollow" style="color:#ff0000;"><strong>read more&#8230;</strong></a></p></blockquote>
+<div class="credit"><span class="author">Andrew T. Madejczyk, Executive Director, Amalgamated Life Insurance</span></div>
+<div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Andrew T. Madejczyk, Executive Director, Amalgamated Life Insurance" /></div>
+<p><meta itemprop="datePublished" content="2013-12-17" /><meta itemprop="dateModified" content="2014-05-05" /><meta itemprop="name" content="When it comes to establishing a Global Quality Assurance Organization from the ground up, Ruslan Desyatnikov from QA Mentor is both expert and innovative. H…" /><meta itemprop="url" content="http://www.qamentor.com/testimonial/andrew-t-madejczyk/" />
+<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><meta itemprop="reviewCount" content="5" /></div>
+<div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Thing"><meta itemprop="name" content="qamentor" /><meta itemprop="url" content="https://qamentor.com" /></div>
+</div>
+</div>
+</div>
+</li></ul><ul class="widget-5 last-widget widget-container"><li id="execphp-9" class="widget-5 last-widget widget widget_execphp"><h2 class="widgettitle">Call Us</h2>			
+			<div class="execphpwidget"><img src="//qamentor.com/wp-content/themes/BizCorp/images/left-contact.png"></div>
+		</li></ul>
+    <div id="execphp-10" class="widget-1 first-widget widget widget_execphp">			
+			<div class="execphpwidget"><div style="width: 200px;  margin-left: auto; margin-right: auto;"><div id="square_production_Video" class="squareDemo squareDemo_production shape box maskImg" style="border-color: rgb(0, 0, 0); width: 180px; height: 185px; border-width: 0px; background: url(http://qamentor.com/wp-content/uploads/2014/11/download_video_02.jpg) 0% 0% / 100% no-repeat transparent;"><span class="textArea" style="height: 135px; width: 160px;"></span><div entrance="effect" id="square-lit" class="squareLitDemo shape animated fadeOutUp" in="fadeInDown" out="fadeOutUp" style="height: 185px; width: 180px; top: 0px; margin-left: 0px; right: 0px; transform: rotate(0deg); background: url(http://qamentor.com/wp-content/uploads/2014/11/download_video_01.jpg) 0% 0% / 100% no-repeat transparent;"><a class="title_2 title_link_out" href="http://qamentor.com/wisdom-center/movies/"><h3 class="title" style="transform: rotate(0deg); -webkit-transform: rotate(0deg);"></h3></a><hr class="divLit hidden"><div class="textAreaWrapper" style="padding-right: 14px; transform: rotate(0deg); -webkit-transform: rotate(0deg);"><span class="textArea" style="height: 185px; width: 160px;"></span></div></div></div>
+                            <div id="square_production_Broucher" class="squareDemo squareDemo_production shape box maskImg" style="border-color: rgb(0, 0, 0); width: 180px; height: 185px; border-width: 0px; background: url(http://qamentor.com/wp-content/uploads/2014/10/brochure.jpg) 0% 0% / 100% no-repeat transparent;">
+                                <span class="textArea" style="height: 135px; width: 160px;"></span>
+                                <div entrance="effect" id="square-lit" class="squareLitDemo shape swrillOut inOut animated fadeOutUp" in="fadeInDown" out="fadeOutUp" style="height: 185px; width: 180px; top: 0px; margin-left: 0px; right: 0px; transform: rotate(0deg); border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; -webkit-transform: rotate(-180deg); background: url(http://qamentor.com/wp-content/uploads/2014/10/download_brochure_green.jpg) 0% 0% / 100% no-repeat transparent;">
+                                    <a class="title_2 title_link_out" href="http://qamentor.com/wp-content/uploads/QA-Mentor-Brochure.php"><h3 class="title" style="transform: rotate(0deg); -webkit-transform: rotate(0deg);"></h3></a>
+                                    <hr class="divLit hidden">
+                                    <div class="textAreaWrapper" style="padding-right: 14px; transform: rotate(0deg); -webkit-transform: rotate(0deg); margin-top: 32px;">
+                                        <span class="textArea" style="height: 135px; width: 160px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+</div>
+		</div>
+</div><!-- #sidebar-primary -->
+
+		
+        <div id="content">           
+
+
+
+            
+        
+
+                
+    <div class="post-311 page type-page status-publish hentry post page clearfix" id="post-311">
+	 
+					
+			<div class="breadcrumb"><a class="myblink" href="http://www.qamentor.com">Home</a>  » <a class="myblink" href="http://www.qamentor.com/testing-coverage/">Test Coverage</a> » Test Phases</div>       <h2 class="title">Test Phases<div style="display:inline; float:right"><div class="a2a_kit a2a_target addtoany_list" id="wpa2a_1"><a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save"><img src="http://www.qamentor.com/wp-content/plugins/add-to-any/share_save_120_16.png" width="120" height="16" alt="Share"/></a>
+<script type="text/javascript"><!--
+wpa2a.script_load();
+//--></script>
+</div></div></h2>
+	           
+                
+        <div class="entry clearfix">
+                
+                        
+            <div class="su-box su-box-style-glass" style="border-color:#042946;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;">
+<div class="su-box-title" style="background-color:#053357;color:#fff;-webkit-border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;border-top-left-radius:4px;border-top-right-radius:4px;">Testing Phases</div>
+<div class="su-box-content">
+<p style="text-align: justify;"><img class="alignleft size-full wp-image-1855" style="margin-top: 5px; margin-bottom: 2px;" alt="Test-phases" src="http://qamentor.com/wp-content/uploads/2013/11/Test-phases.png" width="100" height="100" />There are six different phases used during a full software quality assurance test cycle. The first is the Static Testing Phase which verifies that the requirements and specifications are thorough, complete, and make sense for the goal of the product. This is done before any coding starts and seeks to eliminate defects before they’re even in the system.</p>
+<p style="text-align: justify;">Module/Unit Testing Phase begins once developers have completed individual modules. Each module or unit is tested independent of each other to help find potential defects and speed up development. By testing the units in isolation, finding the cause of an issue is expedited, saving both time and energy.</p>
+<p style="text-align: justify;">After each unit has been tested, the third phase begins: Integration Testing. This phase ensures that the individually tested units work well together in assemblies. Generally, units are added together one by one and fully tested after each unit is added. This manner of testing validates that the modules play well together and by adding units in sequentially, determining the cause of a possible defect between the units is much easier.</p>
+<p style="text-align: justify;">The System Testing Phase begins next and validates the entire system as a whole. As the most involved and time consuming phase, System Testing utilizes many different testing types either consecutively or concurrently. Functional testing, security testing, performance testing, and database testing are examples of the multitude of tests that can be run during this busy phase.</p>
+<p style="text-align: justify;">Next, the User Acceptance Phase is used to make sure the system is well liked and useful to actual, prospective, or even simulated end users. By evaluating the user learning curve, navigation, and usefulness of the application, this phase seeks to ensure that existing and future users will want to use the product.</p>
+<p style="text-align: justify;">The final phase, Production Verification, occurs when the full tested product is deployed to the production environment. This last step validates the production build and ensures that all of the components were deployed and are working correctly.</p>
+</div>
+</div>
+<p style="text-align: justify;">
+<div class="child_pages child_pages-thumbnail">
+<div id="child_page-435" class="child_page" style="width:100%;max-width:100%;">
+<div class="child_page-container">
+<div class="post_content"><a href="http://www.qamentor.com/testing-coverage/test-phases/static-testing-phase/" class="excert_title">Static Testing Phase</a>
+<div class="post_excerpt"><img src="http://qamentor.com/wp-content/uploads/2013/11/Static-testing-phase.png" alt="Static-testing-phase" width="100" height="100" class="alignleft size-full wp-image-1968" />Before a single line of code is written, testing can and should begin. Static testing is the first phase in software quality assurance, but unfortunately nearly 80% of the companies out there don’t perform this vital step. So why should you?  By reviewing requirements for thoroughness as they are gathered.<br><br><span id="rmore" style="float:right"><a href="http://www.qamentor.com/testing-coverage/test-phases/static-testing-phase/" class="su-button su-button-style-glass" style="color:#fff;background-color:#112D42;border-color:#0e2435;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px" target="_self"><span style="color:#fff;padding:0px 13px;font-size:11px;line-height:22px;border-color:#586c7b;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px;text-shadow:0 0 1px #0a1b28;-moz-text-shadow:0 0 1px #0a1b28;-webkit-text-shadow:0 0 1px #0a1b28"> read more&#8230;</span></a></span></div>
+</div>
+<p><!-- .post_content  --></div>
+<p><!-- .child_page-container --></div>
+<p><!-- #child_page-435" --></p>
+<div id="child_page-437" class="child_page" style="width:100%;max-width:100%;">
+<div class="child_page-container">
+<div class="post_content"><a href="http://www.qamentor.com/testing-coverage/test-phases/module-unit-testing-phase/" class="excert_title">Module &#038; Unit Testing Phase</a>
+<div class="post_excerpt"><img src="http://qamentor.com/wp-content/uploads/2013/11/Module-Unit-testing-phase.png" alt="Module-&amp;-Unit-testing-phase" width="100" height="100" class="alignleft size-full wp-image-1970" />The module and unit testing phase of the SDLC involves testing the smallest parts of an application individually.  Commonly automated, unit testing’s objective is to validate the correct functionality of each unit under isolation. Additionally, if automated, unit tests can be reused over and over, and as such facilitate inexpensive. <br><br><span id="rmore" style="float:right"><a href="http://www.qamentor.com/testing-coverage/test-phases/module-unit-testing-phase/" class="su-button su-button-style-glass" style="color:#fff;background-color:#112D42;border-color:#0e2435;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px" target="_self"><span style="color:#fff;padding:0px 13px;font-size:11px;line-height:22px;border-color:#586c7b;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px;text-shadow:0 0 1px #0a1b28;-moz-text-shadow:0 0 1px #0a1b28;-webkit-text-shadow:0 0 1px #0a1b28"> read more&#8230;</span></a></span></div>
+</div>
+<p><!-- .post_content  --></div>
+<p><!-- .child_page-container --></div>
+<p><!-- #child_page-437" --></p>
+<div id="child_page-439" class="child_page" style="width:100%;max-width:100%;">
+<div class="child_page-container">
+<div class="post_content"><a href="http://www.qamentor.com/testing-coverage/test-phases/module-components-integration-testing-phase/" class="excert_title">Module &#038; Components Integration Testing Phase</a>
+<div class="post_excerpt"><img src="http://qamentor.com/wp-content/uploads/2013/11/Module-Components-Integration-Testing.png" alt="Module-Components-Integration-Testing" width="100" height="100" class="alignleft size-full wp-image-1972" />After all units have been tested in isolation and verified working correctly, the third phase of testing begins: Integration Testing.  Module components are integrated and tested as assemblies to validate that all of the units work well together. This can be done by grouping units into assemblies according to functional areas and testing each assembly individually, or by doing incremental integration testing.<br><span id="rmore" style="float:right"><a href="http://www.qamentor.com/testing-coverage/test-phases/module-components-integration-testing-phase/" class="su-button su-button-style-glass" style="color:#fff;background-color:#112D42;border-color:#0e2435;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px" target="_self"><span style="color:#fff;padding:0px 13px;font-size:11px;line-height:22px;border-color:#586c7b;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px;text-shadow:0 0 1px #0a1b28;-moz-text-shadow:0 0 1px #0a1b28;-webkit-text-shadow:0 0 1px #0a1b28"> read more&#8230;</span></a></span></div>
+</div>
+<p><!-- .post_content  --></div>
+<p><!-- .child_page-container --></div>
+<p><!-- #child_page-439" --></p>
+<div id="child_page-442" class="child_page" style="width:100%;max-width:100%;">
+<div class="child_page-container">
+<div class="post_content"><a href="http://www.qamentor.com/testing-coverage/test-phases/system-system-integration-testing-phase/" class="excert_title">System &#038; System Integration Testing Phase</a>
+<div class="post_excerpt"><img src="http://qamentor.com/wp-content/uploads/2013/11/System-System-Integration-testing-phase.png" alt="System-&amp;-System-Integration-testing-phase" width="100" height="100" class="alignleft size-full wp-image-1974" />This testing phase is the big one, and unfortunately far too often, it’s the only testing phase utilized by pressured IT teams. All of the testing prior to this phase has been to help get the best possible code base into system testing. This phase generally takes the longest, is the best planned, and requires the most resources. <br><br><span id="rmore" style="float:right"><a href="http://www.qamentor.com/testing-coverage/test-phases/system-system-integration-testing-phase/" class="su-button su-button-style-glass" style="color:#fff;background-color:#112D42;border-color:#0e2435;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px" target="_self"><span style="color:#fff;padding:0px 13px;font-size:11px;line-height:22px;border-color:#586c7b;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px;text-shadow:0 0 1px #0a1b28;-moz-text-shadow:0 0 1px #0a1b28;-webkit-text-shadow:0 0 1px #0a1b28"> read more&#8230;</span></a></span></div>
+</div>
+<p><!-- .post_content  --></div>
+<p><!-- .child_page-container --></div>
+<p><!-- #child_page-442" --></p>
+<div id="child_page-444" class="child_page" style="width:100%;max-width:100%;">
+<div class="child_page-container">
+<div class="post_content"><a href="http://www.qamentor.com/testing-coverage/test-phases/user-acceptance-testing-phase/" class="excert_title">User Acceptance Testing Phase</a>
+<div class="post_excerpt"><img src="http://qamentor.com/wp-content/uploads/2013/11/User-Acceptance-Testing-Phase.png" alt="User-Acceptance-Testing-Phase" width="100" height="100" class="alignleft size-full wp-image-1976" />User Acceptance testing (UAT) is sometimes the final testing phase for many companies, and is occasionally referred to as Beta Testing. This phase determines if the end product is useful to the people that will be ultimately using the system, the end user. It’s very possible that an application could pass the system or functional testing yet fail in the UAT. <br><span id="rmore" style="float:right"><a href="http://www.qamentor.com/testing-coverage/test-phases/user-acceptance-testing-phase/" class="su-button su-button-style-glass" style="color:#fff;background-color:#112D42;border-color:#0e2435;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px" target="_self"><span style="color:#fff;padding:0px 13px;font-size:11px;line-height:22px;border-color:#586c7b;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px;text-shadow:0 0 1px #0a1b28;-moz-text-shadow:0 0 1px #0a1b28;-webkit-text-shadow:0 0 1px #0a1b28"> read more&#8230;</span></a></span></div>
+</div>
+<p><!-- .post_content  --></div>
+<p><!-- .child_page-container --></div>
+<p><!-- #child_page-444" --></p>
+<div id="child_page-446" class="child_page" style="width:100%;max-width:100%;">
+<div class="child_page-container">
+<div class="post_content"><a href="http://www.qamentor.com/testing-coverage/test-phases/production-verification-acceptance-testing-phase/" class="excert_title">Production Verification &#038; Acceptance Testing Phase</a>
+<div class="post_excerpt"><img src="http://qamentor.com/wp-content/uploads/2013/11/Production-Acceptance-Testing.png" alt="Production-Acceptance-Testing" width="100" height="100" class="alignleft size-full wp-image-1978" />After all other testing phases are completed and a build is released into production, the final phase begins. Production verification testing makes sure that the live build is working as intended in its new and final environment. Occasionally a build goes wrong and pieces aren’t applied correctly or are missed altogether. <br><br><span id="rmore" style="float:right"><a href="http://www.qamentor.com/testing-coverage/test-phases/production-verification-acceptance-testing-phase/" class="su-button su-button-style-glass" style="color:#fff;background-color:#112D42;border-color:#0e2435;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px" target="_self"><span style="color:#fff;padding:0px 13px;font-size:11px;line-height:22px;border-color:#586c7b;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px;text-shadow:0 0 1px #0a1b28;-moz-text-shadow:0 0 1px #0a1b28;-webkit-text-shadow:0 0 1px #0a1b28"> read more&#8230;</span></a></span></div>
+</div>
+<p><!-- .post_content  --></div>
+<p><!-- .child_page-container --></div>
+<p><!-- #child_page-446" -->
+</div></p>
+
+        </div>
+        
+    </div><!-- Page ID 311 -->
+            
+
+            
+        
+
+        </div><!-- #content -->
+
+    
+
+        
+<div id="sidebar-primary">
+<ul class="widget-container"><li id="spage1" class="widget advanced-sidebar-menu">
+
+<h2 class="widgettitle">
+Test Phases</h2>
+<ul class="child-sidebar-menu">
+<li class="page_item page-item-435"><a href="http://www.qamentor.com/testing-coverage/test-phases/static-testing-phase/">Static Testing Phase</a></li>
+<li class="page_item page-item-437"><a href="http://www.qamentor.com/testing-coverage/test-phases/module-unit-testing-phase/">Module &#038; Unit Testing Phase</a></li>
+<li class="page_item page-item-439"><a href="http://www.qamentor.com/testing-coverage/test-phases/module-components-integration-testing-phase/">Module &#038; Components Integration Testing Phase</a></li>
+<li class="page_item page-item-442"><a href="http://www.qamentor.com/testing-coverage/test-phases/system-system-integration-testing-phase/">System &#038; System Integration Testing Phase</a></li>
+<li class="page_item page-item-444"><a href="http://www.qamentor.com/testing-coverage/test-phases/user-acceptance-testing-phase/">User Acceptance Testing Phase</a></li>
+<li class="page_item page-item-446"><a href="http://www.qamentor.com/testing-coverage/test-phases/production-verification-acceptance-testing-phase/">Production Verification &#038; Acceptance Testing Phase</a></li>
+</ul>
+</li></ul>
+
+    			<div id="execphp-8" class="widget-1 first-widget widget widget_execphp">			
+			<div class="execphpwidget"><center><a href="//qamentor.com/qa-services/advisory-support-subscription-services/"><img src="//qamentor.com/wp-content/themes/BizCorp/includes/btn_09.png" onMouseOver="this.src='//qamentor.com/wp-content/themes/BizCorp/includes/btn-ro_09.png'" onMouseOut="this.src='//qamentor.com/wp-content/themes/BizCorp/includes/btn_09.png'" onfocus="this.src='//qamentor.com/wp-content/themes/BizCorp/includes/btn-ro_09.png'" onblur="this.src='//qamentor.com/wp-content/themes/BizCorp/includes/btn_09.png'" /></a><br />
+
+<a href="https://events.qamentor.com/" target="_blank"><img src="//qamentor.com/wp-content/themes/BizCorp/includes/btn_08.jpg" onMouseOver="this.src='//qamentor.com/wp-content/themes/BizCorp/includes/btn_ro_08.jpg'" onMouseOut="this.src='//qamentor.com/wp-content/themes/BizCorp/includes/btn_08.jpg'" onfocus="this.src='//qamentor.com/wp-content/themes/BizCorp/includes/btn_ro_08.jpg'" onblur="this.src='//qamentor.com/wp-content/themes/BizCorp/includes/btn_08.jpg'"/></a><br>
+<a href="//qamentor.com/qa-services/"><div class="imgqasrv" id="imgqasrv">&nbsp;</div></a>
+<a href="//qamentor.com/testing-coverage/"><div class="imgtestcvg" id="imgtestcvg">&nbsp;</div></a>
+<a href="//qamentor.com/wisdom-center/"><div class="imgvdmctr" id="imgvdmctr">&nbsp;</div></a>
+<a href="http://blog.qamentor.com/" target="_blank"><div class="imgblog" id="imgblog">&nbsp;</div></a>
+
+<a href=" https://www.linkedin.com/groups?home=&gid=8211205&trk=anet_ug_hm&goback=%2Eanp_8211205_1417660383050_1" target="_blank"><div class="imgqaforum" id="imgqaforum">&nbsp;</div></a>
+<a href="//qamentor.com/wisdom-center/case-studies/"><div class="imgcasestudy" id="imgcasestudy">&nbsp;</div></a>
+<a href="//qamentor.com/wisdom-center/white-papers/"><div class="imgwisdom" id="imgwisdom">&nbsp;</div></a>
+<a href="//qamentor.com/company/news-press-releases/"><div class="imgpress" id="imgpress">&nbsp;</div></a>
+<a href="//qamentor.com/careers/submit-resume/"><div class="imgsresume" id="imgsresume">&nbsp;</div></a>
+<!--<a href="#"><div class="imgjob" id="imgjob">&nbsp;</div></a>-->
+</center>
+<div style="padding-left:17px;">
+                            <div id="square_production_TestingWhiz" class="squareDemo squareDemo_production shape box maskImg" style="border-color: rgb(0, 0, 0); width: 180px; height: 185px; border-width: 0px; background: url(http://www.qamentor.com/wp-content/uploads/2015/04/Codeless-Automation-Tool-Free-Download_btn_01.jpg) 0% 0% / 100% no-repeat transparent;">
+                                <span class="textArea" style="height: 135px; width: 160px;"></span>
+                                <div entrance="effect" id="square-lit" class="squareLitDemo shape animated fadeOutUp" in="fadeInDown" out="fadeOutUp" style="height: 185px; width: 180px; top: 0px; margin-left: 0px; right: 0px; transform: rotate(0deg); background: url(http://www.qamentor.com/wp-content/uploads/2015/04/Codeless-Automation-Tool-Free-Download_btn_01.jpg) 0% 0% / 100% no-repeat transparent;">
+                                    <a class="title_2 title_link_out" href="http://www.testing-whiz.com/download?rcode=i0hB8CRZxHvAulpS" target="blank"><h3 class="title" style="transform: rotate(0deg); -webkit-transform: rotate(0deg);"></h3></a>
+                                    <hr class="divLit hidden">
+                                    <div class="textAreaWrapper" style="padding-right: 14px; transform: rotate(0deg); -webkit-transform: rotate(0deg);">
+                                        <span class="textArea" style="height: 185px; width: 160px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div style="background: transparent url(&quot;http://www.qamentor.com/wp-content/uploads/2015/10/70nemtqm.jpg&quot;) no-repeat scroll left top / 100% auto; border-color: rgb(0, 0, 0); width: 180px; height: 185px; border-width: 1px;" id="square_production_e-learning" class="squareDemo squareDemo_production shape box maskImg">
+                                <span style="height: 135px; width: 160px;" class="textArea"></span>
+                                <div out="fadeOutUp" in="fadeInDown" style="height: 185px; width: 180px; top: 0px; margin-left: 0px; right: 0px; transform: rotate(0deg); background: transparent url(&quot;http://www.qamentor.com/wp-content/uploads/2015/10/70nemtqm.jpg&quot;) no-repeat scroll left top / 100% auto;" entrance="effect" id="square-lit" class="squareLitDemo shape animated fadeOutUp">
+                                    <a target="blank" href="http://elearning.qamentor.com/" class="title_2 title_link_out"><h3 style="transform: rotate(0deg);" class="title"></h3></a>
+                                    <hr class="divLit hidden">
+                                    <div style="padding-right: 14px; transform: rotate(0deg);" class="textAreaWrapper">
+                                        <span style="height: 185px; width: 160px;" class="textArea"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+</div>
+		</div>			    
+</div>
+<!-- #sidebar-primary -->
+
+
+        
+
+        
+        
+
+    </div><!-- #main -->
+
+    
+
+
+
+
+
+    <div id="footer-widgets-container" class="clearfix">
+
+        <div id="footer-widgets" class="clearfix">
+
+            
+            <div class="footer-widget-box">
+
+                <ul class="widget-1 first-widget widget-container"><li id="shortcodes-ultimate-15" class="widget-1 first-widget widget shortcodes-ultimate"><h2 class="widgettitle">Who We Are</h2><div class="textwidget"><div class="su-list su-list-style-arrow"><ul>
+<li><a href="//qamentor.com/company/about-us/">About Us</a></li>
+<li><a href="//qamentor.com/company/message-from-our-ceo/">Message from our CEO</a></li>
+<li><a href="//qamentor.com/company/why-we-are-different/">Why We Are Different?</a></li>
+<li><a href="//qamentor.com/company/why-outsourcing/">Why Outsourcing?</a></li>
+<li><a href="//qamentor.com/company/mission-vision-values/">Mission, Vision & Values</a></li>
+<li><a href="//qamentor.com/company/management-team/">Management Team</a></li>
+<li><a href="//qamentor.com/company/clients/">Clients</a></li>
+<li><a href="//qamentor.com/company/partners/">Partners</a></li>
+<li><a href="//qamentor.com/company/global-presence/">Global Presence</a></li>
+</ul></div><div class="su-button-center"><a href="//qamentor.com/company/" class="su-button su-button-style-glass su-button-wide" style="color:#FFFFFF;background-color:#112D42;border-color:#0e2435;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px" target="_self"><span style="color:#FFFFFF;padding:0px 13px;font-size:11px;line-height:22px;border-color:#586c7b;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px;text-shadow:0 0 1px #0a1b28;-moz-text-shadow:0 0 1px #0a1b28;-webkit-text-shadow:0 0 1px #0a1b28"> More About Us</span></a></div></div></li></ul>
+            </div>
+
+            
+
+            <div class="footer-widget-box">
+
+                <ul class="widget-1 first-widget widget-container"><li id="shortcodes-ultimate-16" class="widget-1 first-widget widget shortcodes-ultimate"><h2 class="widgettitle">QA Services We Offer</h2><div class="textwidget"><div class="su-list su-list-style-arrow"><ul>
+<li><a href="//qamentor.com/qa-services/free-website-verification-testing-services/">Free Website Verification Testing</a></li>
+<li><a href="//qamentor.com/qa-services/advisory-support-subscription-services/">Advisory Support Subscription</a></li>
+<li><a href="//qamentor.com/qa-services/qa-automation-tool-expert-services/">QA Automation Tool Expert</a></li>
+<li><a href="//qamentor.com/qa-services/qa-manager-on-demand-services/">QA Manager on Demand</a></li>
+<li><a href="//qamentor.com/qa-services/qa-audit-services-2/">QA Audit & Process Improvement</a></li>
+<li><a href="//qamentor.com/qa-services/qa-recruitment-staffing-services/">QA Recruitment & Staffing</a></li>
+<li><a href="//qamentor.com/qa-services/qa-lab-compatibility-services/">QA Lab Compatibility</a></li>
+<li><a href="//qamentor.com/qa-services/qa-automation-tool-expert-services/">QA Automation Tool Expert</a></li>
+<li><a href="//qamentor.com/qa-services/test-data-management-services/">Test Data Management</a></li>
+</ul></div><div class="su-button-center"><a href="//qamentor.com/qa-services/" class="su-button su-button-style-glass su-button-wide" style="color:#FFFFFF;background-color:#112D42;border-color:#0e2435;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px" target="_self"><span style="color:#FFFFFF;padding:0px 13px;font-size:11px;line-height:22px;border-color:#586c7b;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px;text-shadow:0 0 1px #0a1b28;-moz-text-shadow:0 0 1px #0a1b28;-webkit-text-shadow:0 0 1px #0a1b28"> More Services</span></a></div></div></li></ul>
+            </div>
+
+            
+
+            <div class="footer-widget-box">
+
+                <ul class="widget-1 first-widget widget-container"><li id="shortcodes-ultimate-17" class="widget-1 first-widget widget shortcodes-ultimate"><h2 class="widgettitle">Testing We Perform</h2><div class="textwidget"><div class="su-list su-list-style-arrow"><ul>
+<li><a href="//qamentor.com/testing-coverage/functional-testing/automation-testing/">Automation Testing</a></li>
+<li><a href="//qamentor.com/testing-coverage/non-functional-testing/compatibility-testing/">Compatibility Testing</a></li>
+<li><a href="//qamentor.com/testing-coverage/functional-testing/database-testing/">Database Testing</a></li>
+<li><a href="//qamentor.com/testing-coverage/functional-testing/functional-testing/">Functional Testing</a></li>
+<li><a href="//qamentor.com/testing-coverage/functional-testing/integration-testing/">Integration Testing</a></li>
+<li><a href="//qamentor.com/testing-coverage/non-functional-testing/performance-testing/">Performance Testing</a></li>
+<li><a href="//qamentor.com/testing-coverage/functional-testing/regression-testing/">Regression Testing</a></li>
+<li><a href="//qamentor.com/testing-coverage/non-functional-testing/security-testing/">Security Testing</a></li>
+<li><a href="//qamentor.com/testing-coverage/non-functional-testing/static-testing/">Static Testing</a></li>
+</ul></div><div class="su-button-center"><a href="//qamentor.com/testing-coverage/" class="su-button su-button-style-glass su-button-wide" style="color:#FFFFFF;background-color:#112D42;border-color:#0e2435;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px" target="_self"><span style="color:#FFFFFF;padding:0px 13px;font-size:11px;line-height:22px;border-color:#586c7b;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px;text-shadow:0 0 1px #0a1b28;-moz-text-shadow:0 0 1px #0a1b28;-webkit-text-shadow:0 0 1px #0a1b28"> More Testing Coverage</span></a></div></div></li></ul>
+            </div>
+
+             <div class="footer-widget-box">
+
+                <ul class="widget-1 first-widget widget-container"><li id="shortcodes-ultimate-18" class="widget-1 first-widget widget shortcodes-ultimate"><h2 class="widgettitle">Methodology &amp; Our Deliverables</h2><div class="textwidget"><div class="su-list su-list-style-arrow"><ul>
+<li><a href="//qamentor.com/methodologies/automation-methodology/">Automation Methodology</a></li>
+<li><a href="//qamentor.com/methodologies/performance-testing-methodology/">Performance Testing</a></li>
+<li><a href="//qamentor.com/methodologies/static-testing-methodology/">Static Testing Methodology</a></li>
+<li><a href="//qamentor.com/methodologies/regression-testing-methodology/">Regression Testing Methodology</a></li>
+<li><a href="//qamentor.com/methodologies/compatibility-testing-methodology/">Compatibility Testing </a></li>
+<li><a href="//qamentor.com/methodologies/traceability-matrix-methodology/">Traceability Matrix Methodology</a></li>
+<li><a href="//qamentor.com/methodologies/security-testing-methodology/">Security Testing Methodology</a></li>
+<li><a href="//qamentor.com/wisdom-center/sample-deliverables-showcase/automation-test-plan/">Automation Test Plan</a></li>
+<li><a href="//qamentor.com/wisdom-center/sample-deliverables-showcase/defect-leakage-analysis/">Defect Leakage Analysis</a></li>
+</ul></div><div class="su-button-center"><a href="//qamentor.com/wisdom-center/sample-deliverables-showcase/" class="su-button su-button-style-glass su-button-wide" style="color:#FFFFFF;background-color:#112D42;border-color:#0e2435;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px" target="_self"><span style="color:#FFFFFF;padding:0px 13px;font-size:11px;line-height:22px;border-color:#586c7b;border-radius:21px;-moz-border-radius:21px;-webkit-border-radius:21px;text-shadow:0 0 1px #0a1b28;-moz-text-shadow:0 0 1px #0a1b28;-webkit-text-shadow:0 0 1px #0a1b28"> More Deliverables</span></a></div></div></li></ul>
+            </div>
+
+            <div class="footer-widget-box footer-widget-box-last">
+
+                <ul class="widget-1 first-widget widget-container"><li id="text-9" class="widget-1 first-widget widget widget_text"><h2 class="widgettitle">Try it now!</h2>			<div class="textwidget"><p><center><a href="//qamentor.com/contact-us/request-a-quote/"><img src="//qamentor.com/wp-content/themes/BizCorp/images/right-side-btn_01.png" onMouseOver="this.src='//qamentor.com/wp-content/themes/BizCorp/images/right-side-btn-rol_01.png'" onMouseOut="this.src='//qamentor.com/wp-content/themes/BizCorp/images/right-side-btn_01.png'" /></a><br />
+<a href="//qamentor.com/contact-us/request-for-free-pilot-project/"><img src="//qamentor.com/wp-content/themes/BizCorp/images/right-side-btn_02.png" border="0" onMouseOver="this.src='//qamentor.com/wp-content/themes/BizCorp/images/right-side-btn-rol_02.png'" onMouseOut="this.src='//qamentor.com/wp-content/themes/BizCorp/images/right-side-btn_02.png'" /></a><br />
+<a href="javascript:jivo_api.open();"><img src="//qamentor.com/wp-content/themes/BizCorp/images/right-side-btn_03.png" onMouseOver="this.src='//qamentor.com/wp-content/themes/BizCorp/images/right-side-btn-rol_03.png'" onMouseOut="this.src='//qamentor.com/wp-content/themes/BizCorp/images/right-side-btn_03.png'" /></a><br />
+<a href="//qamentor.com/contact-us/"><img src="//qamentor.com/wp-content/themes/BizCorp/images/right-side-btn_04.png" border="0" onMouseOver="this.src='//qamentor.com/wp-content/themes/BizCorp/images/right-side-btn-rol_04.png'" onMouseOut="this.src='//qamentor.com/wp-content/themes/BizCorp/images/right-side-btn_04.png'" /></a><br />
+</center></p>
+</div>
+		</li></ul>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    
+
+    <div id="footer-container">
+
+    
+
+        <div id="footer">
+
+        
+
+            <div id="copyrights">
+
+                © 2015 QA Mentor  |  <a href="//qamentor.com/copyright-notice/">Copyright Notice</a>  |  <a href="//qamentor.com/terms-conditions/">Terms & Conditions</a>  |  <a href="//qamentor.com/privacy-policy/">Privacy Policy</a>  |  <a href="//qamentor.com/wisdom-center/articles/">Articles</a>  |  <a href="http://blog.qamentor.com" target="_blank">Blog</a>  |  <a href="//qamentor.com/wisdom-center/case-studies/">Case Studies</a>  |  <a href="//qamentor.com/wisdom-center/white-papers/">White Papers</a>  |  <a href=" https://www.linkedin.com/groups?home=&gid=8211205&trk=anet_ug_hm&goback=%2Eanp_8211205_1417660383050_1" target="_blank">Forums</a>  |  <a href="//qamentor.com/company/news-press-releases/">News</a>  |  <a href="//qamentor.com/sitemap/">Site Map</a>  |  <a href="//qamentor.com/contact-us/contact-information/">Contact Us</a> 
+
+            </div>
+
+            
+
+            
+            
+
+          <div id="credits">Powered by <a href="http://wordpress.org/"><strong>WordPress</strong></a> | Theme Designed by: <a href="http://fthemes.com/">FThemes.com</a>  | Thanks to <a href="http://wordpress3themes.com/">WordPress 3.5 Themes</a>, <a href="http://free-wordpress-themes.com/">free-wordpress-themes.com</a> and <a href="http://wpthemely.com/">wpthemely.com</a></div><!-- #credits -->
+
+            
+
+        </div><!-- #footer -->
+
+</div>
+
+    </div>
+
+
+<script type="text/javascript"><!--
+wpa2a.targets=[
+{title:'Test Phases',url:'http://www.qamentor.com/testing-coverage/test-phases/'}];
+wpa2a.html_done=true;if(wpa2a.script_ready&&!wpa2a.done)wpa2a.init();wpa2a.script_load();
+//--></script>
+<script type="text/javascript">	jQuery(function () { jQuery('.nav-tabs a').click(function (e) { e.preventDefault();
+	jQuery(this).tab('show'); }) });
+
+</script><link rel='stylesheet' id='jquery.bxslider-css'  href='http://www.qamentor.com/wp-content/plugins/testimonials-widget/css/jquery.bxslider.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='Testimonials_Widget-css'  href='http://www.qamentor.com/wp-content/plugins/testimonials-widget/testimonials-widget.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='su-galleries-shortcodes-css'  href='http://www.qamentor.com/wp-content/plugins/shortcodes-ultimate/assets/css/galleries-shortcodes.css?ver=4.2.2' type='text/css' media='all' />
+<link rel='stylesheet' id='su-content-shortcodes-css'  href='http://www.qamentor.com/wp-content/plugins/shortcodes-ultimate/assets/css/content-shortcodes.css?ver=4.2.2' type='text/css' media='all' />
+<link rel='stylesheet' id='su-box-shortcodes-css'  href='http://www.qamentor.com/wp-content/plugins/shortcodes-ultimate/assets/css/box-shortcodes.css?ver=4.2.2' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/ax-scrollto-top/js/ax-scrollto-top.js?ver=1.0.0'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-includes/js/hoverIntent.min.js?ver=r6'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/testimonials-widget/js/jquery.bxslider.js?ver=4.1.1'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/easy-fancybox/fancybox/jquery.fancybox-1.3.6.pack.js?ver=1.5.6'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/easy-fancybox/jquery.easing.pack.js?ver=1.3'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/easy-fancybox/jquery.mousewheel.pack.js?ver=3.1.3'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/shortcodes-ultimate/assets/js/swiper.js?ver=4.2.2'></script>
+<script type='text/javascript' src='http://www.qamentor.com/wp-content/plugins/shortcodes-ultimate/assets/js/galleries-shortcodes.js?ver=4.2.2'></script>
+<script type="text/javascript">
+var tw_slider_100000 = null;
+
+jQuery(document).ready(function() {
+	tw_slider_100000 = jQuery('.testimonials-widget-testimonials100000').bxSlider({
+		auto: true,
+		
+		autoHover: true,
+		controls: false,
+		mode: 'fade',
+		pager: false,
+		pause: 10000,
+		video: false,
+		slideMargin: 2
+	});
+});
+
+</script>
+<script type="text/javascript">
+jQuery(document).on('ready post-load', easy_fancybox_handler );
+</script>
+<a href="#" id="axScrollTo" class="axScrollToTop" ><img src="http://www.qamentor.com/wp-content/plugins/ax-scrollto-top/images/1.png"></a>
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+jQuery.noConflict();
+jQuery(function(){ 
+	jQuery('ul.menu-primary').superfish({ 
+	animation: {height:'show'},
+autoArrows:  true,
+                dropShadows: false, 
+                speed: 600,
+                delay: 800
+                });
+            });
+jQuery('.menu-primary-container').mobileMenu({
+                defaultText: 'Menu',
+                className: 'menu-primary-responsive',
+                containerClass: 'menu-primary-responsive-container',
+                subMenuDash: '&ndash;'
+            });
+
+/* ]]> */
+</script>
+<!-- BEGIN JIVOSITE CODE {literal} -->
+
+<script type='text/javascript'>
+
+(function(){ var widget_id = '112009';
+
+var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
+
+<!-- {/literal} END JIVOSITE CODE -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56811216-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+</body>
+</html>

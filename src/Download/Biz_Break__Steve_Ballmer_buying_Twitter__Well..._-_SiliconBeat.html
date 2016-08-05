@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQYCUFJVDRAHU1hQAAkH"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(s){try{i("ierr",[s,(new Date).getTime(),!0])}catch(c){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=window.onerror,u=!1,d=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),u=!0)}s.on("fn-start",function(t,e,n){u&&(d+=1)}),s.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),s.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),s.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState";t("loader").features.stn=!0,t(6);var g=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof g&&(this.bstStart=Date.now())}),o.on(w,function(t,e){var n=t[0];n instanceof g&&i("bst",[n,e,this.bstStart,Date.now()])}),a.on(m,function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),a.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),this.bstType])}),s.on(m,function(){this.bstStart=Date.now()}),s.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=Date.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,!1),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(17)(a),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=c(n,"nr@wrapped",function(){return s(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&s.inPlace(n,["handleEvent"],"fn-")}}),a.on(d+"-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],6:[function(t,e,n){var r=t("ee").get("history"),o=t(17)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,e,n){var r=t("ee").get("raf"),o=t(17)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(17)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",s)}function i(t){v.push(t),h&&(g=-g,b.data=g)}function a(){for(var t=0;t<v.length;t++)r([],v[t]);v.length&&(v=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t(17)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],v=[];e.exports=u;var y=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,y),y.prototype=p.prototype,d.inPlace(y.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var g=1,b=document.createTextNode(g);new h(a).observe(b,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],10:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var a=0;a<d;a++)e.addEventListener(u[a],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],11:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],12:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(15),s=t(16),c=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var u=["setPageViewName","setCustomAttribute","finished","addToTrace","inlineHit"],d="api-",l=d+"ixn-";a(u,function(t,e){f[e]=o(d+e,!0,"api")}),f.addPageAction=o(d+"addPageAction",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var p=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{c.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){p[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],13:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],14:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],15:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],16:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],17:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],s])}f(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],s),l}finally{f(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!c){c=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}c=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),s=a.length,c=0;c<s;c++)a[c].apply(i,r);var u=f[w[n]];return u&&u.push([v,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){c(t,function(t,n){e=e||"feature",w[n]=e,e in f||(f[e]=[])})}var m={},w={},v={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return v}function i(){return new r}var a="nr@context",s=t("gos"),c=t(15),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!g++){var t=y.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(w,function(e,n){t[e]||(t[e]=n)});var n="https"===m.split(":")[0]||t.sslForHttp;y.proto=n?"https://":"http://",s("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=y.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){s("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var s=t("handle"),c=t(15),f=window,u=f.document,d="addEventListener",l="attachEvent",p=f.XMLHttpRequest,h=p&&p.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:p,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(12);var m=""+location,w={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-963.min.js"},v=p&&h&&h[d]&&!/CriOS/.test(navigator.userAgent),y=e.exports={offset:a(),origin:m,features:{},xhrWrappable:v};u[d]?(u[d]("DOMContentLoaded",i,!1),f[d]("load",r,!1)):(u[l]("onreadystatechange",o),f[l]("onload",r)),s("mark",["firstbyte",a()],null,"api");var g=0},{}]},{},["loader",2,10,4,3]);</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>Biz Break: Steve Ballmer buying Twitter? Well...</title>
+
+	<link rel="stylesheet" type="text/css" href="http://www.siliconbeat.com/wp-content/themes/erudito-child/style.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700" />
+    
+    <link rel="pingback" href="http://www.siliconbeat.com/xmlrpc.php" />
+
+    
+
+<script type="text/javascript">
+var TB_pluginPath = 'http://www.siliconbeat.com/wp-content/plugins/tweet-blender', TB_C_pluginPath = 'http://www.siliconbeat.com/wp-content/plugins/tweet-blender-charts';
+var TB_config = {
+'widget_check_sources':true,
+'rate_limit_data':'Array',
+'ajax_url':'http://www.siliconbeat.com/wp-admin/admin-ajax.php'
+}</script>
+
+<link rel="canonical" href="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/" />
+<!-- This site is optimized with the Yoast SEO plugin v3.3.4 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Biz Break: Steve Ballmer buying Twitter? Well..." />
+<meta property="og:description" content="Top Of The Order:   Rumor Has It: The tech sector runs on rumors, speculation and reports from unnamed sources. Sometimes, those rumors end up being based in fact (Verizon &hellip;" />
+<meta property="og:url" content="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/" />
+<meta property="og:site_name" content="SiliconBeat" />
+<meta property="article:tag" content="acquisition" />
+<meta property="article:tag" content="linkedin" />
+<meta property="article:tag" content="Microsoft" />
+<meta property="article:tag" content="Rumor" />
+<meta property="article:tag" content="Steve Ballmer" />
+<meta property="article:tag" content="tesla" />
+<meta property="article:tag" content="twitter" />
+<meta property="article:tag" content="Uber" />
+<meta property="article:section" content="Biz Break" />
+<meta property="article:published_time" content="2016-08-03T14:56:32-07:00" />
+<meta property="og:image" content="http://www.siliconbeat.com/wp-content/uploads/2016/07/554131459.jpg" />
+<meta property="og:image:width" content="5763" />
+<meta property="og:image:height" content="3795" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="Top Of The Order:   Rumor Has It: The tech sector runs on rumors, speculation and reports from unnamed sources. Sometimes, those rumors end up being based in fact (Verizon [&hellip;]" />
+<meta name="twitter:title" content="Biz Break: Steve Ballmer buying Twitter? Well..." />
+<meta name="twitter:image" content="http://www.siliconbeat.com/wp-content/uploads/2016/07/554131459.jpg" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="SiliconBeat &raquo; Feed" href="http://www.siliconbeat.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="SiliconBeat &raquo; Comments Feed" href="http://www.siliconbeat.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="SiliconBeat &raquo; Biz Break: Steve Ballmer buying Twitter? Well&#8230; Comments Feed" href="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.siliconbeat.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=e9d0cdd20f50b23bd7820b40f6ce47c4"}};
+			!function(a,b,c){function d(a){var c,d,e,f=b.createElement("canvas"),g=f.getContext&&f.getContext("2d"),h=String.fromCharCode;if(!g||!g.fillText)return!1;switch(g.textBaseline="top",g.font="600 32px Arial",a){case"flag":return g.fillText(h(55356,56806,55356,56826),0,0),f.toDataURL().length>3e3;case"diversity":return g.fillText(h(55356,57221),0,0),c=g.getImageData(16,16,1,1).data,d=c[0]+","+c[1]+","+c[2]+","+c[3],g.fillText(h(55356,57221,55356,57343),0,0),c=g.getImageData(16,16,1,1).data,e=c[0]+","+c[1]+","+c[2]+","+c[3],d!==e;case"simple":return g.fillText(h(55357,56835),0,0),0!==g.getImageData(16,16,1,1).data[0];case"unicode8":return g.fillText(h(55356,57135),0,0),0!==g.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='slideshow-css'  href='http://www.siliconbeat.com/wp-content/plugins/slideshow/slideshow.css?ver=0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wpz-shortcodes-css'  href='http://www.siliconbeat.com/wp-content/themes/erudito/functions/wpzoom/assets/css/shortcodes.css?ver=e9d0cdd20f50b23bd7820b40f6ce47c4' type='text/css' media='all' />
+<link rel='stylesheet' id='zoom-font-awesome-css'  href='http://www.siliconbeat.com/wp-content/themes/erudito/functions/wpzoom/assets/css/font-awesome.min.css?ver=e9d0cdd20f50b23bd7820b40f6ce47c4' type='text/css' media='all' />
+<link rel='stylesheet' id='wzslider-css'  href='http://www.siliconbeat.com/wp-content/themes/erudito/functions/wpzoom/assets/css/wzslider.css?ver=e9d0cdd20f50b23bd7820b40f6ce47c4' type='text/css' media='all' />
+<link rel='stylesheet' id='wpzoom-theme-css'  href='http://www.siliconbeat.com/wp-content/themes/erudito/styles/blue.css?ver=e9d0cdd20f50b23bd7820b40f6ce47c4' type='text/css' media='all' />
+<link rel='stylesheet' id='wpzoom-custom-css'  href='http://www.siliconbeat.com/wp-content/themes/erudito/custom.css?ver=e9d0cdd20f50b23bd7820b40f6ce47c4' type='text/css' media='all' />
+<link rel='stylesheet' id='social-logos-css'  href='http://www.siliconbeat.com/wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='http://www.siliconbeat.com/wp-content/plugins/jetpack/css/jetpack.css?ver=4.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='tb-css-css'  href='http://www.siliconbeat.com/wp-content/plugins/tweet-blender/css/tweets.css?ver=e9d0cdd20f50b23bd7820b40f6ce47c4' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.siliconbeat.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://www.siliconbeat.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='http://local.digitalfirstmedia.com/common/dfm/assets/js/dfm-core-level1.min.js?ver=1.0'></script>
+<script type='text/javascript' src='http://www.siliconbeat.com/wp-content/plugins/wp-featured-content-slider/scripts/jquery.cycle.all.2.72.js?ver=1.3'></script>
+<script type='text/javascript' src='http://www.siliconbeat.com/wp-content/themes/erudito/js/init.js?ver=e9d0cdd20f50b23bd7820b40f6ce47c4'></script>
+<link rel='https://api.w.org/' href='http://www.siliconbeat.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.siliconbeat.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.siliconbeat.com/wp-includes/wlwmanifest.xml" /> 
+
+<link rel='shortlink' href='http://wp.me/p2Eoq6-sW8' />
+<link rel="alternate" type="application/json+oembed" href="http://www.siliconbeat.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.siliconbeat.com%2F2016%2F08%2F03%2Fbiz-break-steve-ballmer-buying-twitter-well%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.siliconbeat.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.siliconbeat.com%2F2016%2F08%2F03%2Fbiz-break-steve-ballmer-buying-twitter-well%2F&#038;format=xml" />
+
+    <script type="text/javascript" src="http://local.denverpost.com/common/dfm/dfm-core.js"></script>
+    <!-- DFM API -->
+    <script type="text/javascript">
+        dfm.api("data","siteId",            "");
+        dfm.api("data","company",           "");
+        dfm.api("data","siteName",          "SiliconBeat");
+        dfm.api("data","siteDomain",        "SiliconBeat");
+        dfm.api("data","currentDomain",     "siliconbeat.com");
+        dfm.api("data","contentId",         "");
+        dfm.api("data","sectionName",       "Biz Break");
+        dfm.api("data","pageID",            "");
+        dfm.api("data","pageUrl",           "/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/");
+        dfm.api("data","pageTitle",         "Biz Break: Steve Ballmer buying Twitter? Well&#8230;");
+        dfm.api("data","sectionId",         "");
+        dfm.api("data","keywords",          "");
+        dfm.api("data","adTaxonomy",        "");
+        dfm.api("data","Taxonomy1",         "Blogs");
+        dfm.api("data","Taxonomy2",         "Biz Break");
+        dfm.api("data","Taxonomy3",         "");
+        dfm.api("data","Taxonomy4",         "");
+        dfm.api("data","kv",                "Biz Break");
+        dfm.api("data","googleUA",          "UA-61435456-5");
+        dfm.api("data","contentGeography",  "");
+        dfm.api("data","contentRegion",     "");
+        dfm.api("data","contentPostalCode", "");
+        dfm.api("data","contentPrice",      "");
+        dfm.api("data","contentChannel",    "");
+        dfm.api("data","contentType",       "");
+        dfm.api("data","contentCity",       "");
+        //Extra
+        dfm.api("data","errorType",         "");
+        dfm.api("data","pageType",          "");
+        dfm.api("data", "quantcast",        "p-4ctCQwtnNBNs2");
+        dfm.api("data", "comscore",         "6035443");
+    </script>
+    
+
+		<!-- GTM Data Layer -->
+		<script type="text/javascript">
+		  var dfm_gtm_dataLayer = true;
+
+		var dfm_gtm_publisherproduct = dfm.api("data","currentDomain");
+		var dataLayer_gaua = dfm.api("data", "googleUA");
+		var dataLayer_digitalpublisher = dfm.api("data", "company");
+		var dataLayer_taxonomy1 = dfm.api("data","Taxonomy1");
+		var dataLayer_taxonomy2 = dfm.api("data","Taxonomy2");
+		var dataLayer_quantcast = dfm.api("data", "quantcast");
+		var dataLayer_comscore = dfm.api("data", "comscore");
+
+		  analyticsEvent = function() {};
+		  analyticsSocial = function() {};
+		  analyticsVPV = function() {};
+		  analyticsClearVPV = function() {};
+		  analyticsForm = function() {};
+		  window.dataLayer = window.dataLayer || [];
+		  (function() {
+		    window.gaJsonData = window.gaJsonData || [];
+		    var gaTempJson = {
+		      "comscore": "",
+		      "pubplatform": "WP",
+		      "releaseversion": "",
+		      "digitalpublisher": "",
+		      "publisherstate": ""
+		    };
+		    gaJsonData.push(gaTempJson);
+		    var data = gaJsonData[0];
+		    var json = {
+		      "gaua": function() {
+		        return data.gaua;
+		      },
+		      "quantcast": function () {
+		        return data.quantcast;
+		      },
+		      "comscore": function() {
+		        return data.comscore;
+		      },
+		      "pubplatform": function() {
+		        return data.pubplatform;
+		      },
+		      "releaseversion": function() {
+		        return data.releaseversion;
+		      },
+		      "digitalpublisher": function() {
+		        return data.digitalpublisher;
+		      },
+		      "publisherstate": function() {
+		        return data.publisherstate;
+		      }
+		    };
+		    /*
+		      Error type
+		    */
+		     var dataLayer_error = dfm.api("data","errorType");
+		    /*
+		      ga_ua
+		    */
+		    //var dataLayer_gaua = json["gaua"]();
+		    /*
+		      quantcast
+		    */
+		    //var dataLayer_quantcast = json["quantcast"]();
+		    /*
+		      comscore
+		    */
+		    //var dataLayer_comscore = json["comscore"]();
+		    /*
+		      Release Version
+		    */
+		    var dataLayer_releaseversion = json["releaseversion"]();
+		    /*
+		      Digital Publisher
+		    */
+		    //var dataLayer_digitalpublisher = json["digitalpublisher"]();
+		    /*
+		      Platform
+		    */
+		    var dataLayer_pubplatform = json["pubplatform"]();
+		    /*
+		      Publisher State
+		    */
+		    var dataLayer_publisherstate = json["publisherstate"]();
+		    // Push the values into the dataLayer
+		    dataLayer.push({
+		      "errorType":dataLayer_error,
+		      "ga_ua":dataLayer_gaua,
+		      "quantcast":dataLayer_quantcast,
+		      "comscore":dataLayer_comscore,
+		      "Release Version":dataLayer_releaseversion,
+		      "Digital Publisher":dataLayer_digitalpublisher,
+		      "Platform":dataLayer_pubplatform,
+		      "Publisher State":dataLayer_publisherstate
+		    });
+		  }()); 
+		</script>
+
+		<!-- GA global -->
+		<script type="text/javascript" src="http://local.medianewsgroup.com/common/dfm/ga-datalayer.js"></script>
+        <!-- Google Tag Manager dfm -->
+        <noscript>
+            <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TLFP4R" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-TLFP4R');</script>
+        <!-- End Google Tag Manager --><!-- BEGIN wp-parsely Plugin Version 1.9 -->
+<meta name='wp-parsely_version' id='wp-parsely_version' content='1.9' />
+   <script type="application/ld+json">
+   {"@context":"http:\/\/schema.org","@type":"NewsArticle","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/www.siliconbeat.com\/2016\/08\/03\/biz-break-steve-ballmer-buying-twitter-well\/"},"headline":"Biz Break: Steve Ballmer buying Twitter? Well&#8230;","url":"http:\/\/www.siliconbeat.com\/2016\/08\/03\/biz-break-steve-ballmer-buying-twitter-well\/","thumbnailUrl":"http:\/\/www.siliconbeat.com\/wp-content\/uploads\/2016\/07\/554131459-350x230.jpg","image":{"@type":"ImageObject","url":"http:\/\/www.siliconbeat.com\/wp-content\/uploads\/2016\/07\/554131459-350x230.jpg"},"dateCreated":"2016-08-03T21:56:32Z","datePublished":"2016-08-03T21:56:32Z","dateModified":"2016-08-03T14:56:32Z","articleSection":"Biz Break","author":[{"@type":"Person","name":"Rex Crum"}],"creator":["Rex Crum"],"publisher":{"@type":"Organization","name":"SiliconBeat"},"keywords":["acquisition","linkedin","microsoft","rumor","steve ballmer","tesla","twitter","uber"]}   </script>
+<!-- END wp-parsely Plugin Version 1.9 -->
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<!-- WPZOOM Theme / Framework -->
+<meta name="generator" content="SiliconBeat's Erudito Child Theme 1.01" />
+<meta name="generator" content="WPZOOM Framework 1.4.8" />
+<style type="text/css"></style>
+<script type="text/javascript">document.write('<style type="text/css">.tabber{display:none;}</style>');</script><style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style><meta name="google-site-verification" content="uhWFzvcHoaF05-ERyNQjzCLgoR4J_UcW-xDTVipK3nE" />
+
+<style>
+#top-menu li.social-icons { display: none; }
+</style>
+
+<!-- chartBeat
+<script type="text/javascript" src="http://extras.mercurynews.com/scripts/chartbeat_load_for_blogs.js"></script>
+-->
+
+<script type="text/javascript">
+var _sf_startpt=(new Date()).getTime();
+var _sf_async_config={};
+
+jQuery(document).ready(function () {	
+	/** CONFIGURATION START **/
+	_sf_async_config.uid = 53628;
+	_sf_async_config.domain = 'mercurynews.com';
+	_sf_async_config.useCanonical = true;
+	_sf_async_config.sections = 'blogs';
+	_sf_async_config.title = '[blog] '+ jQuery('h1.title').text();	
+	/** CONFIGURATION END **/
+	(function(){
+	  function loadChartbeat() {
+	    window._sf_endpt=(new Date()).getTime();
+	    var e = document.createElement('script');
+	    e.setAttribute('language', 'javascript');
+	    e.setAttribute('type', 'text/javascript');
+	    e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');
+	    document.body.appendChild(e);
+	  }
+	  var oldonload = window.onload;
+	  window.onload = (typeof window.onload != 'function') ?
+	     loadChartbeat : function() { oldonload(); loadChartbeat(); };
+	});
+});
+/** END CHARTBEAT **/
+</script>
+
+<!-- NDN -->
+<script type="text/javascript" async src="http://launch.newsinc.com/js/embed.js" id="_nw2e-js"></script></head>
+<body class="single single-post postid-111236 single-format-standard">
+
+
+    <!-- begin blog_MN-Business 728x90 Ad Tag -->
+    <script type='text/javascript'>
+    (function() {
+    var useSSL = 'https:' == document.location.protocol;
+    var src = (useSSL ? 'https:' : 'http:') +
+    '//www.googletagservices.com/tag/js/gpt.js';
+    document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+    })();
+    </script>
+    <div id='div-gpt-ad-1364842121944-3' style="margin:12px 0 33px;">
+    <script type='text/javascript'>
+    var mappingLeederbord = googletag.sizeMapping().
+      //addSize([1024, 768], [970, 250]).
+      addSize([640, 480], [728, 90]).
+      addSize([1, 1], [320, 50]).
+      // Fits browsers of any size smaller than 640 x 480
+      build();
+
+    googletag.defineSlot('/8013/mercurynews.com/Business', [[320, 50], [728, 90]], 'div-gpt-ad-1364842121944-3').setTargeting('pos', 'top_leaderboard').defineSizeMapping(mappingLeederbord).setTargeting('kv', 'business').addService(googletag.pubads());
+
+    googletag.pubads().enableSyncRendering();
+    googletag.enableServices();
+
+    googletag.display('div-gpt-ad-1364842121944-3');
+    </script>
+    </div>
+    <!-- end 728x90 Ad Tag -->
+
+
+<div id="container">
+
+	<div class="wrapper wrapper-main">
+	
+		<header>
+
+			<div id="logo">
+
+								
+				<a href="http://www.siliconbeat.com" title="What&#039;s next in tech">
+											<img src="http://www.siliconbeat.com/wp-content/uploads/2013/03/SiliconBeat_header_559x124.jpg" alt="SiliconBeat" />
+									</a>
+				
+				
+				
+			</div><!-- end #logo -->
+			
+			
+			<nav id="top-menu">
+
+								
+				<ul><li id="menu-item-37722" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37722"><a href="http://www.siliconvalley.com">SiliconValley.com</a></li>
+<li id="menu-item-37723" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37723"><a href="https://twitter.com/siliconbeat">Twitter</a></li>
+<li id="menu-item-37724" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37724"><a href="http://www.facebook.com/pages/SiliconBeat/324955307584131">Facebook</a></li>
+<li id="menu-item-37725" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37725"><a href="https://plus.google.com/+Siliconbeat/posts">Google+</a></li>
+<li id="menu-item-37726" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37726"><a href="http://feeds.feedburner.com/SiliconbeatTech">RSS</a></li>
+<li class="social-icons"><a href="http://www.siliconbeat.com/feed/" rel="external,nofollow"><img src="http://www.siliconbeat.com/wp-content/themes/erudito/images/icons/rss_small.png" width="16" height="16" alt="" /></a></li></ul>			</nav><!-- end #top-menu -->
+			
+			
+			<div class="cleaner">&nbsp;</div>
+		
+		</header>
+		
+				
+				<nav id="main-menu">
+
+
+			<ul class="dropdown"><li id="menu-item-7728" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7728"><a href="http://www.siliconbeat.com/category/social/">Social</a></li>
+<li id="menu-item-7484" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7484"><a href="http://www.siliconbeat.com/category/web/">Web</a></li>
+<li id="menu-item-7399" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7399"><a href="http://www.siliconbeat.com/category/mobile-2/">Mobile</a></li>
+<li id="menu-item-7401" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7401"><a href="http://www.siliconbeat.com/category/cloud/">Cloud</a></li>
+<li id="menu-item-7397" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7397"><a href="http://www.siliconbeat.com/category/gadgets/">Gadgets</a></li>
+<li id="menu-item-7398" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7398"><a href="http://www.siliconbeat.com/category/clean_tech/">Cleantech</a></li>
+<li id="menu-item-7403" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7403"><a href="http://www.siliconbeat.com/category/venturecapital/">VC</a></li>
+<li id="menu-item-7482" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7482"><a href="http://www.siliconbeat.com/category/big-data/">Data</a></li>
+<li id="menu-item-7487" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7487"><a href="http://www.siliconbeat.com/category/games/">Games</a></li>
+<li id="menu-item-37643" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37643"><a href="http://www.siliconbeat.com/category/government-policy/">Policy</a></li>
+<li id="menu-item-37820" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37820"><a href="http://www.siliconbeat.com/category/media/">Media</a></li>
+<li class="cleaner">&nbsp;</li></ul>			
+		</nav><!-- end #main-menu -->
+				
+		
+<div id="main" class="single-post">
+
+	<div id="content">
+	
+		<div class="wrapper-content">
+		
+						
+			<h1 class="title title-large">Biz Break: Steve Ballmer buying Twitter? Well&#8230;</h1>
+			<p class="postmetadata">By <a href="http://www.siliconbeat.com/author/rex-crum/" title="Posts by Rex Crum" rel="author">Rex Crum</a>						 / <time datetime="2016-08-03" pubdate>August 3, 2016 at 2:56 PM</time>						</p>
+			
+			<div class="post-content">
+				<img src="http://www.siliconbeat.com/wp-content/uploads/2016/07/554131459.jpg" width="100%" /><!-- AddThis Sharing Buttons above --><div class='at-above-post addthis_default_style addthis_toolbox at-wordpress-hide' data-title='Biz Break: Steve Ballmer buying Twitter? Well&#8230;' data-url='http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/'></div><p><strong>Top Of The Order:  </strong></p>
+<p><strong>Rumor Has It:</strong> The tech sector runs on rumors, speculation and reports from unnamed sources. Sometimes, those rumors end up being based in fact (Verizon bidding to buy Yahoo, for instance), and sometimes they end up just seeming to come out of nowhere and end up being nothing more than wild hopes that never have a chance of becoming reality.</p>
+<p>Enter Twitter, and an unexpected rise in its stock price Wednesday that lifted its shares by more than 7 percent, to close at $17.61. The company said nothing Wednesday, and really hasn&#8217;t said anything since <a href="http://www.mercurynews.com/business/ci_30171699/twitters-stock-falls-after-second-quarter-revenue-miss">it gave a disappointing second-quarter earnings report</a> in late July. And yet, there was that stock surge that happened early in the day and left many wondering just what was up with the micro-blogging and social media company.</p>
+<p>Maybe someone wanted to buy Twitter? After all, there has been speculation that <a href="http://www.siliconbeat.com/2016/06/07/twitter-sale-inevitable-company-continues-struggle-analyst-says/">Twitter could be an acquisition target</a>, especially since Microsoft bought LinkedIn for $26.2 billion in June. Acquisition rumors almost always result in a boost to the shares of the company that is rumored to be possibly acquired. And on Wednesday, that rumor involved Steve Ballmer.</p>
+<p>Yes, Steve Ballmer, the former Microsoft chief executive, who now spends much of his time overseeing his Los Angeles Clippers NBA team. A rumor worked its way around that Ballmer, and Saudi Arabian prince Al-waleed Bin-Talal, were interested in putting together a bid to buy Twitter. Such a possibility had more teeth than most rumors, as Ballmer said last fall that he had already acquired a 4 percent stake in Twitter. Might Ballmer be up for buying the rest of the company?</p>
+<p>Well, as the day went on, <a href="http://www.businessinsider.com/steve-ballmer-twitter-rumor-dismissed-2016-8">the possibility of Ballmer buying Twitter began to fall by the wayside</a>. Analysts told TV hosts that the likelihood of Ballmer acquiring Twitter was between &#8220;Not gonna happen&#8221; and &#8220;REALLY not gonna happen.&#8221; The price just might be too high for even a guy of Ballmer&#8217;s means. Twitter&#8217;s shares still ended the day with a nice gain, which, depending on what investors think about the company, may disappear quickly as it arrived.</p>
+<p><strong>Middle Innings:</strong></p>
+<p><strong>Watch That Door On The Way Out:</strong> Just two days ago, Uber raised the white flag in China, when it said it would sell its business in China to rival Didi Chuxing, and take a 20 percent stake in that company. Now, Uber might be about to be shown the door in another Asian country.</p>
+<p>In Taiwan, that nation&#8217;s Investment Commission said it is on the brink of ordering Uber to get out of the island country. The <a href="http://www.reuters.com/article/us-taiwan-uber-idUSKCN10E07N">Commission alleges that Uber has misrepresented its business</a> by calling itself an information technology platform instead of a transportation service.</p>
+<p>Uber has been offering its services in Taiwan for three years. And like many places where Uber operates, it has been the subject of protests and complaints from taxi drivers and some governmental groups in Taiwan over its business practices. The Investment Commission in Taiwan is supposed to make a decision about Uber in the country by Aug. 11.</p>
+<p><strong>Out Of Gas?:</strong> Well, you can&#8217;t really say Tesla is out of gas, as its cars runs on batteries and not fossil fuels. But the electric carmaker set itself up for a backlash from its investors after a disappointing quarterly business report. At the heart of Tesla&#8217;s results <a href="http://www.mercurynews.com/business/ci_30202933/tesla-earnings-disappoint">was a loss, excluding one-time items, of $2.09 a share</a>, while Wall Street analysts had forecast Tesla to lose 94 cents a share.</p>
+<p><strong>Bottom Of The Lineup:</strong></p>
+<p>Here’s a look at how some leading Silicon Valley stocks did Wednesday&#8230;</p>
+<p><strong>Movin’ On Up: </strong>Gains came from Oclaro, NeoPhotonics, FormFactor, Nimble Storage and GoPro.</p>
+<p><strong>In The Red</strong>: Decliners included Integrated Device Technology, A10 Networks, Tessera Technologies, Glu Mobile and Super Micro Computer.</p>
+<p>The tech-focused<strong> </strong><strong>Nasdaq Composite Index</strong><strong> </strong>rose 0.4 percent to 5,159.</p>
+<p>The blue chip<strong> </strong><strong>Dow Jones Industrial Average</strong><strong> </strong>rose 0.2 percent to end the day at 18,355.</p>
+<p>And the broad-based<strong> </strong><strong>Standard &amp; Poor’s 500 Index</strong><strong> </strong>gained 0.3 percent to finish at 2,163.</p>
+<p><strong>Quote Of The Day:</strong><strong> </strong>&#8220;It’s not a great feeling, but we kind of put ourselves in this position.&#8221; &#8212; Oakland A&#8217;s manager Bob Melvin, when asked how he felt about the team trading outfielder Josh Reddick to the Los Angeles Dodgers.</p>
+<p>Sign up for the 60-Second Business Break newsletter at <a href="http://www.siliconvalley.com/"><strong>www.siliconvalley.com</strong></a>.</p>
+<p><em>Photo: The logo of social networking website &#8216;Twitter&#8217; is displayed on a computer screen. Twitter&#8217;s shares surged Wednesday on a rumor that former Microsoft CEO Steve Ballmer might be looking to acquire the social-media company. (Leon Neal/AFP/Getty Images) </em></p>
+<!-- AddThis Sharing Buttons below --><div class='at-below-post addthis_default_style addthis_toolbox at-wordpress-hide' data-title='Biz Break: Steve Ballmer buying Twitter? Well&#8230;' data-url='http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/'></div><!-- AddThis Recommended Content below --> <div class='at-below-post-recommended addthis_default_style addthis_toolbox at-wordpress-hide'></div><script type="text/javascript"> jQuery.ajax({
+							url: "http://www.siliconbeat.com/",
+							data: {
+								top_ten_id: 111236,
+								top_ten_blog_id: 1,
+								activate_counter: 10,
+								top10_rnd: (new Date()).getTime() + "-" + Math.floor(Math.random() * 100000)
+							}
+						}); </script><div class="tptn_counter" id="tptn_counter_111236"><script type="text/javascript" data-cfasync="false" src="http://www.siliconbeat.com/?top_ten_id=111236&amp;view_counter=1&amp;_wpnonce=d4e3301b91"></script></div><script data-cfasync="false" type="text/javascript"></script>
+                <!-- AddThis Settings Begin -->
+                <script data-cfasync="false" type="text/javascript">
+                    var addthis_product = "wpp-5.3.3";
+                    var wp_product_version = "wpp-5.3.3";
+                    var wp_blog_version = "4.5.3";
+                    var addthis_plugin_info = {"info_status":"enabled","cms_name":"WordPress","cms_version":"4.5.3","plugin_name":"Share Buttons by AddThis","plugin_version":"5.3.3","anonymous_profile_id":"wp-43c5979041ef7276b0c8b5091905268b","plugin_mode":"AddThis","select_prefs":{"addthis_per_post_enabled":true,"addthis_above_enabled":false,"addthis_below_enabled":false,"addthis_sidebar_enabled":false,"addthis_mobile_toolbar_enabled":false,"addthis_above_showon_home":true,"addthis_above_showon_posts":true,"addthis_above_showon_pages":true,"addthis_above_showon_archives":true,"addthis_above_showon_categories":true,"addthis_above_showon_excerpts":true,"addthis_below_showon_home":true,"addthis_below_showon_posts":true,"addthis_below_showon_pages":true,"addthis_below_showon_archives":true,"addthis_below_showon_categories":true,"addthis_below_showon_excerpts":true,"addthis_sidebar_showon_home":true,"addthis_sidebar_showon_posts":true,"addthis_sidebar_showon_pages":true,"addthis_sidebar_showon_archives":true,"addthis_sidebar_showon_categories":true,"addthis_mobile_toolbar_showon_home":true,"addthis_mobile_toolbar_showon_posts":true,"addthis_mobile_toolbar_showon_pages":true,"addthis_mobile_toolbar_showon_archives":true,"addthis_mobile_toolbar_showon_categories":true,"sharing_enabled_on_post_via_metabox":true},"page_info":{"template":"posts","post_type":""}};
+                    if (typeof(addthis_config) == "undefined") {
+                        var addthis_config = {"data_track_clickback":true,"ui_atversion":300};
+                    }
+                    if (typeof(addthis_share) == "undefined") {
+                        var addthis_share = {};
+                    }
+                    if (typeof(addthis_layers) == "undefined") {
+                        var addthis_layers = {};
+                    }
+                </script>
+                <script
+                    data-cfasync="false"
+                    type="text/javascript"
+                    src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54dbd9264f5a3b33 "
+                    async="async"
+                >
+                </script>
+                <script data-cfasync="false" type="text/javascript">
+                    (function() {
+                        var at_interval = setInterval(function () {
+                            if(window.addthis) {
+                                clearInterval(at_interval);
+                                addthis.layers(addthis_layers);
+                            }
+                        },1000)
+                    }());
+                </script>
+                <div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-email"><a rel="nofollow" data-shared="" class="share-email sd-button share-icon" href="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/?share=email" target="_blank" title="Click to email this to a friend"><span>Email</span></a></li><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-111236" class="share-twitter sd-button share-icon" href="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/?share=twitter" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-111236" class="share-facebook sd-button share-icon" href="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/?share=facebook" target="_blank" title="Click to share on Facebook"><span>Facebook</span></a></li><li class="share-linkedin"><a rel="nofollow" data-shared="sharing-linkedin-111236" class="share-linkedin sd-button share-icon" href="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/?share=linkedin" target="_blank" title="Click to share on LinkedIn"><span>LinkedIn</span></a></li><li class="share-reddit"><a rel="nofollow" data-shared="" class="share-reddit sd-button share-icon" href="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/?share=reddit" target="_blank" title="Click to share on Reddit"><span>Reddit</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-111236" class="share-google-plus-1 sd-button share-icon" href="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/?share=google-plus-1" target="_blank" title="Click to share on Google+"><span>Google</span></a></li><li><a href="#" class="sharing-anchor sd-button share-more"><span>More</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none;"><ul><li class="share-pinterest"><a rel="nofollow" data-shared="sharing-pinterest-111236" class="share-pinterest sd-button share-icon" href="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/?share=pinterest" target="_blank" title="Click to share on Pinterest"><span>Pinterest</span></a></li><li class="share-tumblr"><a rel="nofollow" data-shared="" class="share-tumblr sd-button share-icon" href="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/?share=tumblr" target="_blank" title="Click to share on Tumblr"><span>Tumblr</span></a></li><li class="share-end"></li><li class="share-end"></li></ul></div></div></div></div></div>				
+				<div class="cleaner">&nbsp;</div>
+				
+								<p><strong>Tags:</strong> <a href="http://www.siliconbeat.com/tag/acquisition/" rel="tag">acquisition</a>, <a href="http://www.siliconbeat.com/tag/linkedin/" rel="tag">linkedin</a>, <a href="http://www.siliconbeat.com/tag/microsoft/" rel="tag">Microsoft</a>, <a href="http://www.siliconbeat.com/tag/rumor/" rel="tag">Rumor</a>, <a href="http://www.siliconbeat.com/tag/steve-ballmer/" rel="tag">Steve Ballmer</a>, <a href="http://www.siliconbeat.com/tag/tesla/" rel="tag">tesla</a>, <a href="http://www.siliconbeat.com/tag/twitter/" rel="tag">twitter</a>, <a href="http://www.siliconbeat.com/tag/uber/" rel="tag">Uber</a></p>				
+			</div><!-- end .post-content -->
+
+			<div class="divider">&nbsp;</div>
+
+<!-- BEGIN OUTBRAIN -->
+<div class="OUTBRAIN" data-src="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/" data-widget-id="AR_1" data-ob-template="BANG"></div>
+<div class="OUTBRAIN" data-src="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/" data-widget-id="AR_2" data-ob-template="BANG"></div>
+<script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
+<!-- END OUTBRAIN -->
+
+			<div class="post-actions">
+
+				<div class="column">
+
+					
+<p class="title">More Posts in Biz Break</p>
+
+	<ul class="posts posts-related">
+
+		
+		<li id="post-111281" class="post-grid">
+			<article>
+
+				<div class="cover"><a href="http://www.siliconbeat.com/2016/08/04/biz-break-apple-gains-many-friends-supreme-court-case-samsung/" title="Biz Break: Apple gains many friends in Supreme Court case with Samsung"><img src="http://www.siliconbeat.com/wp-content/uploads/2014/04/Supreme-Court-Cellphone.jpg" alt="Biz Break: Apple gains many friends in Supreme Court case with Samsung" class="Thumbnail thumbnail homepage-slider-thumbs " width="30" height="30" /></a></div>
+				<div class="post-excerpt">
+					<h2><a href="http://www.siliconbeat.com/2016/08/04/biz-break-apple-gains-many-friends-supreme-court-case-samsung/" title="Permalink to Biz Break: Apple gains many friends in Supreme Court case with Samsung" rel="bookmark">Biz Break: Apple gains many friends in Supreme Court case with Samsung</a></h2>
+					<time datetime="2016-08-04" pubdate>August 4, 2016</time>				</div>
+				<div class="cleaner">&nbsp;</div>
+			</article>
+		</li><!-- end #post-111281 -->
+		
+		
+		<li id="post-111167" class="post-grid">
+			<article>
+
+				<div class="cover"><a href="http://www.siliconbeat.com/2016/08/02/biz-break-fitbits-shape-ea-slips-earnings-results/" title="Biz Break: Fitbit&#8217;s in shape, EA slips after earnings results"><img src="http://www.siliconbeat.com/wp-content/uploads/2016/01/IMG_0156-30x30.jpg" alt="Fitbit Blaze" class="Thumbnail thumbnail homepage-slider-thumbs " width="30" height="30" /></a></div>
+				<div class="post-excerpt">
+					<h2><a href="http://www.siliconbeat.com/2016/08/02/biz-break-fitbits-shape-ea-slips-earnings-results/" title="Permalink to Biz Break: Fitbit&#8217;s in shape, EA slips after earnings results" rel="bookmark">Biz Break: Fitbit&#8217;s in shape, EA slips after earnings results</a></h2>
+					<time datetime="2016-08-02" pubdate>August 2, 2016</time>				</div>
+				<div class="cleaner">&nbsp;</div>
+			</article>
+		</li><!-- end #post-111167 -->
+		
+		
+		<li id="post-111082" class="post-grid post-last">
+			<article>
+
+				<div class="cover"><a href="http://www.siliconbeat.com/2016/08/01/biz-break-apple-625-6-million-reasons-happy/" title="Biz Break: Apple has 625.6 million reasons to be happy"><img src="http://www.siliconbeat.com/wp-content/uploads/2016/03/SJM-APPLE-0322-01-30x30.jpg" alt="Apple CEO Tim Cook takes the stage for a product launch event March 21, 2016, at Apple headquarters in Cupertino, Calif. (Karl Mondon/Bay Area News Group)" class="Thumbnail thumbnail homepage-slider-thumbs " width="30" height="30" /></a></div>
+				<div class="post-excerpt">
+					<h2><a href="http://www.siliconbeat.com/2016/08/01/biz-break-apple-625-6-million-reasons-happy/" title="Permalink to Biz Break: Apple has 625.6 million reasons to be happy" rel="bookmark">Biz Break: Apple has 625.6 million reasons to be happy</a></h2>
+					<time datetime="2016-08-01" pubdate>August 1, 2016</time>				</div>
+				<div class="cleaner">&nbsp;</div>
+			</article>
+		</li><!-- end #post-111082 -->
+		
+				
+	</ul><!-- end .posts -->
+	
+	<div class="cleaner">&nbsp;</div>
+
+
+					<div class="cleaner">&nbsp;</div>
+				</div><!-- end .column -->
+				
+				<div class="column column-last">
+										<p class="title">Share this Post</p>
+
+						<span class="share_btn"><a href="http://twitter.com/share" data-url="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></span><br />
+						<span class="share_btn"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.siliconbeat.com%2F2016%2F08%2F03%2Fbiz-break-steve-ballmer-buying-twitter-well%2F&amp;layout=button_count&amp;show_faces=false&amp;width=80&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe></span><br />
+						<span class="share_btn"><g:plusone size="medium"></g:plusone></span>
+
+										
+					<div class="cleaner">&nbsp;</div>
+				</div><!-- end .column -->
+				<div class="cleaner">&nbsp;</div>
+
+			</div><!-- end .post-actions -->
+
+						<div class="divider">&nbsp;</div>
+			
+			<div id="comments">
+				
+<div id="disqus_thread">
+    </div>
+
+<script type="text/javascript">
+var disqus_url = 'http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/';
+var disqus_identifier = '111236 http://www.siliconbeat.com/?p=111236';
+var disqus_container_id = 'disqus_thread';
+var disqus_shortname = 'dfm-sv-siliconbeat';
+var disqus_title = "Biz Break: Steve Ballmer buying Twitter? Well&#8230;";
+var disqus_config_custom = window.disqus_config;
+var disqus_config = function () {
+    /*
+    All currently supported events:
+    onReady: fires when everything is ready,
+    onNewComment: fires when a new comment is posted,
+    onIdentify: fires when user is authenticated
+    */
+    
+    
+    this.language = '';
+        this.callbacks.onReady.push(function () {
+
+        // sync comments in the background so we don't block the page
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = '?cf_action=sync_comments&post_id=111236';
+
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    });
+    
+    if (disqus_config_custom) {
+        disqus_config_custom.call(this);
+    }
+};
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+  
+			</div><!-- end #comments -->
+
+			
+			
+			<div class="cleaner">&nbsp;</div>
+		
+		</div><!-- end .wrapper-content -->
+	
+	</div><!-- end #content -->
+	
+		<aside>
+	
+		
+
+<div class="widget widget_search" id="search-2"><form role="search" method="get" id="searchform" action="http://www.siliconbeat.com/" >
+    <div>
+    <input type="text" value="" name="s" id="s" />
+    <input type="submit" id="searchsubmit" value="Search" />
+    </div>
+    </form><div class="cleaner">&nbsp;</div></div><div class="widget widget_nav_menu" id="nav_menu-2"><div class="menu-navigation-line-2-container"><ul id="menu-navigation-line-2" class="menu"><li id="menu-item-11865" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11865"><a href="http://www.siliconbeat.com/about-siliconbeat/">About SiliconBeat</a></li>
+<li id="menu-item-37728" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37728"><a href="http://direct.mercurynews.com/mrc/mrcreg.action">Sign up for the Good Morning Silicon Valley newsletter</a></li>
+<li id="menu-item-37821" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37821"><a href="http://www.siliconbeat.com/category/gmsv/">GMSV</a></li>
+</ul></div><div class="cleaner">&nbsp;</div></div><div class="widget widget_text" id="text-5">			<div class="textwidget"><!-- begin blog_MN-Business 300x250 Cube1 Ad Tag -->
+
+<center>
+
+<script type='text/javascript'>
+(function() {
+var useSSL = 'https:' == document.location.protocol;
+var src = (useSSL ? 'https:' : 'http:') +
+'//www.googletagservices.com/tag/js/gpt.js';
+document.write('<scr ' + 'ipt src="' + src + '"></scr>');
+})();
+</script>
+<div id='div-gpt-ad-1364842121944-2'>
+<script type='text/javascript'>
+googletag.defineSlot('/8013/mercurynews.com/Business', [300,250], 'div-gpt-ad-1364842121944-2').setTargeting('pos', 'Cube1_RRail_ATF').setTargeting('kv', 'business').addService
+
+(googletag.pubads());
+googletag.pubads().enableSyncRendering();
+googletag.enableServices();
+googletag.display('div-gpt-ad-1364842121944-2');
+</script>
+</div>
+
+</center>
+<!-- end 300x250 Cube 1 Ad Tag -->
+</div>
+		<div class="cleaner">&nbsp;</div></div><div class="widget widget_text" id="text-2">			<div class="textwidget"><center><div style="margin: 0 auto;"><a class="twitter-timeline" href="https://twitter.com/siliconbeat/siliconbeat" data-widget-id="267060201625096192">Tweets from @siliconbeat/siliconbeat</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+</center></div>
+		<div class="cleaner">&nbsp;</div></div><div class="widget widget_widget_tptn_pop" id="widget_tptn_pop-3"><p class="title">Popular Posts</p><div class="tptn_posts_daily  tptn_posts_widget tptn_posts_widget3"><ul><li><span class="tptn_after_thumb"><a href="http://www.siliconbeat.com/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/"     class="tptn_link"><span class="tptn_title">Biz Break: Steve Ballmer buying Twitter? Well&#8230;</span></a></span></li><li><span class="tptn_after_thumb"><a href="http://www.siliconbeat.com/2016/08/03/111229/"     class="tptn_link"><span class="tptn_title">Google&#8217;s share of digital ad revenue will keep&hellip;</span></a></span></li><li><span class="tptn_after_thumb"><a href="http://www.siliconbeat.com/2016/08/04/apple-gets-ok-start-selling-solar-power/"     class="tptn_link"><span class="tptn_title">Apple gets OK to start selling solar power from Monterey&hellip;</span></a></span></li><li><span class="tptn_after_thumb"><a href="http://www.siliconbeat.com/2016/08/04/musk-new-version-tesla-autopilot-mind-blowing/"     class="tptn_link"><span class="tptn_title">Elon Musk: New version of Tesla Autopilot mind-blowing</span></a></span></li><li><span class="tptn_after_thumb"><a href="http://www.siliconbeat.com/2016/08/02/yahoo-looking-possible-breach-200-million-user-accounts/"     class="tptn_link"><span class="tptn_title">Yahoo looking into possible breach of 200 million user&hellip;</span></a></span></li></ul><div class="tptn_clear"></div></div><div class="cleaner">&nbsp;</div></div><div class="widget widget_text" id="text-3">			<div class="textwidget"><!-- begin blog_MN-Business 300x250 Cube4 Ad Tag -->
+
+<center>
+
+<script type='text/javascript'>
+(function() {
+var useSSL = 'https:' == document.location.protocol;
+var src = (useSSL ? 'https:' : 'http:') +
+'//www.googletagservices.com/tag/js/gpt.js';
+document.write('<scr ' + 'ipt src="' + src + '"></scr>');
+})();
+</script>
+<div id='div-gpt-ad-1364842121944-4'>
+<script type='text/javascript'>
+googletag.defineSlot('/8013/mercurynews.com/Business', [300,250], 'div-gpt-ad-1364842121944-4').setTargeting('pos', 'Cube4_BottomLine').setTargeting('kv', 'business').addService
+
+(googletag.pubads());
+googletag.pubads().enableSyncRendering();
+googletag.enableServices();
+googletag.display('div-gpt-ad-1364842121944-4');
+</script>
+</div>
+
+</center>
+<!-- end 300x250 Cube 4 Ad Tag -->
+</div>
+		<div class="cleaner">&nbsp;</div></div><div class="widget widget_archive" id="archives-6"><p class="title">Archives</p>		<label class="screen-reader-text" for="archives-dropdown-6">Archives</label>
+		<select id="archives-dropdown-6" name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'>
+			
+			<option value="">Select Month</option>
+				<option value='http://www.siliconbeat.com/2016/08/'> August 2016 </option>
+	<option value='http://www.siliconbeat.com/2016/07/'> July 2016 </option>
+	<option value='http://www.siliconbeat.com/2016/06/'> June 2016 </option>
+	<option value='http://www.siliconbeat.com/2016/05/'> May 2016 </option>
+	<option value='http://www.siliconbeat.com/2016/04/'> April 2016 </option>
+	<option value='http://www.siliconbeat.com/2016/03/'> March 2016 </option>
+	<option value='http://www.siliconbeat.com/2016/02/'> February 2016 </option>
+	<option value='http://www.siliconbeat.com/2016/01/'> January 2016 </option>
+	<option value='http://www.siliconbeat.com/2015/12/'> December 2015 </option>
+	<option value='http://www.siliconbeat.com/2015/11/'> November 2015 </option>
+	<option value='http://www.siliconbeat.com/2015/10/'> October 2015 </option>
+	<option value='http://www.siliconbeat.com/2015/09/'> September 2015 </option>
+	<option value='http://www.siliconbeat.com/2015/08/'> August 2015 </option>
+	<option value='http://www.siliconbeat.com/2015/07/'> July 2015 </option>
+	<option value='http://www.siliconbeat.com/2015/06/'> June 2015 </option>
+	<option value='http://www.siliconbeat.com/2015/05/'> May 2015 </option>
+	<option value='http://www.siliconbeat.com/2015/04/'> April 2015 </option>
+	<option value='http://www.siliconbeat.com/2015/03/'> March 2015 </option>
+	<option value='http://www.siliconbeat.com/2015/02/'> February 2015 </option>
+	<option value='http://www.siliconbeat.com/2015/01/'> January 2015 </option>
+	<option value='http://www.siliconbeat.com/2014/12/'> December 2014 </option>
+	<option value='http://www.siliconbeat.com/2014/11/'> November 2014 </option>
+	<option value='http://www.siliconbeat.com/2014/10/'> October 2014 </option>
+	<option value='http://www.siliconbeat.com/2014/09/'> September 2014 </option>
+	<option value='http://www.siliconbeat.com/2014/08/'> August 2014 </option>
+	<option value='http://www.siliconbeat.com/2014/07/'> July 2014 </option>
+	<option value='http://www.siliconbeat.com/2014/06/'> June 2014 </option>
+	<option value='http://www.siliconbeat.com/2014/05/'> May 2014 </option>
+	<option value='http://www.siliconbeat.com/2014/04/'> April 2014 </option>
+	<option value='http://www.siliconbeat.com/2014/03/'> March 2014 </option>
+	<option value='http://www.siliconbeat.com/2014/02/'> February 2014 </option>
+	<option value='http://www.siliconbeat.com/2014/01/'> January 2014 </option>
+	<option value='http://www.siliconbeat.com/2013/12/'> December 2013 </option>
+	<option value='http://www.siliconbeat.com/2013/11/'> November 2013 </option>
+	<option value='http://www.siliconbeat.com/2013/10/'> October 2013 </option>
+	<option value='http://www.siliconbeat.com/2013/09/'> September 2013 </option>
+	<option value='http://www.siliconbeat.com/2013/08/'> August 2013 </option>
+	<option value='http://www.siliconbeat.com/2013/07/'> July 2013 </option>
+	<option value='http://www.siliconbeat.com/2013/06/'> June 2013 </option>
+	<option value='http://www.siliconbeat.com/2013/05/'> May 2013 </option>
+	<option value='http://www.siliconbeat.com/2013/04/'> April 2013 </option>
+	<option value='http://www.siliconbeat.com/2013/03/'> March 2013 </option>
+	<option value='http://www.siliconbeat.com/2013/02/'> February 2013 </option>
+	<option value='http://www.siliconbeat.com/2013/01/'> January 2013 </option>
+	<option value='http://www.siliconbeat.com/2012/12/'> December 2012 </option>
+	<option value='http://www.siliconbeat.com/2012/11/'> November 2012 </option>
+	<option value='http://www.siliconbeat.com/2012/10/'> October 2012 </option>
+	<option value='http://www.siliconbeat.com/2012/09/'> September 2012 </option>
+	<option value='http://www.siliconbeat.com/2012/08/'> August 2012 </option>
+	<option value='http://www.siliconbeat.com/2012/07/'> July 2012 </option>
+	<option value='http://www.siliconbeat.com/2012/06/'> June 2012 </option>
+	<option value='http://www.siliconbeat.com/2012/05/'> May 2012 </option>
+	<option value='http://www.siliconbeat.com/2012/04/'> April 2012 </option>
+	<option value='http://www.siliconbeat.com/2012/03/'> March 2012 </option>
+	<option value='http://www.siliconbeat.com/2012/02/'> February 2012 </option>
+	<option value='http://www.siliconbeat.com/2012/01/'> January 2012 </option>
+	<option value='http://www.siliconbeat.com/2011/12/'> December 2011 </option>
+	<option value='http://www.siliconbeat.com/2011/11/'> November 2011 </option>
+	<option value='http://www.siliconbeat.com/2011/10/'> October 2011 </option>
+	<option value='http://www.siliconbeat.com/2011/09/'> September 2011 </option>
+	<option value='http://www.siliconbeat.com/2011/08/'> August 2011 </option>
+	<option value='http://www.siliconbeat.com/2011/07/'> July 2011 </option>
+	<option value='http://www.siliconbeat.com/2011/06/'> June 2011 </option>
+	<option value='http://www.siliconbeat.com/2011/05/'> May 2011 </option>
+	<option value='http://www.siliconbeat.com/2011/04/'> April 2011 </option>
+	<option value='http://www.siliconbeat.com/2011/03/'> March 2011 </option>
+	<option value='http://www.siliconbeat.com/2011/02/'> February 2011 </option>
+	<option value='http://www.siliconbeat.com/2011/01/'> January 2011 </option>
+	<option value='http://www.siliconbeat.com/2010/12/'> December 2010 </option>
+	<option value='http://www.siliconbeat.com/2010/11/'> November 2010 </option>
+	<option value='http://www.siliconbeat.com/2010/10/'> October 2010 </option>
+	<option value='http://www.siliconbeat.com/2010/09/'> September 2010 </option>
+	<option value='http://www.siliconbeat.com/2010/08/'> August 2010 </option>
+	<option value='http://www.siliconbeat.com/2010/07/'> July 2010 </option>
+	<option value='http://www.siliconbeat.com/2010/06/'> June 2010 </option>
+	<option value='http://www.siliconbeat.com/2010/05/'> May 2010 </option>
+	<option value='http://www.siliconbeat.com/2010/04/'> April 2010 </option>
+	<option value='http://www.siliconbeat.com/2010/03/'> March 2010 </option>
+	<option value='http://www.siliconbeat.com/2010/02/'> February 2010 </option>
+	<option value='http://www.siliconbeat.com/2010/01/'> January 2010 </option>
+	<option value='http://www.siliconbeat.com/2009/12/'> December 2009 </option>
+	<option value='http://www.siliconbeat.com/2009/11/'> November 2009 </option>
+	<option value='http://www.siliconbeat.com/2009/10/'> October 2009 </option>
+	<option value='http://www.siliconbeat.com/2009/09/'> September 2009 </option>
+	<option value='http://www.siliconbeat.com/2009/08/'> August 2009 </option>
+	<option value='http://www.siliconbeat.com/2009/07/'> July 2009 </option>
+	<option value='http://www.siliconbeat.com/2009/06/'> June 2009 </option>
+	<option value='http://www.siliconbeat.com/2009/05/'> May 2009 </option>
+	<option value='http://www.siliconbeat.com/2009/04/'> April 2009 </option>
+	<option value='http://www.siliconbeat.com/2009/03/'> March 2009 </option>
+	<option value='http://www.siliconbeat.com/2009/02/'> February 2009 </option>
+	<option value='http://www.siliconbeat.com/2009/01/'> January 2009 </option>
+	<option value='http://www.siliconbeat.com/2008/12/'> December 2008 </option>
+	<option value='http://www.siliconbeat.com/2008/11/'> November 2008 </option>
+	<option value='http://www.siliconbeat.com/2008/10/'> October 2008 </option>
+	<option value='http://www.siliconbeat.com/2008/09/'> September 2008 </option>
+	<option value='http://www.siliconbeat.com/2008/08/'> August 2008 </option>
+	<option value='http://www.siliconbeat.com/2008/07/'> July 2008 </option>
+	<option value='http://www.siliconbeat.com/2008/06/'> June 2008 </option>
+	<option value='http://www.siliconbeat.com/2008/05/'> May 2008 </option>
+	<option value='http://www.siliconbeat.com/2008/04/'> April 2008 </option>
+	<option value='http://www.siliconbeat.com/2008/03/'> March 2008 </option>
+	<option value='http://www.siliconbeat.com/2008/02/'> February 2008 </option>
+	<option value='http://www.siliconbeat.com/2008/01/'> January 2008 </option>
+	<option value='http://www.siliconbeat.com/2007/12/'> December 2007 </option>
+	<option value='http://www.siliconbeat.com/2007/11/'> November 2007 </option>
+	<option value='http://www.siliconbeat.com/2007/10/'> October 2007 </option>
+	<option value='http://www.siliconbeat.com/2007/09/'> September 2007 </option>
+	<option value='http://www.siliconbeat.com/2007/08/'> August 2007 </option>
+	<option value='http://www.siliconbeat.com/2007/07/'> July 2007 </option>
+	<option value='http://www.siliconbeat.com/2007/06/'> June 2007 </option>
+	<option value='http://www.siliconbeat.com/2007/05/'> May 2007 </option>
+	<option value='http://www.siliconbeat.com/2007/04/'> April 2007 </option>
+	<option value='http://www.siliconbeat.com/2007/03/'> March 2007 </option>
+	<option value='http://www.siliconbeat.com/2007/02/'> February 2007 </option>
+	<option value='http://www.siliconbeat.com/2007/01/'> January 2007 </option>
+	<option value='http://www.siliconbeat.com/2006/12/'> December 2006 </option>
+	<option value='http://www.siliconbeat.com/2006/11/'> November 2006 </option>
+	<option value='http://www.siliconbeat.com/2006/10/'> October 2006 </option>
+	<option value='http://www.siliconbeat.com/2006/09/'> September 2006 </option>
+	<option value='http://www.siliconbeat.com/2006/08/'> August 2006 </option>
+	<option value='http://www.siliconbeat.com/2006/07/'> July 2006 </option>
+	<option value='http://www.siliconbeat.com/2006/06/'> June 2006 </option>
+	<option value='http://www.siliconbeat.com/2006/05/'> May 2006 </option>
+	<option value='http://www.siliconbeat.com/2006/04/'> April 2006 </option>
+	<option value='http://www.siliconbeat.com/2006/03/'> March 2006 </option>
+	<option value='http://www.siliconbeat.com/2006/02/'> February 2006 </option>
+	<option value='http://www.siliconbeat.com/2006/01/'> January 2006 </option>
+	<option value='http://www.siliconbeat.com/2005/12/'> December 2005 </option>
+	<option value='http://www.siliconbeat.com/2005/11/'> November 2005 </option>
+	<option value='http://www.siliconbeat.com/2005/10/'> October 2005 </option>
+	<option value='http://www.siliconbeat.com/2005/09/'> September 2005 </option>
+	<option value='http://www.siliconbeat.com/2005/08/'> August 2005 </option>
+	<option value='http://www.siliconbeat.com/2005/07/'> July 2005 </option>
+	<option value='http://www.siliconbeat.com/2005/06/'> June 2005 </option>
+	<option value='http://www.siliconbeat.com/2005/05/'> May 2005 </option>
+	<option value='http://www.siliconbeat.com/2005/04/'> April 2005 </option>
+	<option value='http://www.siliconbeat.com/2005/03/'> March 2005 </option>
+	<option value='http://www.siliconbeat.com/2005/02/'> February 2005 </option>
+
+		</select>
+		<div class="cleaner">&nbsp;</div></div><div class="widget widget_links" id="linkcat-1704"><p class="title">Related Feeds</p>
+	<ul class='xoxo blogroll'>
+<li><a href="http://feeds.mercurynews.com/mngi/rss/CustomRssServlet/568/200792.xml">60-Second Business Break</a></li>
+<li><a href="http://feeds.siliconvalley.com/mngi/rss/CustomRssServlet/573/283802.xml">Green Energy</a></li>
+<li><a href="http://feeds.mercurynews.com/mngi/rss/CustomRssServlet/568/200125.xml">News</a></li>
+<li><a href="http://feeds.mercurynews.com/mngi/rss/CustomRssServlet/568/200224.xml">Opinion</a></li>
+<li><a href="http://feeds.siliconvalley.com/mngi/rss/CustomRssServlet/573/206305.xml">Personal Tech</a></li>
+<li><a href="http://feeds.mercurynews.com/mngi/rss/CustomRssServlet/568/200774.xml">Venture Capital</a></li>
+
+	</ul>
+<div class="cleaner">&nbsp;</div></div>
+
+		
+		<div class="cleaner">&nbsp;</div>
+		
+		<div id="aside-fade">&nbsp;</div><!-- end #aside-fade -->
+	</aside>
+	
+	<div class="cleaner">&nbsp;</div>
+
+</div><!-- end #main -->
+
+	</div><!-- end .wrapper .wrapper-main -->
+
+	<footer>
+	
+		<div class="wrapper">
+		
+			<div class="column column-wide">
+				 				<div class="cleaner">&nbsp;</div>
+			</div><!-- end .column -->
+			
+			<div class="column">
+				 				<div class="cleaner">&nbsp;</div>
+			</div><!-- end .column -->
+			
+			<div class="column">
+				 				<div class="cleaner">&nbsp;</div>
+			</div><!-- end .column -->
+	
+			<div class="column">
+				 				<div class="cleaner">&nbsp;</div>
+			</div><!-- end .column -->
+			
+			<div class="column column-last">
+				 				<div class="cleaner">&nbsp;</div>
+			</div><!-- end .column -->
+	
+			<div class="cleaner">&nbsp;</div>
+			<div class="divider">&nbsp;</div>
+	
+			<p class="wpzoom"><a href="http://www.wpzoom.com" target="_blank" title="WordPress Themes"><img src="http://www.siliconbeat.com/wp-content/themes/erudito/images/wpzoom.png" alt="WPZOOM" /></a> <a href="http://www.wpzoom.com" target="_blank">Education WordPress Theme</a> by</p>
+			<p class="copyright">Copyright &copy; 2016 Bay Area News Group. All Rights Reserved</p>
+			
+			<div class="cleaner">&nbsp;</div>
+		
+		</div><!-- end .wrapper -->
+	
+	</footer>
+
+</div><!-- end #container -->
+
+<img alt='css.php' src="http://www.siliconbeat.com/wp-content/plugins/cookies-for-comments/css.php?k=0534349904d0442d9b52b4581bf66c5a&amp;o=i&amp;t=418076683" width='1' height='1' />        <script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = 'dfm-sv-siliconbeat';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1) {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+        <script src="/wp-content/themes/erudito-child/jquery.fitvids.js"></script>
+<script>
+  // for FitVids.js
+  jQuery(".post-content").fitVids({ customSelector: "iframe[src^='//www.tout.com']"});
+  // Custom selector and No-Double-Wrapping
+  // jQuery(".post-content").fitVids({ customSelector: "iframe[src^='http://www.tout.com']"});
+</script>
+
+<div id="omniture">
+ <script src="http://extras.mnginteractive.com/live/omniture/custom_scripts/omnicore-blogs.js" type="text/javascript"></script>
+ <noscript>
+  <img src="http://mngi.112.2O7.net/b/ss/nasora/1/H.17--NS/0" height="1" width="1" border="0" alt="" />
+ </noscript>
+</div>
+
+<!-- START Parse.ly Include: Standard -->
+<div id="parsely-root" style="display: none">
+  <div id="parsely-cfg" data-parsely-site="mercurynews.com"></div>
+</div>
+<script data-cfasync="false">
+(function(s, p, d) {
+  var h=d.location.protocol, i=p+"-"+s,
+      e=d.getElementById(i), r=d.getElementById(p+"-root"),
+      u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net"
+      :"static."+p+".com";
+  if (e) return;
+  e = d.createElement(s); e.id = i; e.async = true;
+  e.setAttribute('data-cfasync', 'false'); e.src = h+"//"+u+"/p.js"; r.appendChild(e);
+})("script", "parsely", document);
+</script>
+<!-- END Parse.ly Include: Standard -->
+	<div style="display:none">
+	</div>
+<script>(function($){$(document).ready(function(){});})(jQuery);</script>
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"http:\/\/www.siliconbeat.com\/2016\/08\/03\/biz-break-steve-ballmer-buying-twitter-well\/":111236};
+	</script>
+	<div id="sharing_email" style="display: none;">
+		<form action="/2016/08/03/biz-break-steve-ballmer-buying-twitter-well/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email" value="" />
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name" value="" />
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email" value="" />
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" />
+			<script> document.getElementById('jetpack-source_f_name').value = ''; </script>
+			
+			<img style="float: right; display: none" class="loading" src="http://www.siliconbeat.com/wp-content/plugins/jetpack/modules/sharedaddy/images/loading.gif" alt="loading" width="16" height="16" />
+			<input type="submit" value="Send Email" class="sharing_send" />
+			<a rel="nofollow" href="#cancel" class="sharing_cancel">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div>
+		<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-twitter' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-facebook' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-linkedin' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-google-plus-1' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+		});
+		</script>
+						<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-tumblr' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomtumblr', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+		});
+		</script>
+		<link rel='stylesheet' id='addthis_output-css'  href='http://www.siliconbeat.com/wp-content/plugins/addthis/css/output.css?ver=e9d0cdd20f50b23bd7820b40f6ce47c4' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var TB_labels = {"no_config":"No configuration settings found","twitter_logo":"Twitter Logo","kino":"Development by Kirill Novitchenko","refresh":"Refresh","no_sources":"Twitter sources to blend are not defined","no_global_config":"Cannot retrieve Tweet Blender configuration options","version_msg":"Powered by Tweet Blender plugin v{0} blending {1}","limit_msg":"You reached Twitter API connection limit","no_tweets_msg":"No tweets found for {0}","loading_msg":"Loading tweets...","time_past":"{0} {1} ago","time_future":"in {0} {1}","second":"second","seconds":"seconds","minute":"minute","minutes":"minutes","hour":"hour","hours":"hours","day":"day","days":"days","week":"week","weeks":"weeks","month":"month","months":"months","year":"year","years":"years","check_fail":"Check failed","limit_num":"Max is {0}\/hour","limit_left":"You have {0} left","from":"from","reply":"reply","follow":"follow","limit_reset":"Next reset","view_more":"view more"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.siliconbeat.com/wp-content/plugins/tweet-blender/js/lib.js?ver=e9d0cdd20f50b23bd7820b40f6ce47c4'></script>
+<script type='text/javascript' src='http://www.siliconbeat.com/wp-content/plugins/tweet-blender/js/main.js?ver=e9d0cdd20f50b23bd7820b40f6ce47c4'></script>
+<script type='text/javascript' src='http://www.siliconbeat.com/wp-content/plugins/slideshow/slideshow.js?ver=0.1'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201631'></script>
+<script type='text/javascript' src='http://www.siliconbeat.com/wp-includes/js/comment-reply.min.js?ver=e9d0cdd20f50b23bd7820b40f6ce47c4'></script>
+<script type='text/javascript' src='http://www.siliconbeat.com/wp-content/themes/erudito/js/jquery.flexslider-min.js?ver=e9d0cdd20f50b23bd7820b40f6ce47c4'></script>
+<script type='text/javascript' src='http://www.siliconbeat.com/wp-content/themes/erudito/js/dropdown.js?ver=e9d0cdd20f50b23bd7820b40f6ce47c4'></script>
+<script type='text/javascript' src='http://www.siliconbeat.com/wp-content/themes/erudito/functions/wpzoom/assets/js/galleria.js'></script>
+<script type='text/javascript' src='http://www.siliconbeat.com/wp-content/themes/erudito/functions/wpzoom/assets/js/wzslider.js'></script>
+<script type='text/javascript' src='http://www.siliconbeat.com/wp-includes/js/wp-embed.min.js?ver=e9d0cdd20f50b23bd7820b40f6ce47c4'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.siliconbeat.com/wp-content/plugins/jetpack/modules/sharedaddy/sharing.js?ver=4.1.0'></script>
+<script type='text/javascript' src='http://stats.wp.com/e-201631.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.1.0',blog:'39179666',post:'111236',tz:'-7',srv:'www.siliconbeat.com'} ]);
+	_stq.push([ 'clickTrackerInit', '39179666', '111236' ]);
+</script>
+<!--wp_footer--><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"7faef49a98","applicationID":"7792780","transactionName":"YlEGZEoECxZXBkQLWVsbMUJRSgwLUgBITEZdRA==","queueTime":0,"applicationTime":39,"atts":"ThYFEgIeGBg=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using apc
+Database Caching 16/34 queries in 0.860 seconds using apc
+Object Caching 2836/2895 objects using apc
+
+ Served from: www.siliconbeat.com @ 2016-08-04 21:32:13 by W3 Total Cache -->

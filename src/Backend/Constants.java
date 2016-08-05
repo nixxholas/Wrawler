@@ -74,7 +74,7 @@ public class Constants {
     // ------------------- JFrame Elements --------------------- //
     // Default JFrame of the Program
     public static MainFrame mainFrame = new MainFrame();
-    public static ConcurrentInt btnCounter = new ConcurrentInt();
+    public static ConcurrentInt resultsCounter = new ConcurrentInt();
     
     // Settings JFrame
     public static Settings settingsFrame = new Settings();

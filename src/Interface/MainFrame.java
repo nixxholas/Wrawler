@@ -7,13 +7,13 @@ package Interface;
 
 import static Backend.BackendServices.clearDirectory;
 import static Backend.Constants.actualProgress;
-import static Backend.Constants.btnCounter;
 import static Backend.Constants.clearQueue;
 import static Backend.Constants.getSearchQueue;
 import static Backend.Constants.getSearchQueueSize;
 import static Backend.Constants.mainFrame;
 import static Backend.Constants.progressRate;
 import static Backend.Constants.resultFrame;
+import static Backend.Constants.resultsCounter;
 import static Backend.Constants.searchEngines;
 import static Backend.Constants.settingsFrame;
 import static Backend.PageRead.*;
@@ -232,7 +232,7 @@ public class MainFrame extends javax.swing.JFrame {
                 mainFrameProgressBar.setValue(actualProgress);
 
                 // Reset the Counters
-                btnCounter.setCount(0);
+                resultsCounter.setCount(0);
             });
         };
         Thread th = new Thread(r);
