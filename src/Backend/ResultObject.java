@@ -10,10 +10,7 @@ import static Backend.Constants.cachedResults;
 import static Backend.Constants.jep;
 import static Backend.Constants.jepPure;
 import static Backend.Constants.mainFrame;
-import static Backend.Constants.numberOfResults;
 import static Backend.Constants.rightPanel;
-import static Backend.Constants.searchQueue;
-import static Backend.Constants.toughBoolean;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -79,6 +76,14 @@ public class ResultObject implements Serializable, Runnable {
         this.userQuery = userQuery;
     }
 
+    public SearchEngine getQueryingEngine() {
+        return queryingEngine;
+    }
+
+    public void setQueryingEngine(SearchEngine queryingEngine) {
+        this.queryingEngine = queryingEngine;
+    }
+
     /**
      * Find Results that have been found from previous few searches
      *
@@ -89,8 +94,8 @@ public class ResultObject implements Serializable, Runnable {
         // Check against the history of results
         for (ResultObject RO : cachedResults) {
             if (RO.url.equals(this.url)) {
-                configureQueue(this, 2); // Remove the found Object
-                configureQueue(RO, 1); // Add the Cached Object
+                //configureQueue(this, 2); // Remove the found Object
+                //configureQueue(RO, 1); // Add the Cached Object
                 this.name = RO.name;
                 this.resultPage = RO.resultPage;
                 return true;
@@ -114,18 +119,6 @@ public class ResultObject implements Serializable, Runnable {
 //              }
 //            }
         return false;
-    }
-
-    synchronized void
-            configureQueue(ResultObject ro, int i
-            ) {
-        // i, 1 for adding, 2 for deleting
-        if (i == 1) {
-            searchQueue.add(ro);
-        } else if (i == 2) {
-            searchQueue.remove(ro);
-        }
-
     }
 
     /**
@@ -214,17 +207,17 @@ public class ResultObject implements Serializable, Runnable {
      */
     @Override
     public void run() {
-        toughBoolean.setValue(true);
+        //toughBoolean.setValue(true);
         
         // Temporary String datatype to store the loadedResult
         String loadedResult;
         
         try {
             // Don't download if we can find it
-            if (this.findResults()) {
+            //if (this.findResults()) {
                 // And then we'll set all of it's data from the original
-                loadedResult = this.resultPage;
-            } else {
+            //    loadedResult = this.resultPage;
+            //} else {
                 // Since we can't find it, we download it
                 URL url = new URL(this.getUrl());
                 PrintWriter writer = new PrintWriter("src/Download/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
@@ -255,7 +248,7 @@ public class ResultObject implements Serializable, Runnable {
 
                 reader.close();
                 writer.close();
-            }
+            //}
 
             // Ultimately, we'll have to create the button
             JButton button = new JButton(this.getName());
@@ -263,7 +256,7 @@ public class ResultObject implements Serializable, Runnable {
             // For the action listener
             String resultName = this.getName();
 
-            if (btnCounter.getCount() < numberOfResults) {
+            //if (btnCounter.getCount() < numberOfResults) {
                 btnCounter.incrementCount();
                 System.out.println(btnCounter.getCount());
                 /**
@@ -308,7 +301,7 @@ public class ResultObject implements Serializable, Runnable {
                 });
 
                 rightPanel.add(button);
-            }
+            //}
         } catch (Exception ex) {
 
         }

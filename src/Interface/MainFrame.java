@@ -8,18 +8,18 @@ package Interface;
 import static Backend.BackendServices.clearDirectory;
 import static Backend.Constants.actualProgress;
 import static Backend.Constants.btnCounter;
+import static Backend.Constants.clearQueue;
+import static Backend.Constants.getSearchQueue;
+import static Backend.Constants.getSearchQueueSize;
 import static Backend.Constants.mainFrame;
 import static Backend.Constants.progressRate;
 import static Backend.Constants.resultFrame;
 import static Backend.Constants.searchEngines;
-import static Backend.Constants.searchQueue;
 import static Backend.Constants.settingsFrame;
 import static Backend.PageRead.*;
 import Backend.ResultObject;
-import Backend.SearchEngine;
 import java.awt.EventQueue;
 import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -151,7 +151,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
 
         // Wipe the statics
-        searchQueue.clear();
+        clearQueue();
 
         // Get the result string
         String result = textBox.getText();
@@ -187,6 +187,37 @@ public class MainFrame extends javax.swing.JFrame {
 
             // Setup the UI
             EventQueue.invokeLater(() -> {
+
+                /**
+                 * Devise a way to dynamically create a JFrame with it's panel
+                 * and to preload data that we have parsed from the Search
+                 * Engine
+                 *
+                 * And hyperlink each of the given link we have extracted from
+                 * the HTML search result. Concurrently, we will also download
+                 * and save the target link as an individual HTML Page by itself
+                 * so that our can utilize it if needed.
+                 */
+                // Multi-Threading system       
+                ExecutorService threadPoolExecutor
+                        = new ThreadPoolExecutor(
+                                getSearchQueueSize(),
+                                getSearchQueueSize(),
+                                600000, // Give the program a decent amount of time
+                                TimeUnit.MILLISECONDS,
+                                new LinkedBlockingQueue<Runnable>()
+                        );
+                
+                System.out.println("Search Queue Size is : " + getSearchQueueSize());
+
+                for (ResultObject RO : getSearchQueue()) {
+                    // Call a thread to run()
+                    // This method saves the link as HTML and a Cached file
+                    threadPoolExecutor.execute(RO);
+                }
+
+                // Awaits for all threads to complete before wrappin' up
+                threadPoolExecutor.shutdown();
 
                 // Once we're done with loading the searches, we'll show the frame.
                 // and hide the mainFrame (which is called newFrame)

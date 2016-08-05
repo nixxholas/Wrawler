@@ -44,7 +44,33 @@ public class Constants {
      *
      * http://stackoverflow.com/questions/616484/how-to-use-concurrentlinkedqueue
      */
-    public static Queue<ResultObject> searchQueue = new ConcurrentLinkedQueue<>();
+    private static List<ResultObject> searchQueue = new ArrayList<>();
+
+    public static synchronized void addToQueue(ResultObject ro) {
+        // But if it already exists, we'll remove it
+        searchQueue.add(ro);
+    }
+
+    public static int getSearchQueueSize() {
+        return searchQueue.size();
+    }
+
+    public static List<ResultObject> getSearchQueue() {
+        return searchQueue;
+    }
+
+    public static synchronized boolean queueHasResult(ResultObject ro) {
+        for (ResultObject ObjectInQueue : searchQueue) {
+            if (ObjectInQueue.getUrl().equals(ro.getUrl())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void clearQueue() {
+        searchQueue.clear();
+    }
 
     // ------------------- JFrame Elements --------------------- //
     // Default JFrame of the Program

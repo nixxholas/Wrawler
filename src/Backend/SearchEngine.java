@@ -6,14 +6,8 @@
 package Backend;
 
 import static Backend.Constants.searchEngines;
-import static Backend.Constants.searchQueue;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 /**
  *
