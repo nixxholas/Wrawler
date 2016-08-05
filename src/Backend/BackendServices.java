@@ -35,6 +35,9 @@ public class BackendServices {
     }
 
     public static void clearDirectory(String path) {
+        // Clear the cachedResults as well
+        cachedResults.clear();
+        
         File directory = new File(path);
 
         /**

@@ -198,6 +198,7 @@ public class MainFrame extends javax.swing.JFrame {
                  * and save the target link as an individual HTML Page by itself
                  * so that our can utilize it if needed.
                  */
+                
                 // Multi-Threading system       
                 ExecutorService threadPoolExecutor
                         = new ThreadPoolExecutor(
@@ -208,6 +209,7 @@ public class MainFrame extends javax.swing.JFrame {
                                 new LinkedBlockingQueue<Runnable>()
                         );
                 
+                // Debugging purposes only
                 System.out.println("Search Queue Size is : " + getSearchQueueSize());
 
                 for (ResultObject RO : getSearchQueue()) {

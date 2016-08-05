@@ -6,6 +6,10 @@
 package Backend;
 
 /**
+ * Debugging Object for Wrawler.
+ * 
+ * Allows us to specifically check the
+ * multi threading progress of a set of runnable. 
  *
  * @author Nixholas
  */

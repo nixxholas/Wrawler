@@ -5,6 +5,7 @@
  */
 package Backend;
 
+import static Backend.Constants.addToQueue;
 import static Backend.Constants.btnCounter;
 import static Backend.Constants.cachedResults;
 import static Backend.Constants.jep;
@@ -35,13 +36,15 @@ public class ResultObject implements Serializable, Runnable {
     private String url;
     private String userQuery;
     private String resultPage = "";
+    private boolean isCachedResult;
     public SearchEngine queryingEngine;
 
-    public ResultObject(String name, String url, String userQuery) {
+    public ResultObject(String name, String url, String userQuery, boolean isCached) {
         this.name = name;
         this.url = url;
         this.userQuery = userQuery;
         this.resultPage = "";
+        this.isCachedResult = isCached;
     }
 
     public String getResultPage() {
@@ -68,6 +71,14 @@ public class ResultObject implements Serializable, Runnable {
         this.url = url;
     }
 
+    public boolean isIsCachedResult() {
+        return isCachedResult;
+    }
+
+    public void setIsCachedResult(boolean isCachedResult) {
+        this.isCachedResult = isCachedResult;
+    }
+
     public String getUserQuery() {
         return userQuery;
     }
@@ -86,38 +97,24 @@ public class ResultObject implements Serializable, Runnable {
 
     /**
      * Find Results that have been found from previous few searches
+     * 
+     * If the incoming result actually exists in the cache,
+     * we'll add the cachedResult into the searchQueue instead.
      *
      * @param result
      * @return
      */
-    private boolean findResults() {
+    public static boolean findInCache(ResultObject IncomingResult) {
         // Check against the history of results
         for (ResultObject RO : cachedResults) {
-            if (RO.url.equals(this.url)) {
-                //configureQueue(this, 2); // Remove the found Object
-                //configureQueue(RO, 1); // Add the Cached Object
-                this.name = RO.name;
-                this.resultPage = RO.resultPage;
+            // If found, add the object to the searchQueue as well
+            if (RO.url.equals(IncomingResult.url)) {
+                RO.setIsCachedResult(true); // Make sure we let other classes know its cached
+                addToQueue(RO);
                 return true;
             }
         }
 
-        // Check with the current queue
-//        if (searchQueue.size() > 0) {
-//            for (ResultObject RO : searchQueue) {
-//                // If the URL is the same and if both search engines are not the same,
-//                // we'll remove it
-//                if (RO.url.equals(this.url) && !RO.queryingEngine.equals(this.queryingEngine)) {
-//                    configureQueue(this, 2);
-//                    // Then we let the program know something is found
-//                    return true;
-//                }
-//            }
-//            for (int i = 0; i < searchQueue.size(); i++) {                
-//              for (int j = 1; j < searchQueue.size(); j++) {
-//                  
-//              }
-//            }
         return false;
     }
 
@@ -207,48 +204,40 @@ public class ResultObject implements Serializable, Runnable {
      */
     @Override
     public void run() {
-        //toughBoolean.setValue(true);
-        
         // Temporary String datatype to store the loadedResult
         String loadedResult;
-        
+
         try {
-            // Don't download if we can find it
-            //if (this.findResults()) {
-                // And then we'll set all of it's data from the original
-            //    loadedResult = this.resultPage;
-            //} else {
-                // Since we can't find it, we download it
-                URL url = new URL(this.getUrl());
-                PrintWriter writer = new PrintWriter("src/Download/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
+            // Since we can't find it, we download it
+            URL url = new URL(this.getUrl());
+            PrintWriter writer = new PrintWriter("src/Download/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
 
-                BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
 
-                String line, finalResult = "";
-                StringBuilder sb = new StringBuilder();
-                while ((line = reader.readLine()) != null) {
-                    finalResult += line + "\n";
-                    sb.append(line + "\n");
-                    writer.println(line);
-                }
+            String line, finalResult = "";
+            StringBuilder sb = new StringBuilder();
+            while ((line = reader.readLine()) != null) {
+                finalResult += line + "\n";
+                sb.append(line + "\n");
+                writer.println(line);
+            }
 
-                this.setResultPage(finalResult);
-                loadedResult = finalResult;
+            this.setResultPage(finalResult);
+            loadedResult = finalResult;
 
-                // Create a serialized form of the object
-                FileOutputStream fos = new FileOutputStream("src/Caches/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".ser");
-                ObjectOutputStream os = new ObjectOutputStream(fos);
+            // Create a serialized form of the object
+            FileOutputStream fos = new FileOutputStream("src/Caches/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".ser");
+            ObjectOutputStream os = new ObjectOutputStream(fos);
 
-                // Caches the object
-                os.writeObject(this);
+            // Caches the object
+            os.writeObject(this);
 
-                // We'll have to add it to the cachedResults as well
-                // incase the user tries to searcha again
-                cachedResults.add(this);
+            // We'll have to add it to the cachedResults as well
+            // incase the user tries to searcha again
+            cachedResults.add(this);
 
-                reader.close();
-                writer.close();
-            //}
+            reader.close();
+            writer.close();
 
             // Ultimately, we'll have to create the button
             JButton button = new JButton(this.getName());
@@ -257,50 +246,52 @@ public class ResultObject implements Serializable, Runnable {
             String resultName = this.getName();
 
             //if (btnCounter.getCount() < numberOfResults) {
-                btnCounter.incrementCount();
-                System.out.println(btnCounter.getCount());
-                /**
-                 * Action Listener adapted from:
-                 *
-                 * http://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
-                 */
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        /**
-                         * Webpage Viewer within the Java Project
-                         *
-                         * http://stackoverflow.com/questions/10601676/display-a-webpage-inside-a-swing-application
-                         */
-                        jep.removeAll();
-                        jepPure.removeAll();
+            btnCounter.incrementCount();
+            System.out.println(btnCounter.getCount());
+            
+            /**
+             * Action Listener adapted from:
+             *
+             * http://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
+             */
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    /**
+                     * Webpage Viewer within the Java Project
+                     *
+                     * http://stackoverflow.com/questions/10601676/display-a-webpage-inside-a-swing-application
+                     */
+                    jep.removeAll();
+                    jepPure.removeAll();
 
-                        try {
-                            // Pulls the file path
-                            File file = new File("src/Download/" + resultName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
-                            Thread t = new Thread() {
-                                public void run() {
-                                    try {
-                                        jep.setPage(file.toURI().toURL());
-                                    } catch (Exception ex) {
-                                        jep.setContentType("text/html");
-                                        jep.setText("<html>Could not load the page.</html>");
-                                    }
+                    try {
+                        // Pulls the file path
+                        File file = new File("src/Download/" + resultName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
+                        
+                        // Threading for HTML Views to reduce lag
+                        Thread t = new Thread() {
+                            public void run() {
+                                try {
+                                    jep.setPage(file.toURI().toURL());
+                                } catch (Exception ex) {
+                                    jep.setContentType("text/html");
+                                    jep.setText("<html>Could not load the page.</html>");
                                 }
-                            };
-                            t.start();
+                            }
+                        };
+                        t.start();
 
-                            jepPure.setText(loadedResult);
-
-                            mainFrame.pack();
-                        } catch (Exception ex) {
-                            jep.setContentType("text/html");
-                            jep.setText("<html>Could not load the page.</html>");
-                        }
+                        jepPure.setText(loadedResult);
+                        mainFrame.pack();
+                    } catch (Exception ex) {
+                        jep.setContentType("text/html");
+                        jep.setText("<html>Could not load the page.</html>");
                     }
-                });
+                }
+            });
 
-                rightPanel.add(button);
+            rightPanel.add(button);
             //}
         } catch (Exception ex) {
 
