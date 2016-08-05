@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -76,8 +75,7 @@ public class Constants {
     // Default JFrame of the Program
     public static MainFrame mainFrame = new MainFrame();
     public static ConcurrentInt btnCounter = new ConcurrentInt();
-    public static ToughBoolean toughBoolean = new ToughBoolean();
-
+    
     // Settings JFrame
     public static Settings settingsFrame = new Settings();
 
