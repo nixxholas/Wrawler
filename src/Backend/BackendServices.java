@@ -93,6 +93,13 @@ public class BackendServices {
             // to avoid race conditions with another process that deletes
             // directories.
         }
+        
+        // We then load the historyTable with the cachedResults
+        loadHistoryTable();
+    }
+    
+    public static void loadHistoryTable() {
+        
     }
 
 }

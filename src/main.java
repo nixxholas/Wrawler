@@ -1,6 +1,7 @@
 
 import static Backend.BackendServices.loadCache;
 import static Backend.Constants.clearQueue;
+import static Backend.Constants.historyFrame;
 import static Backend.Constants.jep;
 import static Backend.Constants.jepPure;
 import static Backend.Constants.leftPanel;
@@ -130,6 +131,15 @@ public class main {
                 mainFrame.setVisible(true);
                 jep.setText("");
                 jepPure.setText("");
+            }
+        });
+
+        // History Frame Settings
+        historyFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        historyFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                mainFrame.setVisible(true);                
             }
         });
 

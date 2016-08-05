@@ -10,6 +10,7 @@ import static Backend.Constants.actualProgress;
 import static Backend.Constants.clearQueue;
 import static Backend.Constants.getSearchQueue;
 import static Backend.Constants.getSearchQueueSize;
+import static Backend.Constants.historyFrame;
 import static Backend.Constants.mainFrame;
 import static Backend.Constants.progressRate;
 import static Backend.Constants.resultFrame;
@@ -55,6 +56,7 @@ public class MainFrame extends javax.swing.JFrame {
         clearCacheBtn = new javax.swing.JButton();
         mainFrameProgressBar = new javax.swing.JProgressBar();
         settingsBtn = new javax.swing.JButton();
+        historyBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -99,45 +101,57 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        historyBtn.setText("View History");
+        historyBtn.setToolTipText("");
+        historyBtn.setName(""); // NOI18N
+        historyBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historyBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(mainFrameProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(153, 153, 153)
-                                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textBox, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 63, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(clearCacheBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(historyBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(settingsBtn)))
-                .addContainerGap())
+                        .addComponent(settingsBtn)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 212, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(296, 296, 296))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(textBox, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(210, 210, 210)))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(mainFrameProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                 .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(textBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clearCacheBtn)
-                    .addComponent(settingsBtn))
+                    .addComponent(settingsBtn)
+                    .addComponent(historyBtn))
                 .addContainerGap())
         );
 
@@ -198,7 +212,6 @@ public class MainFrame extends javax.swing.JFrame {
                  * and save the target link as an individual HTML Page by itself
                  * so that our can utilize it if needed.
                  */
-                
                 // Multi-Threading system       
                 ExecutorService threadPoolExecutor
                         = new ThreadPoolExecutor(
@@ -208,7 +221,7 @@ public class MainFrame extends javax.swing.JFrame {
                                 TimeUnit.MILLISECONDS,
                                 new LinkedBlockingQueue<Runnable>()
                         );
-                
+
                 // Debugging purposes only
                 System.out.println("Search Queue Size is : " + getSearchQueueSize());
 
@@ -220,6 +233,8 @@ public class MainFrame extends javax.swing.JFrame {
 
                 // Awaits for all threads to complete before wrappin' up
                 threadPoolExecutor.shutdown();
+
+                mainFrameProgressBar.setValue(100);
 
                 // Once we're done with loading the searches, we'll show the frame.
                 // and hide the mainFrame (which is called newFrame)
@@ -250,6 +265,12 @@ public class MainFrame extends javax.swing.JFrame {
         settingsFrame.setVisible(true);
         mainFrame.setVisible(false);
     }//GEN-LAST:event_settingsBtnActionPerformed
+
+    private void historyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyBtnActionPerformed
+        // TODO add your handling code here:
+        historyFrame.setVisible(true);
+        mainFrame.setVisible(false);
+    }//GEN-LAST:event_historyBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,6 +309,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearCacheBtn;
+    private javax.swing.JButton historyBtn;
     private javax.swing.JProgressBar mainFrameProgressBar;
     private javax.swing.JLabel mainLabel;
     public javax.swing.JButton searchBtn;

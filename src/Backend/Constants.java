@@ -7,6 +7,7 @@ package Backend;
 
 import Interface.MainFrame;
 import Interface.Settings;
+import Interface.History;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -78,6 +79,12 @@ public class Constants {
     
     // Settings JFrame
     public static Settings settingsFrame = new Settings();
+    
+    // History JFrame
+    public static History historyFrame = new History();
+    String[] columnNames = {"User Input", "URL"}; // Columns for the historyTable
+    public static Object[][] historyData; // Stores the object data
+        
 
     /**
      * Search Result JFrame
