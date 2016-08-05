@@ -97,9 +97,9 @@ public class ResultObject implements Serializable, Runnable {
 
     /**
      * Find Results that have been found from previous few searches
-     * 
-     * If the incoming result actually exists in the cache,
-     * we'll add the cachedResult into the searchQueue instead.
+     *
+     * If the incoming result actually exists in the cache, we'll add the
+     * cachedResult into the searchQueue instead.
      *
      * @param result
      * @return
@@ -207,92 +207,147 @@ public class ResultObject implements Serializable, Runnable {
         // Temporary String datatype to store the loadedResult
         String loadedResult;
 
+        // Ultimately, we'll have to create the button
+        JButton button = new JButton(this.getName());
+
         try {
-            // Since we can't find it, we download it
-            URL url = new URL(this.getUrl());
-            PrintWriter writer = new PrintWriter("src/Download/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
+            if (this.isCachedResult) { // If this was cached,
+                loadedResult = this.resultPage; // Get the result page
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+                // For the action listener
+                String resultName = this.getName();
 
-            String line, finalResult = "";
-            StringBuilder sb = new StringBuilder();
-            while ((line = reader.readLine()) != null) {
-                finalResult += line + "\n";
-                sb.append(line + "\n");
-                writer.println(line);
+                //if (btnCounter.getCount() < numberOfResults) {
+                btnCounter.incrementCount();
+                System.out.println(btnCounter.getCount());
+
+                /**
+                 * Action Listener adapted from:
+                 *
+                 * http://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
+                 */
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        /**
+                         * Webpage Viewer within the Java Project
+                         *
+                         * http://stackoverflow.com/questions/10601676/display-a-webpage-inside-a-swing-application
+                         */
+                        jep.removeAll();
+                        jepPure.removeAll();
+
+                        try {
+                            // Pulls the file path
+                            File file = new File("src/Download/" + resultName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
+
+                            // Threading for HTML Views to reduce lag
+                            Thread t = new Thread() {
+                                public void run() {
+                                    try {
+                                        jep.setPage(file.toURI().toURL());
+                                    } catch (Exception ex) {
+                                        jep.setContentType("text/html");
+                                        jep.setText("<html>Could not load the page.</html>");
+                                    }
+                                }
+                            };
+                            t.start();
+
+                            jepPure.setText(loadedResult);
+                            mainFrame.pack();
+                        } catch (Exception ex) {
+                            jep.setContentType("text/html");
+                            jep.setText("<html>Could not load the page.</html>");
+                        }
+                    }
+                });
+
+            } else {
+
+                // Since we can't find it, we download it
+                URL url = new URL(this.getUrl());
+                PrintWriter writer = new PrintWriter("src/Download/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".html", "UTF-8");
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+
+                String line, finalResult = "";
+                StringBuilder sb = new StringBuilder();
+                while ((line = reader.readLine()) != null) {
+                    finalResult += line + "\n";
+                    sb.append(line + "\n");
+                    writer.println(line);
+                }
+
+                this.setResultPage(finalResult);
+                loadedResult = finalResult;
+
+                // Create a serialized form of the object
+                FileOutputStream fos = new FileOutputStream("src/Caches/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".ser");
+                ObjectOutputStream os = new ObjectOutputStream(fos);
+
+                // Caches the object
+                os.writeObject(this);
+
+                // We'll have to add it to the cachedResults as well
+                // incase the user tries to searcha again
+                cachedResults.add(this);
+
+                reader.close();
+                writer.close();
+
+                // For the action listener
+                String resultName = this.getName();
+
+                //if (btnCounter.getCount() < numberOfResults) {
+                btnCounter.incrementCount();
+                System.out.println(btnCounter.getCount());
+
+                /**
+                 * Action Listener adapted from:
+                 *
+                 * http://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
+                 */
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        /**
+                         * Webpage Viewer within the Java Project
+                         *
+                         * http://stackoverflow.com/questions/10601676/display-a-webpage-inside-a-swing-application
+                         */
+                        jep.removeAll();
+                        jepPure.removeAll();
+
+                        try {
+                            // Pulls the file path
+                            File file = new File("src/Download/" + resultName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
+
+                            // Threading for HTML Views to reduce lag
+                            Thread t = new Thread() {
+                                public void run() {
+                                    try {
+                                        jep.setPage(file.toURI().toURL());
+                                    } catch (Exception ex) {
+                                        jep.setContentType("text/html");
+                                        jep.setText("<html>Could not load the page.</html>");
+                                    }
+                                }
+                            };
+                            t.start();
+
+                            jepPure.setText(loadedResult);
+                            mainFrame.pack();
+                        } catch (Exception ex) {
+                            jep.setContentType("text/html");
+                            jep.setText("<html>Could not load the page.</html>");
+                        }
+                    }
+                });
+
             }
 
-            this.setResultPage(finalResult);
-            loadedResult = finalResult;
-
-            // Create a serialized form of the object
-            FileOutputStream fos = new FileOutputStream("src/Caches/" + this.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".ser");
-            ObjectOutputStream os = new ObjectOutputStream(fos);
-
-            // Caches the object
-            os.writeObject(this);
-
-            // We'll have to add it to the cachedResults as well
-            // incase the user tries to searcha again
-            cachedResults.add(this);
-
-            reader.close();
-            writer.close();
-
-            // Ultimately, we'll have to create the button
-            JButton button = new JButton(this.getName());
-
-            // For the action listener
-            String resultName = this.getName();
-
-            //if (btnCounter.getCount() < numberOfResults) {
-            btnCounter.incrementCount();
-            System.out.println(btnCounter.getCount());
-            
-            /**
-             * Action Listener adapted from:
-             *
-             * http://alvinalexander.com/java/jbutton-listener-pressed-actionlistener
-             */
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    /**
-                     * Webpage Viewer within the Java Project
-                     *
-                     * http://stackoverflow.com/questions/10601676/display-a-webpage-inside-a-swing-application
-                     */
-                    jep.removeAll();
-                    jepPure.removeAll();
-
-                    try {
-                        // Pulls the file path
-                        File file = new File("src/Download/" + resultName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".html");
-                        
-                        // Threading for HTML Views to reduce lag
-                        Thread t = new Thread() {
-                            public void run() {
-                                try {
-                                    jep.setPage(file.toURI().toURL());
-                                } catch (Exception ex) {
-                                    jep.setContentType("text/html");
-                                    jep.setText("<html>Could not load the page.</html>");
-                                }
-                            }
-                        };
-                        t.start();
-
-                        jepPure.setText(loadedResult);
-                        mainFrame.pack();
-                    } catch (Exception ex) {
-                        jep.setContentType("text/html");
-                        jep.setText("<html>Could not load the page.</html>");
-                    }
-                }
-            });
-
             rightPanel.add(button);
-            //}
         } catch (Exception ex) {
 
         }
